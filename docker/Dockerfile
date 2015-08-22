@@ -29,7 +29,7 @@ RUN chmod +x \
 	/usr/local/lib/php7-fpm-checkconf \
 	/etc/init/php7-fpm
 RUN update-rc.d php7-fpm defaults
-RUN service php7-fpm start
+RUN service php7-fpm start; case "$?" in 0|1) echo 0;; *) echo 2;; esac #start may return 0 or 1 on success
 RUN service php7-fpm status
 
 # Starts Nginx. You should also add here some code to configure your application
