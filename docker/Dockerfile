@@ -24,11 +24,13 @@ RUN chmod +x /etc/init.d/php7-fpm /usr/local/lib/php7-fpm-checkconf
 RUN update-rc.d php7-fpm defaults
 RUN service php7-fpm start
 RUN service php7-fpm status
+
+# Starts Nginx. You should also add here some code to configure your application
 RUN service nginx start
 RUN service nginx status
-
-# Configures Nginx
-
+EXPOSE 80
+EXPOSE 8080
+EXPOSE 443
 
 # Sets Composer variables and the correct PATH
 ENV COMPOSER_BINARY=/usr/local/bin/composer \
