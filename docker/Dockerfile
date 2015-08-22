@@ -29,27 +29,25 @@ RUN chmod +x \
 	/usr/local/lib/php7-fpm-checkconf \
 	/etc/init/php7-fpm
 RUN update-rc.d php7-fpm defaults
-RUN service php7-fpm start; case "$?" in 0|1) echo 0;; *) echo 2;; esac #start may return 0 or 1 on success
-RUN service php7-fpm status
-
+RUN service php7-fpm start; service php7-fpm status
+ 
 # Starts Nginx. You should also add here some code to configure your application
-RUN service nginx start
-RUN service nginx status
+RUN service nginx start; service nginx status
 EXPOSE 80
 EXPOSE 8080
 EXPOSE 443
 
 # Sets Composer variables and the correct PATH
-ENV COMPOSER_BINARY=/usr/local/bin/composer \
-    COMPOSER_HOME=/usr/local/composer
-ENV PATH $PATH:$COMPOSER_HOME:/usr/local/php7
+ENV COMPOSER_BINARY /usr/local/bin/composer
+ENV COMPOSER_HOME /usr/local/composer
+ENV PATH $PATH:$COMPOSER_HOME:/usr/local/php7/bin
 
 # Installs Composer system-wide
-#RUN curl -sS https://getcomposer.org/installer | php && \
-#    mv composer.phar $COMPOSER_BINARY && \
-#    chmod +x $COMPOSER_BINARY
+RUN curl -sS https://getcomposer.org/installer | php && \
+    mv composer.phar $COMPOSER_BINARY && \
+    chmod +x $COMPOSER_BINARY
 
 # Sets global Composer path
-#RUN mkdir $COMPOSER_HOME && chmod a+rw $COMPOSER_HOME
+RUN mkdir $COMPOSER_HOME && chmod a+rw $COMPOSER_HOME
 
 CMD /bin/bash
