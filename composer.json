@@ -9,6 +9,7 @@
         "laravel/framework": "5.1.*"
     },
     "require-dev": {
+	"heroku/heroku-buildpack-php": "*",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
