@@ -1,0 +1,6 @@
+*.iws
+dictionaries
+dataSources.ids
+datasources.xml
+workspace.xml
+tasks.xml
