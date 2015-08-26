@@ -1,6 +1,4 @@
-# Uses the latest Ubuntu base image
 FROM konato/php7-beta:latest
-TAG dev #TODO: is this right?
 MAINTAINER Igor Santos <konato@igorsantos.com.br>
 
 # Configures the project on Nginx
