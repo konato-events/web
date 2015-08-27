@@ -17,7 +17,8 @@ RUN apt-get update && \
 # Installs Nginx and PHP7
 RUN apt-get install -y --force-yes \
 	nginx \
-	php7-beta1
+	php7-beta1 \
+	supervisor
 
 # Configures PHP-FPM
 COPY usr_local_php7_etc_php-fpm.conf /usr/local/php7/etc/php-fpm.conf
@@ -42,12 +43,10 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 RUN mkdir $COMPOSER_HOME && chmod a+rw $COMPOSER_HOME
 
 # Exposes ports that can be used
-EXPOSE 80
-EXPOSE 8080
-EXPOSE 443
+EXPOSE 80 8080 443
+
+# Configures supervisord
+COPY etc_supervisor_conf.d_supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # And finally, starts Nginx and PHP-FPM for your enjoyment
-CMD service php7-fpm start; \
-	service php7-fpm status; \
-	service nginx start; \
-	service nginx status
+CMD ["/usr/bin/supervisord"]
