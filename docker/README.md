@@ -17,9 +17,10 @@ Configurando o ambiente de dev
 Exemplo:
 
     docker run -d \ # roda o container em background (detach/daemonize)
-        -v <<raiz local do projeto>>:/var/www \ # bind nas pastas
+        -v <<raiz local do projeto>>:/var/www \ # bind nas pastas (use `pwd`, não um path relativo!)
         -p <<porta local>>:80 \ # server roda na porta 80 por default
-        -t konato/php7-beta:latest # nome da imagem
+        -t konato/project:dev # nome da imagem
+    
 
 #### Usar o container novamente
 1. localizá-lo em `docker ps -a`
