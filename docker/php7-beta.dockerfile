@@ -22,9 +22,12 @@ RUN apt-get install -y --force-yes \
 
 # Configures PHP-FPM
 COPY usr_local_php7_etc_php-fpm.conf /usr/local/php7/etc/php-fpm.conf
-COPY etc_init.d_php7-fpm /etc/init.d/php7-fpm
-COPY etc_init_php7-fpm /etc/init/php7-fpm
 COPY usr_local_lib_php7-fpm-checkconf /usr/local/lib/php7-fpm-checkconf
+COPY php.ini-development /usr/local/php7/etc
+COPY php.ini-production  /usr/local/php7/etc
+COPY etc_init.d_php7-fpm /etc/init.d/php7-fpm #TODO: are those init.d files needed?
+COPY etc_init_php7-fpm   /etc/init/php7-fpm   #we are now using supervisor!
+
 RUN chmod +x \
 	/etc/init.d/php7-fpm \
 	/usr/local/lib/php7-fpm-checkconf \

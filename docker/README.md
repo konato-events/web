@@ -4,7 +4,7 @@ Uso do Docker
 [Docker] é uma plataforma para isolamento do ambiente de desenvolvimento, de forma mais leve que a virtualização tradicional. Para detalhes, visite o site ou dê uma olhada [nessa apresentação][slides] ([vídeo][europython]).
 
 Configurando o ambiente de dev
-----------------------------------
+------------------------------
 
 1. [Instale o Docker][install]: `wget -qO- https://get.docker.com/ | sh`
 2. Baixe a imagem: `docker pull konato/php7-beta`
@@ -19,7 +19,7 @@ Exemplo:
     docker run -d \ # roda o container em background (detach/daemonize)
         -v <<raiz local do projeto>>:/var/www \ # bind nas pastas
         -p <<porta local>>:80 \ # server roda na porta 80 por default
-        -t konato/php7-beta # nome da imagem
+        -t konato/php7-beta:latest # nome da imagem
 
 #### Usar o container novamente
 1. localizá-lo em `docker ps -a`
