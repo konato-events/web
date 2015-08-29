@@ -43,4 +43,4 @@ EXPOSE 80 8080 443
 COPY etc_supervisor_conf.d_supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # And finally, starts Nginx and PHP-FPM for your enjoyment
-CMD ["/usr/bin/supervisord"]
+CMD /usr/bin/supervisord

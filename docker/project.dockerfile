@@ -22,4 +22,4 @@ RUN ln -s /etc/nginx/sites-available/konato-dev.conf /etc/nginx/sites-enabled/
 RUN rm /etc/nginx/sites-enabled/default
 # no need to reload settings since nginx is not yet running
 
-CMD ["/usr/bin/supervisord"]
+CMD /usr/bin/supervisord
