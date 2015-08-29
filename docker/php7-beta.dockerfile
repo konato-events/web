@@ -22,8 +22,8 @@ RUN apt-get install -y --force-yes \
 
 # Configures PHP-FPM
 COPY usr_local_php7_etc_php-fpm.conf /usr/local/php7/etc/php-fpm.conf
-COPY php.ini-development /usr/local/php7/etc
-COPY php.ini-production  /usr/local/php7/etc
+COPY php.ini-development /usr/local/php7/etc/
+COPY php.ini-production  /usr/local/php7/etc/
 
 # Sets Composer variables and the correct PATH
 ENV COMPOSER_BINARY /usr/local/bin/composer
