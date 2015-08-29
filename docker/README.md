@@ -28,21 +28,35 @@ Exemplo:
 #### Entrar no shell (com o container ligado)
 `docker exec -it <<id/name>> /bin/bash`
 
-Atualizando a imagem
---------------------
+#### Atualizando a imagem
 1. [Editar o Dockerfile][dockerfile]
-2. `docker build --tag konato/php7-beta .`
+2. `docker build --tag=konato/php7-beta --file=php7-beta.dockerfile`
 3. `docker push konato/php7-beta`
 
 **Nota:** Caso crie-se uma imagem com uma configuração diferenciada mas que não substitua a anterior, é importante indicar uma tag específica, como `konato/php7-beta:apache`.
 
 
+Imagem de testes e produção
+---------------------------
+
+Além da imagem pura com o PHP7 + Nginx (`konato/php7-beta`), há também uma imagem pré-configurada para executar o projeto: `konato/project`. Seu Dockerfile é o `project.dockerfile`.
+
+### Atualização / rebuild
+Atualmente, para ter a versão mais atualizada do projeto dentro da imagem, é necessário fazer o re-build.
+
+    docker build --tag=konato/project:latest --file=project.dockerfile .
+    
+### Executar
+Com o comando seguinte o projeto estará disponível na porta `81` da máquina local:
+
+    docker run -d -p 81:80 konato/project
+
+
+
 *TO-DO*
 =======
-- adicionar um script no projeto que crie o container do Docker (com artisan?)
-- usar a imagem do projeto no lugar da imagem genérica do PHP7
-- atualizar nome dos Dockerfiles
-
+- adicionar um script no projeto que crie o container de dev do Docker (o `docker run` ali em cima) (com artisan?)
+- adicionar script (bash/php?) para atualizar o source do projeto dentro da imagem de produção, sem precisar fazer re-build da imagem
 
 
 [docker]: http://www.docker.com
