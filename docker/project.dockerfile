@@ -13,6 +13,8 @@ RUN mv .env.example .env
 RUN sed -i 's/APP_ENV=local/APP_ENV=prod/g' .env
 RUN sed -i 's/APP_DEBUG=true/APP_DEBUG=false/g' .env
 RUN php artisan key:generate
+RUN php artisan route:cache
+RUN php artisan config:cache
 
 # Configures the project on Nginx
 RUN cp config/nginx/konato-dev.conf /etc/nginx/sites-available/
