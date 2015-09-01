@@ -17,25 +17,13 @@ RUN apt-get update && \
 # Installs Nginx and PHP7
 RUN apt-get install -y --force-yes \
 	nginx \
-	php7-beta1
+	php7-beta1 \
+	supervisor
 
 # Configures PHP-FPM
 COPY usr_local_php7_etc_php-fpm.conf /usr/local/php7/etc/php-fpm.conf
-COPY etc_init.d_php7-fpm /etc/init.d/php7-fpm
-COPY etc_init_php7-fpm /etc/init/php7-fpm
-COPY usr_local_lib_php7-fpm-checkconf /usr/local/lib/php7-fpm-checkconf
-RUN chmod +x \
-	/etc/init.d/php7-fpm \
-	/usr/local/lib/php7-fpm-checkconf \
-	/etc/init/php7-fpm
-RUN update-rc.d php7-fpm defaults
-RUN service php7-fpm start; service php7-fpm status
- 
-# Starts Nginx. You should also add here some code to configure your application
-RUN service nginx start; service nginx status
-EXPOSE 80
-EXPOSE 8080
-EXPOSE 443
+COPY php.ini-development /usr/local/php7/etc/
+COPY php.ini-production  /usr/local/php7/etc/
 
 # Sets Composer variables and the correct PATH
 ENV COMPOSER_BINARY /usr/local/bin/composer
@@ -46,8 +34,13 @@ ENV PATH $PATH:$COMPOSER_HOME:/usr/local/php7/bin
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar $COMPOSER_BINARY && \
     chmod +x $COMPOSER_BINARY
-
-# Sets global Composer path
 RUN mkdir $COMPOSER_HOME && chmod a+rw $COMPOSER_HOME
 
-CMD /bin/bash
+# Exposes ports that can be used
+EXPOSE 80 8080 443
+
+# Configures supervisord
+COPY etc_supervisor_conf.d_supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# And finally, starts Nginx and PHP-FPM for your enjoyment
+CMD /usr/bin/supervisord
