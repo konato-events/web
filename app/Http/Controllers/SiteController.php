@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 class SiteController extends Controller {
 
     public function getIndex() {
-        return view('welcome');
+        $view_data = [];
+        $view_data['name'] = isset($_GET['name'])? $_GET['name'] : null;
+
+        //...
+
+        return view('site.index', $view_data);
     }
 
 }
