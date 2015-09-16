@@ -10,9 +10,9 @@
     <title>@yield('title') [Konato]</title> {{-- https://moz.com/learn/seo/title-tag --}}
 
     {{--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100">--}}
-    <link rel="stylesheet" type="text/css" href="/css/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
 
-    <script src="/css/semantic/dist/semantic.min.js"></script>
+    <script src="/semantic/dist/semantic.min.js"></script>
 </head>
 <body id="home"><!-- TODO: change the body ID -->
 <div class="container">
