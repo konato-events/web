@@ -1,3 +1,9 @@
 /*******************************
      User Global Variables
 *******************************/
+@orange: #FB953E;
+@blue:   #3758A9;
+@yellow: #FBBD3E;
+@teal:   #269398;
+@primaryColor: @orange;
+@secondaryColor: @blue;

@@ -375,7 +375,7 @@
 
 /* Orange */
 .ui.orange.progress .bar {
-  background-color: #f2711c;
+  background-color: #fb953e;
 }
 .ui.orange.inverted.progress .bar {
   background-color: #ff851b;
@@ -383,7 +383,7 @@
 
 /* Yellow */
 .ui.yellow.progress .bar {
-  background-color: #fbbd08;
+  background-color: #fbbd3e;
 }
 .ui.yellow.inverted.progress .bar {
   background-color: #ffe21f;
@@ -407,7 +407,7 @@
 
 /* Teal */
 .ui.teal.progress .bar {
-  background-color: #00b5ad;
+  background-color: #269398;
 }
 .ui.teal.inverted.progress .bar {
   background-color: #6dffff;
@@ -415,7 +415,7 @@
 
 /* Blue */
 .ui.blue.progress .bar {
-  background-color: #2185d0;
+  background-color: #3758a9;
 }
 .ui.blue.inverted.progress .bar {
   background-color: #54c8ff;
