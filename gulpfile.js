@@ -1,4 +1,9 @@
-var elixir = require('laravel-elixir');
+var gulp     = require('gulp');
+var elixir   = require('laravel-elixir');
+var semantic = {
+	watch: require('./public/semantic/tasks/watch'),
+	build: require('./public/semantic/tasks/build')
+};
 
 /*
  |--------------------------------------------------------------------------
@@ -12,5 +17,8 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    //mix.sass('app.scss');
 });
+
+gulp.task('watch ui', semantic.watch);
+gulp.task('build ui', semantic.build);
