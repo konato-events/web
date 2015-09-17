@@ -185,10 +185,20 @@ CREATE TABLE notification (
 -- Table eventAddress
 -- -----------------------------------------------------
 CREATE TABLE eventAddress (
-  event_id   INT  NOT NULL REFERENCES event,
+  event_id   INT  PRIMARY KEY REFERENCES event,
   line1      TEXT NOT NULL,
   line2      TEXT NULL,
   postalCode TEXT NULL
+);
+
+
+-- -----------------------------------------------------
+-- Table language
+-- -----------------------------------------------------
+CREATE TABLE eventWifi (
+  event_id INT  PRIMARY KEY REFERENCES event,
+  ssid     TEXT NOT NULL,
+  password TEXT NULL
 );
 
 
