@@ -12,8 +12,11 @@
     {{--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100">--}}
     <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css">
 
-    <script src="/semantic/semantic.min.js"></script>
     <style type="text/css">
+        nav.ui.menu {
+            border-radius: 0 0 5px 5px;
+            margin-bottom: 25px;
+        }
         nav.menu .item.header {
             padding: 10px;
             color: black;
@@ -39,39 +42,46 @@
             background-color: whitesmoke !important;
         }
     </style>
+    @yield('css')
+
+    @yield('head-js')
 </head>
 
 <body id="home"><!-- TODO: change the body ID -->
 
 <div class="ui page">
-    <nav class="ui fixed large inverted menu">
-        <a href="/" class="ui header item">
-            <img class="ui middle aligned image" src="/img/logo.png" alt="<?=_('Konato logo')?>">
-            <div class="tablet only">Konato</div>
-        </a>
-        <a href="#" class="item"><i class="icon browser"></i> <?=_('Dashboard')?></a>
-        <a href="#" class="item"><i class="icon map"></i> <?=_('Places')?></a>
-        <a href="#" class="item"><i class="icon comments outline"></i> <?=_('Speakers')?></a>
+    <nav class="ui inverted large menu">
+        {{--<div class="ui container">--}}
+            <a href="/" class="ui header item">
+                <img class="ui middle aligned image" src="/img/logo.png" alt="<?=_('Konato logo')?>">
+                <div class="tablet only">Konato</div>
+            </a>
+            <a href="#" class="item"><i class="icon browser"></i> <?=_('Dashboard')?></a>
+            <a href="#" class="item"><i class="icon map"></i> <?=_('Places')?></a>
+            <a href="#" class="item"><i class="icon comments outline"></i> <?=_('Speakers')?></a>
 
-        <div class="ui category search item">
-            <div class="ui transparent icon input">
-                <input class="prompt" type="text" placeholder="<?=_('Theme or keyword')?>" />
-                <i class="search link icon"></i>
+            <div class="ui category search item">
+                <div class="ui transparent icon input">
+                    <input class="prompt" type="text" placeholder="<?=_('Theme or keyword')?>" />
+                    <i class="search link icon"></i>
+                </div>
             </div>
-        </div>
-        <div class="right menu">
-            <a href="#" class="orange item"><i class="icon add user"></i> <?=_('Signup')?></a>
-            <a href="#" class="item"><i class="icon at"></i><?=_('Login')?></a>
-        </div>
+
+            <div class="right menu">
+                <a href="#" class="orange item"><i class="icon add user"></i> <?=_('Signup')?></a>
+                <a href="#" class="item"><i class="icon at"></i><?=_('Login')?></a>
+            </div>
+        {{--</div>--}}
     </nav>
-    @section('sidebar')
-        This is the master sidebar.
-    @show
 
-    <div class="content">
-        @yield('content')
-    </div>
-</div>
+    @yield('content')
 
+    @if($prod)
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    @else
+        <script src="/js/jquery-2.1.4.js"></script>
+    @endif
+    <script src="/semantic/semantic.min.js"></script>
+    @yield('js')
 </body>
 </html>

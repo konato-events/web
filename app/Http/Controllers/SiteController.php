@@ -12,4 +12,8 @@ class SiteController extends Controller {
         return view('site.index', $view_data);
     }
 
+    public function getThemeDemo() {
+        return view('site.theme');
+    }
+
 }
