@@ -378,7 +378,7 @@
   background-color: #fb953e;
 }
 .ui.orange.inverted.progress .bar {
-  background-color: #ff851b;
+  background-color: #ffb16e;
 }
 
 /* Yellow */
@@ -386,7 +386,7 @@
   background-color: #fbbd3e;
 }
 .ui.yellow.inverted.progress .bar {
-  background-color: #ffe21f;
+  background-color: #ffd06e;
 }
 
 /* Olive */
@@ -410,7 +410,7 @@
   background-color: #269398;
 }
 .ui.teal.inverted.progress .bar {
-  background-color: #6dffff;
+  background-color: #4cabaf;
 }
 
 /* Blue */
@@ -418,7 +418,7 @@
   background-color: #3758a9;
 }
 .ui.blue.inverted.progress .bar {
-  background-color: #54c8ff;
+  background-color: #5d78bd;
 }
 
 /* Violet */

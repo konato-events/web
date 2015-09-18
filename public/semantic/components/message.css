@@ -360,14 +360,14 @@
   color: #c82121;
 }
 .ui.orange.message {
-  background-color: #ffedde;
+  background-color: #ffefe2;
   color: #fb953e;
 }
 .ui.orange.message .header {
   color: #fa8725;
 }
 .ui.yellow.message {
-  background-color: #fff8db;
+  background-color: #fff6e2;
   color: #b58105;
 }
 .ui.yellow.message .header {
@@ -388,14 +388,14 @@
   color: #1aa62a;
 }
 .ui.teal.message {
-  background-color: #e1f7f7;
+  background-color: #b5e0e2;
   color: #10a3a3;
 }
 .ui.teal.message .header {
   color: #0e8c8c;
 }
 .ui.blue.message {
-  background-color: #dff0ff;
+  background-color: #c2cde9;
   color: #3758a9;
 }
 .ui.blue.message .header {
