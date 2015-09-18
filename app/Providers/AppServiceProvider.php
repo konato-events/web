@@ -13,6 +13,8 @@ class AppServiceProvider extends ServiceProvider {
      */
     public function boot() {
         $view = view();
+        $view->share('env', \App::environment());
+        $view->share('prod', \App::environment('prod'));
         // add here global view variables using $view->share('key', 'value');
     }
 

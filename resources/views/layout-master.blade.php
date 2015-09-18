@@ -12,7 +12,6 @@
     {{--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100">--}}
     <link rel="stylesheet" type="text/css" href="/semantic/semantic.min.css">
 
-    <script src="/semantic/semantic.min.js"></script>
     <style type="text/css">
         nav.ui.menu {
             border-radius: 0 0 5px 5px;
@@ -43,6 +42,9 @@
             background-color: whitesmoke !important;
         }
     </style>
+    @yield('css')
+
+    @yield('head-js')
 </head>
 
 <body id="home"><!-- TODO: change the body ID -->
@@ -72,9 +74,14 @@
         {{--</div>--}}
     </nav>
 
-    <div class="ui grid container">
-        @yield('content')
-    </div>
-</div>
+    @yield('content')
+
+    @if($prod)
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    @else
+        <script src="/js/jquery-2.1.4.js"></script>
+    @endif
+    <script src="/semantic/semantic.min.js"></script>
+    @yield('js')
 </body>
 </html>
