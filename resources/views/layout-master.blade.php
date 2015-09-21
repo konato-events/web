@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"><!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('title') [Konato]</title> {{-- https://moz.com/learn/seo/title-tag --}}
@@ -14,65 +19,55 @@
 
     @include('_favicons')
 
-    <!-- CSS Global -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
-    <link href="assets/plugins/owlcarousel2/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/plugins/owlcarousel2/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="assets/plugins/prettyphoto/css/prettyPhoto.css" rel="stylesheet">
-    <link href="assets/plugins/animate/animate.min.css" rel="stylesheet">
-    <link href="assets/plugins/countdown/jquery.countdown.css" rel="stylesheet">
-
-    <link href="assets/css/theme.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
+    {{-- FIXME: COMPILE THIS STUFF!!!!!!!1111ONE11! --}}
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap-select/bootstrap-select.min.css">
+    {{--<link rel="stylesheet" href="assets/plugins/owlcarousel2/assets/owl.carousel.min.css">--}}
+    {{--<link rel="stylesheet" href="assets/plugins/owlcarousel2/assets/owl.theme.default.min.css">--}}
+    <link rel="stylesheet" href="assets/plugins/prettyphoto/css/prettyPhoto.css">
+    <link rel="stylesheet" href="assets/plugins/animate/animate.min.css">
+    <link rel="stylesheet" href="assets/plugins/countdown/jquery.countdown.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
     <!--[if lt IE 9]>
-    <script src="assets/plugins/iesupport/html5shiv.js"></script>
-    <script src="assets/plugins/iesupport/respond.min.js"></script>
+        <script src="assets/plugins/iesupport/html5shiv.js"></script>
+        <script src="assets/plugins/iesupport/respond.min.js"></script>
     <![endif]-->
+
+    @yield('css')
+    @yield('head-js')
 </head>
 <body id="home" class="wide body-light multipage">
 
-<!-- Preloader -->
-<div id="preloader">
-    <div id="status">
-        <div class="spinner"></div>
-    </div>
-</div>
-
-<!-- Wrap all content -->
 <div class="wrapper">
 
-    <!-- HEADER -->
     <header class="header fixed">
 
-        <!-- Top Line -->
-        <div class="top-line">
-            <div class="container">
-                <ul class="user-menu">
-                    <li><a href="#popup-login"  data-toggle="modal"><i class="fa fa-file-text-o"></i> Register Now</a></li>
-                    <li><a href="#popup-login" data-toggle="modal"><i class="fa fa-user"></i> Login</a></li>
-                </ul>
-                <div class="hot-line"><span><i class="fa fa-calendar"></i> <strong>Latest Event:</strong></span>  Standart Event Name Here  "15 October at 20:00 - 22:00 on Manhattan / New York"</div>
+        {{-- Notification bar. Could be used later }}
+            <div class="top-line">
+                <div class="container">
+                    <ul class="user-menu">
+                        <li><a href="#popup-login"  data-toggle="modal"><i class="fa fa-file-text-o"></i> Register Now</a></li>
+                        <li><a href="#popup-login" data-toggle="modal"><i class="fa fa-user"></i> Login</a></li>
+                    </ul>
+                    <div class="hot-line"><span><i class="fa fa-calendar"></i> <strong>Latest Event:</strong></span>  Standart Event Name Here  "15 October at 20:00 - 22:00 on Manhattan / New York"</div>
+                </div>
             </div>
-        </div>
-        <!-- /Top Line -->
+        {{ --}}
 
         <div class="container">
             <div class="header-wrapper clearfix">
 
-                <!-- Logo -->
                 <div class="logo">
                     <a href="index.html" class="scroll-to">
-                                <span class="fa-stack">
-                                    <i class="fa logo-hex fa-stack-2x"></i>
-                                    <i class="fa logo-fa fa-map-marker fa-stack-1x"></i>
-                                </span>
-                        im Event
+                        <span class="fa-stack">
+                            <i class="fa logo-hex fa-stack-2x"></i>
+                            <i class="fa logo-fa fa-map-marker fa-stack-1x"></i>
+                        </span>
+                        Konato
                     </a>
                 </div>
-                <!-- /Logo -->
 
                 <!-- Navigation -->
                 <div id="mobile-menu"></div>
@@ -109,12 +104,13 @@
                         <li><a href="contact-us.html">Contact Us</a></li>
                         <li class="header-search-wrapper">
                             <form action="#" class="header-search-form">
-                                <input type="text" class="form-control header-search" placeholder="Search"/>
-                                <input type="submit" hidden="hidden"/>
+                                <input type="text" class="form-control header-search" placeholder="Search" />
+                                <input type="submit" hidden="hidden" />
                             </form>
                         </li>
                         <li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
-                        <li><a href="#" class="btn btn-theme btn-submit-event">SUBMIT EVENT <i class="fa fa-plus-circle"></i></a></li>
+                        <li><a href="#" class="btn btn-theme btn-submit-event">SUBMIT EVENT
+                                <i class="fa fa-plus-circle"></i></a></li>
                     </ul>
                 </nav>
                 <!-- /Navigation -->
@@ -122,66 +118,56 @@
             </div>
         </div>
     </header>
-    <!-- /HEADER -->
 
-    <!-- Content area -->
     <div class="content-area">
 
         <div id="main">
-            <!-- SLIDER -->
-            <section class="page-section no-padding background-img-slider">
+            <section class="page-section no-padding">
                 <div class="container">
 
-                    <div id="main-slider" class="owl-carousel owl-theme">
-                        <!-- Slide -->
-                        <div class="item page text-center slide5">
+                    <div id="hero-block">
+                        <div class="item page text-center">
                             <div class="caption">
                                 <div class="container">
                                     <div class="div-table">
                                         <div class="div-cell">
-                                            <p class="text-center avatar"><img src="assets/img/preview/slider-4-avatar.png" style="width: auto;" alt=""/></p>
-                                            <h2 data-animation="fadeInDown" data-animation-delay="100"><span>15 October at 20:00 - 22:00</span></h2>
-                                            <h3 class="caption-subtitle" data-animation="fadeInUp" data-animation-delay="300">PHP Conference ın Manhattan</h3>
-                                            <div class="countdown-wrapper">
-                                                <div id="defaultCountdown" class="defaultCountdown clearfix"></div>
-                                            </div>
-                                            <p class="caption-text">
-                                                <a class="btn btn-theme btn-theme scroll-to" href="#" data-animation="flipInY" data-animation-delay="600">Register</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                            <h1 class="caption-subtitle"><?=_('Expand your horizons')?></h1>
+                                            <h2 class="caption-title"><?=_('Discover even more.<br>Share your knowledge.<br>Get to know great people!')?></h2>
+                                            <h4>
+                                                <span>You Can Find
+                                                    <a href="#">Festivals</a>,
+                                                    <a href="#">Parties</a>,
+                                                    <a href="#">Conference</a>,
+                                                    <a href="#">Fairs</a>,
+                                                    <a href="#">Exhibitions</a>,
+                                                    <a href="#">Speakers</a> and more
+                                                </span>
+                                            </h4>
 
-                        <!-- Slide -->
-                        <div class="item page text-center slide4">
-                            <div class="caption">
-                                <div class="container">
-                                    <div class="div-table">
-                                        <div class="div-cell">
-                                            <h3 class="caption-subtitle">We are Event professionals</h3>
-                                            <h4><span>You Can Find "<a href="#">Festivals</a>, <a href="#">Parties</a>, <a href="#">Conference</a>, <a href="#">Fairs</a>, <a href="#">Exhibitions</a>, <a href="#">Speakers</a> and more</span></h4>
                                             <div class="row">
                                                 <div class="col-md-8 col-md-offset-2">
                                                     <form action="#" class="location-search">
                                                         <div class="form-group">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control text" placeholder="FIND EXPERIENCES"/>
+                                                                <input type="text" class="form-control text" placeholder="FIND EXPERIENCES" />
                                                                 <select class="selectpicker">
                                                                     <option>LOCATION</option>
                                                                     <option>LOCATION</option>
                                                                     <option>LOCATION</option>
                                                                 </select>
-                                                                <button class="form-control button-search"><i class="fa fa-search"></i></button>
+                                                                <button class="form-control button-search">
+                                                                    <i class="fa fa-search"></i></button>
                                                             </div>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                             <p class="caption-text">
-                                                <a class="btn btn-theme btn-theme btn-theme-dark scroll-to" href="#" data-animation="flipInY" data-animation-delay="600">Popular Events</a><!--
-                                                        --><a class="btn btn-theme btn-theme btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto" data-animation="flipInY" data-animation-delay="900">Latest Events</a>
+                                                <a class="btn btn-theme btn-theme-dark scroll-to" href="#">Popular Events</a>
+                                                <a class="btn btn-theme btn-theme-transparent-white" href="#">Latest Events</a>
+
+                                                {{-- TIP: How to include a video inside a modal --}}
+                                                {{--<a class="btn btn-theme btn-theme btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto">Latest Events</a>--}}
                                             </p>
                                         </div>
                                     </div>
@@ -193,31 +179,10 @@
 
                 </div>
             </section>
-            <!-- /SLIDER -->
         </div>
 
-        <!-- Featured Event -->
-        <section class="page-section light featured-line xs-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h1 class="section-title two-lines">
-                            <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex dark fa-stack-2x"></i><i class="fa fa-calendar fa-stack-1x"></i></span></span>
-                            <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner"><span class="theme-color"> Featured Event </span><small>Dont Miss The Event. PHP Conference In ISTANBUL</small></span>
-                        </h1>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="countdown-wrapper countdown-featured">
-                            <div id="defaultCountdown2" class="defaultCountdown clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <a href="#" class="btn btn-theme btn-details">Tickets &amp; Details <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- /Featured Event -->
+        {{-- TIP: here used to be a box to announce a "featured event".
+             This could be used later for packages including ads. See the original theme for markup --}}
 
         <!-- PAGE -->
         <section class="page-section">
@@ -244,16 +209,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -267,16 +240,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -291,16 +272,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -314,16 +303,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -337,16 +334,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -360,16 +365,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -383,16 +396,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -406,16 +427,24 @@
                                     <div class="media">
                                         <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
                                         <img src="assets/img/preview/event-1.jpg" alt="">
+
                                         <div class="caption hovered"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standart Event Name Here</a></h3>
-                                        <p class="caption-category"><i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York</p>
+
+                                        <p class="caption-category">
+                                            <i class="fa fa-file-text-o"></i> 15 October at 20:00 - 22:00 on Manhattan / New York
+                                        </p>
+
                                         <p class="caption-price">Tickets from $49,99</p>
+
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.</p>
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
+
+                                        <p class="caption-more">
+                                            <a href="#" class="btn btn-theme">Tickets &amp; details</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -444,7 +473,9 @@
                                         <div class="rehex-inner">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-calendar"></i></a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn caption-link"><i class="fa fa-calendar"></i></a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -453,7 +484,9 @@
                             </div>
                             <div class="caption">
                                 <h3 class="caption-title">7/24 Event avaliable</h3>
+
                                 <p class="caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
+
                                 <p class="caption-more"><a href="#" class="btn btn-theme">Details</a></p>
                             </div>
                         </div>
@@ -467,7 +500,9 @@
                                         <div class="rehex-inner">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-map-marker"></i></a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn caption-link"><i class="fa fa-map-marker"></i></a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -476,7 +511,9 @@
                             </div>
                             <div class="caption">
                                 <h3 class="caption-title">Great Locations</h3>
+
                                 <p class="caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
+
                                 <p class="caption-more"><a href="#" class="btn btn-theme">Details</a></p>
                             </div>
                         </div>
@@ -490,7 +527,9 @@
                                         <div class="rehex-inner">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-users"></i></a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn caption-link"><i class="fa fa-users"></i></a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -499,7 +538,9 @@
                             </div>
                             <div class="caption">
                                 <h3 class="caption-title">More Then 200 Speakers</h3>
+
                                 <p class="caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
+
                                 <p class="caption-more"><a href="#" class="btn btn-theme">Details</a></p>
                             </div>
                         </div>
@@ -513,7 +554,9 @@
                                         <div class="rehex-inner">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-music"></i></a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn caption-link"><i class="fa fa-music"></i></a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -522,7 +565,9 @@
                             </div>
                             <div class="caption">
                                 <h3 class="caption-title">Lets Party After Event</h3>
+
                                 <p class="caption-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
+
                                 <p class="caption-more"><a href="#" class="btn btn-theme">Details</a></p>
                             </div>
                         </div>
@@ -549,16 +594,20 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
                                         <img src="assets/img/preview/hotel-1.jpg" alt="">
+
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
+
                                         <div class="caption-rating rating">
                                             <span class="star"></span><!--
                                                     --><span class="star active"></span><!--
@@ -567,6 +616,7 @@
                                                     --><span class="star active"></span>
                                         </div>
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
+
                                         <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
                                     </div>
                                 </div>
@@ -576,16 +626,20 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
                                         <img src="assets/img/preview/hotel-1.jpg" alt="">
+
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
+
                                         <div class="caption-rating rating">
                                             <span class="star"></span><!--
                                                     --><span class="star active"></span><!--
@@ -594,6 +648,7 @@
                                                     --><span class="star active"></span>
                                         </div>
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
+
                                         <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
                                     </div>
                                 </div>
@@ -603,16 +658,20 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
                                         <img src="assets/img/preview/hotel-1.jpg" alt="">
+
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
+
                                         <div class="caption-rating rating">
                                             <span class="star"></span><!--
                                                     --><span class="star active"></span><!--
@@ -621,6 +680,7 @@
                                                     --><span class="star active"></span>
                                         </div>
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
+
                                         <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
                                     </div>
                                 </div>
@@ -630,16 +690,20 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
                                         <img src="assets/img/preview/hotel-1.jpg" alt="">
+
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
+
                                         <div class="caption-rating rating">
                                             <span class="star"></span><!--
                                                     --><span class="star active"></span><!--
@@ -648,6 +712,7 @@
                                                     --><span class="star active"></span>
                                         </div>
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
+
                                         <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
                                     </div>
                                 </div>
@@ -657,16 +722,20 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
                                         <img src="assets/img/preview/hotel-1.jpg" alt="">
+
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
+
                                         <div class="caption-rating rating">
                                             <span class="star"></span><!--
                                                     --><span class="star active"></span><!--
@@ -675,6 +744,7 @@
                                                     --><span class="star active"></span>
                                         </div>
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
+
                                         <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
                                     </div>
                                 </div>
@@ -684,16 +754,20 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
                                         <img src="assets/img/preview/hotel-1.jpg" alt="">
+
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
+
                                         <div class="caption-rating rating">
                                             <span class="star"></span><!--
                                                     --><span class="star active"></span><!--
@@ -702,6 +776,7 @@
                                                     --><span class="star active"></span>
                                         </div>
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
+
                                         <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
                                     </div>
                                 </div>
@@ -711,16 +786,20 @@
                                 <div class="thumbnail no-border no-padding">
                                     <div class="media">
                                         <img src="assets/img/preview/hotel-1.jpg" alt="">
+
                                         <div class="caption hovered">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons"><a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a></p>
+                                                    <p class="caption-buttons">
+                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="caption">
                                         <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
+
                                         <div class="caption-rating rating">
                                             <span class="star"></span><!--
                                                     --><span class="star active"></span><!--
@@ -729,6 +808,7 @@
                                                     --><span class="star active"></span>
                                         </div>
                                         <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
+
                                         <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
                                     </div>
                                 </div>
@@ -762,7 +842,7 @@
                                 <div class="rehex-deg">
                                     <div class="rehex-deg">
                                         <div class="rehex-inner">
-                                            <img class="img-responsive" src="assets/img/preview/avatar-1.jpg" alt=""/>
+                                            <img class="img-responsive" src="assets/img/preview/avatar-1.jpg" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -783,7 +863,7 @@
                                 <div class="rehex-deg">
                                     <div class="rehex-deg">
                                         <div class="rehex-inner">
-                                            <img class="img-responsive" src="assets/img/preview/avatar-2.jpg" alt=""/>
+                                            <img class="img-responsive" src="assets/img/preview/avatar-2.jpg" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -804,7 +884,7 @@
                                 <div class="rehex-deg">
                                     <div class="rehex-deg">
                                         <div class="rehex-inner">
-                                            <img class="img-responsive" src="assets/img/preview/avatar-3.jpg" alt=""/>
+                                            <img class="img-responsive" src="assets/img/preview/avatar-3.jpg" alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -851,6 +931,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-1a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -865,6 +946,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">CONFERENCE PARTY</h3>
+
                                             <p class="caption-category">in Istanbul</p>
                                         </div>
                                     </div>
@@ -877,6 +959,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-2a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -891,6 +974,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">FINDING NEW WAY EVENT</h3>
+
                                             <p class="caption-category">in Tokyo</p>
                                         </div>
                                     </div>
@@ -903,6 +987,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-3a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -917,6 +1002,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">PHP MEETING</h3>
+
                                             <p class="caption-category">in Foshan</p>
                                         </div>
                                     </div>
@@ -929,6 +1015,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-4a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -943,6 +1030,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">CONFERENCE PARTY</h3>
+
                                             <p class="caption-category">in Manhattan</p>
                                         </div>
                                     </div>
@@ -955,6 +1043,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-5a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -969,6 +1058,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">WINNING AWARDS MEETING</h3>
+
                                             <p class="caption-category">in Istanbul</p>
                                         </div>
                                     </div>
@@ -981,6 +1071,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-6a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -995,6 +1086,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">GALLERY IMAGE NAME</h3>
+
                                             <p class="caption-category">in Tokyo</p>
                                         </div>
                                     </div>
@@ -1007,6 +1099,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-7a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -1021,6 +1114,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">EVERYBODY HERE EVENT</h3>
+
                                             <p class="caption-category">in Foshan</p>
                                         </div>
                                     </div>
@@ -1033,6 +1127,7 @@
                         <div class="thumbnail no-border no-padding">
                             <div class="media">
                                 <img src="assets/img/preview/latest-8a.jpg" alt="">
+
                                 <div class="caption hovered">
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
@@ -1047,6 +1142,7 @@
                                     <div class="caption-wrapper div-table">
                                         <div class="caption-inner div-cell">
                                             <h3 class="caption-title">YOGA CLASS MET AT AUGUST</h3>
+
                                             <p class="caption-category">in Manhattan</p>
                                         </div>
                                     </div>
@@ -1073,18 +1169,18 @@
                 </h1>
                 <div class="partners-carousel" data-animation="fadeInUp" data-animation-delay="300">
                     <div class="owl-carousel">
-                        <div><a href="#"><img src="assets/img/partner/light/partner-1.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-2.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-3.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-4.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-5.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-6.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-1.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-2.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-3.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-4.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-5.png" alt=""/></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-6.png" alt=""/></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-1.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-2.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-3.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-4.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-5.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-6.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-1.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-2.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-3.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-4.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-5.png" alt="" /></a></div>
+                        <div><a href="#"><img src="assets/img/partner/light/partner-6.png" alt="" /></a></div>
                     </div>
                 </div>
                 <div class="text-center margin-top">
@@ -1114,10 +1210,13 @@
                                                 <div class="rehex-inner">
                                                     <div class="media">
                                                         <img src="assets/img/preview/speaker-1.jpg" alt="">
+
                                                         <div class="caption hovered">
                                                             <div class="caption-wrapper div-table">
                                                                 <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-link"></i></a></p>
+                                                                    <p class="caption-buttons">
+                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1128,6 +1227,7 @@
                                     </div>
                                     <div class="caption before-media">
                                         <h3 class="caption-title">Speaker name here</h3>
+
                                         <p class="caption-category">Co Founder</p>
                                     </div>
                                     <div class="caption">
@@ -1143,7 +1243,7 @@
                                 </div>
                             </div>
                             <!-- -->
-                            <div  data-animation="fadeInUp" data-animation-delay="300">
+                            <div data-animation="fadeInUp" data-animation-delay="300">
                                 <div class="thumbnail no-border no-padding text-center">
                                     <div class="rehex speaker-avatar">
                                         <div class="rehex-deg">
@@ -1151,10 +1251,13 @@
                                                 <div class="rehex-inner">
                                                     <div class="media">
                                                         <img src="assets/img/preview/speaker-2.jpg" alt="">
+
                                                         <div class="caption hovered">
                                                             <div class="caption-wrapper div-table">
                                                                 <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-link"></i></a></p>
+                                                                    <p class="caption-buttons">
+                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1165,6 +1268,7 @@
                                     </div>
                                     <div class="caption before-media">
                                         <h3 class="caption-title">Speaker name here</h3>
+
                                         <p class="caption-category">Developer</p>
                                     </div>
                                     <div class="caption">
@@ -1188,10 +1292,13 @@
                                                 <div class="rehex-inner">
                                                     <div class="media">
                                                         <img src="assets/img/preview/speaker-3.jpg" alt="">
+
                                                         <div class="caption hovered">
                                                             <div class="caption-wrapper div-table">
                                                                 <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-link"></i></a></p>
+                                                                    <p class="caption-buttons">
+                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1202,6 +1309,7 @@
                                     </div>
                                     <div class="caption before-media">
                                         <h3 class="caption-title">Speaker name here</h3>
+
                                         <p class="caption-category">Designer</p>
                                     </div>
                                     <div class="caption">
@@ -1225,10 +1333,13 @@
                                                 <div class="rehex-inner">
                                                     <div class="media">
                                                         <img src="assets/img/preview/speaker-4.jpg" alt="">
+
                                                         <div class="caption hovered">
                                                             <div class="caption-wrapper div-table">
                                                                 <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons"><a href="#" class="btn caption-link"><i class="fa fa-link"></i></a></p>
+                                                                    <p class="caption-buttons">
+                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1239,6 +1350,7 @@
                                     </div>
                                     <div class="caption before-media">
                                         <h3 class="caption-title">Speaker name here</h3>
+
                                         <p class="caption-category">Animator</p>
                                     </div>
                                     <div class="caption">
@@ -1274,6 +1386,7 @@
                     <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">im Event  <small> / Landing Page</small></span>
                 </h1>
                 <p>One Page Event and Conference Theme is a very clean, modern and outstanding designed HTML template for multi purpose for any business events, conference, party etc.</p>
+
                 <p>
                     <a class="btn btn-theme" target="_blank" href="http://themeforest.net/item/im-event-one-page-event-conference-landing-page/8334416">Purchase template</a>
                 </p>
@@ -1298,10 +1411,11 @@
                                         <div class="post-type">
                                             <i class="fa fa-video-camera"></i>
                                         </div>
-                                        <img src="assets/img/preview/recent-post-1.jpg" alt=""/>
+                                        <img src="assets/img/preview/recent-post-1.jpg" alt="" />
                                     </div>
                                     <div class="post-header">
                                         <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
+
                                         <div class="post-meta">
                                                     <span class="post-date">
                                                         Posted on
@@ -1330,10 +1444,11 @@
                                         <div class="post-type">
                                             <i class="fa fa-photo"></i>
                                         </div>
-                                        <img src="assets/img/preview/recent-post-2.jpg" alt=""/>
+                                        <img src="assets/img/preview/recent-post-2.jpg" alt="" />
                                     </div>
                                     <div class="post-header">
                                         <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
+
                                         <div class="post-meta">
                                                     <span class="post-date">
                                                         Posted on
@@ -1362,10 +1477,11 @@
                                         <div class="post-type">
                                             <i class="fa fa-music"></i>
                                         </div>
-                                        <img src="assets/img/preview/recent-post-3.jpg" alt=""/>
+                                        <img src="assets/img/preview/recent-post-3.jpg" alt="" />
                                     </div>
                                     <div class="post-header">
                                         <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
+
                                         <div class="post-meta">
                                                     <span class="post-date">
                                                         Posted on
@@ -1394,10 +1510,11 @@
                                         <div class="post-type">
                                             <i class="fa fa-music"></i>
                                         </div>
-                                        <img src="assets/img/preview/recent-post-1.jpg" alt=""/>
+                                        <img src="assets/img/preview/recent-post-1.jpg" alt="" />
                                     </div>
                                     <div class="post-header">
                                         <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
+
                                         <div class="post-meta">
                                                     <span class="post-date">
                                                         Posted on
@@ -1426,10 +1543,11 @@
                                         <div class="post-type">
                                             <i class="fa fa-music"></i>
                                         </div>
-                                        <img src="assets/img/preview/recent-post-2.jpg" alt=""/>
+                                        <img src="assets/img/preview/recent-post-2.jpg" alt="" />
                                     </div>
                                     <div class="post-header">
                                         <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
+
                                         <div class="post-meta">
                                                     <span class="post-date">
                                                         Posted on
@@ -1458,10 +1576,11 @@
                                         <div class="post-type">
                                             <i class="fa fa-music"></i>
                                         </div>
-                                        <img src="assets/img/preview/recent-post-3.jpg" alt=""/>
+                                        <img src="assets/img/preview/recent-post-3.jpg" alt="" />
                                     </div>
                                     <div class="post-header">
                                         <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
+
                                         <div class="post-meta">
                                                     <span class="post-date">
                                                         Posted on
@@ -1496,7 +1615,9 @@
         <section class="page-section light create-new-event">
             <div class="container text-center">
                 <h1 class="section-title">Create Your Own New Event</h1>
+
                 <p>Bring people together, or turn your passion into a business. Eventbrite gives you everything you need to host your best event yet.</p>
+
                 <div><a href="#" class="btn btn-theme btn-theme-md">SUBMIT EVENT</a></div>
             </div>
         </section>
@@ -1512,13 +1633,17 @@
                             <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-map-marker fa-stack-1x"></i></span></span>
                             <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Event Location</span>
                         </h1>
-                        <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase">Apple Store SOHO‎ <br/>
-                            103 Prince St New York, <br/>
-                            NY 10012, United States <br/>
+
+                        <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase">Apple Store SOHO‎
+                            <br />
+                            103 Prince St New York, <br />
+                            NY 10012, United States <br />
                             +1 212-226-3126</p>
+
                         <p><a href="mailto:youremail@domain.com">hello@imevent.com</a></p>
                         <a href="#" class="btn btn-theme"
-                                data-animation="flipInY" data-animation-delay="300">Get Direction <i class="fa fa-arrow-circle-right"></i></a>
+                                data-animation="flipInY" data-animation-delay="300">Get Direction
+                            <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -1542,13 +1667,20 @@
             <div class="container text-center">
                 <div class="clearfix">
                     <ul class="social-line list-inline">
-                        <li data-animation="flipInY" data-animation-delay="100"><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="200"><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="300"><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="400"><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="500"><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="600"><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="700"><a href="#" class="skype"><i class="fa fa-skype"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="100">
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="200">
+                            <a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="300">
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="400">
+                            <a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="500">
+                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="600">
+                            <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                        <li data-animation="flipInY" data-animation-delay="700">
+                            <a href="#" class="skype"><i class="fa fa-skype"></i></a></li>
                     </ul>
                 </div>
                 <span class="copyright" data-animation="fadeInUp" data-animation-delay="100">&copy; 2015 im Event &#8212; The Event Manager Theme made with passion by jThemes Studio</span>
@@ -1564,7 +1696,8 @@
 <!-- Popup: Login -->
 <div class="modal fade login-register" id="popup-login" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" id="main-slider">
-        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
 
         <div class="form-background">
             <div class="col-sm-6 popup-form">
@@ -1584,12 +1717,13 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input type="text"  placeholder="Password"  title="" data-toggle="tooltip" class="form-control input-password" data-original-title="Password">
+                                <input type="text" placeholder="Password" title="" data-toggle="tooltip" class="form-control input-password" data-original-title="Password">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-theme btn-block submit-button" data-animation-delay="100" data-animation="flipInY"> Log in <i class="fa fa-arrow-circle-right"></i></button>
+                                <button type="submit" class="btn btn-theme btn-block submit-button" data-animation-delay="100" data-animation="flipInY"> Log in
+                                    <i class="fa fa-arrow-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1616,12 +1750,13 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <input type="text"  placeholder="E-mail"  title="" data-toggle="tooltip" class="form-control input-password" data-original-title="Password">
+                                <input type="text" placeholder="E-mail" title="" data-toggle="tooltip" class="form-control input-password" data-original-title="Password">
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-theme btn-block submit-button" data-animation-delay="100" data-animation="flipInY"> Register Now <i class="fa fa-arrow-circle-right"></i></button>
+                                <button type="submit" class="btn btn-theme btn-block submit-button" data-animation-delay="100" data-animation="flipInY"> Register Now
+                                    <i class="fa fa-arrow-circle-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1640,8 +1775,24 @@
 
 <!-- JS Global -->
 
-<!--[if lt IE 9]><script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script><![endif]-->
-<!--[if gte IE 9]><!--><script src="assets/plugins/jquery/jquery-2.1.1.min.js"></script><!--<![endif]-->
+<?php
+    const JQUERY_VERSION = '2.1.4';
+    const JQUERY_COMPAT_VERSION = '1.11.3';
+?>
+@if($prod)
+    <!--[if lt IE 9]>
+<script src="//code.jquery.com/jquery-{{ JQUERY_COMPAT_VERSION }}.min.js"></script><![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//code.jquery.com/jquery-{{ JQUERY_VERSION }}.min.js"></script>
+<!--<![endif]-->
+@else
+    <!--[if lt IE 9]>
+<script src="/js/jquery-{{ JQUERY_COMPAT_VERSION }}.js"></script><![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="/js/jquery-{{ JQUERY_VERSION }}.js"></script>
+<!--<![endif]-->
+@endif
+
 <script src="assets/plugins/modernizr.custom.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
@@ -1653,7 +1804,7 @@
 <script src="assets/plugins/smooth-scrollbar.min.js"></script>
 
 <!-- JS Page Level -->
-<script src="assets/plugins/owlcarousel2/owl.carousel.min.js"></script>
+{{--<script src="assets/plugins/owlcarousel2/owl.carousel.min.js"></script>--}}
 <script src="assets/plugins/waypoints/waypoints.min.js"></script>
 <script src="assets/plugins/countdown/jquery.plugin.min.js"></script>
 <script src="assets/plugins/countdown/jquery.countdown.min.js"></script>
@@ -1708,13 +1859,14 @@
                     scrollTop: jQuery(hash).offset().top - 44 + 'px'
                 }, {
                     duration: 1200,
-                    easing: "easeInOutExpo"
+                    easing  : "easeInOutExpo"
                 });
             }
         }
     });
-
 </script>
+
+@yield('js')
 
 </body>
 </html>
