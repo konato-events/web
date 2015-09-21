@@ -8,12 +8,11 @@
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>im Event</title>
+    <title>@yield('title') [Konato]</title> {{-- https://moz.com/learn/seo/title-tag --}}
+    <meta content="Konato" name="apple-mobile-web-app-title">
+    <meta content="Konato" name="application-name">
 
-    <!-- Favicons -->
-
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    @include('_favicons')
 
     <!-- CSS Global -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
