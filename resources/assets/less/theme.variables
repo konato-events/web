@@ -2,26 +2,34 @@
 @darkOrange:        #E06C08;
 @orange:            #FB953E;
 @lightOrange:       #FFB16E;
-@orangeBackground:  lighten(#FFD4AF, 10%);
+@orangeBg:  lighten(#FFD4AF, 10%);
 @darkestYellow:     #AE7500;
 @darkYellow:        #E09908;
 @yellow:            #FBBD3E;
 @lightYellow:       #FFD06E;
-@yellowBackground:  lighten(#FFE5AF, 10%);
+@yellowBg:  lighten(#FFE5AF, 10%);
 @darkestBlue:       #0B2975;
 @darkBlue:          #153A96;
 @blue:              #3758A9;
 @lightBlue:         #5D78BD;
-@blueBackground:    lighten(#9DAFDB, 10%);
+@blueBg:    lighten(#9DAFDB, 10%);
 @darkestTeal:       #016469;
 @darkTeal:          #068287;
 @teal:              #269398;
 @lightTeal:         #4CABAF;
-@tealBackground:    lighten(#91D0D3, 10%);
-@primaryColor:           @orange;
-@lightPrimaryColor:      @lightOrange;
-@secondaryColor:         @blue;
-@lightSecondaryColor:    @lightBlue;
+@tealBg:    lighten(#91D0D3, 10%);
+
+@darkestPrimaryColor: @darkestOrange;
+@darkPrimaryColor:    @darkOrange;
+@primaryColor:        @orange;
+@lightPrimaryColor:   @lightOrange;
+@PrimaryColorBg:      @orangeBg;
+
+@darkestSecondaryColor: @darkestBlue;
+@darkSecondaryColor:    @darkBlue;
+@secondaryColor:        @blue;
+@lightSecondaryColor:   @lightBlue;
+@SecondaryColorBg:      @blueBg;
 
 @main-color: @primaryColor;
 @main-color-d10: darken(@main-color, 10%);

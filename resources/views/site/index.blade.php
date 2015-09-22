@@ -1,5 +1,4 @@
 @extends('layout-master')
-@section('title', 'Event Discovery')
 
 @section('css')
     <style type="text/css">

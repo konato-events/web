@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title') [Konato]</title> {{-- https://moz.com/learn/seo/title-tag --}}
+    <title>@section('title')<?=_('Event Discovery')?>@show [Konato]</title>{{-- https://moz.com/learn/seo/title-tag --}}
     <meta content="Konato" name="apple-mobile-web-app-title">
     <meta content="Konato" name="application-name">
 
@@ -74,24 +74,18 @@
                 <nav class="navigation closed clearfix">
                     <a href="#" class="menu-toggle btn"><i class="fa fa-bars"></i></a>
                     <ul class="sf-menu nav">
-                        <li class="active">
-                            <a href="index.html">Home</a>
+                        <li{{-- class="active"--}}><a href="/"><i class="fa fa-table"></i> <?=_('Dashboard')?></a></li>
+                        <li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>
+                        <li><a href="#"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
+
+                        <li>{{-- TODO: REMOVE THIS ENTRY --}}
+                            <a href="index.html">Template</a>
                             <ul>
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="index-2.html">Home 2</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="event-list.html">Events</a>
-                            <ul>
                                 <li><a href="event-list.html">Event List</a></li>
                                 <li><a href="event-grid.html">Event Grid</a></li>
                                 <li><a href="event-single.html">Single Event</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="blog.html">Pages</a>
-                            <ul>
                                 <li><a href="blog.html">Blog</a></li>
                                 <li><a href="blog-single.html">Blog Single</a></li>
                                 <li><a href="search-results.html">Search Results</a></li>
@@ -101,7 +95,7 @@
                                 <li><a href="error-page.html">404</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact-us.html">Contact Us</a></li>
+
                         <li class="header-search-wrapper">
                             <form action="#" class="header-search-form">
                                 <input type="text" class="form-control header-search" placeholder="Search" />
@@ -126,54 +120,49 @@
                 <div class="container">
 
                     <div id="hero-block">
-                        <div class="item page text-center">
-                            <div class="caption">
-                                <div class="container">
-                                    <div class="div-table">
-                                        <div class="div-cell">
-                                            <h1 class="caption-title"><?=_('Expand your horizons')?></h1>
-                                            <h2 class="caption-subtitle"><?=_('Discover even more.<br>Share your knowledge.<br>Get to know great people!')?></h2>
-                                            <h4>
-                                                <span>You Can Find
-                                                    <a href="#">Festivals</a>,
-                                                    <a href="#">Parties</a>,
-                                                    <a href="#">Conference</a>,
-                                                    <a href="#">Fairs</a>,
-                                                    <a href="#">Exhibitions</a>,
-                                                    <a href="#">Speakers</a> and more
-                                                </span>
-                                            </h4>
+                            <div class="div-table">
+                                <div class="div-cell">
+                                    <h1 class="caption-title"><?=_('Expand your horizons')?></h1>
+                                    <h2 class="caption-subtitle"><?=_('Discover even more.<br>Share your knowledge.<br>Get to know great people!')?></h2>
+                                    <h4>
+                                        <span>
+                                            <?=sprintf(_('Find %sconferences%s, %stalks%s, %smeetings%s, %sfairs%s, %sexhibitions%s, and even %sspeakers%s'),
+                                                '<a href="#">','</a>',
+                                                '<a href="#">','</a>',
+                                                '<a href="#">','</a>',
+                                                '<a href="#">','</a>',
+                                                '<a href="#">','</a>',
+                                                '<a href="#">','</a>')?>
+                                        </span>
+                                    </h4>
 
-                                            <div class="row">
-                                                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                                                    <form action="#" class="location-search">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control text" placeholder="FIND EXPERIENCES" />
-                                                                <select class="selectpicker">
-                                                                    <option>LOCATION</option>
-                                                                    <option>LOCATION</option>
-                                                                    <option>LOCATION</option>
-                                                                </select>
-                                                                <button class="form-control button-search">
-                                                                    <i class="fa fa-search"></i></button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
+                                    <div class="row">
+                                        <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                                            <form action="#" class="location-search">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control text" placeholder="<?=_('Find by theme or keyword')?>" />
+                                                        <select class="selectpicker">
+                                                            <option>LOCATION</option>
+                                                            <option>LOCATION</option>
+                                                            <option>LOCATION</option>
+                                                        </select>
+                                                        <button class="form-control button-search">
+                                                            <i class="fa fa-search"></i></button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <p class="caption-text">
-                                                <a class="btn btn-theme btn-theme-dark scroll-to" href="#">Popular Events</a>
-                                                <a class="btn btn-theme btn-theme-transparent-white" href="#">Latest Events</a>
-
-                                                {{-- TIP: How to include a video inside a modal --}}
-                                                {{--<a class="btn btn-theme btn-theme btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto">Latest Events</a>--}}
-                                            </p>
+                                            </form>
                                         </div>
                                     </div>
+                                    <p class="caption-text">
+                                        <a class="btn btn-theme btn-theme-dark scroll-to" href="#">Popular Events</a>
+                                        <a class="btn btn-theme btn-theme-transparent-white" href="#">Latest Events</a>
+
+                                        {{-- TIP: How to include a video inside a modal --}}
+                                        {{--<a class="btn btn-theme btn-theme btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto">Latest Events</a>--}}
+                                    </p>
                                 </div>
                             </div>
-                        </div>
 
                     </div>
 
@@ -196,7 +185,7 @@
                     <?php
                         $thumbs = [
                             ['#', 'map', _('Explore new meetings'), //map-signs, map-o
-                                _('Ever though <em>"hey, I never heard of that event! How could I miss it?"</em><br>Enter <strong>Konato</strong>: that won\'t happen again.')
+                                _('Ever though <em>"Hey, I never heard of that event! How could I miss such thing?"</em> Enter <strong>Konato</strong>: it won\'t happen again!')
                             ],
                             ['#', 'bullhorn', _('Spread what you know'),
                                 _('Reach new audiences and get close to your public - or <em>that</em> speaker from the last congress you\'ve been.')
@@ -205,8 +194,7 @@
                                 _('Make new contacts, expand your network and meet like-minded students or professionals - not only those who live nearby.')
                             ],
                             ['#', 'calendar-check-o', _('Prepare for the event'),
-                                _('See the schedule and organize yourself. On <b>Konato</b> you\'re sure not to miss
-the most relevant parts for you.')
+                                _('See the schedule and organize yourself. On <b>Konato</b> you\'re sure not to miss the activities of your interest.')
                             ],
                             //['#', 'users', _('Find your speakers'),
                             //    _('Going to organize your own event? Get in touch with field experts and invite (or
