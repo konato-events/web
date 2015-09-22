@@ -1726,7 +1726,7 @@ textarea {
   background-color: #ffb16e;
 }
 #hero-block .item {
-  min-height: 800px;
+  min-height: 480px;
 }
 #hero-block .caption {
   position: absolute;
@@ -1742,14 +1742,11 @@ textarea {
   padding-top: 100px;
   padding-bottom: 60px;
 }
-.multipage #hero-block .caption > .container {
-  padding-top: 200px;
-}
 #hero-block .caption .div-table {
   width: 100%;
 }
 #hero-block .caption-title {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 60px;
   line-height: 60px;
   font-weight: 300;
@@ -1786,7 +1783,7 @@ textarea {
   right: -100%;
 }
 #hero-block .caption-subtitle {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto Slab', serif;
   font-size: 65px;
   font-weight: 900;
   color: #ffffff;
@@ -1816,13 +1813,14 @@ textarea {
 @media (max-width: 991px) {
   #hero-block .caption-subtitle,
   #hero-block .caption-text {
-    margin-top: 20px;
+    margin-top: 5px;
   }
   #hero-block .caption-title {
-    font-size: 60px;
+    font-size: 40px;
+    margin-top: 15px;
   }
   #hero-block .caption-subtitle {
-    font-size: 22px;
+    font-size: 28px;
   }
   #hero-block .caption-text {
     font-size: 12px;
