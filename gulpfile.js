@@ -4,7 +4,8 @@ var elixir   = require('laravel-elixir');
 elixir(function(mix) {
   mix.less([
     'theme-basic.less',
-    'theme-konato.less'
+    'theme-konato.less',
+    '*.less'
   ], 'public/css/styles.css');
 
   //mix.styles([
@@ -13,7 +14,7 @@ elixir(function(mix) {
   //], 'public/css/styles.css');
 
   mix.coffee([
-
+    '*.coffee'
   ], 'public/js/app.js');
 
   //TODO: enable this only in production environment, and only if needed

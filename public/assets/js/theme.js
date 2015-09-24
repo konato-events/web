@@ -472,7 +472,6 @@ var theme = function () {
         // Google map
         initGoogleMap: function () {
             var map, marker;
-            var image = 'assets/img/icon-google-map.png'; // marker icon
             function initialize() {
                 map = new google.maps.Map(document.getElementById('map-canvas'), {
                     scrollwheel: false,
@@ -482,8 +481,8 @@ var theme = function () {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(-22.948611,-43.157222),
                     map: map,
-                    icon: image,
-                    title: 'Hello World!'
+                    icon: 'assets/img/icon-google-map.png',
+                    title: 'We are here!'
                 });
             }
             google.maps.event.addDomListener(window, 'load', initialize);
@@ -501,7 +500,7 @@ $(document).ready(function () {
         if ($('#map-canvas1').length) {
 
             var map;
-            var marker, marker2, marker3, marker4, marker5, marker6,marker7, marker8;
+            var marker, marker2, marker3, marker4, marker5, marker6, marker7, marker8;
             var infowindow;
        
             var image = 'assets/img/icon-google-map.png'; // marker icon

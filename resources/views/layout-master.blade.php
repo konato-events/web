@@ -42,6 +42,7 @@
 
 <div class="wrapper">
 
+    <!-- TODO: reevaluate H1~H6 usage, it's a little messy right now -->
     <header class="header fixed">
 
         {{-- Notification bar. Could be used later }}
@@ -60,10 +61,10 @@
             <div class="header-wrapper clearfix">
 
                 <div class="logo">
-                    <a href="index.html" class="scroll-to">
+                    <a href="/" class="scroll-to">
                         <span class="fa-stack">
                             <i class="fa logo-hex fa-stack-2x"></i>
-                            <i class="fa logo-fa fa-map-marker fa-stack-1x"></i>
+                            <i class="fa logo-fa fa-cloud fa-stack-1x"></i>
                         </span>
                         Konato
                     </a>
@@ -78,7 +79,7 @@
                         <li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>
                         <li><a href="#"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
 
-                        <li>{{-- TODO: REMOVE THIS ENTRY --}}
+                        <li><!-- TODO: REMOVE THIS ENTRY -->
                             <a href="index.html">Template</a>
                             <ul>
                                 <li><a href="index.html">Home</a></li>
@@ -231,240 +232,54 @@
         <section class="page-section no-padding-top light">
             <div class="container full-width">
 
-                <div class="row thumbnails no-padding gallery isotope isotope-items">
+                <h1 class="container section-title">
+                    <span class="icon-inner">
+                        <span class="fa-stack">
+                            <i class="fa rhex fa-stack-2x"></i>
+                            <i class="fa fa-photo fa-stack-1x"></i>
+                        </span>
+                    </span>
+                    <span class="title-inner"><?=_('Great events')?> <small> / <?=_('that we\'re proud to have been part of')?></small></span>
+                </h1>
 
-                    <div class="col-md-3 col-sm-6 isotope-item photos ">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-1a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
+                <div class="row thumbnails no-padding gallery">
+                    <?php
+                        $events = [
+                            1 => ['/img/event-sample1.jpg', 'iMasters Developer Week RJ' , 'Rio de Janeiro, Brazil'],
+                            2 => ['//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/theconf/palestra-alganet-40-borrao.original.jpg', 'PHP\'n Rio 2011', 'Rio de Janeiro, Brazil'],
+                            3 => ['http://phpconf.com.br/media/images/fundo-elefante.jpg', 'PHPConf 2015', 'Osasco, Brazil'],
+                            4 => ['//s3-sa-east-1.amazonaws.com/globalcodesp/tdc/2015/img/cover/tdc-2014-sp_stadium-cover.jpg', 'TDCOnline 2015 POA', 'Porto Alegre, Brazil'],
+                            5 => ['//cdn.oreillystatic.com/en/assets/1/event/142/fluent2016_video_placeholder2.jpg', 'O\'Reilly\'s Fluent', 'San Francisco, USA'],
+                            6 => ['http://www.uerj.br/uerj_image/2015/07/01.gif', 'UERJ Sem Muros', 'Rio de Janeiro, Brazil'],
+                            7 => ['http://congresso.hupe.uerj.br/public/img/logo-evento.jpg', '53º Congresso HUPE', 'Rio de Janeiro, Brazil'],
+                            8 => ['http://www.sbv.org.br/congresso/imgs/logo.png', 'XXVI Congresso Brasileiro de Virologia', 'Florianópolis, Brazil']
+                        ];
+                        shuffle($events);
+                    ?>
+                    <?php foreach($events as $event): ?>
+                        <div class="col-md-3 col-sm-6 photos">
+                            <a href="#">
+                                <div class="thumbnail no-border no-padding">
+                                    <div class="media" style="background-image: url('<?=$event[0]?>')">
+                                        {{-- TIP: here used to be a coloured semi-opaque hover with some buttons --}}
+                                        <div class="caption back">
+                                            <div class="caption-wrapper div-table">
+                                                <div class="caption-inner div-cell">
+                                                    <h3 class="caption-title"><?=$event[1]?></h3>
+                                                    <p class="caption-category"><?=$event[2]?></p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">CONFERENCE PARTY</h3>
-
-                                            <p class="caption-category">in Istanbul</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 isotope-item videos">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-2a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">FINDING NEW WAY EVENT</h3>
-
-                                            <p class="caption-category">in Tokyo</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 isotope-item gallery">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-3a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">PHP MEETING</h3>
-
-                                            <p class="caption-category">in Foshan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 isotope-item photos gallery">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-4a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">CONFERENCE PARTY</h3>
-
-                                            <p class="caption-category">in Manhattan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 isotope-item photos videos">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-5a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">WINNING AWARDS MEETING</h3>
-
-                                            <p class="caption-category">in Istanbul</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 isotope-item videos gallery">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-6a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">GALLERY IMAGE NAME</h3>
-
-                                            <p class="caption-category">in Tokyo</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 isotope-item photos videos">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-7a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">EVERYBODY HERE EVENT</h3>
-
-                                            <p class="caption-category">in Foshan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6 isotope-item gallery">
-                        <div class="thumbnail no-border no-padding">
-                            <div class="media">
-                                <img src="assets/img/preview/latest-8a.jpg" alt="">
-
-                                <div class="caption hovered">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <p class="caption-buttons">
-                                                <a href="#" class="btn caption-zoom"><i class="fa fa-heart"></i></a>
-                                                <a href="#" class="btn caption-link"><i class="fa fa-plus"></i></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="caption hovered back">
-                                    <div class="caption-wrapper div-table">
-                                        <div class="caption-inner div-cell">
-                                            <h3 class="caption-title">YOGA CLASS MET AT AUGUST</h3>
-
-                                            <p class="caption-category">in Manhattan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach ?>
 
                 </div>
-                <div class="text-center margin-top">
-                    <a href="#" class="btn btn-theme btn-theme-grey-dark btn-theme-md"><i class="fa fa-photo"></i> See All Gallery</a>
-                </div>
-
+                {{-- TIP: here used to be a centered button to open up all photos --}}
             </div>
         </section>
-        <!-- /PAGE -->
 
         {{-- TIP: here used to be a caroussel of sponsors. Not sure this would be useful but... the markup is in the theme --}}
 
