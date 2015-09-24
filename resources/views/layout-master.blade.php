@@ -246,27 +246,32 @@
                     <?php
                         $events = [
                             1 => ['/img/event-sample1.jpg', 'iMasters Developer Week RJ' , 'Rio de Janeiro, Brazil'],
-                            2 => ['//d9hhrg4mnvzow.cloudfront.net/unbouncepages.com/theconf/palestra-alganet-40-borrao.original.jpg', 'PHP\'n Rio 2011', 'Rio de Janeiro, Brazil'],
-                            3 => ['http://phpconf.com.br/media/images/fundo-elefante.jpg', 'PHPConf 2015', 'Osasco, Brazil'],
-                            4 => ['//s3-sa-east-1.amazonaws.com/globalcodesp/tdc/2015/img/cover/tdc-2014-sp_stadium-cover.jpg', 'TDCOnline 2015 POA', 'Porto Alegre, Brazil'],
-                            5 => ['//cdn.oreillystatic.com/en/assets/1/event/142/fluent2016_video_placeholder2.jpg', 'O\'Reilly\'s Fluent', 'San Francisco, USA'],
-                            6 => ['http://www.uerj.br/uerj_image/2015/07/01.gif', 'UERJ Sem Muros', 'Rio de Janeiro, Brazil'],
-                            7 => ['http://congresso.hupe.uerj.br/public/img/logo-evento.jpg', '53º Congresso HUPE', 'Rio de Janeiro, Brazil'],
-                            8 => ['http://www.sbv.org.br/congresso/imgs/logo.png', 'XXVI Congresso Brasileiro de Virologia', 'Florianópolis, Brazil']
+                            2 => ['/img/event-sample2.jpg', 'PHP\'n Rio 2011', 'Rio de Janeiro, Brazil'],
+                            3 => ['/img/event-sample3.jpg', 'PHPConf 2015', 'Osasco, Brazil'],
+                            4 => ['/img/event-sample4.jpg', 'TDCOnline 2015 POA', 'Porto Alegre, Brazil'],
+                            5 => ['/img/event-sample5.jpg', 'O\'Reilly\'s Fluent', 'San Francisco, USA'],
+                            6 => ['/img/event-sample6.gif', 'UERJ Sem Muros', 'Rio de Janeiro, Brazil'],
+                            7 => ['/img/event-sample7.jpg', '53º Congresso HUPE', 'Rio de Janeiro, Brazil'],
+                            8 => ['/img/event-sample8.png', 'XXVI Congresso Brasileiro de Virologia', 'Florianópolis,
+                            Brazil']
                         ];
                         shuffle($events);
+                        foreach($events as $event):
+                            list($img, $title, $desc) = $event;
+                            $dimensions = getimagesize(APP_ROOT.'/public'.$img);
+                            $size = ($dimensions[0] > $dimensions[1])? '100% auto' : 'auto 100%';
                     ?>
-                    <?php foreach($events as $event): ?>
                         <div class="col-md-3 col-sm-6 photos">
                             <a href="#">
                                 <div class="thumbnail no-border no-padding">
-                                    <div class="media" style="background-image: url('<?=$event[0]?>')">
+                                    <div class="media" style="background-image: url(<?=$img?>); background-size:
+                                    <?=$size?>;">
                                         {{-- TIP: here used to be a coloured semi-opaque hover with some buttons --}}
                                         <div class="caption back">
                                             <div class="caption-wrapper div-table">
                                                 <div class="caption-inner div-cell">
-                                                    <h3 class="caption-title"><?=$event[1]?></h3>
-                                                    <p class="caption-category"><?=$event[2]?></p>
+                                                    <h3 class="caption-title"><?=$title?></h3>
+                                                    <p class="caption-category"><?=$desc?></p>
                                                 </div>
                                             </div>
                                         </div>
