@@ -118,7 +118,7 @@
 
         <div id="main">
             <section class="page-section no-padding">
-                <div class="container">
+                <div class="container full-width">
 
                     <div id="hero-block">
                             <div class="div-table">
