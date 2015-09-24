@@ -221,352 +221,13 @@
 
             </div>
         </section>
-        <!-- /PAGE -->
 
-        <!-- PAGE -->
-        <section class="page-section">
-            <div class="container">
+        {{-- TIP: here used to be a list of hotels. Besides not being used currently, it broke on theme changes.
+             See original theme for markup if this gets useful later --}}
 
-                <h1 class="section-title">
-                    <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-h-square fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">HOTELS <small> / dont forget book your room</small></span>
-                </h1>
+        {{-- TIP: here used to be testimonials. This might be useful later, so see original theme for markup --}}
 
-                <div class=" thumbnails hotels">
-                    <div class="carousel-slider">
-                        <div class="owl-carousel slide-4">
-                            <div>
-                                <div class="thumbnail no-border no-padding">
-                                    <div class="media">
-                                        <img src="assets/img/preview/hotel-1.jpg" alt="">
-
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons">
-                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
-
-                                        <div class="caption-rating rating">
-                                            <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                        </div>
-                                        <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
-
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="thumbnail no-border no-padding">
-                                    <div class="media">
-                                        <img src="assets/img/preview/hotel-1.jpg" alt="">
-
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons">
-                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
-
-                                        <div class="caption-rating rating">
-                                            <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                        </div>
-                                        <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
-
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="thumbnail no-border no-padding">
-                                    <div class="media">
-                                        <img src="assets/img/preview/hotel-1.jpg" alt="">
-
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons">
-                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
-
-                                        <div class="caption-rating rating">
-                                            <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                        </div>
-                                        <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
-
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="thumbnail no-border no-padding">
-                                    <div class="media">
-                                        <img src="assets/img/preview/hotel-1.jpg" alt="">
-
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons">
-                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
-
-                                        <div class="caption-rating rating">
-                                            <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                        </div>
-                                        <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
-
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="thumbnail no-border no-padding">
-                                    <div class="media">
-                                        <img src="assets/img/preview/hotel-1.jpg" alt="">
-
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons">
-                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
-
-                                        <div class="caption-rating rating">
-                                            <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                        </div>
-                                        <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
-
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="thumbnail no-border no-padding">
-                                    <div class="media">
-                                        <img src="assets/img/preview/hotel-1.jpg" alt="">
-
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons">
-                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
-
-                                        <div class="caption-rating rating">
-                                            <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                        </div>
-                                        <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
-
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="thumbnail no-border no-padding">
-                                    <div class="media">
-                                        <img src="assets/img/preview/hotel-1.jpg" alt="">
-
-                                        <div class="caption hovered">
-                                            <div class="caption-wrapper div-table">
-                                                <div class="caption-inner div-cell">
-                                                    <p class="caption-buttons">
-                                                        <a href="#" class="btn btn-theme caption-link"><i class="fa fa-file-text"></i> Details</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption">
-                                        <h3 class="caption-title"><a href="#">Standard Hotel Name Here</a></h3>
-
-                                        <div class="caption-rating rating">
-                                            <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                        </div>
-                                        <p class="caption-text">Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.</p>
-
-                                        <p class="caption-more"><a href="#" class="btn btn-theme">Book</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center margin-top">
-                    <a data-animation="fadeInUp" data-animation-delay="100" href="#" class="btn btn-theme btn-theme-grey-dark btn-theme-md"><i class="fa fa-h-square"></i> See all hotels</a>
-                </div>
-
-            </div>
-        </section>
-        <!-- /PAGE -->
-
-        <!-- PAGE -->
-        <section class="page-section color">
-            <div class="container">
-                <h1 class="section-title">
-                    <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-comments-o fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Testimonials <small> / See What People Say About Us</small></span>
-                </h1>
-
-                <!-- Testimonials -->
-                <div id="testimonials" class="owl-carousel testimonials" data-animation="fadeInUp" data-animation-delay="100">
-
-                    <div class="media testimonial">
-                        <div class="media-object pull-right" data-animation="flipInY" data-animation-delay="300">
-                            <div class="rehex testimonial-avatar">
-                                <div class="rehex-deg">
-                                    <div class="rehex-deg">
-                                        <div class="rehex-inner">
-                                            <img class="img-responsive" src="assets/img/preview/avatar-1.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam metus. Donec
-                                cursus magna eget sem convallis facilisis. Vestibulum dictum nibh at ullamcorper
-                                tincidunt. Phasellus scelerisque nisl non ullamcorper pellentesque. Nunc sagittis, felis
-                                in feugiat mollis, libero eros</p>
-                            <h4 class="media-heading">by jThemes Studio</h4>
-                        </div>
-                    </div>
-
-                    <div class="media testimonial">
-                        <div class="media-object pull-right" data-animation="flipInY" data-animation-delay="300">
-                            <div class="rehex testimonial-avatar">
-                                <div class="rehex-deg">
-                                    <div class="rehex-deg">
-                                        <div class="rehex-inner">
-                                            <img class="img-responsive" src="assets/img/preview/avatar-2.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam metus. Donec
-                                cursus magna eget sem convallis facilisis. Vestibulum dictum nibh at ullamcorper
-                                tincidunt. Phasellus scelerisque nisl non ullamcorper pellentesque. Nunc sagittis, felis
-                                in feugiat mollis, libero eros</p>
-                            <h4 class="media-heading">by jThemes Studio</h4>
-                        </div>
-                    </div>
-
-                    <div class="media testimonial">
-                        <div class="media-object pull-right" data-animation="flipInY" data-animation-delay="300">
-                            <div class="rehex testimonial-avatar">
-                                <div class="rehex-deg">
-                                    <div class="rehex-deg">
-                                        <div class="rehex-inner">
-                                            <img class="img-responsive" src="assets/img/preview/avatar-3.jpg" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam metus. Donec
-                                cursus magna eget sem convallis facilisis. Vestibulum dictum nibh at ullamcorper
-                                tincidunt. Phasellus scelerisque nisl non ullamcorper pellentesque. Nunc sagittis, felis
-                                in feugiat mollis, libero eros</p>
-                            <h4 class="media-heading">by jThemes Studio</h4>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- Testimonials -->
-
-            </div>
-        </section>
-        <!-- /PAGE -->
-
-        <!-- PAGE -->
-        <section class="page-section no-padding-bottom">
-            <div class="container">
-                <div class="section-title pull-left" style="width: auto;">
-                    <span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-picture-o fa-stack-1x"></i></span></span>
-                </div>
-                <ul id="filtrable-gallery" class="filtrable clearfix">
-                    <li class="all current"><a href="#" data-filter="*">All</a></li>
-                    <li class="photos"><a href="#" data-filter=".photos">Photos</a></li>
-                    <li class="videos"><a href="#" data-filter=".videos">Videos</a></li>
-                    <li class="gallery"><a href="#" data-filter=".gallery">Gallery</a></li>
-                </ul>
-                <div class="clear clearfix overflowed"></div>
-            </div>
-        </section>
-
+        {{-- TIP: here we had a horizontal list to filter pictures from the list below --}}
         <section class="page-section no-padding-top light">
             <div class="container full-width">
 
@@ -798,463 +459,20 @@
 
                 </div>
                 <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="500" href="#" class="btn btn-theme btn-theme-grey-dark btn-theme-md"><i class="fa fa-photo"></i> See All Gallery</a>
+                    <a href="#" class="btn btn-theme btn-theme-grey-dark btn-theme-md"><i class="fa fa-photo"></i> See All Gallery</a>
                 </div>
 
             </div>
         </section>
         <!-- /PAGE -->
 
-        <!-- PAGE SPONSORS -->
-        <section class="page-section" id="sponsors">
-            <div class="container">
-                <h1 class="section-title">
-                    <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Event Sponsors <small> / dont forget it</small></span>
-                </h1>
-                <div class="partners-carousel" data-animation="fadeInUp" data-animation-delay="300">
-                    <div class="owl-carousel">
-                        <div><a href="#"><img src="assets/img/partner/light/partner-1.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-2.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-3.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-4.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-5.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-6.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-1.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-2.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-3.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-4.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-5.png" alt="" /></a></div>
-                        <div><a href="#"><img src="assets/img/partner/light/partner-6.png" alt="" /></a></div>
-                    </div>
-                </div>
-                <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="500" href="#" class="btn btn-theme btn-theme-grey-dark btn-theme-md"><i class="fa fa-thumbs-up"></i> Become a sponsor</a>
-                </div>
-            </div>
-        </section>
-        <!-- /PAGE SPONSORS -->
+        {{-- TIP: here used to be a caroussel of sponsors. Not sure this would be useful but... the markup is in the theme --}}
 
-        <!-- PAGE SPEAKERS -->
-        <section class="page-section light" id="speakers">
-            <div class="container">
-                <h1 class="section-title">
-                    <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-user fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInUp" data-animation-delay="500" class="title-inner">Event Speakers <small> / meet with greaters</small></span>
-                </h1>
+        {{-- TIP: here used to be a caroussel(?) of speakers. Too lousy but could be useful? the markup is in the theme --}}
 
-                <!-- Speakers row -->
-                <div class="thumbnails clear">
-                    <div class="carousel-slider">
-                        <div class="owl-carousel slide-4">
-                            <div data-animation="fadeInUp" data-animation-delay="100">
-                                <div class="thumbnail no-border no-padding text-center">
-                                    <div class="rehex speaker-avatar">
-                                        <div class="rehex-deg">
-                                            <div class="rehex-deg">
-                                                <div class="rehex-inner">
-                                                    <div class="media">
-                                                        <img src="assets/img/preview/speaker-1.jpg" alt="">
+        {{-- TIP: here was a "featured" block on a different color. might be useful, markup => theme --}}
 
-                                                        <div class="caption hovered">
-                                                            <div class="caption-wrapper div-table">
-                                                                <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons">
-                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption before-media">
-                                        <h3 class="caption-title">Speaker name here</h3>
-
-                                        <p class="caption-category">Co Founder</p>
-                                    </div>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
-                                        <ul class="social-line list-inline text-center">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- -->
-                            <div data-animation="fadeInUp" data-animation-delay="300">
-                                <div class="thumbnail no-border no-padding text-center">
-                                    <div class="rehex speaker-avatar">
-                                        <div class="rehex-deg">
-                                            <div class="rehex-deg">
-                                                <div class="rehex-inner">
-                                                    <div class="media">
-                                                        <img src="assets/img/preview/speaker-2.jpg" alt="">
-
-                                                        <div class="caption hovered">
-                                                            <div class="caption-wrapper div-table">
-                                                                <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons">
-                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption before-media">
-                                        <h3 class="caption-title">Speaker name here</h3>
-
-                                        <p class="caption-category">Developer</p>
-                                    </div>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
-                                        <ul class="social-line list-inline text-center">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- -->
-                            <div data-animation="fadeInUp" data-animation-delay="500">
-                                <div class="thumbnail no-border no-padding text-center">
-                                    <div class="rehex speaker-avatar">
-                                        <div class="rehex-deg">
-                                            <div class="rehex-deg">
-                                                <div class="rehex-inner">
-                                                    <div class="media">
-                                                        <img src="assets/img/preview/speaker-3.jpg" alt="">
-
-                                                        <div class="caption hovered">
-                                                            <div class="caption-wrapper div-table">
-                                                                <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons">
-                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption before-media">
-                                        <h3 class="caption-title">Speaker name here</h3>
-
-                                        <p class="caption-category">Designer</p>
-                                    </div>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
-                                        <ul class="social-line list-inline text-center">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- -->
-                            <div data-animation="fadeInUp" data-animation-delay="700">
-                                <div class="thumbnail no-border no-padding text-center">
-                                    <div class="rehex speaker-avatar">
-                                        <div class="rehex-deg">
-                                            <div class="rehex-deg">
-                                                <div class="rehex-inner">
-                                                    <div class="media">
-                                                        <img src="assets/img/preview/speaker-4.jpg" alt="">
-
-                                                        <div class="caption hovered">
-                                                            <div class="caption-wrapper div-table">
-                                                                <div class="caption-inner div-cell">
-                                                                    <p class="caption-buttons">
-                                                                        <a href="#" class="btn caption-link"><i class="fa fa-link"></i></a>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="caption before-media">
-                                        <h3 class="caption-title">Speaker name here</h3>
-
-                                        <p class="caption-category">Animator</p>
-                                    </div>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed vel velit</p>
-                                        <ul class="social-line list-inline text-center">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- /Speakers row -->
-
-                <div class="text-center margin-top">
-                    <a data-animation="fadeInUp" data-animation-delay="100" href="#" class="btn btn-theme btn-theme-grey-dark btn-theme-md"><i class="fa fa-user"></i> See all speakers</a>
-                </div>
-            </div>
-        </section>
-        <!-- /PAGE SPEAKERS -->
-
-        <!-- PAGE -->
-        <section class="page-section color">
-            <div class="container">
-                <h1 class="section-title">
-                    <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">im Event  <small> / Landing Page</small></span>
-                </h1>
-                <p>One Page Event and Conference Theme is a very clean, modern and outstanding designed HTML template for multi purpose for any business events, conference, party etc.</p>
-
-                <p>
-                    <a class="btn btn-theme" target="_blank" href="http://themeforest.net/item/im-event-one-page-event-conference-landing-page/8334416">Purchase template</a>
-                </p>
-            </div>
-        </section>
-        <!-- /PAGE -->
-
-        <!-- PAGE -->
-        <section class="page-section">
-            <div class="container">
-                <h1 class="section-title">
-                    <span data-animation="flipInY" data-animation-delay="300" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x"></i></span></span>
-                    <span data-animation="fadeInRight" data-animation-delay="500" class="title-inner">Recent Blog Posts <small> / get news!</small></span>
-                </h1>
-                <div class="post-row">
-                    <div class="carousel-slider">
-                        <div class="owl-carousel slide-3">
-                            <!-- -->
-                            <div>
-                                <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="100">
-                                    <div class="post-media">
-                                        <div class="post-type">
-                                            <i class="fa fa-video-camera"></i>
-                                        </div>
-                                        <img src="assets/img/preview/recent-post-1.jpg" alt="" />
-                                    </div>
-                                    <div class="post-header">
-                                        <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-
-                                        <div class="post-meta">
-                                                    <span class="post-date">
-                                                        Posted on
-                                                        <span class="day">17th</span>
-                                                        <span class="month">May</span>
-                                                        <span class="year">2015</span>
-                                                    </span>
-                                                    <span class="pull-right">
-                                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-body">
-                                        <div class="post-excerpt">
-                                            <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                        </div>
-                                    </div>
-                                    <div class="post-footer"></div>
-                                </article>
-                            </div>
-
-                            <!-- -->
-                            <div>
-                                <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="300">
-                                    <div class="post-media">
-                                        <div class="post-type">
-                                            <i class="fa fa-photo"></i>
-                                        </div>
-                                        <img src="assets/img/preview/recent-post-2.jpg" alt="" />
-                                    </div>
-                                    <div class="post-header">
-                                        <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-
-                                        <div class="post-meta">
-                                                    <span class="post-date">
-                                                        Posted on
-                                                        <span class="day">17th</span>
-                                                        <span class="month">May</span>
-                                                        <span class="year">2015</span>
-                                                    </span>
-                                                    <span class="pull-right">
-                                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-body">
-                                        <div class="post-excerpt">
-                                            <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                        </div>
-                                    </div>
-                                    <div class="post-footer"></div>
-                                </article>
-                            </div>
-
-                            <!-- -->
-                            <div>
-                                <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="500">
-                                    <div class="post-media">
-                                        <div class="post-type">
-                                            <i class="fa fa-music"></i>
-                                        </div>
-                                        <img src="assets/img/preview/recent-post-3.jpg" alt="" />
-                                    </div>
-                                    <div class="post-header">
-                                        <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-
-                                        <div class="post-meta">
-                                                    <span class="post-date">
-                                                        Posted on
-                                                        <span class="day">17th</span>
-                                                        <span class="month">May</span>
-                                                        <span class="year">2015</span>
-                                                    </span>
-                                                    <span class="pull-right">
-                                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-body">
-                                        <div class="post-excerpt">
-                                            <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                        </div>
-                                    </div>
-                                    <div class="post-footer"></div>
-                                </article>
-                            </div>
-
-                            <!-- -->
-                            <div>
-                                <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="500">
-                                    <div class="post-media">
-                                        <div class="post-type">
-                                            <i class="fa fa-music"></i>
-                                        </div>
-                                        <img src="assets/img/preview/recent-post-1.jpg" alt="" />
-                                    </div>
-                                    <div class="post-header">
-                                        <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-
-                                        <div class="post-meta">
-                                                    <span class="post-date">
-                                                        Posted on
-                                                        <span class="day">17th</span>
-                                                        <span class="month">May</span>
-                                                        <span class="year">2015</span>
-                                                    </span>
-                                                    <span class="pull-right">
-                                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-body">
-                                        <div class="post-excerpt">
-                                            <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                        </div>
-                                    </div>
-                                    <div class="post-footer"></div>
-                                </article>
-                            </div>
-
-                            <!-- -->
-                            <div>
-                                <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="500">
-                                    <div class="post-media">
-                                        <div class="post-type">
-                                            <i class="fa fa-music"></i>
-                                        </div>
-                                        <img src="assets/img/preview/recent-post-2.jpg" alt="" />
-                                    </div>
-                                    <div class="post-header">
-                                        <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-
-                                        <div class="post-meta">
-                                                    <span class="post-date">
-                                                        Posted on
-                                                        <span class="day">17th</span>
-                                                        <span class="month">May</span>
-                                                        <span class="year">2015</span>
-                                                    </span>
-                                                    <span class="pull-right">
-                                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-body">
-                                        <div class="post-excerpt">
-                                            <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                        </div>
-                                    </div>
-                                    <div class="post-footer"></div>
-                                </article>
-                            </div>
-
-                            <!-- -->
-                            <div>
-                                <article class="post-wrap" data-animation="fadeInUp" data-animation-delay="500">
-                                    <div class="post-media">
-                                        <div class="post-type">
-                                            <i class="fa fa-music"></i>
-                                        </div>
-                                        <img src="assets/img/preview/recent-post-3.jpg" alt="" />
-                                    </div>
-                                    <div class="post-header">
-                                        <h2 class="post-title"><a href="#">Standart Blog Post Header Here</a></h2>
-
-                                        <div class="post-meta">
-                                                    <span class="post-date">
-                                                        Posted on
-                                                        <span class="day">17th</span>
-                                                        <span class="month">May</span>
-                                                        <span class="year">2015</span>
-                                                    </span>
-                                                    <span class="pull-right">
-                                                        <i class="fa fa-comment"></i> <a href="#">12</a>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="post-body">
-                                        <div class="post-excerpt">
-                                            <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi tristiquetus et senectus et netus et malesuada ac turpis.</p>
-                                        </div>
-                                    </div>
-                                    <div class="post-footer"></div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center margin-top">
-                    <a data-animation="flipInY" data-animation-delay="100" href="blog.html" class="btn btn-theme btn-theme-grey-dark btn-theme-md"><i class="fa fa-file-text-o"></i> &nbsp;See all news</a>
-                </div>
-            </div>
-        </section>
-        <!-- /PAGE -->
+        {{-- TIP: here was a list of blog posts. seems big but might be useful for SEO/content-marketing later --}}
 
         <!-- PAGE -->
         <section class="page-section light create-new-event">
@@ -1268,39 +486,17 @@
         </section>
         <!-- /PAGE -->
 
-        <!-- PAGE LOCATION -->
         <section class="page-section" id="location">
             <div class="container full-width gmap-background">
 
-                <div class="container">
-                    <div class="on-gmap color">
-                        <h1 class="section-title">
-                            <span data-animation="flipInY" data-animation-delay="100" class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-map-marker fa-stack-1x"></i></span></span>
-                            <span data-animation="fadeInRight" data-animation-delay="100" class="title-inner">Event Location</span>
-                        </h1>
+                {{-- TIP: here was a floating box over the map with details about the event address. markup? in the theme --}}
 
-                        <p data-animation="fadeInUp" data-animation-delay="200" class="text-uppercase">Apple Store SOHO‎
-                            <br />
-                            103 Prince St New York, <br />
-                            NY 10012, United States <br />
-                            +1 212-226-3126</p>
-
-                        <p><a href="mailto:youremail@domain.com">hello@imevent.com</a></p>
-                        <a href="#" class="btn btn-theme"
-                                data-animation="flipInY" data-animation-delay="300">Get Direction
-                            <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Google map -->
                 <div class="google-map">
                     <div id="map-canvas"></div>
                 </div>
-                <!-- /Google map -->
 
             </div>
         </section>
-        <!-- /PAGE LOCATION -->
 
 
     </div>
@@ -1310,31 +506,46 @@
     <footer class="footer">
         <div class="footer-meta">
             <div class="container text-center">
-                <div class="clearfix">
-                    <ul class="social-line list-inline">
-                        <li data-animation="flipInY" data-animation-delay="100">
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="200">
-                            <a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="300">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="400">
-                            <a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="500">
-                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="600">
-                            <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                        <li data-animation="flipInY" data-animation-delay="700">
-                            <a href="#" class="skype"><i class="fa fa-skype"></i></a></li>
-                    </ul>
-                </div>
-                <span class="copyright" data-animation="fadeInUp" data-animation-delay="100">&copy; 2015 im Event &#8212; The Event Manager Theme made with passion by jThemes Studio</span>
+                {{-- TIP: cool block with several social icons. Certainly useful later! --}}
+                {{--<div class="clearfix">--}}
+                    {{--<ul class="social-line list-inline">--}}
+                        {{--<li>--}}
+                            {{--<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#" class="google"><i class="fa fa-google-plus"></i></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#" class="instagram"><i class="fa fa-instagram"></i></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="#" class="skype"><i class="fa fa-skype"></i></a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+                <span class="copyright">
+                    <?=_('Discover amazing events on Konato')?> &copy; <?=date('Y')?>
+                    <span>
+                        <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio de Janeiro'),
+                            '<a href="https://about.me/igorsantos07" target="_blank">', '</a>') ?>
+                        <img src="/img/sugar-loaf-icon.png" title="<?=_('Mavelous City, place of the Sugar Loaf')?>">
+                    </span>
+                </span>
             </div>
         </div>
     </footer>
     <!-- /FOOTER -->
 
-    <div class="to-top"><i class="fa fa-angle-up"></i></div>
+    <div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>
 
 
 </div>
@@ -1464,12 +675,12 @@
     "use strict";
     jQuery(document).ready(function () {
         theme.init();
-        theme.initMainSlider();
+//        theme.initMainSlider();
         theme.initCountDown();
-        theme.initPartnerSlider();
-        theme.initTestimonials();
-        theme.initCorouselSlider4();
-        theme.initCorouselSlider3();
+//        theme.initPartnerSlider();
+//        theme.initTestimonials();
+//        theme.initCorouselSlider4();
+//        theme.initCorouselSlider3();
         theme.initGoogleMap();
     });
     jQuery(window).load(function () {
