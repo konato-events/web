@@ -1,12 +1,13 @@
+<?php $lang_tag = substr(LOCALE, 0, 2); ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
-<html class="ie ie6" lang="en"><![endif]-->
+<html class="ie ie6" lang="<?=$lang_tag?>"><![endif]-->
 <!--[if IE 7 ]>
-<html class="ie ie7" lang="en"><![endif]-->
+<html class="ie ie7" lang="<?=$lang_tag?>"><![endif]-->
 <!--[if IE 8 ]>
-<html class="ie ie8" lang="en"><![endif]-->
+<html class="ie ie8" lang="<?=$lang_tag?>"><![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en"><!--<![endif]-->
+<html lang="<?=$lang_tag?>"><!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <!--[if IE]>
@@ -80,7 +81,7 @@
                         <li><a href="#"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
 
                         <li><!-- TODO: REMOVE THIS ENTRY -->
-                            <a href="index.html">Template</a>
+                            <a href="#">T</a>
                             <ul>
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="index-2.html">Home 2</a></li>
@@ -185,16 +186,16 @@
                 <div class="row thumbnails info-thumbs clear">
                     <?php
                         $thumbs = [
-                            ['#', 'map', _('Explore new meetings'), //map-signs, map-o
+                            ['#', 'map', _('Explore new meetings'), _('About: exploration'), //map-signs, map-o
                                 _('Ever though <em>"Hey, I never heard of that event! How could I miss such thing?"</em> Enter <strong>Konato</strong>: it won\'t happen again!')
                             ],
-                            ['#', 'bullhorn', _('Spread what you know'),
+                            ['#', 'bullhorn', _('Spread what you know'), _('About: knowledge'),
                                 _('Reach new audiences and get close to your public - or <em>that</em> speaker from the last congress you\'ve been.')
                             ],
-                            ['#', 'users', _('Meet new people'),
+                            ['#', 'users', _('Meet new people'), _('About: networking'),
                                 _('Make new contacts, expand your network and meet like-minded students or professionals - not only those who live nearby.')
                             ],
-                            ['#', 'calendar-check-o', _('Prepare for the event'),
+                            ['#', 'calendar-check-o', _('Prepare for the event'), _('About: preparation'),
                                 _('See the schedule and organize yourself. On <b>Konato</b> you\'re sure not to miss the activities of your interest.')
                             ],
                             //['#', 'users', _('Find your speakers'),
@@ -203,16 +204,16 @@
                             //]
                         ];
                         foreach ($thumbs as $thumb):
-                            list($link, $icon, $title, $desc) = $thumb;
+                            list($link, $icon, $title, $button, $desc) = $thumb;
                     ?>
                         <div class="col-sm-6 col-md-3">
                             <div class="thumbnail no-border no-padding text-center">
                                 @include('components.rehex', compact('link', 'icon'))
                                 <div class="caption">
-                                    <h3 class="caption-title"><?=$title?></h3>
+                                    <h3 class="caption-title"><a href="<?=$link?>"><?=$title?></a></h3>
                                     <p class="caption-text"><?=$desc?></p>
                                     <p class="caption-more">
-                                        <a href="<?=$link?>" class="btn btn-theme"><?=_('Details')?></a>
+                                        <a href="<?=$link?>" class="btn btn-theme"><?=$button?></a>
                                     </p>
                                 </div>
                             </div>
@@ -259,13 +260,12 @@
                         foreach($events as $event):
                             list($img, $title, $desc) = $event;
                             $dimensions = getimagesize(APP_ROOT.'/public'.$img);
-                            $size = ($dimensions[0] > $dimensions[1])? '100% auto' : 'auto 100%';
+                            $size_class = ($dimensions[0] > $dimensions[1])? 'larger-x' : 'larger-y';
                     ?>
                         <div class="col-md-3 col-sm-6 photos">
                             <a href="#">
                                 <div class="thumbnail no-border no-padding">
-                                    <div class="media" style="background-image: url(<?=$img?>); background-size:
-                                    <?=$size?>;">
+                                    <div class="media <?=$size_class?>" style="background-image: url(<?=$img?>)">
                                         {{-- TIP: here used to be a coloured semi-opaque hover with some buttons --}}
                                         <div class="caption back">
                                             <div class="caption-wrapper div-table">
@@ -295,13 +295,13 @@
         {{-- TIP: here was a list of blog posts. seems big but might be useful for SEO/content-marketing later --}}
 
         <!-- PAGE -->
-        <section class="page-section light create-new-event">
+        <section class="page-section no-padding-top light create-new-event">
             <div class="container text-center">
-                <h1 class="section-title">Create Your Own New Event</h1>
+                <h1 class="section-title"><?=_('Join a growing platform of events of all types and sizes')?></h1>
 
-                <p>Bring people together, or turn your passion into a business. Eventbrite gives you everything you need to host your best event yet.</p>
+                <p><?=_('<b>Konato</b> is the best place to market your event.<br>Here we bring together all sorts of people, and they can find it by their interests - this makes sure you receive the right public, and our users find exactly the type of activities they\'re looking for.')?></p>
 
-                <div><a href="#" class="btn btn-theme btn-theme-md">SUBMIT EVENT</a></div>
+                <div><a href="#" class="btn btn-theme btn-theme-md"><?=_('Submit your event')?></a></div>
             </div>
         </section>
         <!-- /PAGE -->
