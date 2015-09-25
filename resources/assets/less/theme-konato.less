@@ -94,18 +94,15 @@ a {
 
 a:hover,
 a:active,
-a:focus {
-	color: #000000;
+a:focus,
+.color a:hover,
+.color a:active,
+.color a:focus {
+	color: @darkestSecondaryColor;
 }
 
 .color a {
 	color: white;
-}
-
-.color a:hover,
-.color a:active,
-.color a:focus {
-	color: #000000;
 }
 
 .dropcap {
@@ -138,86 +135,6 @@ hr.page-divider:after {
 
 hr.page-divider.single {
 	border-color: #646464;
-}
-
-.btn-theme {
-	color: white;
-	background-color: @primaryColor;
-	border-color: @primaryColor;
-}
-
-.btn-theme:hover {
-	background-color: @darkSecondaryColor;
-	border-color: @darkSecondaryColor;
-	color: white;
-}
-
-.color .btn-theme {
-	color: @primaryColor;
-	background-color: white;
-	border-color: white;
-}
-
-.color .btn-theme:hover {
-	background-color: @darkSecondaryColor;
-	border-color: @darkSecondaryColor;
-	color: white;
-}
-
-.btn-theme-transparent,
-.btn-theme-transparent:focus,
-.btn-theme-transparent:active {
-	background-color: transparent;
-	border-color: @primaryColor;
-	color: @primaryColor;
-}
-
-.btn-theme-transparent:hover {
-	background-color: @darkSecondaryColor;
-	border-color: @darkSecondaryColor;
-	color: white;
-}
-
-.btn-theme-transparent-grey,
-.btn-theme-transparent-grey:focus,
-.btn-theme-transparent-grey:active {
-	background-color: transparent;
-	border-color: @darkSecondaryColor;
-	color: @darkSecondaryColor;
-}
-
-.btn-theme-transparent-grey:hover {
-	background-color: @darkSecondaryColor;
-	border-color: @darkSecondaryColor;
-	color: white;
-}
-
-.btn-theme-transparent-white,
-.btn-theme-transparent-white:focus,
-.btn-theme-transparent-white:active {
-	background-color: transparent;
-	border-color: white;
-	color: white;
-}
-
-.btn-theme-transparent-white:hover {
-	background-color: @darkSecondaryColor;
-	border-color: @darkSecondaryColor;
-	color: white;
-}
-
-.btn-theme-grey {
-	background-color: #f5f5f5;
-	border-color: #e8e8e8;
-	color: @main-color-d10;
-}
-
-.btn-theme-grey:hover,
-.btn-theme-grey:focus,
-.btn-theme-grey:active {
-	background-color: @darkSecondaryColor;
-	border-color: @darkSecondaryColor;
-	color: white;
 }
 
 .form-control {

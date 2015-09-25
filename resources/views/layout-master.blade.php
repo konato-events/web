@@ -105,8 +105,16 @@
                             </form>
                         </li>
                         <li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
-                        <li><a href="#" class="btn btn-theme btn-submit-event">SUBMIT EVENT
-                                <i class="fa fa-plus-circle"></i></a></li>
+                        <li>
+                            <a href="#" class="btn btn-theme">
+                                <i class="fa fa-user-plus"></i> <?=_('Sign up')?>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-theme btn-theme-light">
+                                <i class="fa fa-at"></i> <?=_('Login')?>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /Navigation -->
@@ -144,21 +152,18 @@
                                                 <div class="form-group">
                                                     <div class="input-group">
                                                         <input type="text" class="form-control text" placeholder="<?=_('Find by theme or keyword')?>" />
-                                                        <select class="selectpicker">
-                                                            <option>LOCATION</option>
-                                                            <option>LOCATION</option>
-                                                            <option>LOCATION</option>
-                                                        </select>
+                                                        {{--<select class="selectpicker"><option>LOCATION</option></select>--}}
                                                         <button class="form-control button-search">
-                                                            <i class="fa fa-search"></i></button>
+                                                            <i class="fa fa-search"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                     <p class="caption-text">
-                                        <a class="btn btn-theme btn-theme-dark scroll-to" href="#">Popular Events</a>
-                                        <a class="btn btn-theme btn-theme-transparent-white" href="#">Latest Events</a>
+                                        <a class="btn btn-theme btn-theme-dark scroll-to" href="#"><?=_('Popular events')?></a>
+                                        <a class="btn btn-theme btn-theme-light" href="#"><?=_('Latest events')?></a>
 
                                         {{-- TIP: How to include a video inside a modal --}}
                                         {{--<a class="btn btn-theme btn-theme btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto">Latest Events</a>--}}
@@ -189,14 +194,14 @@
                             ['#', 'map', _('Explore new meetings'), _('About: exploration'), //map-signs, map-o
                                 _('Ever though <em>"Hey, I never heard of that event! How could I miss such thing?"</em> Enter <strong>Konato</strong>: it won\'t happen again!')
                             ],
-                            ['#', 'bullhorn', _('Spread what you know'), _('About: knowledge'),
-                                _('Reach new audiences and get close to your public - or <em>that</em> speaker from the last congress you\'ve been.')
-                            ],
                             ['#', 'users', _('Meet new people'), _('About: networking'),
                                 _('Make new contacts, expand your network and meet like-minded students or professionals - not only those who live nearby.')
                             ],
                             ['#', 'calendar-check-o', _('Prepare for the event'), _('About: preparation'),
                                 _('See the schedule and organize yourself. On <b>Konato</b> you\'re sure not to miss the activities of your interest.')
+                            ],
+                            ['#', 'bullhorn', _('Spread what you know'), _('About: knowledge'),
+                                _('Reach new audiences and get close to your public - or <em>that</em> speaker from the last congress you\'ve been.')
                             ],
                             //['#', 'users', _('Find your speakers'),
                             //    _('Going to organize your own event? Get in touch with field experts and invite (or
@@ -398,7 +403,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-theme btn-block submit-button" data-animation-delay="100" data-animation="flipInY"> Log in
+                                <button type="submit" class="btn btn-theme btn-block submit-button"> Log in
                                     <i class="fa fa-arrow-circle-right"></i></button>
                             </div>
                         </div>
