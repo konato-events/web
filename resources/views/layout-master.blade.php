@@ -360,8 +360,7 @@
     </footer>
     <!-- /FOOTER -->
 
-    <div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>
-
+    {{--<div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>--}}
 
 </div>
 <!-- Popup: Login -->
