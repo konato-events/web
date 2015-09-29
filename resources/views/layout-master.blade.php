@@ -21,19 +21,19 @@
     @include('_favicons')
 
     {{-- FIXME: COMPILE THIS STUFF!!!!!!!1111ONE11! --}}
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/plugins/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/plugins/bootstrap-select/bootstrap-select.min.css">
-    {{--<link rel="stylesheet" href="assets/plugins/owlcarousel2/assets/owl.carousel.min.css">--}}
-    {{--<link rel="stylesheet" href="assets/plugins/owlcarousel2/assets/owl.theme.default.min.css">--}}
-    <link rel="stylesheet" href="assets/plugins/prettyphoto/css/prettyPhoto.css">
-    <link rel="stylesheet" href="assets/plugins/animate/animate.min.css">
-    <link rel="stylesheet" href="assets/plugins/countdown/jquery.countdown.css">
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/bootstrap-select/bootstrap-select.min.css">
+    {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.carousel.min.css">--}}
+    {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.theme.default.min.css">--}}
+    <link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">
+    <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
+    <link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">
     <link rel="stylesheet" href="/css/styles.css">
 
     <!--[if lt IE 9]>
-        <script src="assets/plugins/iesupport/html5shiv.js"></script>
-        <script src="assets/plugins/iesupport/respond.min.js"></script>
+        <script src="/assets/plugins/iesupport/html5shiv.js"></script>
+        <script src="/assets/plugins/iesupport/respond.min.js"></script>
     <![endif]-->
 
     @yield('css')
@@ -192,15 +192,15 @@
     <!--[if gte IE 9]><!--><script src="/js/jquery-{{ JQUERY_VERSION }}.js"></script><!--<![endif]-->
 <?php endif ?>>
 
-<script src="assets/plugins/modernizr.custom.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="assets/plugins/superfish/js/superfish.js"></script>
-<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
-<script src="assets/plugins/placeholdem.min.js"></script>
-<script src="assets/plugins/jquery.smoothscroll.min.js"></script>
-<script src="assets/plugins/jquery.easing.min.js"></script>
-<script src="assets/plugins/smooth-scrollbar.min.js"></script>
+<script src="/assets/plugins/modernizr.custom.js"></script>
+<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/assets/plugins/superfish/js/superfish.js"></script>
+<script src="/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+<script src="/assets/plugins/placeholdem.min.js"></script>
+<script src="/assets/plugins/jquery.smoothscroll.min.js"></script>
+<script src="/assets/plugins/jquery.easing.min.js"></script>
+<script src="/assets/plugins/smooth-scrollbar.min.js"></script>
 
 @yield('js')
 
