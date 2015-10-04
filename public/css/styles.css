@@ -330,11 +330,11 @@ body.boxed {
 }
 .wide .page-section.first-section,
 .boxed .page-section.first-section > .container {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 .wide .page-section.first-section.with-sidebar,
 .boxed .page-section.first-section.with-sidebar > .container {
-  padding-top: 70px;
+  padding-top: 20px;
 }
 /*.page-section.no-padding {padding: 0;}
 .page-section.xs-padding {padding-top: 12px; padding-bottom: 12px;}
@@ -1598,10 +1598,12 @@ nav .btn:hover {
  * -------------------------------------------------------------------------- */
 /* 3.1 - Slider / Owl sliders
 /* ========================================================================== */
+.content-area {
+  margin-top: 90px;
+}
 #hero-block {
   background-color: #ffb16e;
   text-align: center;
-  margin-top: 90px;
   height: 450px;
 }
 #hero-block a:not(.btn) {
