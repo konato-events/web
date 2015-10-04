@@ -1,13 +1,9 @@
 @extends('layout-master')
 
 @section('js')
-    <!-- JS Page Level -->
-    {{--<script src="assets/plugins/owlcarousel2/owl.carousel.min.js"></script>--}}
-    <script src="assets/plugins/waypoints/waypoints.min.js"></script>
+    {{--<script src="assets/plugins/waypoints/waypoints.min.js"></script>--}}
     <script src="assets/plugins/countdown/jquery.plugin.min.js"></script>
-    <script src="assets/plugins/countdown/jquery.countdown.min.js"></script>
-    <script src="assets/plugins/isotope/jquery.isotope.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
     <script src="assets/js/theme-ajax-mail.js"></script>
     <script src="assets/js/theme.js"></script>
@@ -17,39 +13,16 @@
         "use strict";
         jQuery(document).ready(function () {
             theme.init();
-    //        theme.initMainSlider();
-            theme.initCountDown();
-    //        theme.initPartnerSlider();
-    //        theme.initTestimonials();
-    //        theme.initCorouselSlider4();
-    //        theme.initCorouselSlider3();
             theme.initGoogleMap();
         });
-        jQuery(window).load(function () {
-            theme.initAnimation();
-        });
 
         jQuery(window).load(function () {
-            jQuery('body').scrollspy({offset: 100, target: '.navigation'});
-        });
-        jQuery(window).load(function () {
-            jQuery('body').scrollspy('refresh');
-        });
-        jQuery(window).resize(function () {
-            jQuery('body').scrollspy('refresh');
-        });
+            var $body = jQuery('body');
 
-        jQuery(document).ready(function () {
+            $body.scrollspy({offset: 100, target: '.navigation'});
+            $body.scrollspy('refresh');
             theme.onResize();
-        });
-        jQuery(window).load(function () {
-            theme.onResize();
-        });
-        jQuery(window).resize(function () {
-            theme.onResize();
-        });
 
-        jQuery(window).load(function () {
             if (location.hash != '') {
                 var hash = '#' + window.location.hash.substr(1);
                 if (hash.length) {
@@ -61,6 +34,15 @@
                     });
                 }
             }
+        });
+
+        jQuery(window).resize(function () {
+            jQuery('body').scrollspy('refresh');
+            theme.onResize();
+        });
+
+        jQuery(document).ready(function () {
+            theme.onResize();
         });
     </script>
 @endsection
@@ -89,10 +71,10 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                                    <form action="#" class="location-search">
+                                    <form action="<?=action('EventController@getSearch')?>" method="get" class="location-search">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" class="form-control text" placeholder="<?=_('Find by theme or keyword')?>" />
+                                                <input type="text" name="q" class="form-control text" placeholder="<?=_('Find by theme or keyword')?>" />
                                                 {{--<select class="selectpicker"><option>LOCATION</option></select>--}}
                                                 <button class="form-control button-search">
                                                     <i class="fa fa-search"></i>

@@ -19,7 +19,26 @@ class AppServiceProvider extends ServiceProvider {
         $view = view();
         $view->share('env', \App::environment());
         $view->share('prod', \App::environment('prod'));
-        // add here global view variables using $view->share('key', 'value');
+
+
+        $events = [
+            1 => ['/img/event-sample1.jpg', 'iMasters Developer Week RJ' , 'Rio de Janeiro, Brazil'],
+            2 => ['/img/event-sample2.jpg', 'PHP\'n Rio 2011', 'Rio de Janeiro, Brazil'],
+            3 => ['/img/event-sample3.jpg', 'PHPConf 2015', 'Osasco, Brazil'],
+            4 => ['/img/event-sample4.jpg', 'TDCOnline 2015 POA', 'Porto Alegre, Brazil'],
+            5 => ['/img/event-sample5.jpg', 'O\'Reilly\'s Fluent', 'San Francisco, USA'],
+            6 => ['/img/event-sample6.gif', 'UERJ Sem Muros', 'Rio de Janeiro, Brazil'],
+            7 => ['/img/event-sample7.jpg', '53º Congresso HUPE', 'Rio de Janeiro, Brazil'],
+            8 => ['/img/event-sample8.png', 'XXVI Congresso Brasileiro de Virologia', 'Florianópolis, Brazil']
+        ];
+        foreach($events as $i => &$event) {
+            $event[] = time();
+            $event[] = ($i % 2)? time() + 60*60*24*3 : null;
+            $event[] = 'Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant
+         morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis. Bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.';
+        }
+        shuffle($events);
+        $view->share('events', $events);
     }
 
     /**
