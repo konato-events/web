@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-10-04 19:25-0300\n"
-"PO-Revision-Date: 2015-10-04 19:26-0300\n"
+"POT-Creation-Date: 2015-10-05 04:07-0300\n"
+"PO-Revision-Date: 2015-10-05 04:08-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -17,23 +17,23 @@ msgstr ""
 "X-Poedit-SearchPath-0: app\n"
 "X-Poedit-SearchPath-1: resources\n"
 
-#: app/Http/Controllers/EventController.php:14
+#: app/Providers/AppServiceProvider.php:49
 msgid "Congresses"
 msgstr "Congressos"
 
-#: app/Http/Controllers/EventController.php:15
+#: app/Providers/AppServiceProvider.php:50
 msgid "Meetings"
 msgstr "Encontros"
 
-#: app/Http/Controllers/EventController.php:16
+#: app/Providers/AppServiceProvider.php:51
 msgid "Talks & discussions"
 msgstr "Palestras & debates"
 
-#: app/Http/Controllers/EventController.php:17
+#: app/Providers/AppServiceProvider.php:52
 msgid "University meetings"
 msgstr "Encontros universitários"
 
-#: app/Http/Controllers/EventController.php:18
+#: app/Providers/AppServiceProvider.php:53
 msgid "Cultural"
 msgstr "Culturais"
 
@@ -205,54 +205,78 @@ msgstr ""
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
-#: resources/views/event/search.blade.php:72
-msgid "Search terms"
-msgstr "Termos da busca"
+#: resources/views/event/theme.blade.php:9
+#, php-format
+msgid "Events about %s"
+msgstr "Eventos sobre %s"
 
-#: resources/views/event/search.blade.php:72
-msgid "Event type"
+#: resources/views/event/theme.blade.php:35
+#: resources/views/event/search.blade.php:5
+msgid "Event types"
 msgstr "Tipos de evento"
 
-#: resources/views/event/search.blade.php:72
+#: resources/views/event/theme.blade.php:51
+#: resources/views/event/search.blade.php:5
 msgid "Free"
 msgstr "Grátis"
 
-#: resources/views/event/search.blade.php:72
+#: resources/views/event/theme.blade.php:52
+#: resources/views/event/search.blade.php:5
 msgid "Both"
 msgstr "Ambos"
 
-#: resources/views/event/search.blade.php:72
+#: resources/views/event/theme.blade.php:53
+#: resources/views/event/search.blade.php:5
 msgid "Paid"
 msgstr "Pago"
 
-#: resources/views/event/search.blade.php:72
-msgid "Theme"
-msgstr "Tema"
+#: resources/views/event/theme.blade.php:60
+msgid "Related themes"
+msgstr "Temas relacionados"
 
-#: resources/views/event/search.blade.php:72
+#: resources/views/event/theme.blade.php:86
 #: resources/views/event/search.blade.php:145
-msgid "Date"
-msgstr "Data"
-
-#: resources/views/event/search.blade.php:72
-msgid "Begin"
-msgstr "Início"
-
-#: resources/views/event/search.blade.php:72
-msgid "End"
-msgstr "Fim"
-
-#: resources/views/event/search.blade.php:144
 msgid "Relevance"
 msgstr "Relevância"
 
-#: resources/views/event/search.blade.php:155
+#: resources/views/event/theme.blade.php:87
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/search.blade.php:146
+msgid "Date"
+msgstr "Data"
+
+#: resources/views/event/theme.blade.php:96
+#: resources/views/event/search.blade.php:154
 msgid "d/m/Y"
 msgstr "m/d/Y"
 
-#: resources/views/event/search.blade.php:194
+#: resources/views/event/_event_block.blade.php:54
 msgid "See more details"
 msgstr "Veja mais detalhes"
+
+#: resources/views/event/search.blade.php:5
+msgid "Search terms"
+msgstr "Termos da busca"
+
+#: resources/views/event/search.blade.php:5
+msgid "Theme"
+msgstr "Tema"
+
+#: resources/views/event/search.blade.php:5
+msgid "Begin"
+msgstr "Início"
+
+#: resources/views/event/search.blade.php:5
+msgid "End"
+msgstr "Fim"
+
+#: resources/views/event/search.blade.php:6
+#, php-format
+msgid "\"%s\" events search"
+msgstr "\"%s\" - busca de eventos"
+
+#~ msgid "Event type"
+#~ msgstr "Tipos de evento"
 
 #~ msgid "Konato logo"
 #~ msgstr "Logo do Konato"

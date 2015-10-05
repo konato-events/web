@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
+use \Illuminate\View\Factory as View;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -17,10 +18,15 @@ class AppServiceProvider extends ServiceProvider {
     public function boot() {
         require_once APP_ROOT.'/resources/views/helpers.php';
         $this->bootGettext();
+
+        /** @var View $view */
         $view = view();
         $view->share('env', \App::environment());
         $view->share('prod', \App::environment('prod'));
+        $this->loadMocks($view);
+    }
 
+    private function loadMocks(View $view) {
         $events = [
             1 => ['/img/event-sample1.jpg', 'iMasters Developer Week RJ' , 'Rio de Janeiro, Brazil'],
             2 => ['/img/event-sample2.jpg', 'PHP\'n Rio 2011', 'Rio de Janeiro, Brazil'],
@@ -38,7 +44,24 @@ class AppServiceProvider extends ServiceProvider {
          morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis. Bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.';
         }
         shuffle($events);
+
+        $types = [
+            _('Congresses'),
+            _('Meetings'),
+            _('Talks & discussions'),
+            _('University meetings'),
+            _('Cultural'),
+        ];
+        $selected_types = array_rand($types, 2);
+
+        $themes = explode(' ', 'PHP Databases MySQL Webdesign APIs');
+        $selected_themes = array_rand($themes, 2);
+
         $view->share('events', $events);
+        $view->share('types', $types);
+        $view->share('selected_types', $selected_types);
+        $view->share('themes', $themes);
+        $view->share('selected_themes', $selected_themes);
     }
 
     /**

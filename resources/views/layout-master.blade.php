@@ -77,7 +77,7 @@
                     <a href="#" class="menu-toggle btn"><i class="fa fa-bars"></i></a>
                     <ul class="sf-menu nav">
                         <li{{-- class="active"--}}><a href="/"><i class="fa fa-table"></i> <?=_('Dashboard')?></a></li>
-                        <li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>
+                        <!--<li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>-->
                         <li><a href="#"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
 
                         <li><!-- TODO: REMOVE THIS ENTRY -->

@@ -104,7 +104,7 @@
     left: 50%;
     top: 50%;
     /*You can use animated gif for preloader */
-    /*background-image: url(../img/preloader.gif);*/
+    /*background-image: url(/assets/img/preloader.gif);*/
     /*background-repeat: no-repeat;*/
     /*background-position: center;*/
     margin: -100px 0 0 -100px;
@@ -251,7 +251,6 @@ body.boxed {
     padding-top: 100px;
     padding-bottom: 100px;
     background-attachment: fixed;
-    background-image: url('../img/preview/background-img-slider.jpg');
     background-size: cover !important;
     background-position: 50% 0 !important;
     background-repeat: no-repeat;
@@ -266,12 +265,12 @@ body.boxed {
     position: absolute;
     top: 0; left: 0; right: 0;
     width: 100%; height: 100%;
-    background: transparent url("../img/overlay.png") 50% 0 repeat;
+    background: transparent url("/assets/img/overlay.png") 50% 0 repeat;
 }
 .page-section.background-img-slider {position: relative;}
 .wide .page-section.background-img-slider,
 .boxed .page-section.background-img-slider > .container {
-    background: transparent url("../img/preview/background-img-slider.jpg") 50% 0 repeat !important;
+    background: transparent url("/assets/img/preview/background-img-slider.jpg") 50% 0 repeat !important;
     background-position: 50% 0 !important;
     background-size: cover !important;
 }
@@ -332,6 +331,11 @@ body.boxed {
     padding-bottom: 35px;
 }
 
+.wide .page-section.breadcrumbs.small,
+.boxed .page-section.breadcrumbs.small > .container {
+    padding: 30px 0 !important;
+}
+
 .wide .page-section.overlay:before,
 .boxed .page-section.overlay > .container:before {
     content: '';
@@ -339,7 +343,7 @@ body.boxed {
     position: absolute;
     top: 0; left: 0;
     bottom: 0; right: 0;
-    background-color: rgba(0, 0, 0, 0.30);
+    background-color: fade(black, 50%);
 }
 
 .block-title {}
@@ -835,7 +839,7 @@ textarea {
 .selectpicker-wrapper .bootstrap-select.btn-group .btn .caret {
     border: none;
 }
-.selectpicker-wrapper .bootstrap-select.btn-group .btn .caret:before {
+.selectpicker-wrapper .bootstrap-select.btn-group .btn .caret:before { //noinspection CssNoGenericFontName
     font-family: 'FontAwesome';
     content: '\f0dc';
     position: absolute;
@@ -1261,10 +1265,10 @@ nav .btn:hover {
     border-top-color: white;
 }
 
-.multipage .sf-arrows .sf-with-ul:after {
+.multipage .sf-arrows .sf-with-ul:after { //noinspection CssNoGenericFontName
+    font-family: 'FontAwesome';
     content: '\f107';
     top: 35%;
-    font-family: fontawesome;
     border: none;
 }
 
@@ -2024,6 +2028,10 @@ nav .btn:hover {
 /* 3.5 - Breadcrumbs
 /* ========================================================================== */
 
+.breadcrumbs h1 {
+    margin-top: 0;
+}
+
 .breadcrumbs .breadcrumb {
     position: relative;
 }
@@ -2036,9 +2044,9 @@ nav .btn:hover {
 .breadcrumbs .breadcrumb li {color: #eeeeee;}
 .breadcrumbs .breadcrumb a {color: white; font-family: 'Roboto', sans-serif; font-size: 18px;}
 .breadcrumbs .breadcrumb a:hover {border-bottom: solid 1px white;}
-.breadcrumbs .breadcrumb > li + li:before {
+.breadcrumbs .breadcrumb > li + li:before { //noinspection CssNoGenericFontName
     font-family: 'FontAwesome';
-    content: '\f105  ';
+    content: '\f054 ';
 }
 
 .multipage .breadcrumbs {text-align: center;}
@@ -2047,21 +2055,17 @@ nav .btn:hover {
     line-height: 60px;
     font-weight: 100;
     color: white;
-    text-transform: uppercase;
+    font-variant: small-caps;
 }
 .multipage .breadcrumbs .breadcrumb {
     font-size: 16px;
 }
 .multipage .breadcrumbs .breadcrumb > li + li:before {
     display: inline-block;
-    border: solid 1px white;
-    border-radius: 2px;
     font-size: 14px;
     line-height: 13px;
     width: 16px;
     height: 16px;
-    text-align: center;
-    vertical-align: text-top;
     margin-left: 7px;
     margin-right: 10px;
 }
@@ -2135,8 +2139,8 @@ nav .btn:hover {
     position: relative;
 }
 
-.schedule-wrapper .schedule-tabs.lv1 .nav > li > a .line2:before {
-    font-family: fontawesome;
+.schedule-wrapper .schedule-tabs.lv1 .nav > li > a .line2:before { //noinspection CssNoGenericFontName
+    font-family: 'FontAwesome';
     content: '\f133';
     font-size: 36px;
     display: block;
@@ -2907,7 +2911,7 @@ footer.post-meta .post-categories {display: block;}
     content: '';
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
-    /*background: url('../img/overlay-media.png') repeat 50% 50%;*/
+    /*background: url('/assets/img/overlay-media.png') repeat 50% 50%;*/
 }
 .thumbnail .media img {
     max-width: 100%;
@@ -3398,7 +3402,7 @@ footer.post-meta .post-categories {display: block;}
     font-size: 14px;
     text-align: left;
 }
-.rating span.star {
+.rating span.star { //noinspection CssNoGenericFontName
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
@@ -3530,41 +3534,53 @@ footer.post-meta .post-categories {display: block;}
     }
 }
 
-.testimonials-alt {}
-.testimonials-alt .testimonial {text-align: center;}
-.testimonials-alt .testimonial-avatar {margin-bottom: 30px;}
-.testimonials-alt .testimonial-avatar img {display: inline-block;}
-.testimonials-alt .media-body {
-    padding: 0 60px;
-    position: relative;
-}
-.testimonials-alt .media-body:before {
-    content: '\f10d';
-    font-family: 'FontAwesome';
-    position: absolute;
-    color: #959fa9;
-    left: 2px;
-    top: 5px
-}
-.testimonials-alt .media-body:after {
-    content: '\f10e';
-    font-family: 'FontAwesome';
-    position: absolute;
-    color: #959fa9;
-    right: 2px;
-    top: 5px;
-}
-.testimonials-alt .media-body p {
-    font-size: 24px;
-    line-height: 36px;
-}
-.testimonials-alt .media-subheading {
-    font-size: 14px;
-}
+.testimonials-alt {
+    .testimonial {
+        text-align: center;
+    }
+    .testimonial-avatar {
+        margin-bottom: 30px;
+        img {
+            display: inline-block;
+        }
+    }
+    .media-body {
+        padding: 0 60px;
+        position: relative;
+        &.before, &.after { //noinspection CssNoGenericFontName
+            font-family: 'FontAwesome';
+            color: #959fa9;
+            position: absolute;
+            top: 5px;
+        }
+        &:before {
+            content: '\f10d';
+            left: 2px;
+        }
+        &:after {
+            content: '\f10e';
+            right: 2px;
+        }
+    }
+    .media-body p {
+        font-size: 24px;
+        line-height: 36px;
+    }
+    .media-subheading {
+        font-size: 14px;
+    }
 
-.testimonials-alt.owl-theme .owl-dots .owl-dot span {background-color: #959fa9; border: solid 4px #959fa9;}
-.testimonials-alt.owl-theme .owl-dots .owl-dot.active span {background-color: white; border: solid 4px #959fa9;}
-
+    &.owl-theme .owl-dots .owl-dot {
+        span {
+            background-color: #959fa9;
+            border: solid 4px #959fa9;
+        }
+        &.active span {
+            background-color: white;
+            border: solid 4px #959fa9;
+        }
+    }
+}
 /* HEXAGONS */
 
 .hex {
@@ -3828,49 +3844,61 @@ footer.post-meta .post-categories {display: block;}
     margin-top: 10px;
 }
 
-.sidebar .widget .panel-group {border-radius: 4px; border: solid 1px #f1f2f3; background-color: white;}
+.sidebar .widget .panel-group {
+    border-radius: 4px;
+    border: solid 1px #f1f2f3;
+    background-color: white;
 
-.sidebar .widget .panel-group .panel-default > .panel-heading {
-    background-color: transparent;
-    color: #96a0aa;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    padding: 0;
+    .panel-default > .panel-heading {
+        color: #96a0aa;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        padding: 0;
+        &[role=tab] {
+            a {
+                display: block;
+                position: relative;
+                padding: 20px;
+            }
+        }
+        &:not([role=tab]) {
+            h4 {
+                padding: 20px;
+            }
+        }
+    }
+
+    .panel-title {
+        font-size: 14px;
+        font-weight: 700;
+        a {
+            &:before, &:after { //noinspection CssNoGenericFontName
+                font-family: 'FontAwesome';
+                position: absolute;
+                font-weight: 400;
+                color: #98a2ac;
+            }
+            &:before {
+                content: '\f068';
+                right: 20px;
+                top: 20px;
+            }
+            &:after {
+                content: '\f10c';
+                font-size: 24px;
+                right: 15px;
+                top: 13px;
+            }
+            &.collapsed:before {
+                content: '\f067';
+            }
+        }
+    }
+    .panel+.panel {margin-top: -1px;}
 }
-.sidebar .widget .panel-group .panel-title {
-    font-size: 14px;
-    font-weight: 700;
-}
-.sidebar .widget .panel-group .panel-title a {
-    display: block;
-    position: relative;
-    padding: 20px;
-}
-.sidebar .widget .panel-group .panel-title a:before {
-    content: '\f068';
-    font-family: 'FontAwesome';
-    position: absolute;
-    right: 20px;
-    font-weight: 400;
-    top: 20px;
-    color: #98a2ac;
-}
-.sidebar .widget .panel-group .panel-title a:after {
-    content: '\f10c';
-    font-family: 'FontAwesome';
-    font-size: 24px;
-    font-weight: 400;
-    position: absolute;
-    right: 15px;
-    top: 13px;
-    color: #98a2ac;
-}
-.sidebar .widget .panel-group .panel-title a.collapsed:before {
-    content: '\f067';
-}
-.sidebar .widget .panel-group .panel+.panel {margin-top: -1px;}
+
 .sidebar .widget .panel.panel-default {border-radius: 4px 4px 0 0;}
 .sidebar .widget .panel + .panel.panel-default {border-radius: 0 0 0 0;}
 .sidebar .widget .panel:last-child.panel-default {border-radius: 0 0 4px 4px;}
@@ -3945,9 +3973,9 @@ footer.post-meta .post-categories {display: block;}
 .widget-categories ul li a:hover {
     color: @darkPrimaryColor;
 }
-.widget-categories ul li a:before {
-    content: '\f138';
+.widget-categories ul li a:before { //noinspection CssNoGenericFontName
     font-family: 'FontAwesome';
+    content: '\f138';
     position: absolute;
     left: 0;
     top: 0;
@@ -3972,9 +4000,9 @@ footer.post-meta .post-categories {display: block;}
     color: @darkPrimaryColor;
 }
 
-.widget-twitter ul li:before {
-    content: '\f099';
+.widget-twitter ul li:before { //noinspection CssNoGenericFontName
     font-family: 'FontAwesome';
+    content: '\f099';
     color: #96a0aa;
 }
 
@@ -4004,10 +4032,10 @@ footer.post-meta .post-categories {display: block;}
     right: 0;
     background-color: transparent;
 }
-.widget-flickr-feed ul a:after {
+.widget-flickr-feed ul a:after { //noinspection CssNoGenericFontName
+    font-family: 'FontAwesome';
     content: '\f002';
     font-size: 14px;
-    font-family: 'FontAwesome';
     position: absolute;
     width: 14px;
     height: 14px;
@@ -4429,20 +4457,19 @@ div.pp_overlay {
     margin-left: -10px;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #DC143C;
-    -webkit-transition: all 0.1s ease-in-out;
+    border-bottom: 10px solid @darkPrimaryColor;
     transition: all 0.1s ease-in-out;
 }
 .google-map-widget .link:hover:before {
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-    border-bottom: 10px solid #0d1d31;
+    border-bottom: 10px solid @darkestSecondaryColor;
 }
 .google-map-widget .link:hover {
-    background-color: #0d1d31;
+    background-color: @darkestSecondaryColor;
 }
 .google-map-widget .link .fa {
-    font-size: 28px;
+    font-size: 24px;
     vertical-align: middle;
     margin-right: 10px;
 }
@@ -4494,9 +4521,7 @@ div.pp_overlay {
 .parallax-overlay {
     position: absolute; top: 0; left: 0; right: 0;
     width: 100%; height: 100%;
-    background-position: 50% 0;
-    background-repeat: repeat;
-    background-image: url("../img/overlay.png");
+    background: url("/assets/img/overlay.png") repeat 50% 0;
     z-index: 3;
 }
 .parallax-inner {

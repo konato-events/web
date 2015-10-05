@@ -92,7 +92,7 @@
   left: 50%;
   top: 50%;
   /*You can use animated gif for preloader */
-  /*background-image: url(../img/preloader.gif);*/
+  /*background-image: url(/assets/img/preloader.gif);*/
   /*background-repeat: no-repeat;*/
   /*background-position: center;*/
   margin: -100px 0 0 -100px;
@@ -256,7 +256,6 @@ body.boxed {
   padding-top: 100px;
   padding-bottom: 100px;
   background-attachment: fixed;
-  background-image: url('../img/preview/background-img-slider.jpg');
   background-size: cover !important;
   background-position: 50% 0 !important;
   background-repeat: no-repeat;
@@ -274,14 +273,14 @@ body.boxed {
   right: 0;
   width: 100%;
   height: 100%;
-  background: transparent url("../img/overlay.png") 50% 0 repeat;
+  background: transparent url("/assets/img/overlay.png") 50% 0 repeat;
 }
 .page-section.background-img-slider {
   position: relative;
 }
 .wide .page-section.background-img-slider,
 .boxed .page-section.background-img-slider > .container {
-  background: transparent url("../img/preview/background-img-slider.jpg") 50% 0 repeat !important;
+  background: transparent url("/assets/img/preview/background-img-slider.jpg") 50% 0 repeat !important;
   background-position: 50% 0 !important;
   background-size: cover !important;
 }
@@ -360,6 +359,10 @@ body.boxed {
   padding-top: 190px;
   padding-bottom: 35px;
 }
+.wide .page-section.breadcrumbs.small,
+.boxed .page-section.breadcrumbs.small > .container {
+  padding: 30px 0 !important;
+}
 .wide .page-section.overlay:before,
 .boxed .page-section.overlay > .container:before {
   content: '';
@@ -369,7 +372,7 @@ body.boxed {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .block-readmore {
   margin-top: 40px;
@@ -1419,9 +1422,9 @@ nav .btn:hover {
   border-top-color: white;
 }
 .multipage .sf-arrows .sf-with-ul:after {
+  font-family: 'FontAwesome';
   content: '\f107';
   top: 35%;
-  font-family: fontawesome;
   border: none;
 }
 .sf-arrows > li > .sf-with-ul:focus:after,
@@ -2253,6 +2256,9 @@ nav .btn:hover {
 }
 /* 3.5 - Breadcrumbs
 /* ========================================================================== */
+.breadcrumbs h1 {
+  margin-top: 0;
+}
 .breadcrumbs .breadcrumb {
   position: relative;
 }
@@ -2276,7 +2282,7 @@ nav .btn:hover {
 }
 .breadcrumbs .breadcrumb > li + li:before {
   font-family: 'FontAwesome';
-  content: '\f105  ';
+  content: '\f054 ';
 }
 .multipage .breadcrumbs {
   text-align: center;
@@ -2286,21 +2292,17 @@ nav .btn:hover {
   line-height: 60px;
   font-weight: 100;
   color: white;
-  text-transform: uppercase;
+  font-variant: small-caps;
 }
 .multipage .breadcrumbs .breadcrumb {
   font-size: 16px;
 }
 .multipage .breadcrumbs .breadcrumb > li + li:before {
   display: inline-block;
-  border: solid 1px white;
-  border-radius: 2px;
   font-size: 14px;
   line-height: 13px;
   width: 16px;
   height: 16px;
-  text-align: center;
-  vertical-align: text-top;
   margin-left: 7px;
   margin-right: 10px;
 }
@@ -2381,7 +2383,7 @@ nav .btn:hover {
   position: relative;
 }
 .schedule-wrapper .schedule-tabs.lv1 .nav > li > a .line2:before {
-  font-family: fontawesome;
+  font-family: 'FontAwesome';
   content: '\f133';
   font-size: 36px;
   display: block;
@@ -3262,7 +3264,7 @@ footer.post-meta .post-categories {
   right: 0;
   bottom: 0;
   left: 0;
-  /*background: url('../img/overlay-media.png') repeat 50% 50%;*/
+  /*background: url('/assets/img/overlay-media.png') repeat 50% 50%;*/
 }
 .thumbnail .media img {
   max-width: 100%;
@@ -3889,21 +3891,20 @@ footer.post-meta .post-categories {
   padding: 0 60px;
   position: relative;
 }
+.testimonials-alt .media-body.before,
+.testimonials-alt .media-body.after {
+  font-family: 'FontAwesome';
+  color: #959fa9;
+  position: absolute;
+  top: 5px;
+}
 .testimonials-alt .media-body:before {
   content: '\f10d';
-  font-family: 'FontAwesome';
-  position: absolute;
-  color: #959fa9;
   left: 2px;
-  top: 5px;
 }
 .testimonials-alt .media-body:after {
   content: '\f10e';
-  font-family: 'FontAwesome';
-  position: absolute;
-  color: #959fa9;
   right: 2px;
-  top: 5px;
 }
 .testimonials-alt .media-body p {
   font-size: 24px;
@@ -4212,7 +4213,6 @@ footer.post-meta .post-categories {
   background-color: white;
 }
 .sidebar .widget .panel-group .panel-default > .panel-heading {
-  background-color: transparent;
   color: #96a0aa;
   font-weight: bold;
   text-transform: uppercase;
@@ -4220,33 +4220,35 @@ footer.post-meta .post-categories {
   font-size: 14px;
   padding: 0;
 }
-.sidebar .widget .panel-group .panel-title {
-  font-size: 14px;
-  font-weight: 700;
-}
-.sidebar .widget .panel-group .panel-title a {
+.sidebar .widget .panel-group .panel-default > .panel-heading[role=tab] a {
   display: block;
   position: relative;
   padding: 20px;
 }
-.sidebar .widget .panel-group .panel-title a:before {
-  content: '\f068';
+.sidebar .widget .panel-group .panel-default > .panel-heading:not([role=tab]) h4 {
+  padding: 20px;
+}
+.sidebar .widget .panel-group .panel-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+.sidebar .widget .panel-group .panel-title a:before,
+.sidebar .widget .panel-group .panel-title a:after {
   font-family: 'FontAwesome';
   position: absolute;
-  right: 20px;
   font-weight: 400;
-  top: 20px;
   color: #98a2ac;
+}
+.sidebar .widget .panel-group .panel-title a:before {
+  content: '\f068';
+  right: 20px;
+  top: 20px;
 }
 .sidebar .widget .panel-group .panel-title a:after {
   content: '\f10c';
-  font-family: 'FontAwesome';
   font-size: 24px;
-  font-weight: 400;
-  position: absolute;
   right: 15px;
   top: 13px;
-  color: #98a2ac;
 }
 .sidebar .widget .panel-group .panel-title a.collapsed:before {
   content: '\f067';
@@ -4338,8 +4340,8 @@ footer.post-meta .post-categories {
   color: #e06c08;
 }
 .widget-categories ul li a:before {
-  content: '\f138';
   font-family: 'FontAwesome';
+  content: '\f138';
   position: absolute;
   left: 0;
   top: 0;
@@ -4361,8 +4363,8 @@ footer.post-meta .post-categories {
   color: #e06c08;
 }
 .widget-twitter ul li:before {
-  content: '\f099';
   font-family: 'FontAwesome';
+  content: '\f099';
   color: #96a0aa;
 }
 /* flickr feed
@@ -4392,9 +4394,9 @@ footer.post-meta .post-categories {
   background-color: transparent;
 }
 .widget-flickr-feed ul a:after {
+  font-family: 'FontAwesome';
   content: '\f002';
   font-size: 14px;
-  font-family: 'FontAwesome';
   position: absolute;
   width: 14px;
   height: 14px;
@@ -4884,18 +4886,18 @@ div.pp_overlay {
   margin-left: -10px;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #DC143C;
+  border-bottom: 10px solid #e06c08;
   transition: all 0.1s ease-in-out;
 }
 .google-map-widget .link:hover:before {
   transition: all 0.1s ease-in-out;
-  border-bottom: 10px solid #0d1d31;
+  border-bottom: 10px solid #0b2975;
 }
 .google-map-widget .link:hover {
-  background-color: #0d1d31;
+  background-color: #0b2975;
 }
 .google-map-widget .link .fa {
-  font-size: 28px;
+  font-size: 24px;
   vertical-align: middle;
   margin-right: 10px;
 }
@@ -4961,9 +4963,7 @@ div.pp_overlay {
   right: 0;
   width: 100%;
   height: 100%;
-  background-position: 50% 0;
-  background-repeat: repeat;
-  background-image: url("../img/overlay.png");
+  background: url("/assets/img/overlay.png") repeat 50% 0;
   z-index: 3;
 }
 .parallax-inner {
@@ -6453,5 +6453,41 @@ header .sf-menu a:hover {
   color: white;
 }
 
+.panel-body .checkbox:first-child {
+  margin-top: 0;
+}
+.panel-body ul:last-child {
+  margin-bottom: 0;
+}
+ul.piped li {
+  display: inline;
+}
+ul.piped li:not(:last-child):after {
+  content: '|';
+}
+
+#paid_select .text-left {
+  padding-right: 0;
+}
+#paid_select .text-center {
+  padding: 0;
+}
+#paid_select .text-right {
+  padding-left: 0;
+}
+#list-view .thumbnails.events .caption-title {
+  margin-bottom: 5px;
+}
+#list-view .thumbnails.events .caption-title a {
+  text-decoration: underline;
+}
+#list-view .thumbnails.events .caption-category {
+  line-height: 22px;
+}
+#list-view .thumbnails.events .caption-category,
+#list-view .thumbnails.events .caption-text,
+#list-view .thumbnails.events ul.piped {
+  margin-bottom: 10px;
+}
 
 /*# sourceMappingURL=styles.css.map */

@@ -4,32 +4,24 @@ namespace App\Http\Controllers;
 class EventController extends Controller {
 
 	public function getSearch() {
-		if (!isset($_GET['q']) || empty($_GET['q'])) {
+		$query = self::getParam('q');
+		if (!$query) {
 			return redirect()->action('SiteController@getIndex');
-		} else {
-			$query = $_GET['q'];
 		}
+		$paid  = self::getParam('paid', 0);
 
-		$paid = self::getParam('paid', 0);
-
-		$types = [
-			_('Congresses'),
-			_('Meetings'),
-			_('Talks & discussions'),
-			_('University meetings'),
-			_('Cultural'),
-		];
-		$selected_types = array_rand($types, 2);
-
-		$themes = explode(' ', 'php databases mysql webdesign api');
-		$selected_themes = array_rand($themes, 2);
-
-		return view('event.search', compact('query', 'paid', 'types', 'selected_types', 'themes', 'selected_themes'));
+		return view('event.search', compact('query', 'paid'));
 	}
 
-	public function getDetails($id_slug) {
+	public function getDetails(string $id_slug) {
 		$id = strtok($id_slug, '-');
 		die('Details about event ID '.$id);
+	}
+
+	public function getTheme(string $id_slug) {
+		list($id, $theme) = explode('-', $id_slug);
+		$paid  = self::getParam('paid', 0);
+		return view('event.theme', compact('id', 'theme', 'paid'));
 	}
 
 }

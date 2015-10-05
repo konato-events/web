@@ -481,7 +481,7 @@ var theme = function () {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(-22.948611,-43.157222),
                     map: map,
-                    icon: 'assets/img/icon-google-map.png',
+                    icon: '/assets/img/icon-google-map.png',
                     title: 'We are here!'
                 });
             }
@@ -503,7 +503,7 @@ $(document).ready(function () {
             var marker, marker2, marker3, marker4, marker5, marker6, marker7, marker8;
             var infowindow;
        
-            var image = 'assets/img/icon-google-map.png'; // marker icon
+            var image = '/assets/img/icon-google-map.png'; // marker icon
             google.maps.event.addDomListener(window, 'load', function () {
                 var mapOptions = {
                     scrollwheel: false,

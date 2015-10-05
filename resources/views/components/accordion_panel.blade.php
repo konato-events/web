@@ -1,21 +1,22 @@
 <?php
-    global $accordion_index;
-    $accordion_index = ($accordion_index === null)? 0 : $accordion_index+1;
-    $open = isset($open)? $open : false;
-    /** @var array $checklist */
-    /** @var array $field_attr */
+global $accordion_index;
+$accordion_index = ($accordion_index === null)? 0 : $accordion_index+1;
+$open = isset($open)? $open : false;
+/** @var array $checklist */
+/** @var array $field_attr */
 ?>
 
 <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="accordionHeading{{$accordion_index}}">
         <h4 class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$accordion_index}}"
-               aria-expanded="false" aria-controls="collapse{{$accordion_index}}">
+            <a href="#collapse{{$accordion_index}}"
+               <?=$open? '' : 'class="collapsed"'?> data-toggle="collapse" data-parent="#accordion"
+               aria-expanded="<?=$open? 'true' : 'false'?>" aria-controls="collapse{{$accordion_index}}">
                 {{$title}}
             </a>
         </h4>
     </div>
-    <div id="collapse{{$accordion_index}}" class="panel-collapse collapse<?php if (!$open) {?> in<?php } ?>>"
+    <div id="collapse{{$accordion_index}}" class="panel-collapse collapse <?=$open? 'in' : ''?>"
          role="tabpanel" aria-labelledby="accordionHeading{{$accordion_index}}">
         <div class="panel-body container-fluid">
             @if (isset($checklist))
