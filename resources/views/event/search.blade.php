@@ -1,17 +1,16 @@
 @extends('layout-master')
-@section('title' , "Events search: \"$query\"")
+@section('title' , "\"$query\" events search")
 
 @section('js')
     {{--<script src="assets/plugins/owlcarousel2/owl.carousel.min.js"></script>--}}
-    <script src="assets/plugins/waypoints/waypoints.min.js"></script>
-    <script src="assets/plugins/countdown/jquery.plugin.min.js"></script>
-    <script src="assets/plugins/countdown/jquery.countdown.min.js"></script>
-    <script src="assets/plugins/isotope/jquery.isotope.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script src="/assets/plugins/waypoints/waypoints.min.js"></script>
+    <script src="/assets/plugins/countdown/jquery.plugin.min.js"></script>
+    <script src="/assets/plugins/countdown/jquery.countdown.min.js"></script>
+    <script src="/assets/plugins/isotope/jquery.isotope.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
-    <script src="assets/js/theme-ajax-mail.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/custom.js"></script>
 
     <script type="text/javascript">
         "use strict";
@@ -64,9 +63,28 @@
     </script>
 @endsection
 
+@section('css')
+    <style type="text/css">
+        #paid_select .text-left   { padding-right: 0; }
+        #paid_select .text-center { padding: 0; }
+        #paid_select .text-right  { padding-left: 0; }
+        #list-view .thumbnails.events .caption-title {
+            margin-bottom: 5px;
+        }
+        #list-view .thumbnails.events .caption-category {
+            line-height: 22px;
+            margin-bottom: 10px;
+        }
+    </style>
+@endsection
+
 @section('content')
     {{-- TIP: here was a big page title with breadcrumbs --}}
 
+    <?php
+        //FIXME: forcing gettext to find those strings, that are used inside blade code
+        _('Search terms'); _('Event type'); _('Free'); _('Both'); _('Paid'); _('Theme'); _('Date'); _('Begin'); _('End');
+    ?>
     <section class="page-section with-sidebar sidebar-right first-section">
         <div class="container">
 
@@ -77,69 +95,50 @@
                         <div id="map-canvas1"></div>
                         <!-- TODO: get user location through the IP to customize location search. we might ask for JS location to improve further queries -->
                     </div>
-                    <a href="#" class="link"><i class="fa fa-map-marker"></i> ISTANBUL, TURKEY</a>
+                    <a href="#" class="link"><i class="fa fa-compass"></i> Rio de Janeiro, Brazil</a>
                 </div>
 
                 <div class="widget">
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <?php //TODO add to free/paid text a behaviour to change the range when clicked (as labels for checkboxes)?>
+                        @include('components.accordion_panel', [
+                            'title' => _('Search terms'),
+                            'open'  => true,
+                            'field'      => $query,
+                            'field_attr' => [
+                                'name'  => 'q',
+                                'type'  => 'search',
+                                'class' => 'form-control'
+                            ]])
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Category
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                    <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingTwo">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Event Type
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="panel-body">
-                                    <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingThree">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Date
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                <div class="panel-body">
-                                    <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingFour">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        Price
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                <div class="panel-body">
-                                    <p>Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.Proin gravida nibh vel velit auctor aliquet.</p>
-                                </div>
-                            </div>
-                        </div>
+                        @include('components.accordion_panel', [
+                            'title'     => _('Event type'),
+                            'open'      => true,
+                            'checklist' => [$types, $selected_types],
+                            'name'      => 'type',
+                            'field'       => $paid,
+                            'field_attr'  => [
+                                'type' => 'range',
+                                'min'  => -1,
+                                'max'  => 1
+                            ],
+                            'content' => '
+                                <div class="row" id="paid_select">
+                                    <div class="col-xs-4 text-left">  '._('Free').'</div>
+                                    <div class="col-xs-4 text-center">'._('Both').'</div>
+                                    <div class="col-xs-4 text-right"> '._('Paid').'</div>
+                                </div>'])
 
+                        @include('components.accordion_panel', ['title' => _('Theme'),
+                            'name'      => 'theme',
+                            'checklist' => [$themes, $selected_themes],
+                            'checklist_buttons' => true])
+
+                        @include('components.accordion_panel', ['title' => _('Date'),
+                            'content' => '
+                                <label>'._('Begin').': <input type="date" class="form-control" name="begin"></label>
+                                <label>'._('End').':   <input type="date" class="form-control" name="end">  </label>
+                            '])
                     </div>
                 </div>
 
@@ -152,9 +151,11 @@
                 <div class="listing-meta">
 
                     <div class="filters">
-                        <a href="#">Business <i class="fa fa-times"></i></a>
-                        <a href="#">Networking <i class="fa fa-times"></i></a>
-                        <a href="#">Free <i class="fa fa-times"></i></a>
+                        @foreach ($themes as $id => $theme)
+                            @if (in_array($id, $selected_themes))
+                                <a href="#">{{$theme}} <i class="fa fa-times"></i></a>
+                            @endif
+                        @endforeach
                     </div>
 
                     <div class="options">
@@ -196,17 +197,17 @@
                                                     {{--<i class="fa fa-stack-1x fa-share-alt"></i>--}}
                                                 {{--</span>--}}
                                             {{--</a>--}}
-                                            <h3 class="caption-title">
-                                                <a href="<?=$link?>"><?=$title?></a>
-                                            </h3>
+                                            <h3 class="caption-title"><a href="<?=$link?>"><?=$title?></a></h3>
+
                                             <p class="caption-category">
-                                                <i class="fa fa-file-text-o"></i>
-                                                <?=date($date_fmt, $begin)?>
-                                                <?php if ($end) echo ' ~ '.date($date_fmt, $end) ?>
-                                                - <?=$place?>
+                                                <i class="fa fa-calendar"></i>
+                                                <?=date($date_fmt, $begin)?> <?=($end)? ' ~ '.date($date_fmt, $end) : '' ?>
+                                                <br/>
+                                                <i class="fa fa-map-marker"></i> <?=$place?>
                                             </p>
+
                                             {{--<p class="caption-price">Tickets from $49,99</p>--}}
-                                            <p class="caption-text"><?=$desc?>></p>
+                                            <p class="caption-text"><?=partial_text($desc, 35)?></p>
                                             <p class="caption-more">
                                                 <a href="#" class="btn btn-theme"><?=_('See more details')?></a>
                                             </p>

@@ -15,11 +15,11 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
+        require_once APP_ROOT.'/resources/views/helpers.php';
         $this->bootGettext();
         $view = view();
         $view->share('env', \App::environment());
         $view->share('prod', \App::environment('prod'));
-
 
         $events = [
             1 => ['/img/event-sample1.jpg', 'iMasters Developer Week RJ' , 'Rio de Janeiro, Brazil'],

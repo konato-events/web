@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-09-24 23:51-0300\n"
-"PO-Revision-Date: 2015-09-24 23:55-0300\n"
+"POT-Creation-Date: 2015-10-04 19:25-0300\n"
+"PO-Revision-Date: 2015-10-04 19:26-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -17,22 +17,39 @@ msgstr ""
 "X-Poedit-SearchPath-0: app\n"
 "X-Poedit-SearchPath-1: resources\n"
 
+#: app/Http/Controllers/EventController.php:14
+msgid "Congresses"
+msgstr "Congressos"
+
+#: app/Http/Controllers/EventController.php:15
+msgid "Meetings"
+msgstr "Encontros"
+
+#: app/Http/Controllers/EventController.php:16
+msgid "Talks & discussions"
+msgstr "Palestras & debates"
+
+#: app/Http/Controllers/EventController.php:17
+msgid "University meetings"
+msgstr "Encontros universitários"
+
+#: app/Http/Controllers/EventController.php:18
+msgid "Cultural"
+msgstr "Culturais"
+
 #: resources/views/layout-master.blade.php:17
 msgid "Event Discovery"
 msgstr "Descubra eventos"
 
 #: resources/views/layout-master.blade.php:79
-#: resources/views/layout-original.blade.php:59
 msgid "Dashboard"
 msgstr "Dashboard"
 
 #: resources/views/layout-master.blade.php:80
-#: resources/views/layout-original.blade.php:60
 msgid "Places"
 msgstr "Locais"
 
 #: resources/views/layout-master.blade.php:81
-#: resources/views/layout-original.blade.php:61
 msgid "Speakers"
 msgstr "Palestrantes"
 
@@ -41,22 +58,39 @@ msgid "Sign up"
 msgstr "Cadastrar"
 
 #: resources/views/layout-master.blade.php:115
-#: resources/views/layout-original.blade.php:72
 msgid "Login"
 msgstr "Login"
 
-#: resources/views/layout-master.blade.php:135
+#: resources/views/layout-master.blade.php:162
+msgid "Discover amazing events on Konato"
+msgstr "Descubra eventos fantásticos no Konato"
+
+#: resources/views/layout-master.blade.php:164
+#, php-format
+msgid "%sHard work (and poutine!)%s made this real @ Rio de Janeiro"
+msgstr ""
+"%sBastante trampo (e poutine!)%s tornou isso realidade, na Cidade Maravilhosa"
+
+#: resources/views/layout-master.blade.php:166
+msgid "Mavelous City, place of the Sugar Loaf"
+msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
+
+#: resources/views/layout-master.blade.php:174
+msgid "Go to top"
+msgstr "Subir"
+
+#: resources/views/site/index.blade.php:58
 msgid "Expand your horizons"
 msgstr "Expanda seus horizontes"
 
-#: resources/views/layout-master.blade.php:136
+#: resources/views/site/index.blade.php:59
 msgid ""
 "Discover even more.<br>Share your knowledge.<br>Get to know great people!"
 msgstr ""
 "Descubra ainda mais.<br>Compartilhe o que sabe.<br>Conheça pessoas "
 "fantásticas!"
 
-#: resources/views/layout-master.blade.php:139
+#: resources/views/site/index.blade.php:62
 #, php-format
 msgid ""
 "Find %sconferences%s, %stalks%s, %smeetings%s, %sfairs%s, %sexhibitions%s, "
@@ -65,27 +99,27 @@ msgstr ""
 "Ache %sconferências%s, %spalestras%s, %sencontros%s, %sfeiras%s, %sexibições"
 "%s, e até mesmo %spalestrantes%s"
 
-#: resources/views/layout-master.blade.php:154
+#: resources/views/site/index.blade.php:77
 msgid "Find by theme or keyword"
 msgstr "Encontre por tema ou palavra-chave"
 
-#: resources/views/layout-master.blade.php:165
+#: resources/views/site/index.blade.php:88
 msgid "Popular events"
 msgstr "Eventos populares"
 
-#: resources/views/layout-master.blade.php:166
+#: resources/views/site/index.blade.php:89
 msgid "Latest events"
 msgstr "Eventos mais recentes"
 
-#: resources/views/layout-master.blade.php:194
+#: resources/views/site/index.blade.php:117
 msgid "Explore new meetings"
 msgstr "Explore novos encontros"
 
-#: resources/views/layout-master.blade.php:194
+#: resources/views/site/index.blade.php:117
 msgid "About: exploration"
 msgstr "Sobre: explorações"
 
-#: resources/views/layout-master.blade.php:195
+#: resources/views/site/index.blade.php:118
 msgid ""
 "Ever though <em>\"Hey, I never heard of that event! How could I miss such "
 "thing?\"</em> Enter <strong>Konato</strong>: it won't happen again!"
@@ -93,31 +127,15 @@ msgstr ""
 "<em>\"Ei, eu nunca ouvi falar nesse evento! Como eu pude perder?\"</em> Já "
 "passou por isso?<br><strong>Konato</strong>: não vai acontecer de novo!"
 
-#: resources/views/layout-master.blade.php:197
-msgid "Spread what you know"
-msgstr "Espalhe seus conhecimentos"
-
-#: resources/views/layout-master.blade.php:197
-msgid "About: knowledge"
-msgstr "Sobre: conhecimento"
-
-#: resources/views/layout-master.blade.php:198
-msgid ""
-"Reach new audiences and get close to your public - or <em>that</em> speaker "
-"from the last congress you've been."
-msgstr ""
-"Alcance novas audiências e se aproxime do seu público - ou talvez "
-"<em>daquele</em> palestrante, do congresso que você foi há pouco tempo."
-
-#: resources/views/layout-master.blade.php:200
+#: resources/views/site/index.blade.php:120
 msgid "Meet new people"
 msgstr "Encontre novas pessoas"
 
-#: resources/views/layout-master.blade.php:200
+#: resources/views/site/index.blade.php:120
 msgid "About: networking"
 msgstr "Sobre: networking"
 
-#: resources/views/layout-master.blade.php:201
+#: resources/views/site/index.blade.php:121
 msgid ""
 "Make new contacts, expand your network and meet like-minded students or "
 "professionals - not only those who live nearby."
@@ -125,15 +143,15 @@ msgstr ""
 "Faça novos contatos, expanda sua rede e encontre estudantes ou profissionais "
 "com gostos em comum - não só aqueles mais próximos."
 
-#: resources/views/layout-master.blade.php:203
+#: resources/views/site/index.blade.php:123
 msgid "Prepare for the event"
 msgstr "Prepare-se para o evento"
 
-#: resources/views/layout-master.blade.php:203
+#: resources/views/site/index.blade.php:123
 msgid "About: preparation"
 msgstr "Sobre: preparação"
 
-#: resources/views/layout-master.blade.php:204
+#: resources/views/site/index.blade.php:124
 msgid ""
 "See the schedule and organize yourself. On <b>Konato</b> you're sure not to "
 "miss the activities of your interest."
@@ -141,21 +159,37 @@ msgstr ""
 "Veja a programação e se organize. No <strong>Konato</strong> você com "
 "certeza não vai perder nenhuma das atividades que lhe interessam."
 
-#: resources/views/layout-master.blade.php:248
+#: resources/views/site/index.blade.php:126
+msgid "Spread what you know"
+msgstr "Espalhe seus conhecimentos"
+
+#: resources/views/site/index.blade.php:126
+msgid "About: knowledge"
+msgstr "Sobre: conhecimento"
+
+#: resources/views/site/index.blade.php:127
+msgid ""
+"Reach new audiences and get close to your public - or <em>that</em> speaker "
+"from the last congress you've been."
+msgstr ""
+"Alcance novas audiências e se aproxime do seu público - ou talvez "
+"<em>daquele</em> palestrante, do congresso que você foi há pouco tempo."
+
+#: resources/views/site/index.blade.php:171
 msgid "Great events"
 msgstr "Grandes eventos"
 
-#: resources/views/layout-master.blade.php:248
+#: resources/views/site/index.blade.php:171
 msgid "that we're proud to have been part of"
 msgstr "que temos orgulho de ter participado"
 
-#: resources/views/layout-master.blade.php:305
+#: resources/views/site/index.blade.php:216
 msgid "Join a growing platform of events of all types and sizes"
 msgstr ""
 "Venha para a plataforma de eventos de todos os tipos e tamanhos, que só "
 "cresce"
 
-#: resources/views/layout-master.blade.php:307
+#: resources/views/site/index.blade.php:218
 msgid ""
 "<b>Konato</b> is the best place to market your event.<br>Here we bring "
 "together all sorts of people, and they can find it by their interests - this "
@@ -167,39 +201,67 @@ msgstr ""
 "seus interesses - dessa forma, você recebe o público certo, e os usuários "
 "encontram exatamente as atividades que buscam."
 
-#: resources/views/layout-master.blade.php:309
+#: resources/views/site/index.blade.php:220
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
-#: resources/views/layout-master.blade.php:361
-msgid "Discover amazing events on Konato"
-msgstr "Descubra eventos fantásticos no Konato"
+#: resources/views/event/search.blade.php:72
+msgid "Search terms"
+msgstr "Termos da busca"
 
-#: resources/views/layout-master.blade.php:363
-#, php-format
-msgid "%sHard work (and poutine!)%s made this real @ Rio de Janeiro"
-msgstr ""
-"%sBastante trampo (e poutine!)%s tornou isso realidade, na Cidade Maravilhosa"
+#: resources/views/event/search.blade.php:72
+msgid "Event type"
+msgstr "Tipos de evento"
 
-#: resources/views/layout-master.blade.php:365
-msgid "Mavelous City, place of the Sugar Loaf"
-msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
+#: resources/views/event/search.blade.php:72
+msgid "Free"
+msgstr "Grátis"
 
-#: resources/views/layout-master.blade.php:373
-msgid "Go to top"
-msgstr "Subir"
+#: resources/views/event/search.blade.php:72
+msgid "Both"
+msgstr "Ambos"
 
-#: resources/views/layout-original.blade.php:56
-msgid "Konato logo"
-msgstr "Logo do Konato"
+#: resources/views/event/search.blade.php:72
+msgid "Paid"
+msgstr "Pago"
 
-#: resources/views/layout-original.blade.php:65
-msgid "Theme or keyword"
-msgstr "Tema ou palavra-chave"
+#: resources/views/event/search.blade.php:72
+msgid "Theme"
+msgstr "Tema"
 
-#: resources/views/layout-original.blade.php:71
-msgid "Signup"
-msgstr "Cadastre-se"
+#: resources/views/event/search.blade.php:72
+#: resources/views/event/search.blade.php:145
+msgid "Date"
+msgstr "Data"
+
+#: resources/views/event/search.blade.php:72
+msgid "Begin"
+msgstr "Início"
+
+#: resources/views/event/search.blade.php:72
+msgid "End"
+msgstr "Fim"
+
+#: resources/views/event/search.blade.php:144
+msgid "Relevance"
+msgstr "Relevância"
+
+#: resources/views/event/search.blade.php:155
+msgid "d/m/Y"
+msgstr "m/d/Y"
+
+#: resources/views/event/search.blade.php:194
+msgid "See more details"
+msgstr "Veja mais detalhes"
+
+#~ msgid "Konato logo"
+#~ msgstr "Logo do Konato"
+
+#~ msgid "Theme or keyword"
+#~ msgstr "Tema ou palavra-chave"
+
+#~ msgid "Signup"
+#~ msgstr "Cadastre-se"
 
 #~ msgid "Details"
 #~ msgstr "Detalhes"

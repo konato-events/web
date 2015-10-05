@@ -508,7 +508,7 @@ $(document).ready(function () {
                 var mapOptions = {
                     scrollwheel: false,
                     zoom: 10,
-                    center: new google.maps.LatLng(41.079379,28.9984466) // map coordinates
+                    center: new google.maps.LatLng(-22.948611,-43.157222) // map coordinates
                 };
 
                 map = new google.maps.Map(document.getElementById('map-canvas1'),
