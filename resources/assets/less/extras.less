@@ -1,0 +1,11 @@
+.panel-body {
+	.checkbox:first-child { margin-top: 0; }
+	ul:last-child { margin-bottom: 0; }
+}
+
+ul.piped li {
+	display: inline;
+	&:not(:last-child):after {
+		content: '|';
+	}
+}

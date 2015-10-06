@@ -31,7 +31,6 @@
 @lightSecondaryColor:   @lightBlue;
 @SecondaryColorBg:      @blueBg;
 
-@main-color: @primaryColor;
-@main-color-d10: darken(@main-color, 10%);
-@main-color-d15: darken(@main-color, 15%);
-@main-color-d20: darken(@main-color, 20%);
+@main-color-d10: darken(@primaryColor, 10%);
+@main-color-d15: darken(@primaryColor, 15%);
+@main-color-d20: darken(@primaryColor, 20%);
