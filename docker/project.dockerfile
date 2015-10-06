@@ -22,4 +22,8 @@ RUN ln -s /etc/nginx/sites-available/konato-dev.conf /etc/nginx/sites-enabled/
 RUN rm /etc/nginx/sites-enabled/default
 # no need to reload settings since nginx is not yet running
 
+# Configures all available locales
+RUN locale-gen pt_BR.UTF-8
+RUN locale-gen en_CA.UTF-8
+
 CMD /usr/bin/supervisord
