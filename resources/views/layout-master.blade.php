@@ -190,7 +190,7 @@
 <?php else: ?>
     <!--[if lt IE 9]><script src="/js/jquery-{{ JQUERY_COMPAT_VERSION }}.js"></script><![endif]-->
     <!--[if gte IE 9]><!--><script src="/js/jquery-{{ JQUERY_VERSION }}.js"></script><!--<![endif]-->
-<?php endif ?>>
+<?php endif ?>
 
 <script src="/assets/plugins/modernizr.custom.js"></script>
 <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
