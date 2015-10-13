@@ -6,6 +6,8 @@
     "type": "project",
     "require": {
         "php": "~7.0@beta",
+	"ext-gettext": "*",
+
         "laravel/framework": "5.1.*"
     },
     "require-dev": {
