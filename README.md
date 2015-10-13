@@ -11,12 +11,12 @@ How to handle this... thing.
     - bootstrap/cache
 0. Create an environment file for you: `cp .env.example .env`
 0. Insert cool keys into it, for cool crpytography operations: `./artisan key:generate`
-0. Install all dependencies (wait, you have Composer and NPM, right? You don't? [See below](#package-managers)):
+0. Install all dependencies (wait, you have Composer and NPM, right? (You don't? See the next section for instructions):
     - `composer install`
     - `npm install --global gulp` (not obligatory, but will help you with some commands)
     - `npm install`
 
-#### <a name="package-managers"></a>Package managers
+#### Package managers
 Seriously? You don't have those nice Composer/NPM guys there? Ok, keep reading:
 
 ##### Composer
@@ -49,8 +49,7 @@ You can find more information on how to configure and enjoy Semantic UI at `reso
 - You'll be mainly working with the `gulpfile.js` from the root dir. Elixir functions are baked there and Semantic UI tasks were placed there as well;
 - To compile once, run `gulp` from the root dir;
 - To compile for production usage, run `gulp --production`;
-- To keep compiling while you develop, use `gulp watch watch-ui`.
-- See [this question on SO][question] to see if the watcher can be improved.
+- To keep compiling while you develop, use `gulp watch`.
 
 
 Deploying to production
