@@ -5,9 +5,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "~7.0.0beta1",
-        "laravel/framework": "5.1.*",
-        "laravelbook/ardent": "2.*"
+        "php": "~7.0@beta",
+        "laravel/framework": "5.1.*"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*",

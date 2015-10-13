@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php //declare(strict_types=1); //TODO: strict types were disabled here because Laravel IDE Helper does not support it
 
 /**
  * Returns a piece of $text containing, at maximum, $max words.
@@ -7,7 +7,7 @@
  * @param string $ellipsis
  * @return string
  */
-function partial_text(string $text, int $max = 100, string $ellipsis = '[...]'):string {
+function partial_text($text, $max = 100, $ellipsis = '[...]') {
     if (str_word_count($text) <= $max) {
         return $text;
     } else {
