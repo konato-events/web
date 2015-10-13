@@ -7,6 +7,7 @@
     "require": {
         "php": "~7.0@beta",
 	"ext-gettext": "*",
+	"ext-mcrypt": "*",
 
         "laravel/framework": "5.1.*"
     },
