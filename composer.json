@@ -5,7 +5,10 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "~7.0.0beta1",
+        "php": "~7.0@beta",
+	"ext-gettext": "*",
+	"ext-mcrypt": "*",
+
         "laravel/framework": "5.1.*"
     },
     "require-dev": {
