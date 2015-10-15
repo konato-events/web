@@ -57,11 +57,18 @@ class AppServiceProvider extends ServiceProvider {
         $themes = explode(' ', 'PHP Databases MySQL Webdesign APIs');
         $selected_themes = array_rand($themes, 2);
 
+        $speakers = [
+            ['/img/speaker-sample1.jpg', 'Fabio Akita', rand(5, 15), rand(15, 50)],
+            ['/img/speaker-sample2.jpg', 'Raphael de Almeida', rand(5, 15), rand(15, 50)],
+            ['/img/speaker-sample3.jpg', 'Valéria Parajara', rand(5, 15), rand(15, 50)],
+        ];
+
         $view->share('events', $events);
         $view->share('types', $types);
         $view->share('selected_types', $selected_types);
         $view->share('themes', $themes);
         $view->share('selected_themes', $selected_themes);
+        $view->share('speakers', $speakers);
     }
 
     /**

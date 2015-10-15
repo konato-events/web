@@ -4271,6 +4271,10 @@ footer.post-meta .post-categories {
   line-height: 24px;
   font-family: 'Roboto', sans-serif;
 }
+.sidebar .widget .panel-body .note {
+  display: block;
+  line-height: inherit;
+}
 .faq-alt .panel-default > .panel-heading {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -5247,6 +5251,35 @@ ul.filter a {
 }
 .sidebar .row-related p small {
   text-transform: uppercase;
+}
+#sidebar-info .btn {
+  margin-bottom: 10px;
+}
+#sidebar-info .btn + .note {
+  line-height: 16px;
+  text-align: center;
+}
+ul.speakers li {
+  padding: 10px 0;
+  border-bottom: 1px solid #CCC;
+}
+ul.speakers li:last-child {
+  border-bottom: none;
+}
+ul.speakers li img {
+  max-width: 58px;
+  max-height: 58px;
+  float: left;
+  margin-right: 10px;
+}
+ul.speakers li a,
+ul.speakers li span {
+  display: block;
+  line-height: 18px;
+}
+ul.speakers li a {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 .page-section.create-new-event .section-title {
   margin-bottom: 20px;
@@ -6453,6 +6486,9 @@ header .sf-menu a:hover {
   color: white;
 }
 
+.btn.btn-wrap {
+  white-space: normal;
+}
 .panel-body .checkbox:first-child {
   margin-top: 0;
 }
