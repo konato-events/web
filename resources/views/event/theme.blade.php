@@ -99,7 +99,7 @@ $title = sprintf(_('Events about %s'), $theme);
                             <div class="panel-body">
                                 <div class="checkbox">
                                     <?php foreach($types as $id => $value):
-                                    $check = in_array($id, $selected_types); ?>
+                                        $check = in_array($id, $selected_types); ?>
                                     <label>
                                         <input type="checkbox" name="theme" value="{{$id}}" <?=$check? 'checked':''?>> {{$value}}
                                     </label>
@@ -188,7 +188,7 @@ $title = sprintf(_('Events about %s'), $theme);
                                     <i class="fa fa-mail-forward"></i>
                                     <?=_('Follow this theme')?>
                                 </button>
-                                    <a class="note" href="#"><?=_('See your following preferences')?></a>
+                                    <a class="note" href="#"><?=_('See my following preferences')?></a>
                             </div>
                         </div>
 

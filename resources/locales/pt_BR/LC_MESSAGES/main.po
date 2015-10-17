@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-10-17 01:55-0300\n"
-"PO-Revision-Date: 2015-10-17 01:55-0300\n"
+"POT-Creation-Date: 2015-10-17 02:29-0300\n"
+"PO-Revision-Date: 2015-10-17 02:29-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -50,7 +50,7 @@ msgid "Places"
 msgstr "Locais"
 
 #: resources/views/layout-master.blade.php:81
-#: resources/views/speaker/index.blade.php:79
+#: resources/views/speaker/index.blade.php:81
 msgid "Speakers"
 msgstr "Palestrantes"
 
@@ -255,57 +255,57 @@ msgstr "Pago"
 msgid "Related themes"
 msgstr "Temas relacionados"
 
-#: resources/views/event/theme.blade.php:148
+#: resources/views/event/theme.blade.php:144
 #: resources/views/event/search.blade.php:145
 msgid "Relevance"
 msgstr "Relevância"
 
-#: resources/views/event/theme.blade.php:149
+#: resources/views/event/theme.blade.php:145
 #: resources/views/event/search.blade.php:5
 #: resources/views/event/search.blade.php:146
 msgid "Date"
 msgstr "Data"
 
-#: resources/views/event/theme.blade.php:158
+#: resources/views/event/theme.blade.php:154
 #: resources/views/event/search.blade.php:154
 msgid "d/m/Y"
 msgstr "m/d/Y"
 
-#: resources/views/event/theme.blade.php:193
+#: resources/views/event/theme.blade.php:189
 msgid "Follow this theme"
 msgstr "Acompanhar este tema"
 
-#: resources/views/event/theme.blade.php:195
-msgid "See your following preferences"
-msgstr "Configurar o que acompanha"
+#: resources/views/event/theme.blade.php:191
+msgid "See my following preferences"
+msgstr "Configurar o que acompanho"
 
-#: resources/views/event/theme.blade.php:201
+#: resources/views/event/theme.blade.php:197
 msgid "Popularity"
 msgstr "Popularidade"
 
-#: resources/views/event/theme.blade.php:213
+#: resources/views/event/theme.blade.php:209
 msgid "Popular speakers"
 msgstr "Palestrantes populares"
 
-#: resources/views/event/theme.blade.php:219
+#: resources/views/event/theme.blade.php:215
 msgid "on Konato"
 msgstr "no Konato"
 
-#: resources/views/event/theme.blade.php:222
+#: resources/views/event/theme.blade.php:218
 #, php-format
 msgid "%d event on theme"
 msgid_plural "%d events on theme"
 msgstr[0] "%d evento no tema"
 msgstr[1] "%d eventos no tema"
 
-#: resources/views/event/theme.blade.php:223
+#: resources/views/event/theme.blade.php:219
 #, php-format
 msgid "%d event total"
 msgid_plural "%d events total"
 msgstr[0] "%d evento no total"
 msgstr[1] "%d eventos no total"
 
-#: resources/views/event/theme.blade.php:228
+#: resources/views/event/theme.blade.php:224
 #, php-format
 msgid "See all speakers on %s"
 msgstr "Veja todos os palestrantes em %s"
@@ -335,20 +335,20 @@ msgstr "Fim"
 msgid "\"%s\" events search"
 msgstr "\"%s\" - busca de eventos"
 
-#: resources/views/speaker/index.blade.php:5
+#: resources/views/speaker/index.blade.php:6
 #, php-format
 msgid "Speakers on %s"
 msgstr "Palestrantes em %s"
 
-#: resources/views/speaker/index.blade.php:5
+#: resources/views/speaker/index.blade.php:6
 msgid "Speakers on your themes of interest"
 msgstr "Palestrantes nos seus temas de interesse"
 
-#: resources/views/speaker/index.blade.php:93
+#: resources/views/speaker/index.blade.php:95
 msgid "Preferred themes"
 msgstr "Temas preferidos"
 
-#: resources/views/speaker/index.blade.php:93
+#: resources/views/speaker/index.blade.php:95
 msgid "Most common themes"
 msgstr "Temas mais comuns"
 
