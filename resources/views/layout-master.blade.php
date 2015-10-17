@@ -165,13 +165,18 @@
                             '<a href="https://about.me/igorsantos07" target="_blank">', '</a>') ?>
                         <img src="/img/sugar-loaf-icon.png" title="<?=_('Mavelous City, place of the Sugar Loaf')?>">
                     </span>
+                    <ul>
+                        <li><a href="#"><?=_('Get in touch')?></a></li>
+                        <li><a href="#" title="<?=_('Sorting out some private key issues before publishing code. Check back soon or send me a message :)')?>"><?=_('We &#9829; open source')?></a></li>
+                        <li><a target="_blank" href="http://igorsantos.com.br"><?=_('by igorsantos07')?></a></li>
+                    </ul>
                 </span>
             </div>
         </div>
     </footer>
     <!-- /FOOTER -->
 
-    {{--<div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>--}}
+    <!--<div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>-->
 
 @yield('popups')
 

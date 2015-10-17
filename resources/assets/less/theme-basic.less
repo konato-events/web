@@ -3689,14 +3689,25 @@ footer.post-meta .post-categories {display: block;}
 /* ========================================================================== */
 
 .footer {
+    @spacing: 8px;
     .copyright {
         span {
             font-size: 14px;
             display: block;
-            margin-top: 8px;
+            margin-top: @spacing;
             img {
                 vertical-align: bottom;
                 height: 18px;
+            }
+        }
+    }
+    ul {
+        margin: @spacing 0 0 0;
+        li {
+            font-size: 14px;
+            display: inline-block;
+            &:not(:last-child)::after {
+                content: ' | ';
             }
         }
     }
@@ -3715,7 +3726,7 @@ footer.post-meta .post-categories {display: block;}
 }
 .wide .footer-meta,
 .boxed .footer-meta > .container {
-    padding: 40px 0 40px 0;
+    padding: 30px 0;
     background-color: #f5f5f5;
     color: #414650;
     font-size: 18px;
