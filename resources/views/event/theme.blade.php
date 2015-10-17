@@ -174,17 +174,15 @@ $title = sprintf(_('Events about %s'), $theme);
     <aside id="sidebar-info" class="sidebar col-md-3">
 
         <div class="widget">
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <button class="btn btn-theme btn-wrap">
-                            <i class="fa fa-mail-forward"></i>
-                            <?=_('Follow this theme')?>
-                        </button>
-                            <a class="note" href="#"><?=_('See my following preferences')?></a>
-                    </div>
-                </div>
+            <button class="btn btn-theme btn-wrap">
+                <i class="fa fa-mail-forward"></i>
+                <?=_('Follow this theme')?>
+            </button>
+            <a class="note" href="#"><?=_('See my following preferences')?></a>
+        </div>
 
+        <div class="widget">
+            <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"><?=_('Popularity')?></h4>

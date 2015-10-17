@@ -200,7 +200,7 @@ body.boxed {
 .content .widget + .widget,
 .sidebar .widget + .widget,
 .footer .widget + .widget {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .wide .container.full-width {
   width: 100%;
@@ -4271,10 +4271,6 @@ footer.post-meta .post-categories {
   line-height: 24px;
   font-family: 'Roboto', sans-serif;
 }
-.sidebar .widget .panel-body .note {
-  display: block;
-  line-height: inherit;
-}
 .faq-alt .panel-default > .panel-heading {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -5258,6 +5254,7 @@ ul.filter a {
 #sidebar-info .btn + .note {
   line-height: 16px;
   text-align: center;
+  display: block;
 }
 ul.speakers li {
   padding: 10px 0;
