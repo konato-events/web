@@ -2988,7 +2988,7 @@ footer.post-meta .post-categories {display: block;}
     font-weight: 700;
     margin-bottom: 0;
     text-transform: uppercase;
-    line-height: 14px;
+    line-height: 20px;
     color: @darkPrimaryColor;
 }
 .caption-link {}
@@ -3194,7 +3194,6 @@ footer.post-meta .post-categories {display: block;}
 .thumbnails.events .caption-category {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    line-height: 14px;
     margin-bottom: 20px;
     text-transform: none;
     color: @darkSecondaryColor;
@@ -4783,11 +4782,16 @@ ul.themes {
             border-radius: 5px;
             background-color: @secondaryColorBg;
             color: @darkestSecondaryColor;
+            font-weight: normal;
             &:hover {
                 color: @main-color-d10;
                 background-color: @primaryColorBg;
             }
         }
+    }
+
+    .caption-category & {
+        display: inline;
     }
 }
 

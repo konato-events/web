@@ -1,3 +1,4 @@
+<?php /** @var array $events */ ?>
 @extends('layout-master')
 
 @section('js')

@@ -20,3 +20,21 @@
 		}
 	}
 }
+
+#grid-view { //TODO: should become a list when on mobile
+    .thumbnails.events {
+        @spacing: 10px;
+        //.caption {
+        //    padding-top: @spacing;
+        //}
+        .caption-title,
+        .caption-category {
+            margin-bottom: @spacing;
+        }
+        .media {
+            max-height: 250px;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+    }
+}

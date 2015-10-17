@@ -3345,7 +3345,7 @@ footer.post-meta .post-categories {
   font-weight: 700;
   margin-bottom: 0;
   text-transform: uppercase;
-  line-height: 14px;
+  line-height: 20px;
   color: #e06c08;
 }
 .caption-redmore {
@@ -3522,7 +3522,6 @@ footer.post-meta .post-categories {
 .thumbnails.events .caption-category {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  line-height: 14px;
   margin-bottom: 20px;
   text-transform: none;
   color: #153a96;
@@ -5292,10 +5291,14 @@ ul.themes li a {
   border-radius: 5px;
   background-color: #c2cde9;
   color: #0b2975;
+  font-weight: normal;
 }
 ul.themes li a:hover {
   color: #fa7a0c;
   background-color: #ffefe2;
+}
+.caption-category ul.themes {
+  display: inline;
 }
 a.see-more {
   display: block;
@@ -6545,6 +6548,15 @@ ul.piped li:not(:last-child):after {
 #list-view .thumbnails.events .caption-text,
 #list-view .thumbnails.events ul.piped {
   margin-bottom: 10px;
+}
+#grid-view .thumbnails.events .caption-title,
+#grid-view .thumbnails.events .caption-category {
+  margin-bottom: 10px;
+}
+#grid-view .thumbnails.events .media {
+  max-height: 250px;
+  max-width: 250px;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=styles.css.map */

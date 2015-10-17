@@ -1,5 +1,6 @@
 <?php
 /** @var string $theme */
+/** @var array $speakers */
 use Illuminate\Support\Str;
 
 $theme = $theme ?? null;
@@ -23,11 +24,6 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
         "use strict";
         jQuery(document).ready(function () {
             theme.init();
-            theme.initMainSlider();
-            theme.initCountDown();
-            theme.initPartnerSlider2();
-            theme.initImageCarousel();
-            theme.initTestimonials();
             theme.initGoogleMap();
         });
         jQuery(window).load(function () {
@@ -77,7 +73,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
         <ul class="breadcrumb">
             <li><a href="#">IT (Information Technologies)</a></li>
             <li><a href="#">Languages</a></li>
-            <li><a href="{{act('event@theme', '1-'.Str::slug($theme))}}">{{$theme}}</a></li>
+            <li><a href="<?=act('event@theme', '1-'.Str::slug($theme))?>"><?=$theme?></a></li>
             <li class="active"><?=_('Speakers')?></li>
         </ul>
     @endif
@@ -87,25 +83,74 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
 <section class="page-section with-sidebar first-section">
     <div class="container-fluid">
         <div class="row">
-            <aside id="sidebar" class="sidebar col-md-3">
+            <aside id="sidebar" class="sidebar col-sm-4 col-md-3">
                 <div class="widget">
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><?=$theme? _('Preferred themes') : _('Most common themes')?></h4>
+                                <h4 class="panel-title"><?=$theme? _('Related themes') : _('Most common themes')?></h4>
                             </div>
                             <div class="panel-body">
-                                <ul class="themes">
-                                    @foreach($themes as $id => $t)
-                                        <li><a href="{{act('event@theme', "$id-".Str::slug($t))}}">{{$t}}</a></li>
-                                    @endforeach
-                                </ul>
+                                @include('components.themes_list')
                             </div>
                         </div>
                     </div>
                 </div>
             </aside>
+
+            <hr class="page-divider transparent visible-xs"/>
+
+            <section id="content" class="content col-sm-8 col-md-9">
+
+                {{-- TIP: Here was a line with selected tags that could be removed, and relevante/date filters --}}
+
+                <div class="tab-content">
+                    <div id="grid-view"  class="tab-pane fade active in" role="tabpanel">
+                        <div class="row thumbnails events">
+
+                            <?php foreach($speakers as $speaker):
+                                list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker ?>
+                                <div class="col-lg-3 col-md-4 col-sm-6 isotope-item festival">
+                                    <div class="thumbnail no-border no-padding">
+                                        <div class="media">
+                                            <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
+                                            <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>">
+                                        </div>
+                                        <div class="caption">
+                                            <h3 class="caption-title">
+                                                <a href="#"><?=$name?></a>
+                                            </h3>
+                                            <div class="caption-category">
+                                                <i class="fa fa-map-marker"></i> <?=$place?> <br>
+                                                @include('components.themes_list')
+                                            </div>
+                                            {{--<p class="caption-price">Tickets from $49,99</p>--}}
+                                            <p class="caption-text"><?=$bio?></p>
+                                            <p class="caption-more"><a href="#" class="btn btn-theme">See full profile</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach ?>
+
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="pagination-wrapper">
+                            <ul class="pagination">
+                                <li class="disabled"><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- /Pagination -->
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </section>
+
 @endsection
