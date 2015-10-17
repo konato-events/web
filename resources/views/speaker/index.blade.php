@@ -98,7 +98,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                 </div>
             </aside>
 
-            <hr class="page-divider transparent visible-xs"/>
+            <hr class="page-divider small transparent visible-xs"/>
 
             <section id="content" class="content col-sm-8 col-md-9">
 
@@ -110,7 +110,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
 
                             <?php foreach($speakers as $speaker):
                                 list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker ?>
-                                <div class="col-lg-3 col-md-4 col-sm-6 isotope-item festival">
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 isotope-item festival">
                                     <div class="thumbnail no-border no-padding">
                                         <div class="media">
                                             <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
