@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1); //TODO: strict types were disabled here because Laravel IDE Helper does not support it
+<?php declare(strict_types = 1);
+
+use Illuminate\Support\Str;
 
 /**
  * Returns a piece of $text containing, at maximum, $max words.
@@ -49,7 +51,19 @@ function act(string $route, ...$vars):string {
 }
 
 /**
- * Calls {@link ngettext()} and {@link sprintf()} to make translation of pluralized strings easier. You should include a "%d" in your message IDs to have the number printed out. If you need to use additional parameters for {@link sprintf()}, use {@link __s()}.
+ * Creates an URL slug, composed from an ID and name
+ * @param int    $id
+ * @param string $name
+ * @return string
+ */
+function slugify(int $id, string $name):string {
+    return $id.'-'.Str::slug($name);
+}
+
+/**
+ * Calls {@link ngettext()} and {@link sprintf()} to make translation of pluralized strings easier.
+ * You should include a "%d" in your message IDs to have the number printed out.
+ * If you need to use additional parameters for {@link sprintf()}, use {@link __s()}.
  * @param string $singular Singular message ID
  * @param string $plural   Plural message ID
  * @param int    $n        The number defining plural rule

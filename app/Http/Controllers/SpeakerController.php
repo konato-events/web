@@ -22,7 +22,9 @@ class SpeakerController extends Controller {
         if (preg_match('/(\d*)-(\w*)/', $parameters, $matches)) {
             return $this->getIndex($matches[1], $matches[2]);
         } else {
-            parent::missingMethod($parameters);
+            return parent::missingMethod($parameters);
         }
     }
+
+
 }

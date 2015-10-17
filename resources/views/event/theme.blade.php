@@ -3,7 +3,6 @@
   * @var int      $paid
   * @var string[] $types
   * @var int[]    $selected_types */
-use Illuminate\Support\Str;
 
 $title = sprintf(_('Events about %s'), $theme);
 ?>
@@ -92,7 +91,7 @@ $title = sprintf(_('Events about %s'), $theme);
                         <h4 class="panel-title"><?=_('Event types')?></h4>
                     </div>
                     <div class="panel-body">
-                        <div class="checkbox">
+                        <div class="checkbox event-types">
                             <?php foreach($types as $id => $value):
                                 $check = in_array($id, $selected_types); ?>
                                 <label>
@@ -205,7 +204,7 @@ $title = sprintf(_('Events about %s'), $theme);
                         <div class="panel-body">
                             <ul class="speakers">
                                 <?php foreach($speakers as $speaker):
-                                    list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker; ?>
+                                    list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker ?>
                                     <li>
                                         <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
                                         <div class="speaker-details">
@@ -216,7 +215,7 @@ $title = sprintf(_('Events about %s'), $theme);
                                     </li>
                                 <?php endforeach ?>
                             </ul>
-                            <a href="{{act('speaker@theme', '1-'.Str::slug($theme))}}" class="see-more"><?=_r('See all speakers on %s', $theme)?></a>
+                            <a href="<?=act('speaker@theme', slugify(1, $theme))?>" class="see-more"><?=_r('See all speakers on %s', $theme)?></a>
                         </div>
                     </div>
                 @endif

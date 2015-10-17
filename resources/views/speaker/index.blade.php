@@ -1,7 +1,6 @@
 <?php
 /** @var string $theme */
 /** @var array $speakers */
-use Illuminate\Support\Str;
 
 $theme = $theme ?? null;
 $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of interest');
@@ -73,7 +72,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
         <ul class="breadcrumb">
             <li><a href="#">IT (Information Technologies)</a></li>
             <li><a href="#">Languages</a></li>
-            <li><a href="<?=act('event@theme', '1-'.Str::slug($theme))?>"><?=$theme?></a></li>
+            <li><a href="<?=act('event@theme', slugify(1, $theme))?>"><?=$theme?></a></li>
             <li class="active"><?=_('Speakers')?></li>
         </ul>
     @endif
@@ -91,7 +90,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                                 <h4 class="panel-title"><?=$theme? _('Related themes') : _('Most common themes')?></h4>
                             </div>
                             <div class="panel-body">
-                                @include('components.themes_list')
+                                @include('components.themes_list', [ 'link_speakers' => true ])
                             </div>
                         </div>
                     </div>

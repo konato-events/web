@@ -6525,6 +6525,9 @@ ul.piped li:not(:last-child):after {
   content: '|';
 }
 
+.event-types label {
+  display: block;
+}
 #paid_select label {
   display: block;
   font-weight: normal;
