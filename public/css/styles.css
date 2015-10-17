@@ -594,14 +594,6 @@ a:focus {
   transition: all 0.1s ease-in-out;
   text-decoration: none;
 }
-a {
-  color: #ea032d;
-}
-a:hover,
-a:active,
-a:focus {
-  color: #000000;
-}
 .color a {
   color: white;
 }
@@ -5290,6 +5282,25 @@ ul.speakers li span {
 ul.speakers li a {
   font-weight: bold;
   margin-bottom: 5px;
+}
+ul.themes li {
+  display: inline-block;
+  margin: 3px 1px;
+}
+ul.themes li a {
+  padding: 3px 6px;
+  border-radius: 5px;
+  background-color: #c2cde9;
+  color: #0b2975;
+}
+ul.themes li a:hover {
+  color: #fa7a0c;
+  background-color: #ffefe2;
+}
+a.see-more {
+  display: block;
+  margin-top: -20px;
+  text-align: right;
 }
 .page-section.create-new-event .section-title {
   margin-bottom: 20px;

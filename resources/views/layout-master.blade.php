@@ -78,25 +78,7 @@
                     <ul class="sf-menu nav">
                         <li{{-- class="active"--}}><a href="/"><i class="fa fa-table"></i> <?=_('Dashboard')?></a></li>
                         <!--<li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>-->
-                        <li><a href="#"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
-
-                        <li><!-- TODO: REMOVE THIS ENTRY -->
-                            <a href="#">T</a>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="index-2.html">Home 2</a></li>
-                                <li><a href="event-list.html">Event List</a></li>
-                                <li><a href="event-grid.html">Event Grid</a></li>
-                                <li><a href="event-single.html">Single Event</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                <li><a href="search-results.html">Search Results</a></li>
-                                <li><a href="coming-soon-1.html">Coming Soon 1</a></li>
-                                <li><a href="coming-soon-2.html">Coming Soon 2</a></li>
-                                <li><a href="coming-soon-3.html">Coming Soon 3</a></li>
-                                <li><a href="error-page.html">404</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{act('speaker')}}"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
 
                         <li class="header-search-wrapper">
                             <form action="#" class="header-search-form">
@@ -124,6 +106,7 @@
     </header>
 
     <div class="content-area">
+        @yield('header')
         @yield('content')
     </div>
     <!-- /Content area -->
@@ -163,7 +146,7 @@
                     <span>
                         <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio de Janeiro'),
                             '<a href="https://about.me/igorsantos07" target="_blank">', '</a>') ?>
-                        <img src="/img/sugar-loaf-icon.png" title="<?=_('Mavelous City, place of the Sugar Loaf')?>">
+                        <img src="/img/sugar-loaf-icon.png" title="<?=_('Marvelous City, place of the Sugar Loaf')?>">
                     </span>
                     <ul>
                         <li><a href="#"><?=_('Get in touch')?></a></li>

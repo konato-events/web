@@ -2,7 +2,6 @@
 /** @var string $date_fmt
   * @var int $id
   * @var array $event */
-
 use Illuminate\Support\Str;
 
 list($img, $title, $place, $begin, $end, $desc) = $event;
@@ -45,7 +44,7 @@ $link = action('EventController@getDetails', ["$id-$slug"]);
                 <div class="caption-more">
                     <ul class="piped">
                         <?php foreach (array_rand($themes, 3) as $id):
-                        $link = action('EventController@getTheme', "$id-".Str::slug($themes[$id])); ?>
+                        $link = act('event@theme', "$id-".Str::slug($themes[$id])); ?>
                         <li>
                             <a href="{{$link}}">{{$themes[$id]}}</a>
                         </li>

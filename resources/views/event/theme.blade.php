@@ -3,12 +3,11 @@
   * @var int      $paid
   * @var string[] $types
   * @var int[]    $selected_types */
-
 use Illuminate\Support\Str;
 
 $title = sprintf(_('Events about %s'), $theme);
 ?>
-@extends('layout-master')
+@extends('layout-header')
 @section('title', $title)
 
 @section('js')
@@ -73,18 +72,19 @@ $title = sprintf(_('Events about %s'), $theme);
     </script>
 @endsection
 
-@section('content')
-<section class="page-section image breadcrumbs overlay small" style="background-image: url(/img/theme-sample1.jpg)">
-    <div class="container">
-        <h1>{{$theme}}</h1>
+@section('header-title', $theme)
+@section('header-bg', '/img/theme-sample1.jpg')
+@section('header-breadcrumbs')
+    @if ($theme)
         <ul class="breadcrumb">
             <li><a href="#">IT (Information Technologies)</a></li>
             <li><a href="#">Languages</a></li>
             <li class="active">{{$theme}}</li>
         </ul>
-    </div>
-</section>
+    @endif
+@endsection
 
+@section('content')
 <section class="page-section with-sidebar first-section">
     <div class="container-fluid">
         <div class="row">
@@ -225,6 +225,7 @@ $title = sprintf(_('Events about %s'), $theme);
                                             </li>
                                         @endforeach
                                     </ul>
+                                    <a href="{{act('speaker@index', '1-'.Str::slug($theme))}}" class="see-more"><?=_r('See all speakers on %s', $theme)?></a>
                                 </div>
                             </div>
                         @endif

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-10-15 03:44-0300\n"
-"PO-Revision-Date: 2015-10-15 03:48-0300\n"
+"POT-Creation-Date: 2015-10-17 01:55-0300\n"
+"PO-Revision-Date: 2015-10-17 01:55-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
-"X-Poedit-KeywordsList: _;__:1,2;gettext;gettext_noop\n"
+"X-Poedit-KeywordsList: _;__:1,2;__r:1,2;_r:1;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -50,138 +50,55 @@ msgid "Places"
 msgstr "Locais"
 
 #: resources/views/layout-master.blade.php:81
+#: resources/views/speaker/index.blade.php:79
 msgid "Speakers"
 msgstr "Palestrantes"
 
-#: resources/views/layout-master.blade.php:110
+#: resources/views/layout-master.blade.php:92
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: resources/views/layout-master.blade.php:115
+#: resources/views/layout-master.blade.php:97
 msgid "Login"
 msgstr "Login"
 
-#: resources/views/layout-master.blade.php:162
+#: resources/views/layout-master.blade.php:145
 msgid "Discover amazing events on Konato"
 msgstr "Descubra eventos fantásticos no Konato"
 
-#: resources/views/layout-master.blade.php:164
+#: resources/views/layout-master.blade.php:147
 #, php-format
 msgid "%sHard work (and poutine!)%s made this real @ Rio de Janeiro"
 msgstr ""
 "%sBastante trampo (e poutine!)%s tornou isso realidade, na Cidade Maravilhosa"
 
-#: resources/views/layout-master.blade.php:166
-msgid "Mavelous City, place of the Sugar Loaf"
+#: resources/views/layout-master.blade.php:149
+msgid "Marvelous City, place of the Sugar Loaf"
 msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
 
-#: resources/views/layout-master.blade.php:174
+#: resources/views/layout-master.blade.php:152
+msgid "Get in touch"
+msgstr "Fale com a gente"
+
+#: resources/views/layout-master.blade.php:153
+msgid ""
+"Sorting out some private key issues before publishing code. Check back soon "
+"or send me a message :)"
+msgstr ""
+"Resolvendo alguns problemas sobre chaves privadas antes de publicar o "
+"código. Dá uma olhada de novo depois, ou me manda uma mensagem :)"
+
+#: resources/views/layout-master.blade.php:153
+msgid "We &#9829; open source"
+msgstr "Nós &#9829; open source"
+
+#: resources/views/layout-master.blade.php:154
+msgid "by igorsantos07"
+msgstr "by igorsantos07"
+
+#: resources/views/layout-master.blade.php:162
 msgid "Go to top"
 msgstr "Subir"
-
-#: resources/views/event/_event_block.blade.php:54
-msgid "See more details"
-msgstr "Veja mais detalhes"
-
-#: resources/views/event/search.blade.php:5
-msgid "Search terms"
-msgstr "Termos da busca"
-
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/theme.blade.php:97
-msgid "Event types"
-msgstr "Tipos de evento"
-
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/theme.blade.php:113
-msgid "Free"
-msgstr "Grátis"
-
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/theme.blade.php:114
-msgid "Both"
-msgstr "Ambos"
-
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/theme.blade.php:115
-msgid "Paid"
-msgstr "Pago"
-
-#: resources/views/event/search.blade.php:5
-msgid "Theme"
-msgstr "Tema"
-
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/search.blade.php:146
-#: resources/views/event/theme.blade.php:149
-msgid "Date"
-msgstr "Data"
-
-#: resources/views/event/search.blade.php:5
-msgid "Begin"
-msgstr "Início"
-
-#: resources/views/event/search.blade.php:5
-msgid "End"
-msgstr "Fim"
-
-#: resources/views/event/search.blade.php:6
-#, php-format
-msgid "\"%s\" events search"
-msgstr "\"%s\" - busca de eventos"
-
-#: resources/views/event/search.blade.php:145
-#: resources/views/event/theme.blade.php:148
-msgid "Relevance"
-msgstr "Relevância"
-
-#: resources/views/event/search.blade.php:154
-#: resources/views/event/theme.blade.php:158
-msgid "d/m/Y"
-msgstr "m/d/Y"
-
-#: resources/views/event/theme.blade.php:9
-#, php-format
-msgid "Events about %s"
-msgstr "Eventos sobre %s"
-
-#: resources/views/event/theme.blade.php:122
-msgid "Related themes"
-msgstr "Temas relacionados"
-
-#: resources/views/event/theme.blade.php:193
-msgid "Follow this theme"
-msgstr "Acompanhar este tema"
-
-#: resources/views/event/theme.blade.php:195
-msgid "See your following preferences"
-msgstr "Configurar o que acompanha"
-
-#: resources/views/event/theme.blade.php:201
-msgid "Popularity"
-msgstr "Popularidade"
-
-#: resources/views/event/theme.blade.php:213
-msgid "Popular speakers"
-msgstr "Palestrantes populares"
-
-#: resources/views/event/theme.blade.php:219
-msgid "on Konato"
-msgstr "no Konato"
-
-#: resources/views/event/theme.blade.php:222
-#, php-format
-msgid "%d event on theme"
-msgid_plural "%d events on theme"
-msgstr[0] "%d evento no tema"
-msgstr[1] "%d eventos no tema"
-
-#: resources/views/event/theme.blade.php:223
-#, php-format
-msgid "%d event total"
-msgid_plural "%d events total"
-msgstr[0] "%d evento no total"
-msgstr[1] "%d eventos no total"
 
 #: resources/views/site/index.blade.php:58
 msgid "Expand your horizons"
@@ -308,6 +225,135 @@ msgstr ""
 #: resources/views/site/index.blade.php:220
 msgid "Submit your event"
 msgstr "Inclua seu evento"
+
+#: resources/views/event/theme.blade.php:8
+#, php-format
+msgid "Events about %s"
+msgstr "Eventos sobre %s"
+
+#: resources/views/event/theme.blade.php:97
+#: resources/views/event/search.blade.php:5
+msgid "Event types"
+msgstr "Tipos de evento"
+
+#: resources/views/event/theme.blade.php:113
+#: resources/views/event/search.blade.php:5
+msgid "Free"
+msgstr "Grátis"
+
+#: resources/views/event/theme.blade.php:114
+#: resources/views/event/search.blade.php:5
+msgid "Both"
+msgstr "Ambos"
+
+#: resources/views/event/theme.blade.php:115
+#: resources/views/event/search.blade.php:5
+msgid "Paid"
+msgstr "Pago"
+
+#: resources/views/event/theme.blade.php:122
+msgid "Related themes"
+msgstr "Temas relacionados"
+
+#: resources/views/event/theme.blade.php:148
+#: resources/views/event/search.blade.php:145
+msgid "Relevance"
+msgstr "Relevância"
+
+#: resources/views/event/theme.blade.php:149
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/search.blade.php:146
+msgid "Date"
+msgstr "Data"
+
+#: resources/views/event/theme.blade.php:158
+#: resources/views/event/search.blade.php:154
+msgid "d/m/Y"
+msgstr "m/d/Y"
+
+#: resources/views/event/theme.blade.php:193
+msgid "Follow this theme"
+msgstr "Acompanhar este tema"
+
+#: resources/views/event/theme.blade.php:195
+msgid "See your following preferences"
+msgstr "Configurar o que acompanha"
+
+#: resources/views/event/theme.blade.php:201
+msgid "Popularity"
+msgstr "Popularidade"
+
+#: resources/views/event/theme.blade.php:213
+msgid "Popular speakers"
+msgstr "Palestrantes populares"
+
+#: resources/views/event/theme.blade.php:219
+msgid "on Konato"
+msgstr "no Konato"
+
+#: resources/views/event/theme.blade.php:222
+#, php-format
+msgid "%d event on theme"
+msgid_plural "%d events on theme"
+msgstr[0] "%d evento no tema"
+msgstr[1] "%d eventos no tema"
+
+#: resources/views/event/theme.blade.php:223
+#, php-format
+msgid "%d event total"
+msgid_plural "%d events total"
+msgstr[0] "%d evento no total"
+msgstr[1] "%d eventos no total"
+
+#: resources/views/event/theme.blade.php:228
+#, php-format
+msgid "See all speakers on %s"
+msgstr "Veja todos os palestrantes em %s"
+
+#: resources/views/event/_event_block.blade.php:53
+msgid "See more details"
+msgstr "Veja mais detalhes"
+
+#: resources/views/event/search.blade.php:5
+msgid "Search terms"
+msgstr "Termos da busca"
+
+#: resources/views/event/search.blade.php:5
+msgid "Theme"
+msgstr "Tema"
+
+#: resources/views/event/search.blade.php:5
+msgid "Begin"
+msgstr "Início"
+
+#: resources/views/event/search.blade.php:5
+msgid "End"
+msgstr "Fim"
+
+#: resources/views/event/search.blade.php:6
+#, php-format
+msgid "\"%s\" events search"
+msgstr "\"%s\" - busca de eventos"
+
+#: resources/views/speaker/index.blade.php:5
+#, php-format
+msgid "Speakers on %s"
+msgstr "Palestrantes em %s"
+
+#: resources/views/speaker/index.blade.php:5
+msgid "Speakers on your themes of interest"
+msgstr "Palestrantes nos seus temas de interesse"
+
+#: resources/views/speaker/index.blade.php:93
+msgid "Preferred themes"
+msgstr "Temas preferidos"
+
+#: resources/views/speaker/index.blade.php:93
+msgid "Most common themes"
+msgstr "Temas mais comuns"
+
+#~ msgid "Speakers on your frequent themes"
+#~ msgstr "Palestrantes nos seus temas mais co"
 
 #~ msgid "Event type"
 #~ msgstr "Tipos de evento"

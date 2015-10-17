@@ -550,11 +550,6 @@ a:focus {
     text-decoration: none;
 }
 
-a {color: #ea032d;}
-a:hover,
-a:active,
-a:focus {color: #000000;}
-
 .color a {color: white;}
 .color a:hover,
 .color a:active,
@@ -4775,9 +4770,33 @@ ul.speakers {
             font-weight: bold;
             margin-bottom: 5px;
         }
-        span {  }
     }
 }
+
+ul.themes {
+    li {
+        display: inline-block;
+        margin: 3px 1px;
+
+        a {
+            padding: 3px 6px;
+            border-radius: 5px;
+            background-color: @secondaryColorBg;
+            color: @darkestSecondaryColor;
+            &:hover {
+                color: @main-color-d10;
+                background-color: @primaryColorBg;
+            }
+        }
+    }
+}
+
+a.see-more {
+    display: block;
+    margin-top: -20px;
+    text-align: right;
+}
+
 
 .page-section.create-new-event {}
 .page-section.create-new-event .section-title {margin-bottom: 20px;}
