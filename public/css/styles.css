@@ -6525,6 +6525,16 @@ ul.piped li:not(:last-child):after {
   content: '|';
 }
 
+#paid_select label {
+  display: block;
+  font-weight: normal;
+}
+#paid_select label span {
+  cursor: pointer;
+}
+#paid_select label span.selected {
+  font-weight: bold;
+}
 #paid_select .text-left {
   padding-right: 0;
 }

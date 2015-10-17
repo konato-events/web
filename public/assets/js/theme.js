@@ -502,7 +502,7 @@ $(document).ready(function () {
             var map;
             var marker, marker2, marker3, marker4, marker5, marker6, marker7, marker8;
             var infowindow;
-       
+
             var image = '/assets/img/icon-google-map.png'; // marker icon
             google.maps.event.addDomListener(window, 'load', function () {
                 var mapOptions = {
@@ -544,11 +544,11 @@ $(document).ready(function () {
                     title: 'Hello World!'
                 });
 
-                infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                    ,maxWidth: 50
+                //infowindow = new google.maps.InfoWindow({
+                //    content: contentString
+                //    ,maxWidth: 50
                     //,maxHeight: 500
-                });
+                //});
                 google.maps.event.addListener(marker, 'click', function() {
                     infowindow.open(map,marker);
                 });

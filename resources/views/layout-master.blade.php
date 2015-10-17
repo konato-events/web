@@ -189,6 +189,7 @@
 <script src="/assets/plugins/jquery.smoothscroll.min.js"></script>
 <script src="/assets/plugins/jquery.easing.min.js"></script>
 <script src="/assets/plugins/smooth-scrollbar.min.js"></script>
+<script src="/js/app.js"></script>
 
 @yield('js')
 
