@@ -122,13 +122,9 @@ $title = sprintf(_('Events about %s'), $theme);
                                 <h4 class="panel-title"><?=_('Related themes')?></h4>
                             </div>
                             <div class="panel-body">
-                                <ul>
+                                <ul class="themes">
                                     @foreach($themes as $id => $name)
-                                        <li>
-                                            <a href="{{action('EventController@getTheme', "$id-".Str::slug($name))}}">
-                                                {{$name}}
-                                            </a>
-                                        </li>
+                                        <li><a href="{{act('event@theme', "$id-".Str::slug($name))}}">{{$name}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -225,7 +221,7 @@ $title = sprintf(_('Events about %s'), $theme);
                                             </li>
                                         @endforeach
                                     </ul>
-                                    <a href="{{act('speaker@index', '1-'.Str::slug($theme))}}" class="see-more"><?=_r('See all speakers on %s', $theme)?></a>
+                                    <a href="{{act('speaker@theme', '1-'.Str::slug($theme))}}" class="see-more"><?=_r('See all speakers on %s', $theme)?></a>
                                 </div>
                             </div>
                         @endif

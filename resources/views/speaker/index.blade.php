@@ -2,6 +2,7 @@
 /** @var string $theme */
 use Illuminate\Support\Str;
 
+$theme = $theme ?? null;
 $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of interest');
 ?>
 @extends('layout-header')
@@ -70,12 +71,13 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
 @endsection
 
 @section('header-title', $title)
+@section('header-bg', '/img/theme-sample1.jpg')
 @section('header-breadcrumbs')
     @if ($theme)
         <ul class="breadcrumb">
             <li><a href="#">IT (Information Technologies)</a></li>
             <li><a href="#">Languages</a></li>
-            <li><a href="#">{{$theme}}</a></li>
+            <li><a href="{{act('event@theme', '1-'.Str::slug($theme))}}">{{$theme}}</a></li>
             <li class="active"><?=_('Speakers')?></li>
         </ul>
     @endif
@@ -95,7 +97,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                             <div class="panel-body">
                                 <ul class="themes">
                                     @foreach($themes as $id => $t)
-                                        <li><a href="{{act('event@theme'), "$id-".Str::slug($t)}}">{{$t}}</a></li>
+                                        <li><a href="{{act('event@theme', "$id-".Str::slug($t))}}">{{$t}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

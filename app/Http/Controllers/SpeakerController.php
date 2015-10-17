@@ -5,6 +5,12 @@ class SpeakerController extends Controller {
 
     public function getIndex(int $id = null, string $theme = null) {
         $themes = explode(' ', 'PHP MySQL JavaScript Design WebDesign WebDevelopment UserExperience Agile WebOperations SinglePageApps');
+        return view('speaker.index', compact('themes'));
+    }
+
+    public function getTheme(string $id_slug) {
+        list($id, $theme) = explode('-', $id_slug);
+        $themes = explode(' ', 'PHP MySQL JavaScript Design WebDesign WebDevelopment UserExperience Agile WebOperations SinglePageApps');
         return view('speaker.index', compact('theme', 'themes'));
     }
 
