@@ -12,7 +12,7 @@ $title      = sprintf(_('%s - speaker'), $name);
 $function   = 'Web developer at InEvent; Student at Estácio de Sá';
 
 $img_height = getimagesize(APP_ROOT.'/public/'.$img)[1];
-$img_height = $img_height > 250? 250 : $img_height;
+$img_height = ($img_height > 250? 250 : $img_height);
 ?>
 @extends('layout-header')
 @section('title', $title)
@@ -79,15 +79,17 @@ $img_height = $img_height > 250? 250 : $img_height;
 @section('header-bg', '/img/bg-speaker.jpeg')
 @section('header-content')
         <div class="row">
-            <div class="photo col-md-4">
+            <div class="photo col-md-4 col-sm-4 col-xs-4">
                 <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
             </div>
 
-            <div class="details col-md-8" style="height: <?=$img_height?>px">
-                <h1><?=$name?></h1>
-                <p class="function"><?=$function?></p>
-                <p class="bio"><?=$bio?></p>
-                <div class="social-profiles">
+            <div class="details col-md-8 col-sm-8 col-xs-8" style="height: <?=$img_height?>px">
+                <div class="float-top">
+                    <h1><?=$name?></h1>
+                    <p class="function"><?=$function?></p>
+                    <p class="bio"><?=$bio?></p>
+                </div>
+                <div class="social-profiles float-bottom">
                     <h2><?=_('Him elsewhere:')?></h2><?php //TODO: fix sex here! ?>
                     <?php
                         $profiles = [
@@ -118,5 +120,5 @@ $img_height = $img_height > 250? 250 : $img_height;
 @endsection
 
 @section('content')
-    
+
 @endsection

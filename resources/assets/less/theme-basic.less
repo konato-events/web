@@ -3681,7 +3681,12 @@ footer.post-meta .post-categories {display: block;}
 /* 4 - Footer
 /* ========================================================================== */
 
+//setting wrapper, body, html and content-area here as they're related to footer displaying as a row (so it fixes at bottom)
+.wrapper { display: table; }
+body, html, .wrapper, .content-area { height: 100%; width: 100%; }
 .footer {
+    display: table-row;
+    height: 1px;
     @spacing: 8px;
     .copyright {
         span {

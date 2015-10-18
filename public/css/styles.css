@@ -4028,6 +4028,20 @@ footer.post-meta .post-categories {
 }
 /* 4 - Footer
 /* ========================================================================== */
+.wrapper {
+  display: table;
+}
+body,
+html,
+.wrapper,
+.content-area {
+  height: 100%;
+  width: 100%;
+}
+.footer {
+  display: table-row;
+  height: 1px;
+}
 .footer .copyright span {
   font-size: 14px;
   display: block;
@@ -6574,22 +6588,22 @@ ul.piped li:not(:last-child):after {
 
 #speaker #page-header {
   box-shadow: inset 0 0 25px 7px rgba(0, 0, 0, 0.8);
-  background-size: contain !important;
-  margin: 0 -50px;
-  padding-left: 25px;
+  background-size: auto 100% !important;
+  padding-bottom: 10px !important;
 }
 #speaker #page-header .photo {
   text-align: right;
 }
 #speaker #page-header .photo img {
   max-height: 250px;
+  max-width: 100%;
   box-shadow: 0 0 30px 2px rgba(128, 128, 128, 0.5);
   border-radius: 15px;
 }
 #speaker #page-header .details {
+  display: table;
   text-align: left;
   color: white;
-  position: relative;
 }
 #speaker #page-header .details h2 {
   color: inherit;
@@ -6602,15 +6616,17 @@ ul.piped li:not(:last-child):after {
   font-size: 18px;
 }
 #speaker #page-header .details .social-profiles {
-  position: absolute;
-  bottom: 0;
+  display: table-row;
+  height: 50px;
 }
 #speaker #page-header .details .social-profiles h2 {
-  font-size: 18px;
+  margin-top: 0;
+  font-size: 16px;
 }
 #speaker #page-header .details .social-profiles a {
   font-size: 30px;
   padding-right: 10px;
+  padding-bottom: 10px;
   float: left;
   color: #5d78bd;
 }

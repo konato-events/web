@@ -2,7 +2,7 @@
 
 @section('header')
     <section id="page-header" class="page-section image breadcrumbs overlay small clearfix" style="background-image: url(@yield('header-bg'))">
-        <div class="container-fluid">
+        <div class="container">
             @yield('header-content')
 
             <h1>@yield('header-title')</h1>

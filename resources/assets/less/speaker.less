@@ -1,24 +1,27 @@
 @import 'theme.variables';
 
 #speaker {
+    @socialIconsSpace: 10px;
     #page-header {
         box-shadow: inset 0 0 25px 7px fade(black, 80%);
-        background-size: contain !important;
-        margin: 0 -50px;     // hiding the
-        padding-left: 25px;  // left/right shadows
+        background-size: auto 100% !important;
+        padding-bottom: 20px - @socialIconsSpace !important;
+        //margin: 0 -50px;     // hiding the
+        //padding-left: 25px;  // left/right shadows
 
         .photo {
             text-align: right;
             img {
                 max-height: 250px;
+                max-width: 100%;
                 box-shadow: 0 0 30px 2px fade(gray, 50%);
                 border-radius: 15px;
             }
         }
         .details {
+            display: table;
             text-align: left;
             color: white;
-            position: relative; //needs a height property, given by the image height!
             h2 {
                 color: inherit;
             }
@@ -30,14 +33,16 @@
                 font-size: 18px;
             }
             .social-profiles {
-                position: absolute;
-                bottom: 0;
+                display: table-row;
+                height: 50px;
                 h2 {
-                    font-size: 18px;
+                    margin-top: 0;
+                    font-size: 16px;
                 }
                 a {
                     font-size: 30px;
-                    padding-right: 10px;
+                    padding-right: @socialIconsSpace;
+                    padding-bottom: @socialIconsSpace;
                     float: left; //seems to clear a weird bug regarding extra space to the right + tooltip trigger
                     color: @lightSecondaryColor;
                     &:hover {
