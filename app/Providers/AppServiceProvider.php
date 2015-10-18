@@ -62,6 +62,7 @@ class AppServiceProvider extends ServiceProvider {
             ['/img/speaker-sample3.jpg', 'Valéria Parajara', 'Rio de Janeiro, Brazil', ['Ruby', 'Gastronomia']],
             ['/img/speaker-sample4.jpg', 'Pedro Couteiro', 'Tsukuba, Japan', ['CG', 'Java', 'Japanese']],
             ['/img/speaker-sample5.jpg', 'Luan Rodrigues', 'Rio de Janeiro, Brazil', ['Computação médica', 'Cirurgia plástica']],
+            ['/img/speaker-sample6.jpg', 'Igor Santos', 'Halifax, Canada', ['Web Services', 'PHP']],
         ];
         foreach($speakers as $i => &$speaker) {
             $speaker[] = rand(5, 15);
@@ -81,7 +82,6 @@ class AppServiceProvider extends ServiceProvider {
 
     /**
      * Register any application services.
-     *
      * @return void
      */
     public function register() {
