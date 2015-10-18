@@ -3,6 +3,8 @@
   * @var int $id
   * @var array $themes
   * @var array $event */
+use Illuminate\Support\Str;
+
 list($img, $title, $place, $begin, $end, $desc) = $event;
 $link = act('event@details', slugify($id, $title));
 ?>
@@ -38,7 +40,7 @@ $link = act('event@details', slugify($id, $title));
                 </p>
 
                 {{--<p class="caption-price">Tickets from $49,99</p>--}}
-                <p class="caption-text"><?=partial_text($desc, 15)?></p>
+                <p class="caption-text"><?=Str::words($desc, 15, ' [...]')?></p>
                 <div class="caption-more">
                     <ul class="piped">
                         <?php foreach (array_rand($themes, 3) as $id):
