@@ -5,5 +5,6 @@
 
 //Route::controller('user',       'UserController');
 Route::controller('speakers',   'SpeakerController');
+Route::get('speaker/{id_slug}', 'SpeakerController@getProfile');
 Route::controller('event',      'EventController');
 Route::controller('/',          'SiteController');

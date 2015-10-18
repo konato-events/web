@@ -73,7 +73,7 @@ $title = sprintf(_('Events about %s'), $theme);
         <ul class="breadcrumb">
             <li><a href="#">IT (Information Technologies)</a></li>
             <li><a href="#">Languages</a></li>
-            <li class="active">{{$theme}}</li>
+            <li class="active"><?=$theme?></li>
         </ul>
     @endif
 @endsection
@@ -201,12 +201,12 @@ $title = sprintf(_('Events about %s'), $theme);
                         </div>
                         <div class="panel-body">
                             <ul class="speakers">
-                                <?php foreach($speakers as $speaker):
+                                <?php foreach($speakers as $id => $speaker):
                                     list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker ?>
                                     <li>
                                         <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
                                         <div class="speaker-details">
-                                            <a href="#"><?=$name?></a>
+                                            <a href="<?=act('speaker@profile', slugify($id, $name))?>"><?=$name?></a>
                                             <span><?=__('%d event on theme', '%d events on theme', $on_theme)?></span>
                                             <span><?=__('%d event total', '%d events total', $total)?></span>
                                         </div>

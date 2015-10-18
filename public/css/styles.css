@@ -6521,6 +6521,9 @@ ul.piped li {
 ul.piped li:not(:last-child):after {
   content: '|';
 }
+.tooltip-inner {
+  margin-bottom: -1px;
+}
 
 .event-types label {
   display: block;
@@ -6544,11 +6547,12 @@ ul.piped li:not(:last-child):after {
 #paid_select .text-right {
   padding-left: 0;
 }
+#list-view .thumbnails.events .caption-title a,
+#grid-view .thumbnails.events .caption-title a {
+  text-decoration: underline;
+}
 #list-view .thumbnails.events .caption-title {
   margin-bottom: 5px;
-}
-#list-view .thumbnails.events .caption-title a {
-  text-decoration: underline;
 }
 #list-view .thumbnails.events .caption-category {
   line-height: 22px;
@@ -6566,6 +6570,59 @@ ul.piped li:not(:last-child):after {
   max-height: 250px;
   max-width: 250px;
   margin: 0 auto;
+}
+
+#speaker #page-header {
+  box-shadow: inset 0 0 25px 7px rgba(0, 0, 0, 0.8);
+  background-size: contain !important;
+  margin: 0 -50px;
+  padding-left: 25px;
+}
+#speaker #page-header .photo {
+  text-align: right;
+}
+#speaker #page-header .photo img {
+  max-height: 250px;
+  box-shadow: 0 0 30px 2px rgba(128, 128, 128, 0.5);
+  border-radius: 15px;
+}
+#speaker #page-header .details {
+  text-align: left;
+  color: white;
+  position: relative;
+}
+#speaker #page-header .details h2 {
+  color: inherit;
+}
+#speaker #page-header .details .function {
+  font-size: 23px;
+  margin-bottom: 5px;
+}
+#speaker #page-header .details .bio {
+  font-size: 18px;
+}
+#speaker #page-header .details .social-profiles {
+  position: absolute;
+  bottom: 0;
+}
+#speaker #page-header .details .social-profiles h2 {
+  font-size: 18px;
+}
+#speaker #page-header .details .social-profiles a {
+  font-size: 30px;
+  padding-right: 10px;
+  float: left;
+  color: #5d78bd;
+}
+#speaker #page-header .details .social-profiles a:hover {
+  color: #fb953e;
+}
+#speaker #page-header .details .social-profiles .tooltip-arrow {
+  border-bottom-color: whitesmoke;
+}
+#speaker #page-header .details .social-profiles .tooltip-inner {
+  background-color: whitesmoke;
+  color: black;
 }
 
 /*# sourceMappingURL=styles.css.map */

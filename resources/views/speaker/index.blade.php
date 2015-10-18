@@ -104,11 +104,13 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                 {{-- TIP: Here was a line with selected tags that could be removed, and relevante/date filters --}}
 
                 <div class="tab-content">
-                    <div id="grid-view"  class="tab-pane fade active in" role="tabpanel">
+                    <div id="grid-view" class="tab-pane fade active in" role="tabpanel">
                         <div class="row thumbnails events">
 
-                            <?php foreach($speakers as $speaker):
-                                list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker ?>
+                            <?php foreach($speakers as $id => $speaker):
+                                list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker;
+                                $link = act('speaker@profile', slugify($id, $name));
+                            ?>
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 isotope-item festival">
                                     <div class="thumbnail no-border no-padding">
                                         <div class="media">
@@ -117,7 +119,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                                         </div>
                                         <div class="caption">
                                             <h3 class="caption-title">
-                                                <a href="#"><?=$name?></a>
+                                                <a href="<?=$link?>"><?=$name?></a>
                                             </h3>
                                             <div class="caption-category">
                                                 <i class="fa fa-map-marker"></i> <?=$place?> <br>
@@ -125,7 +127,9 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                                             </div>
                                             {{--<p class="caption-price">Tickets from $49,99</p>--}}
                                             <p class="caption-text"><?=$bio?></p>
-                                            <p class="caption-more"><a href="#" class="btn btn-theme">See full profile</a></p>
+                                            <p class="caption-more">
+                                                <a href="<?=$link?>" class="btn btn-theme"><?=_('See full profile')?></a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
+
 class SpeakerController extends Controller {
 
-    public function getIndex(int $id = null, string $theme = null) {
+    public function getIndex() {
         $themes = explode(' ', 'PHP MySQL JavaScript Design WebDesign WebDevelopment UserExperience Agile WebOperations SinglePageApps');
         return view('speaker.index', compact('themes'));
     }
@@ -18,13 +20,9 @@ class SpeakerController extends Controller {
         return view('speaker.index', compact('theme', 'themes'));
     }
 
-    public function missingMethod($parameters = []) {
-        if (preg_match('/(\d*)-(\w*)/', $parameters, $matches)) {
-            return $this->getIndex($matches[1], $matches[2]);
-        } else {
-            return parent::missingMethod($parameters);
-        }
+    public function getProfile(string $id_slug) {
+        list($id, $name_slug) = unslug($id_slug);
+        return view('speaker.profile', compact('id', 'name_slug'));
     }
-
 
 }

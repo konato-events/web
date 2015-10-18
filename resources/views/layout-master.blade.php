@@ -1,4 +1,7 @@
-<?php $lang_tag = substr(LOCALE, 0, 2); ?>
+<?php
+/** @var bool $prod */
+$lang_tag = substr(LOCALE, 0, 2);
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
 <html class="ie ie6" lang="<?=$lang_tag?>"><![endif]-->
@@ -30,6 +33,7 @@
     <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
     <link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/img/icons/extra-sites/extra-sites.css">
 
     <!--[if lt IE 9]>
         <script src="/assets/plugins/iesupport/html5shiv.js"></script>
@@ -39,7 +43,13 @@
     @yield('css')
     @yield('head-js')
 </head>
-<body id="home" class="wide body-light multipage">
+
+<?php
+    $controller = explode('\\', strtok(Route::currentRouteAction(), '@'));
+    $controller = end($controller);
+    $controller = strtolower(substr($controller, 0, strpos($controller, 'Controller')));
+?>
+<body id="<?=$controller?>" class="wide body-light multipage">
 
 <div class="wrapper">
 
@@ -150,7 +160,7 @@
                     </span>
                     <ul>
                         <li><a href="#"><?=_('Get in touch')?></a></li>
-                        <li><a href="#" title="<?=_('Sorting out some private key issues before publishing code. Check back soon or send me a message :)')?>"><?=_('We &#9829; open source')?></a></li>
+                        <li><a href="https://bitbucket.org/konato/web/" title="<?=_('Sorting out some private key issues before publishing code. Check back soon or send me a message :)')?>"><?=_('We &#9829; open source')?></a></li>
                         <li><a target="_blank" href="http://igorsantos.com.br"><?=_('by igorsantos07')?></a></li>
                     </ul>
                 </span>

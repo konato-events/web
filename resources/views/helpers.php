@@ -45,6 +45,17 @@ function slugify(int $id, string $name):string {
 }
 
 /**
+ * Breaks back a slug made of id and a name into an indexed array.
+ * @param string $id_slug
+ * @return mixed
+ */
+function unslug(string $id_slug):array {
+    $id    = strtok($id_slug, '-');
+    $title = strtok('');
+    return [$id, $title];
+}
+
+/**
  * Calls {@link ngettext()} and {@link sprintf()} to make translation of pluralized strings easier.
  * You should include a "%d" in your message IDs to have the number printed out.
  * If you need to use additional parameters for {@link sprintf()}, use {@link __s()}.
