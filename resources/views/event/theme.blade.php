@@ -175,8 +175,7 @@ $title = sprintf(_('Events about %s'), $theme);
 
         <div class="widget">
             <button class="btn btn-theme btn-wrap">
-                <i class="fa fa-mail-forward"></i>
-                <?=_('Follow this theme')?>
+                <i class="fa fa-mail-forward"></i> <?=_('Follow this theme')?>
             </button>
             <a class="note" href="#"><?=_('See my following preferences')?></a>
         </div>

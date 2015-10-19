@@ -195,6 +195,13 @@ body.boxed {
 .footer .widget + .widget {
     margin-top: 30px;
 }
+
+.content .widget + .widget-sm,
+.sidebar .widget + .widget-sm,
+.footer .widget + .widget-sm {
+    margin-top: 15px;
+}
+
 .container {}
 .wide .container.full-width {
     width: 100%;
@@ -670,6 +677,9 @@ hr.page-divider.large {
 /* 1.6 - Buttons
 /* ========================================================================== */
 
+.widget .btn {
+    width: 100%;
+}
 .btn,
 .btn:hover,
 .btn:active,
@@ -693,6 +703,10 @@ hr.page-divider.large {
     line-height: 1;
     padding: 15px 35px;
     transition: all 0.1s ease-in-out;
+}
+.btn-theme.btn-sm {
+    font-size: 16px;
+    padding: 10px 20px;
 }
 .color .btn-theme {
     color: @primaryColor;
@@ -4738,7 +4752,7 @@ ul.filter a {display: block; font-size: 13px; font-weight: 600;}
 
 #sidebar-info {
     .btn {
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         & + .note {
             line-height: 16px;
             text-align: center;

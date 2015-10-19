@@ -202,6 +202,11 @@ body.boxed {
 .footer .widget + .widget {
   margin-top: 30px;
 }
+.content .widget + .widget-sm,
+.sidebar .widget + .widget-sm,
+.footer .widget + .widget-sm {
+  margin-top: 15px;
+}
 .wide .container.full-width {
   width: 100%;
   max-width: 100%;
@@ -713,6 +718,9 @@ hr.page-divider.large {
 }
 /* 1.6 - Buttons
 /* ========================================================================== */
+.widget .btn {
+  width: 100%;
+}
 .btn,
 .btn:hover,
 .btn:active,
@@ -736,6 +744,10 @@ hr.page-divider.large {
   line-height: 1;
   padding: 15px 35px;
   transition: all 0.1s ease-in-out;
+}
+.btn-theme.btn-sm {
+  font-size: 16px;
+  padding: 10px 20px;
 }
 .color .btn-theme {
   color: #fb953e;
@@ -5263,7 +5275,7 @@ ul.filter a {
   text-transform: uppercase;
 }
 #sidebar-info .btn {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 #sidebar-info .btn + .note {
   line-height: 16px;
@@ -5843,6 +5855,17 @@ a:focus,
 }
 .color a {
   color: white;
+}
+a.alt {
+  color: #0b2975;
+}
+a.alt:hover,
+a.alt:active,
+a.alt:focus,
+.color a.alt:hover,
+.color a.alt:active,
+.color a.alt:focus {
+  color: #fa7a0c;
 }
 .dropcap {
   color: #fa7a0c;
@@ -6523,11 +6546,20 @@ header .sf-menu a:hover {
 .btn.btn-wrap {
   white-space: normal;
 }
+.panel-title {
+  font-weight: bold;
+}
 .panel-body .checkbox:first-child {
   margin-top: 0;
 }
 .panel-body ul:last-child {
   margin-bottom: 0;
+}
+.checkbox label {
+  display: block;
+}
+.checkbox.inline label {
+  display: inline-block;
 }
 ul.piped li {
   display: inline;
@@ -6537,6 +6569,44 @@ ul.piped li:not(:last-child):after {
 }
 .tooltip-inner {
   margin-bottom: -1px;
+}
+[class*=part-] {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 5px;
+  padding: 5px 7px;
+  color: white;
+  font-size: 16px;
+  z-index: 11;
+}
+.fa.part-participant {
+  background-color: rgba(34, 139, 34, 0.7);
+}
+.fa.part-involved {
+  background-color: rgba(218, 165, 32, 0.7);
+}
+.fa.part-staff {
+  background-color: rgba(255, 69, 0, 0.7);
+}
+.fa.part-speaker {
+  background-color: rgba(30, 144, 255, 0.7);
+}
+.caption-title .fa.part-participant {
+  color: forestgreen;
+  background-color: white;
+}
+.caption-title .fa.part-involved {
+  color: goldenrod;
+  background-color: white;
+}
+.caption-title .fa.part-staff {
+  color: orangered;
+  background-color: white;
+}
+.caption-title .fa.part-speaker {
+  color: dodgerblue;
+  background-color: white;
 }
 
 .event-types label {
@@ -6561,9 +6631,17 @@ ul.piped li:not(:last-child):after {
 #paid_select .text-right {
   padding-left: 0;
 }
-#list-view .thumbnails.events .caption-title a,
-#grid-view .thumbnails.events .caption-title a {
+.thumbnails.events .caption-title a {
   text-decoration: underline;
+}
+.thumbnail.compact {
+  margin-bottom: 30px;
+}
+.thumbnail.compact .row > div:first-child {
+  padding-right: 0;
+}
+.thumbnail.compact .caption-category {
+  margin-bottom: 0 !important;
 }
 #list-view .thumbnails.events .caption-title {
   margin-bottom: 5px;
@@ -6582,6 +6660,7 @@ ul.piped li:not(:last-child):after {
 }
 #grid-view .thumbnails.events .media {
   max-height: 250px;
+  min-height: 40px;
   max-width: 250px;
   margin: 0 auto;
 }
@@ -6605,12 +6684,23 @@ ul.piped li:not(:last-child):after {
   text-align: left;
   color: white;
 }
-#speaker #page-header .details h2 {
+#speaker #page-header .details h1 {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 0;
+}
+#speaker #page-header .details .place {
+  font-size: 18px;
   color: inherit;
+  text-decoration: underline;
+}
+#speaker #page-header .details .place:hover {
+  color: #fb953e;
 }
 #speaker #page-header .details .function {
   font-size: 23px;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 #speaker #page-header .details .bio {
   font-size: 18px;
@@ -6622,19 +6712,20 @@ ul.piped li:not(:last-child):after {
 #speaker #page-header .details .social-profiles h2 {
   margin-top: 0;
   font-size: 16px;
+  color: inherit;
 }
 #speaker #page-header .details .social-profiles a {
   font-size: 30px;
   padding-right: 10px;
   padding-bottom: 10px;
   float: left;
-  color: #5d78bd;
+  color: #CCC;
 }
 #speaker #page-header .details .social-profiles a:hover {
   color: #fb953e;
 }
 #speaker #page-header .details .social-profiles .tooltip-arrow {
-  border-bottom-color: whitesmoke;
+  border-top-color: whitesmoke;
 }
 #speaker #page-header .details .social-profiles .tooltip-inner {
   background-color: whitesmoke;

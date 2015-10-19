@@ -20,13 +20,20 @@
 	.text-right  { padding-left: 0; }
 }
 
-#list-view, #grid-view {
-    .thumbnails.events {
-        .caption-title {
-            a {
-                text-decoration: underline;
-            }
+.thumbnails.events {
+    .caption-title {
+        a {
+            text-decoration: underline;
         }
+    }
+}
+.thumbnail.compact {
+    margin-bottom: 30px;
+    .row > div:first-child {
+        padding-right: 0;
+    }
+    .caption-category {
+        margin-bottom: 0 !important;
     }
 }
 
@@ -58,6 +65,7 @@
         }
         .media {
             max-height: 250px;
+            min-height: 40px; //acomodates the on-top icons
             max-width: 250px;
             margin: 0 auto;
         }

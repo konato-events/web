@@ -3,16 +3,22 @@
 /** @var int    $id */
 /** @var array  $speakers */
 
+const PART_ATTEND   = 1;
+const PART_INVOLVED = 2;
+const PART_SPOKE    = 3;
+const PART_STAFF    = 4;
+
 //$speaker = array_filter($speakers, function($speaker) use ($name_slug) {
 //    return str_slug($speaker[1]) == $name_slug;
 //})[0];
 $speaker = $speakers[1];
-list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker;
+list($img, $name, $place, $spk_themes, $on_theme, $total, $bio) = $speaker;
 $title      = sprintf(_('%s - speaker'), $name);
 $function   = 'Web developer at InEvent; Student at Estácio de Sá';
 
 $img_height = getimagesize(APP_ROOT.'/public/'.$img)[1];
 $img_height = ($img_height > 250? 250 : $img_height);
+$date_fmt   = _('d/m/Y');
 ?>
 @extends('layout-header')
 @section('title', $title)
@@ -21,7 +27,7 @@ $img_height = ($img_height > 250? 250 : $img_height);
     {{--<script src="assets/plugins/owlcarousel2/owl.carousel.min.js"></script>--}}
     <script src="/assets/plugins/waypoints/waypoints.min.js"></script>
     <script src="/assets/plugins/countdown/jquery.plugin.min.js"></script>
-    <script src="/assets/plugins/countdown/jquery.countdown.min.js"></script>
+    {{--<script src="/assets/plugins/countdown/jquery.countdown.min.js"></script>--}}
     <script src="/assets/plugins/isotope/jquery.isotope.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
@@ -84,35 +90,34 @@ $img_height = ($img_height > 250? 250 : $img_height);
             </div>
 
             <div class="details col-md-8 col-sm-8 col-xs-8" style="height: <?=$img_height?>px">
-                <div class="float-top">
-                    <h1><?=$name?></h1>
-                    <p class="function"><?=$function?></p>
-                    <p class="bio"><?=$bio?></p>
-                </div>
+                <h1><?=$name?></h1>
+                <a class="place" href="<?=search_url(['place' => $place])?>"><?=nbsp($place)?></a>
+                <p class="function"><?=$function?></p>
+                <p class="bio"><?=$bio?></p>
                 <div class="social-profiles float-bottom">
                     <h2><?=_('Him elsewhere:')?></h2><?php //TODO: fix sex here! ?>
                     <?php
-                        $profiles = [
-                            'LinkedIn'         => 'fa fa-linkedin-square',
-                            'Facebook'         => 'fa fa-facebook-square',
-                            'Twitter'          => 'fa fa-twitter-square',
-                            'ResearchGate'     => 'icon-site-researchgate',
-                            'Currículo Lattes' => 'icon-site-lattes',
-                            'Flickr'           => 'fa fa-flickr',
-                            'Behance'          => 'fa fa-behance-square',
-                            'GitHub'           => 'fa fa-github-square',
-                            'Bitbucket'        => 'fa fa-bitbucket-square',
-                            'Speaker Deck'     => 'icon-site-speaker-deck',
-                            'Slideshare'       => 'fa fa-slideshare',
-                            'Website'          => 'fa fa-globe'
-                        ];
-                        foreach($profiles as $profile => $class):
-                            if (is_numeric($profile)) {
-                                $profile = $class;
-                                $class   = str_slug($class);
-                            }
+                    $profiles = [
+                        'LinkedIn'         => 'fa fa-linkedin-square',
+                        'Facebook'         => 'fa fa-facebook-square',
+                        'Twitter'          => 'fa fa-twitter-square',
+                        'ResearchGate'     => 'icon-site-researchgate',
+                        'Currículo Lattes' => 'icon-site-lattes',
+                        'Flickr'           => 'fa fa-flickr',
+                        'Behance'          => 'fa fa-behance-square',
+                        'GitHub'           => 'fa fa-github-square',
+                        'Bitbucket'        => 'fa fa-bitbucket-square',
+                        'Speaker Deck'     => 'icon-site-speaker-deck',
+                        'Slideshare'       => 'fa fa-slideshare',
+                        'Website'          => 'fa fa-globe'
+                    ];
+                    foreach($profiles as $profile => $class):
+                        if (is_numeric($profile)) {
+                            $profile = $class;
+                            $class   = str_slug($class);
+                        }
                     ?>
-                    <a class="<?=$class?>" target="_blank" href="#" data-toggle="tooltip" data-trigger="hover focus click" data-placement="bottom" title="<?=$profile?>"></a>
+                        <a class="<?=$class?>" target="_blank" href="#" data-toggle="tooltip" data-trigger="hover focus click" data-placement="top" title="<?=$profile?>"></a>
                     <?php endforeach ?>
                 </div>
             </div>
@@ -120,5 +125,76 @@ $img_height = ($img_height > 250? 250 : $img_height);
 @endsection
 
 @section('content')
+<section class="page-section with-sidebar first-section">
+<div class="container-fluid">
+    <section id="content" class="content col-sm-8 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title"><?=_('Him in events')?></h2><?php //TODO: fix sex here ?>
+            </div>
+            <div id="grid-view" class="panel-body">
+                <div class="thumbnails events vertical">
+                    <div class="container-fluid">
+                        <div class="row">
+                        @foreach($events as $id => $event)
+                            @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
+                                'compact'     => true,
+                                'participant' => rand(PART_ATTEND, PART_STAFF)
+                            ]))
+                            @if (($id+1) % 2 == 0)
+                                </div><div class="row">
+                            @endif
+                        @endforeach <?php //TODO: use a forelse instead, this needs an empty clause ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <hr class="page-divider transparent visible-xs"/>
+
+    <aside id="sidebar-info" class="sidebar col-sm-4 col-md-3">
+        <div class="widget widget-sm">
+            <button class="btn btn-theme btn-wrap btn-sm">
+                <i class="fa fa-user-plus"></i> <?=_('Add as a connection')?>
+            </button>
+            <a class="note" href="#"><?=_('See my connections')?></a>
+        </div>
+
+        <div class="widget widget-sm">
+            <button class="btn btn-theme btn-wrap btn-sm">
+                <i class="fa fa-mail-forward"></i> <?=_('Follow him')?> <?php //TODO: fix sex here ?>
+            </button>
+            <a class="note" href="#"><?=_('See my following preferences')?></a>
+        </div>
+
+        <div class="widget">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><?=_('His themes of interest')?></h4> <?php //TODO: fix sex here ?>
+                    </div>
+                    <div class="panel-body">
+                        @include('components.themes_list', [ 'link_speakers' => true ])
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><?=_('Most visited places')?></h4> <?php //TODO: fix sex here ?>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <?php foreach(['Rio de Janeiro, Brazil','São Paulo, Brazil','Halifax, Canada'] as $place):?>
+                                <li><a href="<?=search_url(['place' => $place])?>"><?=$place?></a></li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+</section>
 @endsection

@@ -29,9 +29,9 @@ $lang_tag = substr(LOCALE, 0, 2);
     <link rel="stylesheet" href="/assets/plugins/bootstrap-select/bootstrap-select.min.css">
     {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.carousel.min.css">--}}
     {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.theme.default.min.css">--}}
-    <link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">
+    {{--<link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">--}}
     <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
-    <link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">
+    {{--<link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">--}}
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/img/icons/extra-sites/extra-sites.css">
 
@@ -193,12 +193,12 @@ $lang_tag = substr(LOCALE, 0, 2);
 <script src="/assets/plugins/modernizr.custom.js"></script>
 <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="/assets/plugins/superfish/js/superfish.js"></script>
-<script src="/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+{{--<script src="/assets/plugins/superfish/js/superfish.js"></script>--}}
+{{--<script src="/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>--}}
 <script src="/assets/plugins/placeholdem.min.js"></script>
-<script src="/assets/plugins/jquery.smoothscroll.min.js"></script>
-<script src="/assets/plugins/jquery.easing.min.js"></script>
-<script src="/assets/plugins/smooth-scrollbar.min.js"></script>
+{{--<script src="/assets/plugins/jquery.smoothscroll.min.js"></script>--}}
+{{--<script src="/assets/plugins/jquery.easing.min.js"></script>--}}
+{{--<script src="/assets/plugins/smooth-scrollbar.min.js"></script>--}}
 <script src="/js/app.js"></script>
 
 @yield('js')

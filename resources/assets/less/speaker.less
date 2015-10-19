@@ -22,12 +22,21 @@
             display: table;
             text-align: left;
             color: white;
-            h2 {
+            h1 {
+                display: inline-block;
+                margin-right: 20px;
+                margin-bottom: 0;
+            }
+            .place {
+                font-size: 18px;
                 color: inherit;
+                text-decoration: underline;
+                &:hover { color: @primaryColor; }
             }
             .function {
                 font-size: 23px;
                 margin-bottom: 5px;
+                margin-top: 10px;
             }
             .bio {
                 font-size: 18px;
@@ -38,19 +47,18 @@
                 h2 {
                     margin-top: 0;
                     font-size: 16px;
+                    color: inherit;
                 }
                 a {
                     font-size: 30px;
                     padding-right: @socialIconsSpace;
                     padding-bottom: @socialIconsSpace;
                     float: left; //seems to clear a weird bug regarding extra space to the right + tooltip trigger
-                    color: @lightSecondaryColor;
-                    &:hover {
-                        color: @primaryColor;
-                    }
+                    color: #CCC; //stands out less than the rest of the block, since the icons are solid and the letters are not
+                    &:hover { color: @primaryColor; }
                 }
                 @tooltipColor: whitesmoke;
-                .tooltip-arrow { border-bottom-color: @tooltipColor; }
+                .tooltip-arrow { border-top-color: @tooltipColor; }
                 .tooltip-inner {
                     background-color: @tooltipColor;
                     color: black;

@@ -5,11 +5,13 @@ use Illuminate\Support\Str;
 /**
  * Shorthand function for {@link action()}, removing the need to indicate "Controller" for the classname
  * and "get" for the method name. Other HTTP verbs are still required. `getIndex` is also optional.
+ * This version also uses urlencode() in parameters.
  * Examples:
  * - user > UserController@getIndex
  * - user@profile > UserController@getProfile
  * - user@postEdit > UserController@postEdit
  *
+ * @link https://github.com/laravel/framework/issues/10659
  * @param string $route A "route" string as explained in the examples
  * @param mixed  ...$vars Path variables
  * @see action()
@@ -31,7 +33,23 @@ function act(string $route, ...$vars):string {
         $action = 'get'.ucfirst($action);
     }
 
+    array_walk_recursive($vars, function(&$value) { $value = urlencode($value); });
+
     return action("{$controller}Controller@$action", ...$vars);
+}
+
+/**
+ * Temporary (?) helper to create our search URL with query parameters.
+ * @link https://github.com/laravel/framework/issues/10659
+ * @param array $params
+ * @return string
+ */
+function search_url(array $params = []):string {
+    return act('event@search').'?'.http_build_query($params);
+}
+
+function nbsp(string $str):string {
+    return strtr($str, [' ' => '&nbsp;']);
 }
 
 /**
