@@ -8,10 +8,9 @@ const PART_INVOLVED = 2;
 const PART_SPOKE    = 3;
 const PART_STAFF    = 4;
 
-//$speaker = array_filter($speakers, function($speaker) use ($name_slug) {
-//    return str_slug($speaker[1]) == $name_slug;
-//})[0];
-$speaker = $speakers[1];
+$speaker = current(array_filter($speakers, function($speaker) use ($name_slug) {
+    return str_slug($speaker[1]) == $name_slug;
+}));
 list($img, $name, $place, $spk_themes, $on_theme, $total, $bio) = $speaker;
 $title      = sprintf(_('%s - speaker'), $name);
 $function   = 'Web developer at InEvent; Student at Estácio de Sá';
