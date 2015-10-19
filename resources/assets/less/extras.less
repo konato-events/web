@@ -27,24 +27,13 @@ ul.piped li {
 }
 
 [class*=part-] {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    border-radius: 5px;
-    padding: 5px 7px;
-    color: white;
+    padding-right: 3px;
     font-size: 16px;
     z-index: 11;
 }
-@iconOpacity: 70%;
-.fa.part-participant { background-color: fade(forestgreen, @iconOpacity); }
-.fa.part-involved    { background-color: fade(goldenrod, @iconOpacity); }
-.fa.part-staff       { background-color: fade(orangered, @iconOpacity); }
-.fa.part-speaker     { background-color: fade(dodgerblue, @iconOpacity); }
-
 .caption-title {
-    .fa.part-participant { color: forestgreen; background-color: white; }
-    .fa.part-involved    { color: goldenrod; background-color: white; }
-    .fa.part-staff       { color: orangered; background-color: white; }
-    .fa.part-speaker     { color: dodgerblue; background-color: white; }
+    .fa.part-participant { color: forestgreen; }
+    .fa.part-involved    { color: goldenrod; }
+    .fa.part-staff       { color: orangered; }
+    .fa.part-speaker     { color: dodgerblue; }
 }

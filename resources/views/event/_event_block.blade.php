@@ -45,11 +45,6 @@ if ($participant) {
     <div class="row">
         <div class="col-md-3 col-sm-3 col-xs-4">
             <div class="media">
-                @if ($icon)
-                    <i class="fa fa-<?=$icon?> part-<?=$color?>" title="<?=$part_desc?>"
-                       data-toggle="tooltip" data-trigger="hover click" data-container="body"></i>
-                @endif
-
                 <?php //TODO: adding a link to this image wont work ?>
                 <img src="<?=$img?>" alt="<?=$title?>">
 
@@ -68,8 +63,8 @@ if ($participant) {
                 {{--</span>--}}
                 {{--</a>--}}
                 <h3 class="caption-title">
-                    @if (!$icon)
-                        <i class="fa fa-<?=$icon?> part-<?=$color?>" title="<?=$desc?>"
+                    @if ($icon)
+                        <i class="fa fa-<?=$icon?> part-<?=$color?>" title="<?=$part_desc?>"
                            data-toggle="tooltip" data-trigger="hover click" data-container="body"></i>
                     @endif
                     <a href="<?=$link?>"><?=$title?></a>
