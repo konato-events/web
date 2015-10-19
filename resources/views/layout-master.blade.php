@@ -32,7 +32,12 @@ $lang_tag = substr(LOCALE, 0, 2);
     {{--<link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">--}}
     <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
     {{--<link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">--}}
-    <link rel="stylesheet" href="/css/styles.css">
+    <?php if($prod): ?>
+        <link rel="stylesheet" href="{{ elixir('css/styles.css') }}">
+    <?php else: ?>
+        <link rel="stylesheet" href="/css/styles.css">
+    <?php endif ?>
+
     <link rel="stylesheet" href="/img/icons/extra-sites/extra-sites.css">
 
     <!--[if lt IE 9]>
@@ -199,7 +204,11 @@ $lang_tag = substr(LOCALE, 0, 2);
 {{--<script src="/assets/plugins/jquery.smoothscroll.min.js"></script>--}}
 {{--<script src="/assets/plugins/jquery.easing.min.js"></script>--}}
 {{--<script src="/assets/plugins/smooth-scrollbar.min.js"></script>--}}
-<script src="/js/app.js"></script>
+<?php if ($prod): ?>
+    <script src="{{ elixir('js/app.js') }}"></script>
+<?php else: ?>
+    <script src="/js/app.js"></script>
+<?php endif ?>
 
 @yield('js')
 
