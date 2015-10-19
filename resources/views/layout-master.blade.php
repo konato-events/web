@@ -152,9 +152,9 @@ $lang_tag = substr(LOCALE, 0, 2);
                     {{--</ul>--}}
                 {{--</div>--}}
                 <span class="copyright">
-                    <?=_('Discover amazing events on Konato')?> &copy; <?=date('Y')?>
+                    <?=_('Discover amazing events on Konato')?>&nbsp;&copy;&nbsp;<?=date('Y')?>
                     <span>
-                        <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio de Janeiro'),
+                        <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro'),
                             '<a href="https://about.me/igorsantos07" target="_blank">', '</a>') ?>
                         <img src="/img/sugar-loaf-icon.png" title="<?=_('Marvelous City, place of the Sugar Loaf')?>">
                     </span>

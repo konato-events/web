@@ -11,7 +11,9 @@ const PART_STAFF    = 4;
 $speaker = current(array_filter($speakers, function($speaker) use ($name_slug) {
     return str_slug($speaker[1]) == $name_slug;
 }));
-list($img, $name, $place, $spk_themes, $on_theme, $total, $bio) = $speaker;
+list($img, $name, $place, $spk_themes, $on_theme, $total, $bio, $gender) = $speaker;
+$male       = $gender == 'M';
+
 $title      = sprintf(_('%s - speaker'), $name);
 $function   = 'Web developer at InEvent; Student at Estácio de Sá';
 
@@ -84,17 +86,17 @@ $date_fmt   = _('d/m/Y');
 @section('header-bg', '/img/bg-speaker.jpeg')
 @section('header-content')
         <div class="row">
-            <div class="photo col-md-4 col-sm-4 col-xs-4">
+            <div class="photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
                 <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
             </div>
 
-            <div class="details col-md-8 col-sm-8 col-xs-8" style="height: <?=$img_height?>px">
+            <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
                 <h1><?=$name?></h1>
                 <a class="place" href="<?=search_url(['place' => $place])?>"><?=nbsp($place)?></a>
                 <p class="function"><?=$function?></p>
                 <p class="bio"><?=$bio?></p>
                 <div class="social-profiles float-bottom">
-                    <h2><?=_('Him elsewhere:')?></h2><?php //TODO: fix sex here! ?>
+                    <h2><?=($male)? _('Him elsewhere:') : _('Her elsewhere:')?></h2>
                     <?php
                     $profiles = [
                         'LinkedIn'         => 'fa fa-linkedin-square',
@@ -129,16 +131,17 @@ $date_fmt   = _('d/m/Y');
     <section id="content" class="content col-sm-8 col-md-9">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2 class="panel-title"><?=_('Him in events')?></h2><?php //TODO: fix sex here ?>
+                <h2 class="panel-title"><?=($male)? _('Him in events') : _('Her in events')?></h2>
             </div>
             <div id="grid-view" class="panel-body">
-                <div class="thumbnails events vertical">
+                <div class="thumbnails events">
                     <div class="container-fluid">
                         <div class="row">
                         @foreach($events as $id => $event)
                             @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
                                 'compact'     => true,
-                                'participant' => rand(PART_ATTEND, PART_STAFF)
+                                'participant' => rand(PART_ATTEND, PART_STAFF),
+                                'participant_gender' => $gender
                             ]))
                             @if (($id+1) % 2 == 0)
                                 </div><div class="row">
@@ -163,7 +166,7 @@ $date_fmt   = _('d/m/Y');
 
         <div class="widget widget-sm">
             <button class="btn btn-theme btn-wrap btn-sm">
-                <i class="fa fa-mail-forward"></i> <?=_('Follow him')?> <?php //TODO: fix sex here ?>
+                <i class="fa fa-mail-forward"></i> <?=($male)? _('Follow him') : _('Follow her')?>
             </button>
             <a class="note" href="#"><?=_('See my following preferences')?></a>
         </div>
@@ -172,7 +175,7 @@ $date_fmt   = _('d/m/Y');
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><?=_('His themes of interest')?></h4> <?php //TODO: fix sex here ?>
+                        <h4 class="panel-title"><?=($male)? _('His themes of interest') : _('Her themes of interest')?></h4>
                     </div>
                     <div class="panel-body">
                         @include('components.themes_list', [ 'link_speakers' => true ])
@@ -181,7 +184,7 @@ $date_fmt   = _('d/m/Y');
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><?=_('Most visited places')?></h4> <?php //TODO: fix sex here ?>
+                        <h4 class="panel-title"><?=_('Most visited places')?></h4>
                     </div>
                     <div class="panel-body">
                         <ul>

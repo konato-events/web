@@ -3,6 +3,7 @@
   * @var int $id
   * @var bool  $compact
   * @var bool  $participant
+  * @var bool  $participant_gender
   * @var array $themes
   * @var array $event */
 use Illuminate\Support\Str;
@@ -13,26 +14,26 @@ $compact = $compact ?? false;
 $participant = $participant ?? false;
 
 if ($participant) {
-    switch ($participant) { //TODO: fix sex here!
+    switch ($participant) {
         case PART_ATTEND:
             $color     = 'participant';
             $icon      = 'ticket'; //map-pin, child
-            $part_desc = _('He participated');
+            $part_desc = ($participant_gender == 'M')? _('He participated') : _('She participated');
             break;
         case PART_INVOLVED:
             $color     = 'involved';
             $icon      = 'users'; //cog
-            $part_desc = _('He was involved / volunteered');
+            $part_desc = ($participant_gender == 'M')? _('He was involved / volunteered') : _('She was involved / volunteered');
             break;
         case PART_STAFF:
             $color     = 'staff';
             $icon      = 'black-tie'; //wrench, user, cogs
-            $part_desc = _('He was part of staff');
+            $part_desc = ($participant_gender == 'M')? _('He was part of staff') : _('She was part of staff');
             break;
         case PART_SPOKE:
             $color     = 'speaker';
             $icon      = 'microphone'; //comments, podium (octicons)
-            $part_desc = _('He was a speaker');
+            $part_desc = ($participant_gender == 'M')? _('He was a speaker') : _('She was a speaker');
             break;
     }
 } else {

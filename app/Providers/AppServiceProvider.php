@@ -68,6 +68,7 @@ class AppServiceProvider extends ServiceProvider {
             $speaker[] = rand(5, 15);
             $speaker[] = rand(15, 50);
             $speaker[] = 'Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.';
+            $speaker[] = ['M', 'M', 'F', 'M', 'M', 'M'][$i];
         }
 
         shuffle($events);
