@@ -1,3 +1,4 @@
+<?php /** @var array $events */ ?>
 @extends('layout-master')
 
 @section('js')
@@ -71,7 +72,7 @@
 
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                                    <form action="<?=action('EventController@getSearch')?>" method="get" class="location-search">
+                                    <form action="<?=act('event@search')?>" method="get" class="location-search">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input type="text" name="q" class="form-control text" placeholder="<?=_('Find by theme or keyword')?>" />

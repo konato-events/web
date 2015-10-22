@@ -1,4 +1,7 @@
-<?php $lang_tag = substr(LOCALE, 0, 2); ?>
+<?php
+/** @var bool $prod */
+$lang_tag = substr(LOCALE, 0, 2);
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
 <html class="ie ie6" lang="<?=$lang_tag?>"><![endif]-->
@@ -26,10 +29,16 @@
     <link rel="stylesheet" href="/assets/plugins/bootstrap-select/bootstrap-select.min.css">
     {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.carousel.min.css">--}}
     {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.theme.default.min.css">--}}
-    <link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">
+    {{--<link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">--}}
     <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
-    <link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    {{--<link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">--}}
+    <?php if($prod): ?>
+        <link rel="stylesheet" href="{{ elixir('css/styles.css') }}">
+    <?php else: ?>
+        <link rel="stylesheet" href="/css/styles.css">
+    <?php endif ?>
+
+    <link rel="stylesheet" href="/img/icons/extra-sites/extra-sites.css">
 
     <!--[if lt IE 9]>
         <script src="/assets/plugins/iesupport/html5shiv.js"></script>
@@ -39,7 +48,13 @@
     @yield('css')
     @yield('head-js')
 </head>
-<body id="home" class="wide body-light multipage">
+
+<?php
+    $controller = explode('\\', strtok(Route::currentRouteAction(), '@'));
+    $controller = end($controller);
+    $controller = strtolower(substr($controller, 0, strpos($controller, 'Controller')));
+?>
+<body id="<?=$controller?>" class="wide body-light multipage">
 
 <div class="wrapper">
 
@@ -78,25 +93,7 @@
                     <ul class="sf-menu nav">
                         <li{{-- class="active"--}}><a href="/"><i class="fa fa-table"></i> <?=_('Dashboard')?></a></li>
                         <!--<li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>-->
-                        <li><a href="#"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
-
-                        <li><!-- TODO: REMOVE THIS ENTRY -->
-                            <a href="#">T</a>
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="index-2.html">Home 2</a></li>
-                                <li><a href="event-list.html">Event List</a></li>
-                                <li><a href="event-grid.html">Event Grid</a></li>
-                                <li><a href="event-single.html">Single Event</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                <li><a href="search-results.html">Search Results</a></li>
-                                <li><a href="coming-soon-1.html">Coming Soon 1</a></li>
-                                <li><a href="coming-soon-2.html">Coming Soon 2</a></li>
-                                <li><a href="coming-soon-3.html">Coming Soon 3</a></li>
-                                <li><a href="error-page.html">404</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{act('speaker')}}"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
 
                         <li class="header-search-wrapper">
                             <form action="#" class="header-search-form">
@@ -124,6 +121,7 @@
     </header>
 
     <div class="content-area">
+        @yield('header')
         @yield('content')
     </div>
     <!-- /Content area -->
@@ -159,19 +157,24 @@
                     {{--</ul>--}}
                 {{--</div>--}}
                 <span class="copyright">
-                    <?=_('Discover amazing events on Konato')?> &copy; <?=date('Y')?>
+                    <?=_('Discover amazing events on Konato')?>&nbsp;&copy;&nbsp;<?=date('Y')?>
                     <span>
-                        <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio de Janeiro'),
+                        <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro'),
                             '<a href="https://about.me/igorsantos07" target="_blank">', '</a>') ?>
-                        <img src="/img/sugar-loaf-icon.png" title="<?=_('Mavelous City, place of the Sugar Loaf')?>">
+                        <img src="/img/sugar-loaf-icon.png" title="<?=_('Marvelous City, place of the Sugar Loaf')?>">
                     </span>
+                    <ul>
+                        <li><a href="#"><?=_('Get in touch')?></a></li>
+                        <li><a href="https://bitbucket.org/konato/web/" title="<?=_('Sorting out some private key issues before publishing code. Check back soon or send me a message :)')?>"><?=_('We &#9829; open source')?></a></li>
+                        <li><a target="_blank" href="http://igorsantos.com.br"><?=_('by igorsantos07')?></a></li>
+                    </ul>
                 </span>
             </div>
         </div>
     </footer>
     <!-- /FOOTER -->
 
-    {{--<div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>--}}
+    <!--<div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>-->
 
 @yield('popups')
 
@@ -195,12 +198,17 @@
 <script src="/assets/plugins/modernizr.custom.js"></script>
 <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="/assets/plugins/superfish/js/superfish.js"></script>
-<script src="/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+{{--<script src="/assets/plugins/superfish/js/superfish.js"></script>--}}
+{{--<script src="/assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>--}}
 <script src="/assets/plugins/placeholdem.min.js"></script>
-<script src="/assets/plugins/jquery.smoothscroll.min.js"></script>
-<script src="/assets/plugins/jquery.easing.min.js"></script>
-<script src="/assets/plugins/smooth-scrollbar.min.js"></script>
+{{--<script src="/assets/plugins/jquery.smoothscroll.min.js"></script>--}}
+{{--<script src="/assets/plugins/jquery.easing.min.js"></script>--}}
+{{--<script src="/assets/plugins/smooth-scrollbar.min.js"></script>--}}
+<?php if ($prod): ?>
+    <script src="{{ elixir('js/app.js') }}"></script>
+<?php else: ?>
+    <script src="/js/app.js"></script>
+<?php endif ?>
 
 @yield('js')
 

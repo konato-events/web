@@ -193,8 +193,15 @@ body.boxed {
 .content .widget + .widget,
 .sidebar .widget + .widget,
 .footer .widget + .widget {
-    margin-top: 50px;
+    margin-top: 30px;
 }
+
+.content .widget + .widget-sm,
+.sidebar .widget + .widget-sm,
+.footer .widget + .widget-sm {
+    margin-top: 15px;
+}
+
 .container {}
 .wide .container.full-width {
     width: 100%;
@@ -550,11 +557,6 @@ a:focus {
     text-decoration: none;
 }
 
-a {color: #ea032d;}
-a:hover,
-a:active,
-a:focus {color: #000000;}
-
 .color a {color: white;}
 .color a:hover,
 .color a:active,
@@ -622,8 +624,7 @@ ul ol, ol ul {
 
 hr {}
 hr.page-divider {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin: 20px 0;
     clear: both;
     border-color: #eeeeee;
 }
@@ -676,6 +677,9 @@ hr.page-divider.large {
 /* 1.6 - Buttons
 /* ========================================================================== */
 
+.widget .btn {
+    width: 100%;
+}
 .btn,
 .btn:hover,
 .btn:active,
@@ -699,6 +703,10 @@ hr.page-divider.large {
     line-height: 1;
     padding: 15px 35px;
     transition: all 0.1s ease-in-out;
+}
+.btn-theme.btn-sm {
+    font-size: 16px;
+    padding: 10px 20px;
 }
 .color .btn-theme {
     color: @primaryColor;
@@ -2937,7 +2945,8 @@ footer.post-meta .post-categories {display: block;}
     overflow: hidden;
 }
 .thumbnail .caption {
-    padding: 20px 0 0 0;
+    //padding: 20px 0 0 0;
+    padding: 0;
     overflow: hidden;
     font-size: 14px;
 }
@@ -2993,7 +3002,7 @@ footer.post-meta .post-categories {display: block;}
     font-weight: 700;
     margin-bottom: 0;
     text-transform: uppercase;
-    line-height: 14px;
+    line-height: 20px;
     color: @darkPrimaryColor;
 }
 .caption-link {}
@@ -3190,7 +3199,7 @@ footer.post-meta .post-categories {display: block;}
 .thumbnails.events .caption-title,
 .thumbnails.events .caption-title a {
     font-size: 16px;
-    line-height: 16px;
+    line-height: 18px;
     margin-bottom: 20px;
     text-transform: none;
     color: #0d1d31;
@@ -3199,7 +3208,6 @@ footer.post-meta .post-categories {display: block;}
 .thumbnails.events .caption-category {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    line-height: 14px;
     margin-bottom: 20px;
     text-transform: none;
     color: @darkSecondaryColor;
@@ -3688,15 +3696,31 @@ footer.post-meta .post-categories {display: block;}
 /* 4 - Footer
 /* ========================================================================== */
 
+//setting wrapper, body, html and content-area here as they're related to footer displaying as a row (so it fixes at bottom)
+.wrapper { display: table; }
+body, html, .wrapper, .content-area { height: 100%; width: 100%; }
 .footer {
+    display: table-row;
+    height: 1px;
+    @spacing: 8px;
     .copyright {
         span {
             font-size: 14px;
             display: block;
-            margin-top: 8px;
+            margin-top: @spacing;
             img {
                 vertical-align: bottom;
                 height: 18px;
+            }
+        }
+    }
+    ul {
+        margin: @spacing 0 0 0;
+        li {
+            font-size: 14px;
+            display: inline-block;
+            &:not(:last-child)::after {
+                content: ' | ';
             }
         }
     }
@@ -3715,7 +3739,7 @@ footer.post-meta .post-categories {display: block;}
 }
 .wide .footer-meta,
 .boxed .footer-meta > .container {
-    padding: 40px 0 40px 0;
+    padding: 30px 0;
     background-color: #f5f5f5;
     color: #414650;
     font-size: 18px;
@@ -3909,11 +3933,6 @@ footer.post-meta .post-categories {display: block;}
         padding-bottom: 20px;
         line-height: 24px;
         font-family: 'Roboto', sans-serif;
-
-        .note {
-            display: block;
-            line-height: inherit;
-        }
     }
 }
 
@@ -4734,10 +4753,11 @@ ul.filter a {display: block; font-size: 13px; font-weight: 600;}
 
 #sidebar-info {
     .btn {
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         & + .note {
             line-height: 16px;
             text-align: center;
+            display: block;
         }
     }
 }
@@ -4764,9 +4784,38 @@ ul.speakers {
             font-weight: bold;
             margin-bottom: 5px;
         }
-        span {  }
     }
 }
+
+ul.themes {
+    li {
+        display: inline-block;
+        margin: 3px 1px;
+
+        a {
+            padding: 3px 6px;
+            border-radius: 5px;
+            background-color: @secondaryColorBg;
+            color: @darkestSecondaryColor;
+            font-weight: normal;
+            &:hover {
+                color: @main-color-d10;
+                background-color: @primaryColorBg;
+            }
+        }
+    }
+
+    .caption-category & {
+        display: inline;
+    }
+}
+
+a.see-more {
+    display: block;
+    margin-top: -20px;
+    text-align: right;
+}
+
 
 .page-section.create-new-event {}
 .page-section.create-new-event .section-title {margin-bottom: 20px;}

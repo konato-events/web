@@ -43,7 +43,6 @@ class AppServiceProvider extends ServiceProvider {
             $event[] = 'Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant
          morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis. Bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.';
         }
-        shuffle($events);
 
         $types = [
             _('Congresses'),
@@ -58,11 +57,22 @@ class AppServiceProvider extends ServiceProvider {
         $selected_themes = array_rand($themes, 2);
 
         $speakers = [
-            ['/img/speaker-sample1.jpg', 'Fabio Akita', rand(5, 15), rand(15, 50)],
-            ['/img/speaker-sample2.jpg', 'Raphael de Almeida', rand(5, 15), rand(15, 50)],
-            ['/img/speaker-sample3.jpg', 'Valéria Parajara', rand(5, 15), rand(15, 50)],
+            ['/img/speaker-sample1.jpg', 'Fabio Akita', 'São Paulo, Brazil', ['Ruby', 'Agile', 'Speaking']],
+            ['/img/speaker-sample2.jpg', 'Raphael de Almeida', 'Rio de Janeiro, Brazil', ['PHP', 'Microsserviços', 'Ruby']],
+            ['/img/speaker-sample3.jpg', 'Valéria Parajara', 'Rio de Janeiro, Brazil', ['Ruby', 'Gastronomia']],
+            ['/img/speaker-sample4.jpg', 'Pedro Couteiro', 'Tsukuba, Japan', ['CG', 'Java', 'Japanese']],
+            ['/img/speaker-sample5.jpg', 'Luan Rodrigues', 'Rio de Janeiro, Brazil', ['Computação médica', 'Cirurgia plástica']],
+            ['/img/speaker-sample6.jpg', 'Igor Santos', 'Halifax, Canada', ['Web Services', 'PHP']],
         ];
+        foreach($speakers as $i => &$speaker) {
+            $speaker[] = rand(5, 15);
+            $speaker[] = rand(15, 50);
+            $speaker[] = 'Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi.';
+            $speaker[] = ['M', 'M', 'F', 'M', 'M', 'M'][$i];
+        }
 
+        shuffle($events);
+        shuffle($speakers);
         $view->share('events', $events);
         $view->share('types', $types);
         $view->share('selected_types', $selected_types);
@@ -73,7 +83,6 @@ class AppServiceProvider extends ServiceProvider {
 
     /**
      * Register any application services.
-     *
      * @return void
      */
     public function register() {

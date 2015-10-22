@@ -3,7 +3,7 @@
 
 //FIXME: forcing gettext to find those strings, that are used inside blade code
 _('Search terms'); _('Event types'); _('Free'); _('Both'); _('Paid'); _('Theme'); _('Date'); _('Begin'); _('End');
-$title = sprintf(_('"%s" events search'), $query);
+$title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not always we will have a $query!
 ?>
 @extends('layout-master')
 @section('title' , $title)
@@ -23,11 +23,6 @@ $title = sprintf(_('"%s" events search'), $query);
         "use strict";
         jQuery(document).ready(function () {
             theme.init();
-            theme.initMainSlider();
-            theme.initCountDown();
-            theme.initPartnerSlider2();
-            theme.initImageCarousel();
-            theme.initTestimonials();
             theme.initGoogleMap();
         });
         jQuery(window).load(function () {
@@ -81,7 +76,7 @@ $title = sprintf(_('"%s" events search'), $query);
                     <div id="map-canvas1"></div>
                     <?php //TODO: get user location through the IP to customize location search. we might ask for JS location to improve further queries ?>
                 </div>
-                <a href="#" class="link"><i class="fa fa-compass"></i> Rio de Janeiro, Brazil</a>
+                <a href="#" class="link"><i class="fa fa-compass"></i> <?=$place?></a>
             </div>
 
             <form class="widget">
@@ -97,6 +92,7 @@ $title = sprintf(_('"%s" events search'), $query);
                             'class'  => 'form-control'
                         ]])
 
+                    <?php //TODO: take a look at the categories list from the blog page and see if it fits better here ?>
                     @include('components.accordion_panel', [
                         'title'      => _('Event types'),
                         'open'       => true,
@@ -105,11 +101,13 @@ $title = sprintf(_('"%s" events search'), $query);
                         'content' => '
                             <div class="row" id="paid_select">
                                 <div class="col-xs-12">
-                                    <input type="range" name="paid" min="-1" max="1" value="'.$paid.'">
+                                    <input type="range" name="paid" min="-1" max="1" id="range_paid" value="'.$paid.'">
                                 </div>
-                                <div class="col-xs-4 text-left">  '._('Free').'</div>
-                                <div class="col-xs-4 text-center">'._('Both').'</div>
-                                <div class="col-xs-4 text-right"> '._('Paid').'</div>
+                                <label for="range_paid">
+                                    <span class="col-xs-4 text-left" data-value="-1"> '._('Free').'</span>
+                                    <span class="col-xs-4 text-center" data-value="0">'._('Both').'</span>
+                                    <span class="col-xs-4 text-right" data-value="1"> '._('Paid').'</span>
+                                </label>
                             </div>'])
 
                     @include('components.accordion_panel', ['title' => _('Theme'),
@@ -136,7 +134,7 @@ $title = sprintf(_('"%s" events search'), $query);
                 <div class="filters">
                     @foreach ($themes as $id => $theme)
                         @if (in_array($id, $selected_themes))
-                            <a href="#">{{$theme}} <i class="fa fa-times"></i></a>
+                            <a href="#"><?=$theme?> <i class="fa fa-times"></i></a>
                         @endif
                     @endforeach
                 </div>

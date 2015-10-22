@@ -89,20 +89,21 @@ h4 .glyphicon, h5 .glyphicon, h6 .glyphicon {
 }
 
 a {
-	color: @main-color-d10;
-}
-
-a:hover,
-a:active,
-a:focus,
-.color a:hover,
-.color a:active,
-.color a:focus {
-	color: @darkestSecondaryColor;
-}
-
-.color a {
-	color: white;
+    color: @main-color-d10;
+    &:hover, &:active, &:focus,
+    .color &:hover, .color &:active, .color &:focus {
+        color: @darkestSecondaryColor;
+    }
+    .color & {
+        color: white;
+    }
+    &.alt {
+        color: @darkestSecondaryColor;
+        &:hover, &:active, &:focus,
+        .color &:hover, .color &:active, .color &:focus {
+            color: @main-color-d10;
+        }
+    }
 }
 
 .dropcap {

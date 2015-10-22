@@ -1,0 +1,69 @@
+@import 'theme.variables';
+
+#speaker {
+    @socialIconsSpace: 10px;
+    #page-header {
+        box-shadow: inset 0 0 25px 7px fade(black, 80%);
+        background-size: auto 100% !important;
+        padding-bottom: 20px - @socialIconsSpace !important;
+        //margin: 0 -50px;     // hiding the
+        //padding-left: 25px;  // left/right shadows
+
+        .photo {
+            text-align: right;
+            img {
+                max-height: 250px;
+                max-width: 100%;
+                box-shadow: 0 0 30px 2px fade(gray, 50%);
+                border-radius: 15px;
+            }
+        }
+        .details {
+            display: table;
+            text-align: left;
+            color: white;
+            h1 {
+                display: inline-block;
+                margin-right: 20px;
+                margin-bottom: 0;
+            }
+            .place {
+                font-size: 18px;
+                color: inherit;
+                text-decoration: underline;
+                &:hover { color: @primaryColor; }
+            }
+            .function {
+                font-size: 23px;
+                margin-bottom: 5px;
+                margin-top: 10px;
+            }
+            .bio {
+                font-size: 18px;
+            }
+            .social-profiles {
+                display: table-row;
+                height: 50px;
+                h2 {
+                    margin-top: 0;
+                    font-size: 16px;
+                    color: inherit;
+                }
+                a {
+                    font-size: 30px;
+                    padding-right: @socialIconsSpace;
+                    padding-bottom: @socialIconsSpace;
+                    float: left; //seems to clear a weird bug regarding extra space to the right + tooltip trigger
+                    color: #CCC; //stands out less than the rest of the block, since the icons are solid and the letters are not
+                    &:hover { color: @primaryColor; }
+                }
+                @tooltipColor: whitesmoke;
+                .tooltip-arrow { border-top-color: @tooltipColor; }
+                .tooltip-inner {
+                    background-color: @tooltipColor;
+                    color: black;
+                }
+            }
+        }
+    }
+}

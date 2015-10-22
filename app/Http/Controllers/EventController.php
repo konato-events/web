@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 class EventController extends Controller {
 
 	public function getSearch() {
-		$query = self::getParam('q');
-		if (!$query) {
+		if (!$_GET) {
 			return redirect()->action('SiteController@getIndex');
 		}
+        $query = self::getParam('q', '');
 		$paid  = self::getParam('paid', 0);
+		$place = self::getParam('place', 'Rio de Janeiro, Brazil');
 
-		return view('event.search', compact('query', 'paid'));
+		return view('event.search', compact('query', 'paid', 'place'));
 	}
 
 	public function getDetails(string $id_slug) {
