@@ -107,11 +107,13 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                     <div id="grid-view" class="tab-pane fade active in" role="tabpanel">
                         <div class="row thumbnails events">
 
-                            <?php foreach($speakers as $id => $speaker):
+                            <?php
+                            $columns = ['lg' => 3, 'md' => 4, 'sm' => 6, 'xs' => 6];
+                            foreach($speakers as $id => $speaker):
                                 list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker;
                                 $link = act('speaker@profile', slugify($id, $name));
                             ?>
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 isotope-item festival">
+                                <div class="<?php foreach ($columns as $sign => $size) echo "col-$sign-$size " ?> isotype-item festival">
                                     <div class="thumbnail no-border no-padding">
                                         <div class="media">
                                             <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
@@ -133,6 +135,12 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                                         </div>
                                     </div>
                                 </div>
+
+                                @foreach($columns as $sign => $size)
+                                    @if (($id+1) % (12/$size) == 0)
+                                        <div class="cleafix col-{{$sign}}-12 visible-{{$sign}}"></div>
+                                    @endif
+                                @endforeach
                             <?php endforeach ?>
 
                         </div>

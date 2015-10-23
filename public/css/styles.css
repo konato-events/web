@@ -3235,12 +3235,6 @@ footer.post-meta .post-categories {
 .thumbnail.no-radius {
   border-radius: 0;
 }
-.row.thumbnails {
-  margin-top: -30px;
-}
-.row.thumbnails .thumbnail {
-  margin-top: 30px;
-}
 .row.thumbnails.no-padding {
   margin-top: 0;
   margin-left: 0;
@@ -3292,7 +3286,6 @@ footer.post-meta .post-categories {
   overflow: hidden;
 }
 .thumbnail .caption {
-  padding: 0;
   overflow: hidden;
   font-size: 14px;
 }
