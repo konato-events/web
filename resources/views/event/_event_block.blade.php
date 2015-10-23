@@ -75,7 +75,7 @@ if ($participant) {
                         <?=date($date_fmt, $begin)?> <?=($end)? ' ~ '.date($date_fmt, $end) : '' ?>
                     <br/>
                     <i class="fa fa-map-marker"></i>
-                        <a class="alt" href="<?=search_url(['place' => $place])?>"><?=$place?></a>
+                        <a class="alt" href="<?=act('event@search', ['place' => $place])?>"><?=$place?></a>
                 </p>
 
                 {{--<p class="caption-price">Tickets from $49,99</p>--}}

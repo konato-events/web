@@ -33,19 +33,7 @@ function act(string $route, ...$vars):string {
         $action = 'get'.ucfirst($action);
     }
 
-    array_walk_recursive($vars, function(&$value) { $value = urlencode($value); });
-
     return action("{$controller}Controller@$action", ...$vars);
-}
-
-/**
- * Temporary (?) helper to create our search URL with query parameters.
- * @link https://github.com/laravel/framework/issues/10659
- * @param array $params
- * @return string
- */
-function search_url(array $params = []):string {
-    return act('event@search').'?'.http_build_query($params);
 }
 
 function nbsp(string $str):string {

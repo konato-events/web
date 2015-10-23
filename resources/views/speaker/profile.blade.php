@@ -92,7 +92,7 @@ $date_fmt   = _('d/m/Y');
 
             <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
                 <h1><?=$name?></h1>
-                <a class="place" href="<?=search_url(['place' => $place])?>"><?=nbsp($place)?></a>
+                <a class="place" href="<?=act('event@search', ['place' => $place])?>"><?=nbsp($place)?></a>
                 <p class="function"><?=$function?></p>
                 <p class="bio"><?=$bio?></p>
                 <div class="social-profiles float-bottom">
@@ -189,7 +189,7 @@ $date_fmt   = _('d/m/Y');
                     <div class="panel-body">
                         <ul>
                             <?php foreach(['Rio de Janeiro, Brazil','São Paulo, Brazil','Halifax, Canada'] as $place):?>
-                                <li><a href="<?=search_url(['place' => $place])?>"><?=$place?></a></li>
+                                <li><a href="<?=act('event@search', ['place' => $place])?>"><?=$place?></a></li>
                             <?php endforeach ?>
                         </ul>
                     </div>
