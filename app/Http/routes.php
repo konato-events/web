@@ -3,7 +3,17 @@
 /** @link http://laravel.com/docs/5.1/routing */
 /** @link http://laravel.com/docs/5.1/controllers#implicit-controllers */
 
-//Route::controller('user',       'UserController');
+/************************************************************/
+/* ***************** ROUTE PRE-OVERRIDES ****************** */
+/* ** Not exactly sure why those have to come first, but... */
+/************************************************************/
+Route::get('user/{id_slug}', ['as' => 'user', 'uses' => 'UserController@getIndex']);
+
+
+/************************************************************/
+/* ******************** GENERIC ROUTES ******************** */
+/************************************************************/
+Route::controller('user',       'UserController');
 Route::controller('speakers',   'SpeakerController');
 Route::controller('event',      'EventController');
 

@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
-
 class SpeakerController extends Controller {
 
     public function getIndex() {
@@ -21,8 +19,7 @@ class SpeakerController extends Controller {
     }
 
     public function getProfile(string $id_slug) {
-        list($id, $name_slug) = unslug($id_slug);
-        return view('speaker.profile', compact('id', 'name_slug'));
+        return redirect()->route('user', $id_slug);
     }
 
 }
