@@ -1,7 +1,11 @@
 <?php
+use App\Http\Controllers\UserController as Controller;
+
 /** @var string $name_slug */
 /** @var int    $id */
 /** @var array  $speakers */
+/** @var int    $type */
+$type = $type ?? Controller::TYPE_USER;
 
 const PART_ATTEND   = 1;
 const PART_INVOLVED = 2;
@@ -91,7 +95,12 @@ $date_fmt   = _('d/m/Y');
             </div>
 
             <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
-                <h1><?=$name?></h1>
+                <h1>
+                    @if($type == Controller::TYPE_SPEAKER)
+                        <i class="fa fa-university"></i>
+                    @endif
+                    <?=$name?>
+                </h1>
                 <a class="place" href="<?=act('event@search', ['place' => $place])?>"><?=nbsp($place)?></a>
                 <p class="function"><?=$function?></p>
                 <p class="bio"><?=$bio?></p>
