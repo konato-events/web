@@ -37,10 +37,14 @@
                 font-size: 23px;
                 margin-bottom: 5px;
                 margin-top: 10px;
+                i.part-speaker {
+                    font-size: 18px;
+                }
             }
             .bio {
                 font-size: 18px;
             }
+
             .social-profiles {
                 display: table-row;
                 height: 50px;
@@ -57,12 +61,13 @@
                     color: #CCC; //stands out less than the rest of the block, since the icons are solid and the letters are not
                     &:hover { color: @primaryColor; }
                 }
-                @tooltipColor: whitesmoke;
-                .tooltip-arrow { border-top-color: @tooltipColor; }
-                .tooltip-inner {
-                    background-color: @tooltipColor;
-                    color: black;
-                }
+            }
+
+            @tooltipColor: whitesmoke;
+            .tooltip-arrow { border-top-color: @tooltipColor; }
+            .tooltip-inner {
+                background-color: @tooltipColor;
+                color: black;
             }
         }
     }

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-10-25 19:38-0300\n"
-"PO-Revision-Date: 2015-10-25 19:38-0300\n"
+"POT-Creation-Date: 2015-10-25 20:13-0300\n"
+"PO-Revision-Date: 2015-10-25 20:13-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -243,85 +243,92 @@ msgstr "envolvido"
 msgid "staff"
 msgstr "staff"
 
-#: resources/views/user/profile.blade.php:40
+#: resources/views/user/profile.blade.php:43
 msgid "speaker profile"
 msgstr "perfil de palestrante"
 
-#: resources/views/user/profile.blade.php:42
+#: resources/views/user/profile.blade.php:45
 msgid "profile"
 msgstr "perfil"
 
-#: resources/views/user/profile.blade.php:49
+#: resources/views/user/profile.blade.php:52
 #: resources/views/event/theme.blade.php:147
 #: resources/views/event/search.blade.php:152
 msgid "d/m/Y"
 msgstr "m/d/Y"
 
-#: resources/views/user/profile.blade.php:117
+#: resources/views/user/profile.blade.php:120
 #: resources/views/event/theme.blade.php:206
 #: resources/views/speaker/index.blade.php:120
 #, php-format
 msgid "%s on Konato"
 msgstr "%s no Konato"
 
-#: resources/views/user/profile.blade.php:126
-msgid "Him elsewhere:"
-msgstr "Ele em outros lugares:"
-
-#: resources/views/user/profile.blade.php:126
-msgid "Her elsewhere:"
-msgstr "Ela em outros lugares:"
-
-#: resources/views/user/profile.blade.php:170
-msgid "Him in events"
-msgstr "Ele nos eventos"
-
-#: resources/views/user/profile.blade.php:170
-msgid "Her in events"
-msgstr "Ela nos eventos"
-
-#: resources/views/user/profile.blade.php:198
-msgid "Add as a connection"
-msgstr "Adicionar como conexão"
-
-#: resources/views/user/profile.blade.php:200
-msgid "See my connections"
-msgstr "Ver minhas conexões"
-
-#: resources/views/user/profile.blade.php:205
-msgid "Follow him"
-msgstr "Segui-lo"
-
-#: resources/views/user/profile.blade.php:205
-msgid "Follow her"
-msgstr "Segui-la"
-
-#: resources/views/user/profile.blade.php:207
-#: resources/views/event/theme.blade.php:180
-msgid "See my following preferences"
-msgstr "Configurar o que acompanho"
-
-#: resources/views/user/profile.blade.php:214
-msgid "His themes of interest"
-msgstr "Seus temas de interesse"
-
-#: resources/views/user/profile.blade.php:214
-msgid "Her themes of interest"
-msgstr "Seus temas de interesse"
-
-#: resources/views/user/profile.blade.php:223
-msgid "Most visited places"
-msgstr "Lugares mais visitados"
-
+#: resources/views/user/profile.blade.php:129
 #: resources/views/components/themes_list.blade.php:9
 #: resources/views/event/_event_block.blade.php:34
 msgid "he"
 msgstr "ele"
 
+#: resources/views/user/profile.blade.php:129
 #: resources/views/components/themes_list.blade.php:9
 #: resources/views/event/_event_block.blade.php:34
 msgid "she"
 msgstr "ela"
+
+#: resources/views/user/profile.blade.php:129
+#, php-format
+msgid "%s has participated in events as a speaker"
+msgstr "%s já participou de eventos como palestrante"
+
+#: resources/views/user/profile.blade.php:135
+msgid "Him elsewhere:"
+msgstr "Ele em outros lugares:"
+
+#: resources/views/user/profile.blade.php:135
+msgid "Her elsewhere:"
+msgstr "Ela em outros lugares:"
+
+#: resources/views/user/profile.blade.php:179
+msgid "Him in events"
+msgstr "Ele nos eventos"
+
+#: resources/views/user/profile.blade.php:179
+msgid "Her in events"
+msgstr "Ela nos eventos"
+
+#: resources/views/user/profile.blade.php:207
+msgid "Add as a connection"
+msgstr "Adicionar como conexão"
+
+#: resources/views/user/profile.blade.php:209
+msgid "See my connections"
+msgstr "Ver minhas conexões"
+
+#: resources/views/user/profile.blade.php:214
+msgid "Follow him"
+msgstr "Segui-lo"
+
+#: resources/views/user/profile.blade.php:214
+msgid "Follow her"
+msgstr "Segui-la"
+
+#: resources/views/user/profile.blade.php:216
+#: resources/views/event/theme.blade.php:180
+msgid "See my following preferences"
+msgstr "Configurar o que acompanho"
+
+#: resources/views/user/profile.blade.php:223
+msgid "His themes of interest"
+msgstr "Seus temas de interesse"
+
+#: resources/views/user/profile.blade.php:223
+msgid "Her themes of interest"
+msgstr "Seus temas de interesse"
+
+#: resources/views/user/profile.blade.php:233
+msgid "Most visited places"
+msgstr "Lugares mais visitados"
 
 #: resources/views/components/themes_list.blade.php:9
 #, php-format

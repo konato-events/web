@@ -6598,6 +6598,17 @@ i.fa.part-participant:before,
 .part-participant i.fa:before {
   content: "\f145";
 }
+i.fa.part-participant.inverted,
+.part-participant i.fa.inverted {
+  color: white;
+  background-color: forestGreen;
+  text-align: center;
+  border-radius: 0.25em;
+  box-sizing: content-box;
+  width: 1em;
+  padding: 0.2em 0.25em;
+  margin-top: -0.1em;
+}
 li.part-speaker {
   background-color: dodgerBlue;
 }
@@ -6611,6 +6622,17 @@ i.fa.part-speaker,
 i.fa.part-speaker:before,
 .part-speaker i.fa:before {
   content: "\f130";
+}
+i.fa.part-speaker.inverted,
+.part-speaker i.fa.inverted {
+  color: white;
+  background-color: dodgerBlue;
+  text-align: center;
+  border-radius: 0.25em;
+  box-sizing: content-box;
+  width: 1em;
+  padding: 0.2em 0.25em;
+  margin-top: -0.1em;
 }
 li.part-involved {
   background-color: goldenrod;
@@ -6626,6 +6648,17 @@ i.fa.part-involved:before,
 .part-involved i.fa:before {
   content: "\f0c0";
 }
+i.fa.part-involved.inverted,
+.part-involved i.fa.inverted {
+  color: white;
+  background-color: goldenrod;
+  text-align: center;
+  border-radius: 0.25em;
+  box-sizing: content-box;
+  width: 1em;
+  padding: 0.2em 0.25em;
+  margin-top: -0.1em;
+}
 li.part-staff {
   background-color: orangeRed;
 }
@@ -6639,6 +6672,17 @@ i.fa.part-staff,
 i.fa.part-staff:before,
 .part-staff i.fa:before {
   content: "\f27e";
+}
+i.fa.part-staff.inverted,
+.part-staff i.fa.inverted {
+  color: white;
+  background-color: orangeRed;
+  text-align: center;
+  border-radius: 0.25em;
+  box-sizing: content-box;
+  width: 1em;
+  padding: 0.2em 0.25em;
+  margin-top: -0.1em;
 }
 [class*=part-] {
   padding-right: 3px;
@@ -6760,6 +6804,9 @@ ul.user-stats {
   margin-bottom: 5px;
   margin-top: 10px;
 }
+#user #page-header .details .function i.part-speaker {
+  font-size: 18px;
+}
 #user #page-header .details .bio {
   font-size: 18px;
 }
@@ -6782,10 +6829,10 @@ ul.user-stats {
 #user #page-header .details .social-profiles a:hover {
   color: #fb953e;
 }
-#user #page-header .details .social-profiles .tooltip-arrow {
+#user #page-header .details .tooltip-arrow {
   border-top-color: whitesmoke;
 }
-#user #page-header .details .social-profiles .tooltip-inner {
+#user #page-header .details .tooltip-inner {
   background-color: whitesmoke;
   color: black;
 }

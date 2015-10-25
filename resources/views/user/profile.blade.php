@@ -18,6 +18,9 @@ $participations = [
     PART_INVOLVED => _('involved'),
     PART_STAFF    => _('staff')
 ];
+if ($type != Controller::TYPE_SPEAKER) {
+    unset($participations[PART_SPOKE]);
+}
 
 $user = current(array_filter($speakers, function($speaker) use ($name_slug) {
     return str_slug($speaker[1]) == $name_slug;
@@ -120,7 +123,13 @@ $date_fmt   = _('d/m/Y');
             <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
                 <h1><?=$name?></h1>
                 <a class="place" href="<?=act('event@search', ['place' => $place])?>"><?=nbsp($place)?></a>
-                <p class="function"><?=$function?></p>
+                <p class="function">
+                    <?php if($type == Controller::TYPE_SPEAKER): ?>
+                        <i class="fa part-speaker inverted" data-toggle="tooltip"
+                           title="<?=ucfirst(_r('%s has participated in events as a speaker', $male? _('he') : _('she')))?>"></i>
+                    <?php endif ?>
+                    <?=$function?>
+                </p>
                 <p class="bio"><?=$bio?></p>
                 <div class="social-profiles float-bottom">
                     <h2><?=($male)? _('Him elsewhere:') : _('Her elsewhere:')?></h2>
@@ -215,7 +224,7 @@ $date_fmt   = _('d/m/Y');
                     </div>
                     <div class="panel-body">
                         <?php //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
-                        @include('components.themes_list', ['speaker' => true, 'gender' => $gender])
+                        @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $gender])
                     </div>
                 </div>
 
