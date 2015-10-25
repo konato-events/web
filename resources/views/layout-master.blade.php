@@ -165,7 +165,7 @@ $lang_tag = substr(LOCALE, 0, 2);
                     </span>
                     <ul>
                         <li><a href="#"><?=_('Get in touch')?></a></li>
-                        <li><a href="https://bitbucket.org/konato/web/" title="<?=_('Sorting out some private key issues before publishing code. Check back soon or send me a message :)')?>"><?=_('We &#9829; open source')?></a></li>
+                        <li><a href="https://bitbucket.org/konato/web"><?=_('We &#9829; open source')?></a></li>
                         <li><a target="_blank" href="http://igorsantos.com.br"><?=_('by igorsantos07')?></a></li>
                     </ul>
                 </span>
