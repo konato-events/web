@@ -4,11 +4,10 @@
 /** @link http://laravel.com/docs/5.1/controllers#implicit-controllers */
 
 /************************************************************/
-/* ***************** ROUTE PRE-OVERRIDES ****************** */
-/* ** Not exactly sure why those have to come first, but... */
+/* ******************** ROUTE PRESETS ********************* */
 /************************************************************/
+// These would conflict with controller routes, so they need to be set before them
 Route::get('user/{id_slug}', 'UserController@getProfile');
-Route::get('speaker/{id_slug}', 'UserController@getSpeaker');
 
 
 /************************************************************/
@@ -23,6 +22,7 @@ Route::controller('event',      'EventController');
 /* ******************* ROUTE OVERRIDES ******************** */
 /************************************************************/
 Route::get('event/search',      'EventController@getSearch'); /** @link https://github.com/laravel/framework/issues/10659 */
+Route::get('speaker/{id_slug}', 'UserController@getSpeaker');
 
 
 /************************************************************/
