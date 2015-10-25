@@ -4791,16 +4791,40 @@ ul.themes {
     li {
         display: inline-block;
         margin: 3px 1px;
+        @radius: 5px;
 
         a {
-            padding: 3px 6px;
-            border-radius: 5px;
+            padding: 1px 6px;
             background-color: @secondaryColorBg;
             color: @darkestSecondaryColor;
+            border-radius: @radius;
             font-weight: normal;
+            display: block;
             &:hover {
                 color: @main-color-d10;
                 background-color: @primaryColorBg;
+            }
+        }
+        &.composed {
+            a {
+                padding-right: 0;
+                span {
+                    display: inline-block;
+                    padding: 1px 6px 0 3px;
+                    margin: -1px 0;
+                    transition: background-color 0.1s ease-in-out;
+                    background-color: darken(@secondaryColorBg, 20%);
+                    color: white;
+                    border-left: 1px solid white;
+                    border-radius: 0 @radius @radius 0;
+                    &:before {
+                        content: 'x';
+                        font-size: 13px;
+                    }
+                }
+                &:hover span {
+                    background-color: darken(@primaryColorBg, 20%);
+                }
             }
         }
     }

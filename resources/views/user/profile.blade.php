@@ -4,21 +4,44 @@ use App\Http\Controllers\UserController as Controller;
 /** @var string $name_slug */
 /** @var int    $id */
 /** @var array  $speakers */
+/** @var array  $events */
 /** @var int    $type */
 $type = $type ?? Controller::TYPE_USER;
 
-const PART_ATTEND   = 1;
-const PART_INVOLVED = 2;
-const PART_SPOKE    = 3;
-const PART_STAFF    = 4;
+const PART_ATTEND   = 'participant';
+const PART_SPOKE    = 'speaker';
+const PART_INVOLVED = 'involved';
+const PART_STAFF    = 'staff';
+$participations = [
+    PART_ATTEND   => _('participant'),
+    PART_SPOKE    => _('speaker'),
+    PART_INVOLVED => _('involved'),
+    PART_STAFF    => _('staff')
+];
 
-$speaker = current(array_filter($speakers, function($speaker) use ($name_slug) {
+$user = current(array_filter($speakers, function($speaker) use ($name_slug) {
     return str_slug($speaker[1]) == $name_slug;
 }));
-list($img, $name, $place, $spk_themes, $on_theme, $total, $bio, $gender) = $speaker;
+list($img, $name, $place, $spk_themes, $on_theme, $total, $bio, $gender) = $user;
 $male       = $gender == 'M';
 
-$title      = sprintf(_('%s - speaker'), $name);
+$participation = [];
+$stats = [];
+foreach ($participations as $part => $xxx) {
+    $stats[$part] = 0;
+}
+foreach ($events as $id => $event) {
+    $participation[$id] = array_rand($participations);
+    ++$stats[$participation[$id]];
+}
+$stats = array_filter($stats);
+
+switch ($type) {
+    case Controller::TYPE_SPEAKER:  $type_str = _('speaker profile'); break;
+    default:
+    case Controller::TYPE_USER:     $type_str = _('profile');         break;
+}
+$title      = "$name - $type_str";
 $function   = 'Web developer at InEvent; Student at Estácio de Sá';
 
 $img_height = getimagesize(APP_ROOT.'/public/'.$img)[1];
@@ -95,12 +118,7 @@ $date_fmt   = _('d/m/Y');
             </div>
 
             <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
-                <h1>
-                    @if($type == Controller::TYPE_SPEAKER)
-                        <i class="fa fa-university"></i>
-                    @endif
-                    <?=$name?>
-                </h1>
+                <h1><?=$name?></h1>
                 <a class="place" href="<?=act('event@search', ['place' => $place])?>"><?=nbsp($place)?></a>
                 <p class="function"><?=$function?></p>
                 <p class="bio"><?=$bio?></p>
@@ -138,6 +156,15 @@ $date_fmt   = _('d/m/Y');
 <section class="page-section with-sidebar first-section">
 <div class="container-fluid">
     <section id="content" class="content col-sm-8 col-md-9">
+        <ul class="user-stats">
+            <?php foreach($stats as $id => $stat): ?>
+                <li class="part-{{$id}}">
+                    <i class="fa"></i>
+                    {{$stat}}x {{$participations[$id]}}
+                </li>
+            <?php endforeach ?>
+        </ul>
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2 class="panel-title"><?=($male)? _('Him in events') : _('Her in events')?></h2>
@@ -146,16 +173,16 @@ $date_fmt   = _('d/m/Y');
                 <div class="thumbnails events">
                     <div class="container-fluid">
                         <div class="row">
-                        @foreach($events as $id => $event)
-                            @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
-                                'compact'     => true,
-                                'participant' => rand(PART_ATTEND, PART_STAFF),
-                                'participant_gender' => $gender
-                            ]))
-                            @if (($id+1) % 2 == 0)
-                                </div><div class="row">
-                            @endif
-                        @endforeach <?php //TODO: use a forelse instead, this needs an empty clause ?>
+                            @foreach($events as $id => $event)
+                                @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
+                                    'compact'     => true,
+                                    'participant' => $participation[$id],
+                                    'participant_gender' => $gender
+                                ]))
+                                @if (($id+1) % 2 == 0)
+                                    </div><div class="row">
+                                @endif
+                            @endforeach <?php //TODO: use a forelse instead, this needs an empty clause ?>
                         </div>
                     </div>
                 </div>
@@ -187,7 +214,8 @@ $date_fmt   = _('d/m/Y');
                         <h4 class="panel-title"><?=($male)? _('His themes of interest') : _('Her themes of interest')?></h4>
                     </div>
                     <div class="panel-body">
-                        @include('components.themes_list', [ 'link_speakers' => true ])
+                        <?php //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
+                        @include('components.themes_list', ['speaker' => true, 'gender' => $gender])
                     </div>
                 </div>
 

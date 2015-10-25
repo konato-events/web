@@ -26,14 +26,51 @@ ul.piped li {
     margin-bottom: -1px;
 }
 
+.partIcon(@name, @color, @char) {
+    li.part-@{name} {
+        background-color: @color;
+        i.fa { background-color: darken(@color, 20%); }
+    }
+
+    i.fa.part-@{name},
+    .part-@{name} i.fa {
+        color: @color;
+        &:before {content: @char; }
+    }
+
+}
+.partIcon(participant, forestGreen, "\f145"); //ticket / map-pin, child
+.partIcon(speaker,     dodgerBlue,  "\f130"); //microphone / comments, podium (octicons)
+.partIcon(involved,    goldenrod,   "\f0c0"); //users / cog
+.partIcon(staff,       orangeRed,   "\f27e"); //black-tie / wrench, user, cogs
+
+@partIconSize: 16px;
+@statsMarginBottom: 5px;
 [class*=part-] {
     padding-right: 3px;
-    font-size: 16px;
+    font-size: @partIconSize;
     z-index: 11;
 }
-.caption-title {
-    .fa.part-participant { color: forestgreen; }
-    .fa.part-involved    { color: goldenrod; }
-    .fa.part-staff       { color: orangered; }
-    .fa.part-speaker     { color: dodgerblue; }
+li[class*=part-] {
+    @radius: 5px;
+    display: inline-block;
+    border-radius: @radius;
+    padding: 3px 10px 3px 5px;
+    margin-bottom: @statsMarginBottom;
+    color: white;
+
+    i.fa {
+        box-sizing: content-box;
+        width: @partIconSize;
+        margin: -3px 0 -3px -5px;
+        padding: 5px 5px 6px 5px;
+        border-right: 1px solid white;
+        color: inherit;
+        border-radius: @radius 0 0 @radius;
+        text-align: center;
+    }
+}
+ul.user-stats {
+    text-align: center;
+    margin-bottom: 20px - @statsMarginBottom;
 }

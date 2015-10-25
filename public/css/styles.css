@@ -5302,15 +5302,36 @@ ul.themes li {
   margin: 3px 1px;
 }
 ul.themes li a {
-  padding: 3px 6px;
-  border-radius: 5px;
+  padding: 1px 6px;
   background-color: #c2cde9;
   color: #0b2975;
+  border-radius: 5px;
   font-weight: normal;
+  display: block;
 }
 ul.themes li a:hover {
   color: #fa7a0c;
   background-color: #ffefe2;
+}
+ul.themes li.composed a {
+  padding-right: 0;
+}
+ul.themes li.composed a span {
+  display: inline-block;
+  padding: 1px 6px 0 3px;
+  margin: -1px 0;
+  transition: background-color 0.1s ease-in-out;
+  background-color: #7891cd;
+  color: white;
+  border-left: 1px solid white;
+  border-radius: 0 5px 5px 0;
+}
+ul.themes li.composed a span:before {
+  content: 'x';
+  font-size: 13px;
+}
+ul.themes li.composed a:hover span {
+  background-color: #ffb97c;
 }
 .caption-category ul.themes {
   display: inline;
@@ -6563,22 +6584,87 @@ ul.piped li:not(:last-child):after {
 .tooltip-inner {
   margin-bottom: -1px;
 }
+li.part-participant {
+  background-color: forestGreen;
+}
+li.part-participant i.fa {
+  background-color: #0e390e;
+}
+i.fa.part-participant,
+.part-participant i.fa {
+  color: forestGreen;
+}
+i.fa.part-participant:before,
+.part-participant i.fa:before {
+  content: "\f145";
+}
+li.part-speaker {
+  background-color: dodgerBlue;
+}
+li.part-speaker i.fa {
+  background-color: #005db7;
+}
+i.fa.part-speaker,
+.part-speaker i.fa {
+  color: dodgerBlue;
+}
+i.fa.part-speaker:before,
+.part-speaker i.fa:before {
+  content: "\f130";
+}
+li.part-involved {
+  background-color: goldenrod;
+}
+li.part-involved i.fa {
+  background-color: #816213;
+}
+i.fa.part-involved,
+.part-involved i.fa {
+  color: goldenrod;
+}
+i.fa.part-involved:before,
+.part-involved i.fa:before {
+  content: "\f0c0";
+}
+li.part-staff {
+  background-color: orangeRed;
+}
+li.part-staff i.fa {
+  background-color: #992900;
+}
+i.fa.part-staff,
+.part-staff i.fa {
+  color: orangeRed;
+}
+i.fa.part-staff:before,
+.part-staff i.fa:before {
+  content: "\f27e";
+}
 [class*=part-] {
   padding-right: 3px;
   font-size: 16px;
   z-index: 11;
 }
-.caption-title .fa.part-participant {
-  color: forestgreen;
+li[class*=part-] {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 3px 10px 3px 5px;
+  margin-bottom: 5px;
+  color: white;
 }
-.caption-title .fa.part-involved {
-  color: goldenrod;
+li[class*=part-] i.fa {
+  box-sizing: content-box;
+  width: 16px;
+  margin: -3px 0 -3px -5px;
+  padding: 5px 5px 6px 5px;
+  border-right: 1px solid white;
+  color: inherit;
+  border-radius: 5px 0 0 5px;
+  text-align: center;
 }
-.caption-title .fa.part-staff {
-  color: orangered;
-}
-.caption-title .fa.part-speaker {
-  color: dodgerblue;
+ul.user-stats {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .event-types label {
