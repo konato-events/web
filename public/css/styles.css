@@ -2803,13 +2803,15 @@ footer.post-meta .post-categories {
 .timeline .post-wrap + .post-wrap {
   margin-top: -20px;
 }
+.timeline .media {
+  border-radius: 5px;
+}
 .timeline .post-header {
   margin-bottom: 15px;
 }
 .timeline .media-body {
   padding: 25px;
   background-color: white;
-  border-radius: 10px;
 }
 .timeline .post-media {
   max-width: 126px;

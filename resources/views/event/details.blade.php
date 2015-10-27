@@ -173,25 +173,21 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
     <section id="content" class="content col-sm-12 col-md-8 col-lg-9">
 
         <div class="row">
-            <div class="col-md-12 col-lg-5">
-                <?=section_title('institution', _('The Event'), $tagline)?>
-                <p class="basic-text">{!! strtr(e($desc), ["\n" => '</p><p class="basic-text">']) !!}</p>
+            <div class="col-md-12 col-lg-5 pull-left">
+                <div>
+                    <?=section_title('institution', _('The Event'), $tagline)?>
+                    <p class="basic-text">{!! strtr(e($desc), ["\n" => '</p><p class="basic-text">']) !!}</p>
+                </div>
 
                 {{--<p class="btn-row">--}}
                     {{--<a href="#" class="btn btn-theme btn-theme-lg scroll-to">Register <i class="fa fa-arrow-circle-right"></i></a>--}}
                     {{--<a href="#" class="btn btn-theme btn-theme-lg btn-theme-transparent">Watch video</a>--}}
                 {{--</p>--}}
-
-                <?=section_title('microphone', _('The speakers'))?>
-                <p class="basic-text">ADICIONAR AQUI A LISTA DE PALESTRANTES</p>
-
-                <?=section_title('thumbs-up', _('Event sponsors'))?>
-                <p class="basic-text">ADICIONAR AQUI A LISTA DE PATROCINADORES</p>
             </div>
 
             <hr class="page-divider transparent visible-md"/>
 
-            <div class="col-md-12 col-lg-7">
+            <div class="col-md-12 col-lg-7 pull-right">
                 <?=section_title('calendar-check-o', _('Schedule'), $dates_str(true))?>
                 <? if (sizeof($days > 1)): ?>
                     <ul class="nav nav-tabs" role="tablist">
@@ -266,6 +262,19 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
                 </div>
             </div>
 
+            <hr class="page-divider transparent visible-md"/>
+
+            <div class="col-md-12 col-lg-5 pull-left">
+                <?=section_title('microphone', _('The speakers'))?>
+                <p class="basic-text">ADICIONAR AQUI A LISTA DE PALESTRANTES</p>
+            </div>
+
+            <hr class="page-divider transparent visible-md"/>
+
+            <div class="col-md-12 col-lg-5 pull-left">
+                <?=section_title('thumbs-up', _('Event sponsors'))?>
+                <p class="basic-text">ADICIONAR AQUI A LISTA DE PATROCINADORES</p>
+            </div>
         </div>
 
     </section>
