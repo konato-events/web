@@ -1,7 +1,7 @@
 @extends('layout-master')
 
 @section('header')
-    <section id="page-header" class="page-section image breadcrumbs overlay small clearfix" style="background-image: url(@yield('header-bg'))">
+    <section id="page-header" class="header-inset page-section image breadcrumbs overlay small clearfix" style="background-image: url(@yield('header-bg'))">
         <div class="container">
             @yield('header-content')
 

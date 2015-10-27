@@ -1,0 +1,76 @@
+@import 'theme.variables';
+
+#event {
+    #page-header {
+        border: 1px solid #C4C4C4; // those two properties help the year tabs
+        margin-bottom: -1px;       // to blend wht the header's bottom
+
+        .row {
+            position: relative; //for .stats centering
+            margin-bottom: -10px; //wtf is that additional 10px appearing there???
+        }
+
+        .details {
+            @media (min-width: 768px) {
+                text-align: left;
+            }
+            .status {
+                font-style: italic;
+            }
+            .place {
+                font-size: 18px;
+                color: inherit;
+                text-decoration: underline;
+                &:hover { color: @primaryColor; }
+            }
+            .function {
+                font-size: 23px;
+                margin-bottom: 5px;
+                margin-top: 10px;
+                i.part-speaker {
+                    font-size: 18px;
+                }
+            }
+            .links {
+                margin-bottom: 0;
+                a {
+                    color: inherit;
+                    &:not(:last-child) { padding-right: 10px; }
+                    &:hover { color: @secondaryColor; }
+                }
+            }
+        }
+
+        .stats {
+            margin-top: 10px; //only for small screens
+            display: inline-block;
+            @media (min-width: 768px) { //no margin-top, yes right-alignment and vertical centering
+                margin-top: 0;
+                position: absolute;
+                text-align: right;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            p {
+                color: fade(white, 80%);
+                font-size: 16px;
+                margin-bottom: 10px;
+                &:last-child { margin-bottom: 0; }
+            }
+            hr {
+                border-top-color: fade(white, 40%);
+                margin: 10px 0;
+            }
+        }
+
+        + .nav {
+            padding-left: 15px;
+        }
+    }
+
+    .section-title {
+        margin-bottom: 20px;
+    }
+}

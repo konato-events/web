@@ -35,4 +35,6 @@
 @main-color-d15: darken(@primaryColor, 15%);
 @main-color-d20: darken(@primaryColor, 20%);
 
+@borderColor: #F1F2F3;
+
 @font: 'Raleway', sans-serif;

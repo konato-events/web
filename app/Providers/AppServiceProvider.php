@@ -40,8 +40,12 @@ class AppServiceProvider extends ServiceProvider {
         foreach($events as $i => &$event) {
             $event[] = time();
             $event[] = ($i % 2)? time() + 60*60*24*3 : null;
-            $event[] = 'Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant
-         morbi.Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis. Bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.';
+            $event[] = 'Fusce pellentesque velvitae tincidunt egestas. Pellentesque habitant morbi. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis.
+            Bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.';
+            $event[] = (bool)rand(0,1);
+            $event[] = 'http://www.google.com.br';
+            $event[] = 'konato';
+            $event[] = 'konato2015';
         }
 
         $types = [

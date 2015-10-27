@@ -23,8 +23,11 @@ if ($type != Controller::TYPE_SPEAKER) {
 }
 
 $user = current(array_filter($speakers, function($speaker) use ($name_slug) {
-    return str_slug($speaker[1]) == $name_slug;
+    return str_slug($speaker[1], '_') == $name_slug;
 }));
+if (!$user) {
+    throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('User not found');
+}
 list($img, $name, $place, $spk_themes, $on_theme, $total, $bio, $gender) = $user;
 $male       = $gender == 'M';
 
@@ -49,7 +52,7 @@ $function   = 'Web developer at InEvent; Student at Estácio de Sá';
 
 $img_height = getimagesize(APP_ROOT.'/public/'.$img)[1];
 $img_height = ($img_height > 250? 250 : $img_height);
-$date_fmt   = _('d/m/Y');
+$date_fmt   = _('m/d/Y');
 ?>
 @extends('layout-header')
 @section('title', $title)
