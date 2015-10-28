@@ -1,15 +1,21 @@
 <?php
-/** @var array $themes */
-/** @var bool $link_speakers */
+/** @var array  $themes */
+/** @var bool   $speaker */
+/** @var string $gender */
 
-$link_speakers = $link_speakers ?? false;
-$route = $link_speakers? 'speaker@theme' : 'event@theme';
+$speaker = $speaker ?? false;
+$gender  = $gender ?? 'M';
+$route = $speaker? 'speaker@theme' : 'event@theme';
+    $tooltip = _r('How many times %s has spoken about this subject', ($gender == 'M')? _('he') : _('she'));
 ?>
 <ul class="themes">
     <?php foreach($themes as $id => $name): ?>
-        <li>
+        <li<?=($speaker)? ' class="composed"':''?>>
             <a href="<?=act($route, slugify($id, $name))?>">
-                <?=$name?>
+                {{$name}}
+                <?php if($speaker): ?>
+                    <span title="{{$tooltip}}" data-toggle="tooltip">{{rand(1,20)}}</span>
+                <?php endif ?>
             </a>
         </li>
     <?php endforeach ?>

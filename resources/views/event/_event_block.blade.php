@@ -6,7 +6,6 @@
   * @var bool  $participant_gender
   * @var array $themes
   * @var array $event */
-use Illuminate\Support\Str;
 
 list($img, $title, $place, $begin, $end, $desc) = $event;
 $link = act('event@details', slugify($id, $title));
@@ -17,27 +16,24 @@ if ($participant) {
     switch ($participant) {
         case PART_ATTEND:
             $color     = 'participant';
-            $icon      = 'ticket'; //map-pin, child
-            $part_desc = ($participant_gender == 'M')? _('He participated') : _('She participated');
+            $part_desc = _('%s participated');
             break;
         case PART_INVOLVED:
             $color     = 'involved';
-            $icon      = 'users'; //cog
-            $part_desc = ($participant_gender == 'M')? _('He was involved / volunteered') : _('She was involved / volunteered');
+            $part_desc = _('%s was involved / volunteered');
             break;
         case PART_STAFF:
             $color     = 'staff';
-            $icon      = 'black-tie'; //wrench, user, cogs
-            $part_desc = ($participant_gender == 'M')? _('He was part of staff') : _('She was part of staff');
+            $part_desc = _('%s was part of staff');
             break;
         case PART_SPOKE:
             $color     = 'speaker';
-            $icon      = 'microphone'; //comments, podium (octicons)
-            $part_desc = ($participant_gender == 'M')? _('He was a speaker') : _('She was a speaker');
+            $part_desc = _('%s was a speaker');
             break;
     }
+    $part_desc = ucfirst(sprintf($part_desc, ($participant_gender == 'M')? _('he') : _('she')));
 } else {
-    $color = $icon = $part_desc = false;
+    $color = $part_desc = false;
 }
 ?>
 
@@ -63,10 +59,10 @@ if ($participant) {
                 {{--</span>--}}
                 {{--</a>--}}
                 <h3 class="caption-title">
-                    @if ($icon)
-                        <i class="fa fa-<?=$icon?> part-<?=$color?>" title="<?=$part_desc?>"
+                    <?php if ($color): ?>
+                        <i class="fa part-<?=$color?>" title="<?=$part_desc?>"
                            data-toggle="tooltip" data-trigger="hover click" data-container="body"></i>
-                    @endif
+                    <?php endif ?>
                     <a href="<?=$link?>"><?=$title?></a>
                 </h3>
 

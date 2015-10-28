@@ -3,11 +3,8 @@
 #user {
     @socialIconsSpace: 10px;
     #page-header {
-        box-shadow: inset 0 0 25px 7px fade(black, 80%);
-        background-size: 100% 100% !important;
+        //background-size: 100% 100% !important;
         padding-bottom: 20px - @socialIconsSpace !important;
-        //margin: 0 -50px;     // hiding the
-        //padding-left: 25px;  // left/right shadows
 
         .photo {
             text-align: right;
@@ -22,11 +19,6 @@
             display: table;
             text-align: left;
             color: white;
-            h1 {
-                display: inline-block;
-                margin-right: 20px;
-                margin-bottom: 0;
-            }
             .place {
                 font-size: 18px;
                 color: inherit;
@@ -37,10 +29,14 @@
                 font-size: 23px;
                 margin-bottom: 5px;
                 margin-top: 10px;
+                i.part-speaker {
+                    font-size: 18px;
+                }
             }
             .bio {
                 font-size: 18px;
             }
+
             .social-profiles {
                 display: table-row;
                 height: 50px;
@@ -56,12 +52,6 @@
                     float: left; //seems to clear a weird bug regarding extra space to the right + tooltip trigger
                     color: #CCC; //stands out less than the rest of the block, since the icons are solid and the letters are not
                     &:hover { color: @primaryColor; }
-                }
-                @tooltipColor: whitesmoke;
-                .tooltip-arrow { border-top-color: @tooltipColor; }
-                .tooltip-inner {
-                    background-color: @tooltipColor;
-                    color: black;
                 }
             }
         }

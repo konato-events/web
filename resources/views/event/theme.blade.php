@@ -144,7 +144,7 @@ $title = sprintf(_('Events about %s'), $theme);
         <div class="tab-content">
             <div id="list-view" class="tab-pane fade active in" role="tabpanel">
                 <div class="thumbnails events vertical">
-                    <?php $date_fmt = _('d/m/Y') ?>
+                    <?php $date_fmt = _('m/d/Y') ?>
                     @foreach($events as $id => $event)
                         @include('event._event_block', compact('date_fmt', 'id', 'event'))
                         <hr class="page-divider half"/>

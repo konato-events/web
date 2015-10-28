@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-10-19 13:12-0300\n"
-"PO-Revision-Date: 2015-10-19 13:13-0300\n"
+"POT-Creation-Date: 2015-10-27 04:23-0300\n"
+"PO-Revision-Date: 2015-10-27 04:23-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -17,23 +17,23 @@ msgstr ""
 "X-Poedit-SearchPath-0: app\n"
 "X-Poedit-SearchPath-1: resources\n"
 
-#: app/Providers/AppServiceProvider.php:48
+#: app/Providers/AppServiceProvider.php:52
 msgid "Congresses"
 msgstr "Congressos"
 
-#: app/Providers/AppServiceProvider.php:49
+#: app/Providers/AppServiceProvider.php:53
 msgid "Meetings"
 msgstr "Encontros"
 
-#: app/Providers/AppServiceProvider.php:50
+#: app/Providers/AppServiceProvider.php:54
 msgid "Talks & discussions"
 msgstr "Palestras & debates"
 
-#: app/Providers/AppServiceProvider.php:51
+#: app/Providers/AppServiceProvider.php:55
 msgid "University meetings"
 msgstr "Encontros universitários"
 
-#: app/Providers/AppServiceProvider.php:52
+#: app/Providers/AppServiceProvider.php:56
 msgid "Cultural"
 msgstr "Culturais"
 
@@ -41,63 +41,55 @@ msgstr "Culturais"
 msgid "Event Discovery"
 msgstr "Descubra eventos"
 
-#: resources/views/layout-master.blade.php:89
+#: resources/views/layout-master.blade.php:94
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: resources/views/layout-master.blade.php:90
+#: resources/views/layout-master.blade.php:95
 msgid "Places"
 msgstr "Locais"
 
-#: resources/views/layout-master.blade.php:91
+#: resources/views/layout-master.blade.php:96
 #: resources/views/speaker/index.blade.php:76
 msgid "Speakers"
 msgstr "Palestrantes"
 
-#: resources/views/layout-master.blade.php:102
+#: resources/views/layout-master.blade.php:107
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: resources/views/layout-master.blade.php:107
+#: resources/views/layout-master.blade.php:112
 msgid "Login"
 msgstr "Login"
 
-#: resources/views/layout-master.blade.php:155
+#: resources/views/layout-master.blade.php:160
 msgid "Discover amazing events on Konato"
 msgstr "Descubra eventos fantásticos no Konato"
 
-#: resources/views/layout-master.blade.php:157
+#: resources/views/layout-master.blade.php:162
 #, php-format
 msgid "%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro"
 msgstr ""
 "%sBastante trampo (e poutine!)%s tornou isso realidade, na&nbsp;Cidade&nbsp;"
 "Maravilhosa"
 
-#: resources/views/layout-master.blade.php:159
+#: resources/views/layout-master.blade.php:164
 msgid "Marvelous City, place of the Sugar Loaf"
 msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
 
-#: resources/views/layout-master.blade.php:162
+#: resources/views/layout-master.blade.php:167
 msgid "Get in touch"
 msgstr "Fale com a gente"
 
-#: resources/views/layout-master.blade.php:163
-msgid ""
-"Sorting out some private key issues before publishing code. Check back soon "
-"or send me a message :)"
-msgstr ""
-"Resolvendo alguns problemas sobre chaves privadas antes de publicar o "
-"código. Dá uma olhada de novo depois, ou me manda uma mensagem :)"
-
-#: resources/views/layout-master.blade.php:163
+#: resources/views/layout-master.blade.php:168
 msgid "We &#9829; open source"
 msgstr "Nós &#9829; open source"
 
-#: resources/views/layout-master.blade.php:164
+#: resources/views/layout-master.blade.php:169
 msgid "by igorsantos07"
 msgstr "by igorsantos07"
 
-#: resources/views/layout-master.blade.php:172
+#: resources/views/layout-master.blade.php:177
 msgid "Go to top"
 msgstr "Subir"
 
@@ -227,6 +219,116 @@ msgstr ""
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
+#: resources/views/user/profile.blade.php:16
+msgid "participant"
+msgstr "participante"
+
+#: resources/views/user/profile.blade.php:17
+msgid "speaker"
+msgstr "palestrante"
+
+#: resources/views/user/profile.blade.php:18
+msgid "involved"
+msgstr "envolvido"
+
+#: resources/views/user/profile.blade.php:19
+msgid "staff"
+msgstr "staff"
+
+#: resources/views/user/profile.blade.php:46
+msgid "speaker profile"
+msgstr "perfil de palestrante"
+
+#: resources/views/user/profile.blade.php:48
+msgid "profile"
+msgstr "perfil"
+
+#: resources/views/user/profile.blade.php:55
+#: resources/views/event/theme.blade.php:147
+#: resources/views/event/details.blade.php:19
+#: resources/views/event/search.blade.php:152
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+#: resources/views/user/profile.blade.php:123
+#: resources/views/event/theme.blade.php:206
+#: resources/views/speaker/index.blade.php:120
+#, php-format
+msgid "%s on Konato"
+msgstr "%s no Konato"
+
+#: resources/views/user/profile.blade.php:132
+#: resources/views/components/themes_list.blade.php:9
+#: resources/views/event/_event_block.blade.php:34
+msgid "he"
+msgstr "ele"
+
+#: resources/views/user/profile.blade.php:132
+#: resources/views/components/themes_list.blade.php:9
+#: resources/views/event/_event_block.blade.php:34
+msgid "she"
+msgstr "ela"
+
+#: resources/views/user/profile.blade.php:132
+#, php-format
+msgid "%s has participated in events as a speaker"
+msgstr "%s já participou de eventos como palestrante"
+
+#: resources/views/user/profile.blade.php:138
+msgid "Him elsewhere:"
+msgstr "Ele em outros lugares:"
+
+#: resources/views/user/profile.blade.php:138
+msgid "Her elsewhere:"
+msgstr "Ela em outros lugares:"
+
+#: resources/views/user/profile.blade.php:182
+msgid "Him in events"
+msgstr "Ele nos eventos"
+
+#: resources/views/user/profile.blade.php:182
+msgid "Her in events"
+msgstr "Ela nos eventos"
+
+#: resources/views/user/profile.blade.php:210
+msgid "Add as a connection"
+msgstr "Adicionar como conexão"
+
+#: resources/views/user/profile.blade.php:212
+msgid "See my connections"
+msgstr "Ver minhas conexões"
+
+#: resources/views/user/profile.blade.php:217
+msgid "Follow him"
+msgstr "Segui-lo"
+
+#: resources/views/user/profile.blade.php:217
+msgid "Follow her"
+msgstr "Segui-la"
+
+#: resources/views/user/profile.blade.php:219
+#: resources/views/event/theme.blade.php:180
+#: resources/views/event/details.blade.php:288
+msgid "See my following preferences"
+msgstr "Configurar o que acompanho"
+
+#: resources/views/user/profile.blade.php:226
+msgid "His themes of interest"
+msgstr "Seus temas de interesse"
+
+#: resources/views/user/profile.blade.php:226
+msgid "Her themes of interest"
+msgstr "Seus temas de interesse"
+
+#: resources/views/user/profile.blade.php:236
+msgid "Most visited places"
+msgstr "Lugares mais visitados"
+
+#: resources/views/components/themes_list.blade.php:9
+#, php-format
+msgid "How many times %s has spoken about this subject"
+msgstr "Quantas vezes %s já palestrou sobre esse assunto"
+
 #: resources/views/event/theme.blade.php:7
 #, php-format
 msgid "Events about %s"
@@ -268,20 +370,9 @@ msgstr "Relevância"
 msgid "Date"
 msgstr "Data"
 
-#: resources/views/event/theme.blade.php:147
-#: resources/views/event/search.blade.php:152
-#: resources/views/speaker/profile.blade.php:22
-msgid "d/m/Y"
-msgstr "m/d/Y"
-
 #: resources/views/event/theme.blade.php:178
 msgid "Follow this theme"
 msgstr "Acompanhar este tema"
-
-#: resources/views/event/theme.blade.php:180
-#: resources/views/speaker/profile.blade.php:171
-msgid "See my following preferences"
-msgstr "Configurar o que acompanho"
 
 #: resources/views/event/theme.blade.php:187
 msgid "Popularity"
@@ -290,13 +381,6 @@ msgstr "Popularidade"
 #: resources/views/event/theme.blade.php:199
 msgid "Popular speakers"
 msgstr "Palestrantes populares"
-
-#: resources/views/event/theme.blade.php:206
-#: resources/views/speaker/index.blade.php:118
-#: resources/views/speaker/profile.blade.php:90
-#, php-format
-msgid "%s on Konato"
-msgstr "%s no Konato"
 
 #: resources/views/event/theme.blade.php:209
 #, php-format
@@ -317,41 +401,137 @@ msgstr[1] "%d eventos no total"
 msgid "See all speakers on %s"
 msgstr "Veja todos os palestrantes em %s"
 
-#: resources/views/event/_event_block.blade.php:21
-msgid "He participated"
-msgstr "Ele participou"
+#: resources/views/event/_event_block.blade.php:19
+#, php-format
+msgid "%s participated"
+msgstr "%s participou"
 
-#: resources/views/event/_event_block.blade.php:21
-msgid "She participated"
-msgstr "Ela participou"
+#: resources/views/event/_event_block.blade.php:23
+#, php-format
+msgid "%s was involved / volunteered"
+msgstr "%s estava envolvido / se voluntariou"
 
-#: resources/views/event/_event_block.blade.php:26
-msgid "He was involved / volunteered"
-msgstr "Ele estava envolvido / se voluntariou"
-
-#: resources/views/event/_event_block.blade.php:26
-msgid "She was involved / volunteered"
-msgstr "Ela estava envolvida / se voluntariou"
-
-#: resources/views/event/_event_block.blade.php:31
-msgid "He was part of staff"
-msgstr "Ele foi parte do staff"
+#: resources/views/event/_event_block.blade.php:27
+#, php-format
+msgid "%s was part of staff"
+msgstr "%s foi parte do staff"
 
 #: resources/views/event/_event_block.blade.php:31
-msgid "She was part of staff"
-msgstr "Ela foi parte do staff"
+#, php-format
+msgid "%s was a speaker"
+msgstr "%s foi palestrante"
 
-#: resources/views/event/_event_block.blade.php:36
-msgid "He was a speaker"
-msgstr "Ele foi palestrante"
-
-#: resources/views/event/_event_block.blade.php:36
-msgid "She was a speaker"
-msgstr "Ela foi palestrante"
-
-#: resources/views/event/_event_block.blade.php:99
+#: resources/views/event/_event_block.blade.php:90
 msgid "See more details"
 msgstr "Veja mais detalhes"
+
+#: resources/views/event/details.blade.php:14
+#, php-format
+msgid "%s - event"
+msgstr "%s - evento"
+
+#: resources/views/event/details.blade.php:20
+msgid "l, F j, Y"
+msgstr "l, j \\d\\e F \\d\\e Y"
+
+#: resources/views/event/details.blade.php:139
+msgid "This is a private event - acessible only by a group of selected people"
+msgstr ""
+"Este evento é privado - acessível somente por um grupo de pessoas "
+"selecionadas"
+
+#: resources/views/event/details.blade.php:139
+msgid "Closed"
+msgstr "Fechado"
+
+#: resources/views/event/details.blade.php:152
+#, php-format
+msgid "%s&nbsp;speakers on %s&nbsp;sessions and %s&nbsp;cases"
+msgstr "%s&nbsp;palestrantes em %s&nbsp;sessões e %s&nbsp;cases"
+
+#: resources/views/event/details.blade.php:153
+#, php-format
+msgid "%s&nbsp;resumes and %s&nbsp;articles submitted"
+msgstr "%s&nbsp; resumos e %s&nbsp;artigos submetidos"
+
+#: resources/views/event/details.blade.php:155
+#, php-format
+msgid "%s&nbsp;of&nbsp;%s known participants"
+msgstr "%s&nbsp;de&nbsp;%s participantes conhecidos"
+
+#: resources/views/event/details.blade.php:156
+msgid "followers"
+msgstr "seguidores"
+
+#: resources/views/event/details.blade.php:163
+msgid "Editions"
+msgstr "Edições"
+
+#: resources/views/event/details.blade.php:177
+msgid "The Event"
+msgstr "O Evento"
+
+#: resources/views/event/details.blade.php:185
+msgid "The speakers"
+msgstr "Os palestrantes"
+
+#: resources/views/event/details.blade.php:188
+msgid "Event sponsors"
+msgstr "Patrocinadores"
+
+#: resources/views/event/details.blade.php:195
+msgid "Schedule"
+msgstr "Programação"
+
+#: resources/views/event/details.blade.php:278
+msgid "Buy ticket"
+msgstr "Comprar ingresso"
+
+#: resources/views/event/details.blade.php:282
+msgid "I'm going!"
+msgstr "Eu vou!"
+
+#: resources/views/event/details.blade.php:286
+msgid "Follow this event"
+msgstr "Acompanhar este evento"
+
+#: resources/views/event/details.blade.php:295
+msgid "When & Where"
+msgstr "Quando e Onde"
+
+#: resources/views/event/details.blade.php:302
+msgid "See on a map"
+msgstr "Ver no mapa"
+
+#: resources/views/event/details.blade.php:303
+msgid "Get directions"
+msgstr "Ver trajeto"
+
+#: resources/views/event/details.blade.php:306
+#: resources/views/event/search.blade.php:5
+msgid "Begin"
+msgstr "Início"
+
+#: resources/views/event/details.blade.php:307
+#: resources/views/event/search.blade.php:5
+msgid "End"
+msgstr "Fim"
+
+#: resources/views/event/details.blade.php:309
+msgid "Add to My Calendar"
+msgstr "Adicionar ao meu calendário"
+
+#: resources/views/event/details.blade.php:316
+msgid "Main themes"
+msgstr "Temas principais"
+
+#: resources/views/event/details.blade.php:326
+msgid "Organization"
+msgstr "Organização"
+
+#: resources/views/event/details.blade.php:337
+msgid "Send a message"
+msgstr "Enviar uma mensagem"
 
 #: resources/views/event/search.blade.php:5
 msgid "Search terms"
@@ -360,14 +540,6 @@ msgstr "Termos da busca"
 #: resources/views/event/search.blade.php:5
 msgid "Theme"
 msgstr "Tema"
-
-#: resources/views/event/search.blade.php:5
-msgid "Begin"
-msgstr "Início"
-
-#: resources/views/event/search.blade.php:5
-msgid "End"
-msgstr "Fim"
 
 #: resources/views/event/search.blade.php:6
 #, php-format
@@ -387,58 +559,49 @@ msgstr "Palestrantes nos seus temas de interesse"
 msgid "Most common themes"
 msgstr "Temas mais comuns"
 
-#: resources/views/speaker/index.blade.php:131
+#: resources/views/speaker/index.blade.php:133
 msgid "See full profile"
 msgstr "Ver perfil completo"
 
-#: resources/views/speaker/profile.blade.php:17
-#, php-format
-msgid "%s - speaker"
-msgstr "%s - palestrante"
+#~ msgid ""
+#~ "Sorting out some private key issues before publishing code. Check back "
+#~ "soon or send me a message :)"
+#~ msgstr ""
+#~ "Resolvendo alguns problemas sobre chaves privadas antes de publicar o "
+#~ "código. Dá uma olhada de novo depois, ou me manda uma mensagem :)"
 
-#: resources/views/speaker/profile.blade.php:99
-msgid "Him elsewhere:"
-msgstr "Ele em outros lugares:"
+#~ msgid "d/m/Y"
+#~ msgstr "m/d/Y"
 
-#: resources/views/speaker/profile.blade.php:99
-msgid "Her elsewhere:"
-msgstr "Ela em outros lugares:"
+#~ msgid "him"
+#~ msgstr "ele"
 
-#: resources/views/speaker/profile.blade.php:134
-msgid "Him in events"
-msgstr "Ele nos eventos"
+#~ msgid "her"
+#~ msgstr "ela"
 
-#: resources/views/speaker/profile.blade.php:134
-msgid "Her in events"
-msgstr "Ela nos eventos"
+#~ msgid "%s elsewhere:"
+#~ msgstr "%s em outros lugares:"
 
-#: resources/views/speaker/profile.blade.php:162
-msgid "Add as a connection"
-msgstr "Adicionar como conexão"
+#~ msgid "He"
+#~ msgstr "Ele"
 
-#: resources/views/speaker/profile.blade.php:164
-msgid "See my connections"
-msgstr "Ver minhas conexões"
+#~ msgid "She"
+#~ msgstr "Ela"
 
-#: resources/views/speaker/profile.blade.php:169
-msgid "Follow him"
-msgstr "Segui-lo"
+#~ msgid "She participated"
+#~ msgstr "Ela participou"
 
-#: resources/views/speaker/profile.blade.php:169
-msgid "Follow her"
-msgstr "Segui-la"
+#~ msgid "She was involved / volunteered"
+#~ msgstr "Ela estava envolvida / se voluntariou"
 
-#: resources/views/speaker/profile.blade.php:178
-msgid "His themes of interest"
-msgstr "Seus temas de interesse"
+#~ msgid "She was part of staff"
+#~ msgstr "Ela foi parte do staff"
 
-#: resources/views/speaker/profile.blade.php:178
-msgid "Her themes of interest"
-msgstr "Seus temas de interesse"
+#~ msgid "She was a speaker"
+#~ msgstr "Ela foi palestrante"
 
-#: resources/views/speaker/profile.blade.php:187
-msgid "Most visited places"
-msgstr "Lugares mais visitados"
+#~ msgid "%s - speaker"
+#~ msgstr "%s - palestrante"
 
 #~ msgid "Preferred themes"
 #~ msgstr "Temas preferidos"

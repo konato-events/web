@@ -47,7 +47,7 @@ function nbsp(string $str):string {
  * @return string
  */
 function slugify(int $id, string $name):string {
-    return $id.'-'.Str::slug($name);
+    return $id.'-'.Str::slug($name, '_');
 }
 
 /**

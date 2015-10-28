@@ -111,7 +111,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                             $columns = ['lg' => 3, 'md' => 4, 'sm' => 6, 'xs' => 6];
                             foreach($speakers as $id => $speaker):
                                 list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker;
-                                $link = act('speaker@profile', slugify($id, $name));
+                                $link = act('user@speaker', slugify($id, $name));
                             ?>
                                 <div class="<?php foreach ($columns as $sign => $size) echo "col-$sign-$size " ?> isotype-item festival">
                                     <div class="thumbnail no-border no-padding">

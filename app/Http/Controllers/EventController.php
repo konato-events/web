@@ -17,12 +17,12 @@ class EventController extends Controller {
 	}
 
 	public function getDetails(string $id_slug) {
-		$id = strtok($id_slug, '-');
-		die('Details about event ID '.$id);
+		list($id, $name_slug) = unslug($id_slug);
+        return view('event.details', compact('id', 'name_slug'));
 	}
 
 	public function getTheme(string $id_slug, Request $req) {
-		list($id, $theme) = explode('-', $id_slug);
+		list($id, $theme) = unslug($id_slug);
 		$paid  = $req->input('paid', 0);
 		return view('event.theme', compact('id', 'theme', 'paid'));
 	}

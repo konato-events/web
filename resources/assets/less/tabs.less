@@ -1,0 +1,109 @@
+@import 'theme.variables';
+
+.nav-tabs {
+    @radius: 5px;
+    @borderColor: #C4C4C4;
+    @TBPadding: 10px;
+    @LRPadding: @TBPadding * 1.5;
+    @paddingMult: 0.3;
+    @marginMult: 0.5;
+
+    border-bottom: 1px solid @borderColor;
+
+    a {
+        display: block;
+        float: left;
+        color: @secondaryColor;
+        padding: @TBPadding @LRPadding @TBPadding*@paddingMult @LRPadding;
+        &:hover {
+            color: @primaryColor;
+        }
+    }
+    > a {
+        padding-bottom: @TBPadding;
+    }
+
+    > li {
+        > a {
+            border: 1px solid lighten(@borderColor, 10%);
+            border-radius: @radius @radius 0 0;
+            background-color: fade(black, 5%);
+            padding: @TBPadding @LRPadding @TBPadding*@paddingMult @LRPadding;
+            margin-top: @TBPadding*@marginMult + (@TBPadding*@paddingMult*2) + 1; //what it's going to grow, + what it's smaller, + nav-tabs border
+            &:hover {
+                padding: @TBPadding @LRPadding @TBPadding*(1+@marginMult) @LRPadding;
+                margin-top: 0;
+                background-color: fade(black, 3%);
+            }
+        }
+        &.active > a {
+            //font-weight: bold; //nice effect but it alters tab width when they're changing :(
+            border-color: @borderColor;
+            border-bottom-color: transparent;
+            background-color: white;
+            color: black;
+            padding: @TBPadding @LRPadding;
+            margin-top: @TBPadding*@marginMult;
+        }
+    }
+
+    &.nav-tabs-bottom {
+        border-top: 1px solid @borderColor;
+        border-bottom-width: 0;
+
+        a {
+            padding: @TBPadding*@paddingMult @LRPadding @TBPadding @LRPadding;
+        }
+        > a {
+            padding-top: @TBPadding;
+        }
+
+        > li {
+            margin: -1px 0 0 0;
+            > a {
+                border-radius: 0 0 @radius @radius;
+                margin-top: 0;
+                margin-bottom: @TBPadding*@marginMult;
+                &:hover {
+                    padding: @TBPadding*(1+@marginMult) @LRPadding @TBPadding @LRPadding;
+                    margin-bottom: 0;
+                }
+            }
+            &.active > a {
+                border-top-color: transparent;
+                border-bottom-color: @borderColor;
+                padding: @TBPadding @LRPadding;
+                margin-bottom: @TBPadding*@marginMult;
+            }
+        }
+    }
+}
+
+.nav-pills {
+    border-bottom: @borderColor;
+
+    > li {
+        border-bottom: 1px solid darken(@borderColor, 20%);
+        > a {
+            color: @secondaryColor;
+            background-color: @borderColor;
+            border-radius: 0;
+            //margin-bottom: -1px !important;
+            &:hover, &:focus {
+                background-color: white;
+            }
+        }
+        &.active {
+            border-bottom: 1px solid @primaryColor;
+            > a {
+                font-weight: bold;
+                color: @primaryColor;
+                background-color: white;
+                &:hover, &:focus {
+                    color: @primaryColor;
+                    background-color: white;
+                }
+            }
+        }
+    }
+}

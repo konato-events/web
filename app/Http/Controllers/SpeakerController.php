@@ -18,8 +18,4 @@ class SpeakerController extends Controller {
         return view('speaker.index', compact('theme', 'themes'));
     }
 
-    public function getProfile(string $id_slug) {
-        return redirect()->route('user', $id_slug);
-    }
-
 }
