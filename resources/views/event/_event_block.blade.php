@@ -6,6 +6,7 @@
   * @var bool  $participant_gender
   * @var array $themes
   * @var array $event */
+use Illuminate\Support\Str;
 
 list($img, $title, $place, $begin, $end, $desc) = $event;
 $link = act('event@details', slugify($id, $title));
