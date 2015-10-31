@@ -171,7 +171,7 @@
 /* ========================================================================== */
 body {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.33;
   background: #fbfbfb;
   color: #6d7a83;
@@ -188,6 +188,7 @@ body.boxed {
 /* overflow the content area
  * -------------------------------------------------------------------------- */
 * {
+  word-wrap: break-word;
   /* Prevent Long URL’s From Breaking Out of Container
     word-break: break-word;
     hyphens: auto; */
@@ -6646,30 +6647,6 @@ header .sf-menu a:hover {
 }
 #event .section-title {
   margin-bottom: 20px;
-}
-#event ul.materials li:before {
-  font-family: FontAwesome;
-  display: inline-block;
-  width: 20px;
-  text-align: center;
-}
-#event ul.materials li.doc:before {
-  content: "\f0f6";
-}
-#event ul.materials li.pdf:before {
-  content: "\f1c1";
-}
-#event ul.materials li.zip:before {
-  content: "\f1c6";
-}
-#event ul.materials li.slide:before {
-  content: "\f26c";
-}
-#event ul.materials li.audio:before {
-  content: "\f1c7";
-}
-#event ul.materials li.video:before {
-  content: "\f1c8";
 }
 
 .btn.btn-wrap {

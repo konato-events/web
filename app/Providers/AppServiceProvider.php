@@ -75,6 +75,13 @@ class AppServiceProvider extends ServiceProvider {
             $speaker[] = ['M', 'M', 'F', 'M', 'M', 'M'][$i];
         }
 
+        $materials = [
+            ['http://www.google.com', 'How to be Agile in Project Management', 'doc', $speakers[1]],
+            ['http://pt.slideshare.net/igorsantos07/rest-fuuuu-54458320', 'The RESTful Police', 'slide', $speakers[5]],
+            ['http://www.google.com', 'Immobilized lipase reutilization on biodiesel syntesis from soy oil', 'doc', $speakers[3]],
+            ['http://www.google.com', 'How to launch a culinary business having an IT background', 'video', $speakers[2]],
+        ];
+
         shuffle($events);
         shuffle($speakers);
         $view->share('events', $events);
@@ -83,6 +90,7 @@ class AppServiceProvider extends ServiceProvider {
         $view->share('themes', $themes);
         $view->share('selected_themes', $selected_themes);
         $view->share('speakers', $speakers);
+        $view->share('materials', $materials);
     }
 
     /**

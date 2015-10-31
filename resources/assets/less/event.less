@@ -73,4 +73,23 @@
     .section-title {
         margin-bottom: 20px;
     }
+
+    ul.speakers {
+
+    }
+
+    ul.materials {
+        li:before { //noinspection CssNoGenericFontName
+            font-family: FontAwesome;
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+        }
+        li.doc:before { content: "\f0f6"; }
+        li.pdf:before { content: "\f1c1"; }
+        li.zip:before { content: "\f1c6"; }
+        li.slide:before { content: "\f26c"; }
+        li.audio:before { content: "\f1c7"; }
+        li.video:before { content: "\f1c8"; }
+    }
 }

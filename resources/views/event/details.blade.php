@@ -4,6 +4,8 @@ use App\Http\Controllers\UserController as Controller;
 /** @var string $name_slug */
 /** @var int    $id */
 /** @var array  $events */
+/** @var array  $materials */
+/** @var array  $speakers */
 /** @var int    $type */
 
 $event = current(array_filter($events, function($event) use ($name_slug) {
@@ -266,15 +268,29 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
 
             <div class="col-md-12 col-lg-5 pull-left">
                 <?=section_title('microphone', _('The speakers'))?>
-                <p class="basic-text">ADICIONAR AQUI A LISTA DE PALESTRANTES</p>
+                @include('components.speakers_list', ['speakers' => $speakers, 'columns' => true])
             </div>
 
             <hr class="page-divider transparent visible-md"/>
 
             <div class="col-md-12 col-lg-5 pull-left">
+                <?=section_title('microphone', _('Materials'))?>
+                <ul class="materials">
+                    <? foreach ($materials as $material): ?>
+                        <li class="<?=$material[2]?>">
+                            <a href="<?=$material[0]?>" target="_blank" class="title"><?=$material[1]?></a>,
+                            <?=_('by')?> <a href="<?=act('user@speaker', slugify(0, $material[3][1]))?>" class="speaker"><?=$material[3][1]?></a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+
+            {{--<hr class="page-divider transparent visible-md"/>--}}
+
+            <!--<div class="col-md-12 col-lg-5 pull-left">
                 <?=section_title('thumbs-up', _('Event sponsors'))?>
                 <p class="basic-text">ADICIONAR AQUI A LISTA DE PATROCINADORES</p>
-            </div>
+            </div>-->
         </div>
 
     </section>
@@ -297,6 +313,7 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
             <a class="note" href="#"><?=_('See my following preferences')?></a>
         </div>
 
+        <?php //todo: make this sidebar more mobile-friendly, with blocks staying side by side if they have little information to make a full 12 column block ?>
         <div class="widget">
             <div class="panel-group">
                 <div class="panel panel-default">

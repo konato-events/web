@@ -199,19 +199,7 @@ $title = sprintf(_('Events about %s'), $theme);
                             <h4 class="panel-title"><?=_('Popular speakers')?></h4>
                         </div>
                         <div class="panel-body">
-                            <ul class="speakers">
-                                <?php foreach($speakers as $id => $speaker):
-                                    list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker ?>
-                                    <li>
-                                        <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
-                                        <div class="speaker-details">
-                                            <a href="<?=act('speaker@profile', slugify($id, $name))?>"><?=$name?></a>
-                                            <span><?=__('%d event on theme', '%d events on theme', $on_theme)?></span>
-                                            <span><?=__('%d event total', '%d events total', $total)?></span>
-                                        </div>
-                                    </li>
-                                <?php endforeach ?>
-                            </ul>
+                            @include('components.speakers_list', ['speakers' => $speakers])
                             <a href="<?=act('speaker@theme', slugify(1, $theme))?>" class="see-more"><?=_r('See all speakers on %s', $theme)?></a>
                         </div>
                     </div>
