@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-10-27 04:23-0300\n"
-"PO-Revision-Date: 2015-10-27 04:23-0300\n"
+"POT-Creation-Date: 2015-10-31 17:48-0300\n"
+"PO-Revision-Date: 2015-10-31 17:48-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -245,13 +245,13 @@ msgstr "perfil"
 
 #: resources/views/user/profile.blade.php:55
 #: resources/views/event/theme.blade.php:147
-#: resources/views/event/details.blade.php:19
+#: resources/views/event/details.blade.php:21
 #: resources/views/event/search.blade.php:152
 msgid "m/d/Y"
 msgstr "d/m/Y"
 
 #: resources/views/user/profile.blade.php:123
-#: resources/views/event/theme.blade.php:206
+#: resources/views/components/speakers_list.blade.php:12
 #: resources/views/speaker/index.blade.php:120
 #, php-format
 msgid "%s on Konato"
@@ -259,13 +259,13 @@ msgstr "%s no Konato"
 
 #: resources/views/user/profile.blade.php:132
 #: resources/views/components/themes_list.blade.php:9
-#: resources/views/event/_event_block.blade.php:34
+#: resources/views/event/_event_block.blade.php:35
 msgid "he"
 msgstr "ele"
 
 #: resources/views/user/profile.blade.php:132
 #: resources/views/components/themes_list.blade.php:9
-#: resources/views/event/_event_block.blade.php:34
+#: resources/views/event/_event_block.blade.php:35
 msgid "she"
 msgstr "ela"
 
@@ -308,7 +308,7 @@ msgstr "Segui-la"
 
 #: resources/views/user/profile.blade.php:219
 #: resources/views/event/theme.blade.php:180
-#: resources/views/event/details.blade.php:288
+#: resources/views/event/details.blade.php:313
 msgid "See my following preferences"
 msgstr "Configurar o que acompanho"
 
@@ -323,6 +323,20 @@ msgstr "Seus temas de interesse"
 #: resources/views/user/profile.blade.php:236
 msgid "Most visited places"
 msgstr "Lugares mais visitados"
+
+#: resources/views/components/speakers_list.blade.php:15
+#, php-format
+msgid "%d event on theme"
+msgid_plural "%d events on theme"
+msgstr[0] "%d evento no tema"
+msgstr[1] "%d eventos no tema"
+
+#: resources/views/components/speakers_list.blade.php:16
+#, php-format
+msgid "%d event total"
+msgid_plural "%d events total"
+msgstr[0] "%d evento no total"
+msgstr[1] "%d eventos no total"
 
 #: resources/views/components/themes_list.blade.php:9
 #, php-format
@@ -382,154 +396,148 @@ msgstr "Popularidade"
 msgid "Popular speakers"
 msgstr "Palestrantes populares"
 
-#: resources/views/event/theme.blade.php:209
-#, php-format
-msgid "%d event on theme"
-msgid_plural "%d events on theme"
-msgstr[0] "%d evento no tema"
-msgstr[1] "%d eventos no tema"
-
-#: resources/views/event/theme.blade.php:210
-#, php-format
-msgid "%d event total"
-msgid_plural "%d events total"
-msgstr[0] "%d evento no total"
-msgstr[1] "%d eventos no total"
-
-#: resources/views/event/theme.blade.php:215
+#: resources/views/event/theme.blade.php:203
 #, php-format
 msgid "See all speakers on %s"
 msgstr "Veja todos os palestrantes em %s"
 
-#: resources/views/event/_event_block.blade.php:19
+#: resources/views/event/_event_block.blade.php:20
 #, php-format
 msgid "%s participated"
 msgstr "%s participou"
 
-#: resources/views/event/_event_block.blade.php:23
+#: resources/views/event/_event_block.blade.php:24
 #, php-format
 msgid "%s was involved / volunteered"
 msgstr "%s estava envolvido / se voluntariou"
 
-#: resources/views/event/_event_block.blade.php:27
+#: resources/views/event/_event_block.blade.php:28
 #, php-format
 msgid "%s was part of staff"
 msgstr "%s foi parte do staff"
 
-#: resources/views/event/_event_block.blade.php:31
+#: resources/views/event/_event_block.blade.php:32
 #, php-format
 msgid "%s was a speaker"
 msgstr "%s foi palestrante"
 
-#: resources/views/event/_event_block.blade.php:90
+#: resources/views/event/_event_block.blade.php:91
 msgid "See more details"
 msgstr "Veja mais detalhes"
 
-#: resources/views/event/details.blade.php:14
+#: resources/views/event/details.blade.php:16
 #, php-format
 msgid "%s - event"
 msgstr "%s - evento"
 
-#: resources/views/event/details.blade.php:20
+#: resources/views/event/details.blade.php:22
 msgid "l, F j, Y"
 msgstr "l, j \\d\\e F \\d\\e Y"
 
-#: resources/views/event/details.blade.php:139
+#: resources/views/event/details.blade.php:141
 msgid "This is a private event - acessible only by a group of selected people"
 msgstr ""
 "Este evento é privado - acessível somente por um grupo de pessoas "
 "selecionadas"
 
-#: resources/views/event/details.blade.php:139
+#: resources/views/event/details.blade.php:141
 msgid "Closed"
 msgstr "Fechado"
 
-#: resources/views/event/details.blade.php:152
+#: resources/views/event/details.blade.php:154
 #, php-format
 msgid "%s&nbsp;speakers on %s&nbsp;sessions and %s&nbsp;cases"
 msgstr "%s&nbsp;palestrantes em %s&nbsp;sessões e %s&nbsp;cases"
 
-#: resources/views/event/details.blade.php:153
+#: resources/views/event/details.blade.php:155
 #, php-format
 msgid "%s&nbsp;resumes and %s&nbsp;articles submitted"
 msgstr "%s&nbsp; resumos e %s&nbsp;artigos submetidos"
 
-#: resources/views/event/details.blade.php:155
+#: resources/views/event/details.blade.php:157
 #, php-format
 msgid "%s&nbsp;of&nbsp;%s known participants"
 msgstr "%s&nbsp;de&nbsp;%s participantes conhecidos"
 
-#: resources/views/event/details.blade.php:156
+#: resources/views/event/details.blade.php:158
 msgid "followers"
 msgstr "seguidores"
 
-#: resources/views/event/details.blade.php:163
+#: resources/views/event/details.blade.php:165
 msgid "Editions"
 msgstr "Edições"
 
-#: resources/views/event/details.blade.php:177
+#: resources/views/event/details.blade.php:180
 msgid "The Event"
 msgstr "O Evento"
 
-#: resources/views/event/details.blade.php:185
-msgid "The speakers"
-msgstr "Os palestrantes"
-
-#: resources/views/event/details.blade.php:188
-msgid "Event sponsors"
-msgstr "Patrocinadores"
-
-#: resources/views/event/details.blade.php:195
+#: resources/views/event/details.blade.php:193
 msgid "Schedule"
 msgstr "Programação"
 
-#: resources/views/event/details.blade.php:278
+#: resources/views/event/details.blade.php:270
+msgid "The speakers"
+msgstr "Os palestrantes"
+
+#: resources/views/event/details.blade.php:277
+msgid "Materials"
+msgstr "Materiais"
+
+#: resources/views/event/details.blade.php:282
+msgid "by"
+msgstr "por"
+
+#: resources/views/event/details.blade.php:291
+msgid "Event sponsors"
+msgstr "Patrocinadores"
+
+#: resources/views/event/details.blade.php:303
 msgid "Buy ticket"
 msgstr "Comprar ingresso"
 
-#: resources/views/event/details.blade.php:282
+#: resources/views/event/details.blade.php:307
 msgid "I'm going!"
 msgstr "Eu vou!"
 
-#: resources/views/event/details.blade.php:286
+#: resources/views/event/details.blade.php:311
 msgid "Follow this event"
 msgstr "Acompanhar este evento"
 
-#: resources/views/event/details.blade.php:295
+#: resources/views/event/details.blade.php:321
 msgid "When & Where"
 msgstr "Quando e Onde"
 
-#: resources/views/event/details.blade.php:302
+#: resources/views/event/details.blade.php:328
 msgid "See on a map"
 msgstr "Ver no mapa"
 
-#: resources/views/event/details.blade.php:303
+#: resources/views/event/details.blade.php:329
 msgid "Get directions"
 msgstr "Ver trajeto"
 
-#: resources/views/event/details.blade.php:306
+#: resources/views/event/details.blade.php:332
 #: resources/views/event/search.blade.php:5
 msgid "Begin"
 msgstr "Início"
 
-#: resources/views/event/details.blade.php:307
+#: resources/views/event/details.blade.php:333
 #: resources/views/event/search.blade.php:5
 msgid "End"
 msgstr "Fim"
 
-#: resources/views/event/details.blade.php:309
+#: resources/views/event/details.blade.php:335
 msgid "Add to My Calendar"
 msgstr "Adicionar ao meu calendário"
 
-#: resources/views/event/details.blade.php:316
+#: resources/views/event/details.blade.php:342
 msgid "Main themes"
 msgstr "Temas principais"
 
-#: resources/views/event/details.blade.php:326
+#: resources/views/event/details.blade.php:352
 msgid "Organization"
 msgstr "Organização"
 
-#: resources/views/event/details.blade.php:337
+#: resources/views/event/details.blade.php:363
 msgid "Send a message"
 msgstr "Enviar uma mensagem"
 

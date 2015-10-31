@@ -274,7 +274,7 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
             <hr class="page-divider transparent visible-md"/>
 
             <div class="col-md-12 col-lg-5 pull-left">
-                <?=section_title('microphone', _('Materials'))?>
+                <?=section_title('download', _('Materials'))?>
                 <ul class="materials">
                     <? foreach ($materials as $material): ?>
                         <li class="<?=$material[2]?>">
