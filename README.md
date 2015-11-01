@@ -33,7 +33,7 @@ Down to the rabbit hole (you should check the [latest NVM release][nvm-release] 
 
     $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh \
       | sudo NVM_DIR=/usr/local/nvm bash
-    $ nvm install iojs # installs io.js. You can use `nvm ls-remote` to see other packages and versions  
+    $ nvm install iojs # installs io.js. You can use `nvm ls-remote` to see other packages and versions
     $ nvm alias default iojs # sets io.js as the default version
     $ nvm use iojs # enables io.js right away, without having to restart the shell
 
@@ -51,11 +51,18 @@ You can find more information on how to configure and enjoy Semantic UI at `reso
 - To compile for production usage, run `gulp --production`;
 - To keep compiling while you develop, use `gulp watch`.
 
+### Database
+We use PostgreSQL here - as it's prepackaged in Heroku and has cool geolocation features if we need them later. You need to create a user and a database, and then import the basic structure, as follows:
+
+    $ sudo su - postgres
+    postgres $ createuser -DPRS konato # will ask for a password; use "konato" as well
+    postgres $ createdb -O konato konato
+    postgres $ psql -h 127.0.0.1 -WU konato konato -f database/create.sql
 
 Deploying to production
 -----------------------
 We needed to make some tweaks to the original project to have it running smoothly inside Heroku.
- 
+
 ### Environment variables
 Laravel uses `.env` to manage environment variables. Sadly, it seems there's no easy way to have a production `.env` file, since we don't have access to the production machines and what's deployed is exactly the same codebase. However, Heroku provides a way to configure env vars as well. And they override Laravel ones. Great! The command is `heroku config:set VAR=value`. This can be used to alter other variables, and I guess this can be changed in the Heroku Dashboard as well.
 
@@ -67,8 +74,8 @@ Current list of custom variables we had to setup to have the application working
 
 ### Logging
 Inside Heroku, logs must be sent to `stdout`/`stderr`. Inside Laravel 5, this is done by configuring logs to go to _errorlog_. Using the above mentioned env var, we defined the production environment to log to _errorlog_, and other instances to keep logging in a _single_ file. PaperTrail is a Heroku addon that enables us to see the log stream, live - it can be accessed from the Heroku Dashboard as well.
- 
- 
+
+
 [elixir]: http://laravel.com/docs/5.1/elixir
 [elixir-erlang]: https://en.wikipedia.org/wiki/Elixir_(programming_language)
 [semantic ui]: http://semantic-ui.com
