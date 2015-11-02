@@ -143,8 +143,9 @@ hr.page-divider.single {
 	color: #6d7a83;
 }
 
-.form-control:focus {
-	border-color: @main-color-d10;
+.form-control:focus,
+.bootstrap-select > .selectpicker:focus {
+	border-color: @darkSecondaryColor;
 }
 
 .bootstrap-select > .selectpicker {
@@ -153,18 +154,11 @@ hr.page-divider.single {
 	background-color: white !important;
 }
 
-.bootstrap-select > .selectpicker:focus {
-	border-color: @main-color-d10;
-}
-
 .registration-form .tooltip-inner {
 	background-color: @main-color-d10;
 }
 
-.registration-form .tooltip-arrow {
-	border-top-color: @main-color-d10;
-}
-
+.registration-form .tooltip-arrow,
 .registration-form .tooltip.top .tooltip-arrow {
 	border-top-color: @main-color-d10;
 }

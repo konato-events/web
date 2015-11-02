@@ -841,7 +841,7 @@ p.btn-row .btn {
 /* 1.7 - Form / Input / Textarea / Select
 /* ========================================================================== */
 .form-control {
-  height: 60px;
+  height: 40px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 10px;
@@ -1377,9 +1377,6 @@ nav .btn:hover {
     margin-top: 20px;
     margin-bottom: 10px;
   }
-  .form-control {
-    font-size: 12px;
-  }
 }
 .multipage .header-search-wrapper .header-search {
   height: 45px;
@@ -1684,6 +1681,9 @@ nav .btn:hover {
 }
 #hero-block .caption-text .btn:first-child {
   margin-right: 30px;
+}
+#hero-block .form-control {
+  height: 60px;
 }
 @media (max-width: 1024px) {
   #hero-block .caption-subtitle {
@@ -5922,23 +5922,19 @@ hr.page-divider.single {
   border: 1px solid #c8cdd2;
   color: #6d7a83;
 }
-.form-control:focus {
-  border-color: #fa7a0c;
+.form-control:focus,
+.bootstrap-select > .selectpicker:focus {
+  border-color: #153a96;
 }
 .bootstrap-select > .selectpicker {
   border: 1px solid #c8cdd2;
   color: #6d7a83 !important;
   background-color: white !important;
 }
-.bootstrap-select > .selectpicker:focus {
-  border-color: #fa7a0c;
-}
 .registration-form .tooltip-inner {
   background-color: #fa7a0c;
 }
-.registration-form .tooltip-arrow {
-  border-top-color: #fa7a0c;
-}
+.registration-form .tooltip-arrow,
 .registration-form .tooltip.top .tooltip-arrow {
   border-top-color: #fa7a0c;
 }
@@ -6647,6 +6643,9 @@ header .sf-menu a:hover {
 #event .section-title {
   margin-bottom: 20px;
 }
+#event ul.materials li {
+  padding-bottom: 10px;
+}
 #event ul.materials li:before {
   font-family: FontAwesome;
   display: inline-block;
@@ -6845,6 +6844,16 @@ ul.user-stats {
   margin-bottom: 0;
 }
 
+label sup {
+  color: #ae5000;
+  font-size: 200%;
+  top: 0.25em;
+}
+.form-group .help-block {
+  font-style: italic;
+  font-size: 80%;
+}
+
 .event-types label {
   display: block;
 }
@@ -6993,60 +7002,63 @@ ul.user-stats {
   background-color: white;
 }
 
-#user #page-header {
+#user.user-profile #page-header {
   padding-bottom: 10px !important;
 }
-#user #page-header .photo {
+#user.user-profile #page-header .photo {
   text-align: right;
 }
-#user #page-header .photo img {
+#user.user-profile #page-header .photo img {
   max-height: 250px;
   max-width: 100%;
   box-shadow: 0 0 30px 2px rgba(128, 128, 128, 0.5);
   border-radius: 15px;
 }
-#user #page-header .details {
+#user.user-profile #page-header .details {
   display: table;
   text-align: left;
   color: white;
 }
-#user #page-header .details .place {
+#user.user-profile #page-header .details .place {
   font-size: 18px;
   color: inherit;
   text-decoration: underline;
 }
-#user #page-header .details .place:hover {
+#user.user-profile #page-header .details .place:hover {
   color: #fb953e;
 }
-#user #page-header .details .function {
-  font-size: 23px;
-  margin-bottom: 5px;
-  margin-top: 10px;
-}
-#user #page-header .details .function i.part-speaker {
+#user.user-profile #page-header .details .bio {
   font-size: 18px;
 }
-#user #page-header .details .bio {
-  font-size: 18px;
-}
-#user #page-header .details .social-profiles {
+#user.user-profile #page-header .details .social-profiles {
   display: table-row;
   height: 50px;
 }
-#user #page-header .details .social-profiles h2 {
+#user.user-profile #page-header .details .social-profiles h2 {
   margin-top: 0;
   font-size: 16px;
   color: inherit;
 }
-#user #page-header .details .social-profiles a {
+#user.user-profile #page-header .details .social-profiles a {
   font-size: 30px;
   padding-right: 10px;
   padding-bottom: 10px;
   float: left;
   color: #CCC;
 }
-#user #page-header .details .social-profiles a:hover {
+#user.user-profile #page-header .details .social-profiles a:hover {
   color: #fb953e;
+}
+#user #page-header h2,
+#user #page-header .function {
+  color: white;
+  font-size: 23px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+#user #page-header h2 i.part-speaker,
+#user #page-header .function i.part-speaker {
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=styles.css.map */

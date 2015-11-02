@@ -118,50 +118,50 @@ $date_fmt   = _('m/d/Y');
 
 @section('header-bg', '/img/bg-speaker.jpeg')
 @section('header-content')
-        <div class="row">
-            <div class="photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
-                <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
-            </div>
+<div class="row">
+    <div class="photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
+        <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
+    </div>
 
-            <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
-                <h1><?=$name?></h1>
-                <a class="place" href="<?=act('event@search', ['place' => $place])?>"><?=nbsp($place)?></a>
-                <p class="function">
-                    <?php if($type == Controller::TYPE_SPEAKER): ?>
-                        <i class="fa part-speaker inverted" data-toggle="tooltip"
-                           title="<?=ucfirst(_r('%s has participated in events as a speaker', $male? _('he') : _('she')))?>"></i>
-                    <?php endif ?>
-                    <?=$function?>
-                </p>
-                <p class="bio"><?=$bio?></p>
-                <div class="social-profiles float-bottom">
-                    <h2><?=($male)? _('Him elsewhere:') : _('Her elsewhere:')?></h2>
-                    <?php
-                    $profiles = [
-                        'LinkedIn'         => 'fa fa-linkedin-square',
-                        'Facebook'         => 'fa fa-facebook-square',
-                        'Twitter'          => 'fa fa-twitter-square',
-                        'ResearchGate'     => 'icon-site-researchgate',
-                        'Currículo Lattes' => 'icon-site-lattes',
-                        'Flickr'           => 'fa fa-flickr',
-                        'Behance'          => 'fa fa-behance-square',
-                        'GitHub'           => 'fa fa-github-square',
-                        'Bitbucket'        => 'fa fa-bitbucket-square',
-                        'Speaker Deck'     => 'icon-site-speaker-deck',
-                        'Slideshare'       => 'fa fa-slideshare',
-                        'Website'          => 'fa fa-globe'
-                    ];
-                    foreach($profiles as $profile => $class):
-                        if (is_numeric($profile)) {
-                            $profile = $class;
-                            $class   = str_slug($class);
-                        }
-                    ?>
-                        <a class="<?=$class?>" target="_blank" href="#" data-toggle="tooltip" data-trigger="hover focus click" data-placement="top" title="<?=$profile?>"></a>
-                    <?php endforeach ?>
-                </div>
-            </div>
+    <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
+        <h1><?=$name?></h1>
+        <a class="place" href="<?=act('event@search', ['place' => $place])?>"><?=nbsp($place)?></a>
+        <p class="function">
+            <?php if($type == Controller::TYPE_SPEAKER): ?>
+                <i class="fa part-speaker inverted" data-toggle="tooltip"
+                   title="<?=ucfirst(_r('%s has participated in events as a speaker', $male? _('he') : _('she')))?>"></i>
+            <?php endif ?>
+            <?=$function?>
+        </p>
+        <p class="bio"><?=$bio?></p>
+        <div class="social-profiles float-bottom">
+            <h2><?=($male)? _('Him elsewhere:') : _('Her elsewhere:')?></h2>
+            <?php
+            $profiles = [
+                'LinkedIn'         => 'fa fa-linkedin-square',
+                'Facebook'         => 'fa fa-facebook-square',
+                'Twitter'          => 'fa fa-twitter-square',
+                'ResearchGate'     => 'icon-site-researchgate',
+                'Currículo Lattes' => 'icon-site-lattes',
+                'Flickr'           => 'fa fa-flickr',
+                'Behance'          => 'fa fa-behance-square',
+                'GitHub'           => 'fa fa-github-square',
+                'Bitbucket'        => 'fa fa-bitbucket-square',
+                'Speaker Deck'     => 'icon-site-speaker-deck',
+                'Slideshare'       => 'fa fa-slideshare',
+                'Website'          => 'fa fa-globe'
+            ];
+            foreach($profiles as $profile => $class):
+                if (is_numeric($profile)) {
+                    $profile = $class;
+                    $class   = str_slug($class);
+                }
+            ?>
+                <a class="<?=$class?>" target="_blank" href="#" data-toggle="tooltip" data-trigger="hover focus click" data-placement="top" title="<?=$profile?>"></a>
+            <?php endforeach ?>
         </div>
+    </div>
+</div>
 @endsection
 
 @section('content')
