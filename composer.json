@@ -1,13 +1,27 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "konato/web",
+    "description": "Event discovery platform",
+    "keywords": [ "event", "talk", "workshop", "congress", "conference", "events", "talks", "workshops", "congresses", "conferences", "search", "platform" ],
+    "license": "GPL-2.0",
     "type": "project",
+    "authors": [
+        {
+            "name": "Igor Santos",
+            "email": "igorsantos07+konato@gmail.com",
+            "homepage": "http://igorsantos.com.br",
+            "role": "Founder"
+        }
+    ],
+    "support": {
+        "email": "igorsantos07+konato@gmail.com",
+        "issues": "https://bitbucket.org/konato/web/issues",
+        "source": "https://bitbucket.org/konato/web"
+    },
+
     "require": {
         "php": "~7.0@beta",
-	"ext-gettext": "*",
-	"ext-mcrypt": "*",
+        "ext-gettext": "*",
+        "ext-mcrypt": "*",
 
         "laravel/framework": "5.1.*",
         "barryvdh/laravel-ide-helper": "^2.1"
