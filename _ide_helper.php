@@ -11259,7 +11259,7 @@ namespace {
     }
 
 
-    class Form extends \Resources\FormFacade{
+    class Form extends \LaravelArdent\Laravalid\Facade{
         
         /**
          * 

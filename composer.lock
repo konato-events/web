@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c5edcb682a15a40a67eee74269941bf",
+    "hash": "58b8e3549845ff252db0cdf6bbebad82",
     "content-hash": "7e93bb973655e30d5e6ad3faf81ff35e",
     "packages": [
         {
@@ -427,16 +427,16 @@
         },
         {
             "name": "laravel-ardent/laravalid",
-            "version": "v2.1.2",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-ardent/laravalid.git",
-                "reference": "50dd5563b457f528738e574fa5a9c3ee71aea61c"
+                "reference": "326f1841d45174a8bf1b0084d9fcb2e818bf9d2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-ardent/laravalid/zipball/50dd5563b457f528738e574fa5a9c3ee71aea61c",
-                "reference": "50dd5563b457f528738e574fa5a9c3ee71aea61c",
+                "url": "https://api.github.com/repos/laravel-ardent/laravalid/zipball/326f1841d45174a8bf1b0084d9fcb2e818bf9d2a",
+                "reference": "326f1841d45174a8bf1b0084d9fcb2e818bf9d2a",
                 "shasum": ""
             },
             "require": {
@@ -481,7 +481,7 @@
                 "laravel5",
                 "validation"
             ],
-            "time": "2015-11-02 01:52:25"
+            "time": "2015-11-02 05:43:30"
         },
         {
             "name": "laravel/framework",
