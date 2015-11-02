@@ -24,6 +24,10 @@
         "ext-mcrypt": "*",
 
         "laravel/framework": "5.1.*",
+        "laravelcollective/html": "5.1.*",
+        "laravel-ardent/laravalid": "2.*",
+        "laravelbook/ardent": "3.*",
+
         "barryvdh/laravel-ide-helper": "^2.1"
     },
     "require-dev": {
@@ -39,7 +43,8 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Resources\\": "resources/"
         }
     },
     "autoload-dev": {
