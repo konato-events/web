@@ -6,6 +6,7 @@
             @yield('header-content')
 
             <h1>@yield('header-title')</h1>
+            <h2>@yield('header-subtitle')</h2>
             @yield('header-breadcrumbs')
 
             @if (false) {{-- This is sample markup for breadcrumbs --}}
