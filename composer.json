@@ -56,7 +56,8 @@
         "post-install-cmd": [
             "php artisan clear-compiled",
             "php artisan ide-helper:generate",
-            "php artisan optimize"
+            "php artisan optimize",
+            "node_modules/gulp/bin/gulp.js --production"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
