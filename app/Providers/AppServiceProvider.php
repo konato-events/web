@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider {
      */
     public function boot() {
         require_once APP_ROOT.'/resources/views/helpers.php';
-        $this->bootGettext();
+        $this->bootLocalization();
 
         /** @var View $view */
         $view = view();
@@ -107,7 +107,7 @@ class AppServiceProvider extends ServiceProvider {
      * @param string $codeset
      * @see https://lingohub.com/blogs/2013/07/php-internationalization-with-gettext-tutorial/
      */
-    protected function bootGettext($domain = 'main', $codeset = 'UTF-8') {
+    protected function bootLocalization($domain = 'main', $codeset = 'UTF-8') {
         $this->defineLocale($domain);
         putenv('LANG='.LOCALE);
         if (!setlocale(LC_ALL, LOCALE.".$codeset", LOCALE.strtolower(strtr($codeset, ['-' => ''])))) {
@@ -119,7 +119,9 @@ class AppServiceProvider extends ServiceProvider {
     }
 
     protected function defineLocale($domain) {
-        if (defined('LOCALE')) return true;
+        if (defined('LOCALE')) {
+            return;
+        }
         define('DEFAULT_LOCALE', 'en_CA');
 
         $valid_locale = function ($locale) use ($domain) {
@@ -160,8 +162,11 @@ class AppServiceProvider extends ServiceProvider {
             }
 
             if (!defined('LOCALE')) { //could not find any useful language. fallback!
-                define('LOCALE', 'en_CA');
+                define('LOCALE', DEFAULT_LOCALE);
             }
         }
+
+        // as we are returning arrays from the lang files, we can use gettext there as well :)
+        \App::setLocale('gettext');
     }
 }

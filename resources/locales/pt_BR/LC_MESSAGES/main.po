@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-07 15:18-0300\n"
-"PO-Revision-Date: 2015-11-07 15:22-0300\n"
+"POT-Creation-Date: 2015-11-07 16:12-0300\n"
+"PO-Revision-Date: 2015-11-07 16:12-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -37,9 +37,22 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: resources/FormBuilder.php:59
+#: resources/BootstrapFormBuilder.php:61
+#: resources/lang/default/validation.php:2
 msgid "Required field"
 msgstr "Campo obrigatório"
+
+#: resources/lang/default/validation.php:3
+msgid "This does not seem like an email"
+msgstr "Isso não parece com um e-mail"
+
+#: resources/lang/default/validation.php:5
+msgid "Too short"
+msgstr "Curto demais"
+
+#: resources/lang/default/validation.php:8
+msgid "This field should have between :min and :max characters"
+msgstr "Este campo deve ter entre :min e :max caracteres"
 
 #: resources/views/layout-master.blade.php:21
 msgid "Event Discovery"
