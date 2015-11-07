@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-10-31 17:48-0300\n"
-"PO-Revision-Date: 2015-10-31 17:48-0300\n"
+"POT-Creation-Date: 2015-11-07 15:18-0300\n"
+"PO-Revision-Date: 2015-11-07 15:22-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -37,59 +37,63 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: resources/views/layout-master.blade.php:20
+#: resources/FormBuilder.php:59
+msgid "Required field"
+msgstr "Campo obrigatório"
+
+#: resources/views/layout-master.blade.php:21
 msgid "Event Discovery"
 msgstr "Descubra eventos"
 
-#: resources/views/layout-master.blade.php:94
+#: resources/views/layout-master.blade.php:96
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: resources/views/layout-master.blade.php:95
+#: resources/views/layout-master.blade.php:97
 msgid "Places"
 msgstr "Locais"
 
-#: resources/views/layout-master.blade.php:96
+#: resources/views/layout-master.blade.php:98
 #: resources/views/speaker/index.blade.php:76
 msgid "Speakers"
 msgstr "Palestrantes"
 
-#: resources/views/layout-master.blade.php:107
+#: resources/views/layout-master.blade.php:109
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: resources/views/layout-master.blade.php:112
+#: resources/views/layout-master.blade.php:114
 msgid "Login"
 msgstr "Login"
 
-#: resources/views/layout-master.blade.php:160
+#: resources/views/layout-master.blade.php:162
 msgid "Discover amazing events on Konato"
 msgstr "Descubra eventos fantásticos no Konato"
 
-#: resources/views/layout-master.blade.php:162
+#: resources/views/layout-master.blade.php:164
 #, php-format
 msgid "%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro"
 msgstr ""
 "%sBastante trampo (e poutine!)%s tornou isso realidade, na&nbsp;Cidade&nbsp;"
 "Maravilhosa"
 
-#: resources/views/layout-master.blade.php:164
+#: resources/views/layout-master.blade.php:166
 msgid "Marvelous City, place of the Sugar Loaf"
 msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
 
-#: resources/views/layout-master.blade.php:167
+#: resources/views/layout-master.blade.php:169
 msgid "Get in touch"
 msgstr "Fale com a gente"
 
-#: resources/views/layout-master.blade.php:168
+#: resources/views/layout-master.blade.php:170
 msgid "We &#9829; open source"
 msgstr "Nós &#9829; open source"
 
-#: resources/views/layout-master.blade.php:169
+#: resources/views/layout-master.blade.php:171
 msgid "by igorsantos07"
 msgstr "by igorsantos07"
 
-#: resources/views/layout-master.blade.php:177
+#: resources/views/layout-master.blade.php:179
 msgid "Go to top"
 msgstr "Subir"
 
@@ -218,6 +222,86 @@ msgstr ""
 #: resources/views/site/index.blade.php:221
 msgid "Submit your event"
 msgstr "Inclua seu evento"
+
+#: resources/views/user/signUp.blade.php:3
+msgid "Sign Up"
+msgstr "Cadastre-se"
+
+#: resources/views/user/signUp.blade.php:4
+msgid "Create your account"
+msgstr "Crie sua conta"
+
+#: resources/views/user/signUp.blade.php:5
+msgid "Join the events community now!"
+msgstr "Entre agora para a comunidade de eventos!"
+
+#: resources/views/user/signUp.blade.php:42
+msgid "Name"
+msgstr "Nome"
+
+#: resources/views/user/signUp.blade.php:44
+msgid "E-mail"
+msgstr "E-mail"
+
+#: resources/views/user/signUp.blade.php:46
+msgid "Username"
+msgstr "Usuário"
+
+#: resources/views/user/signUp.blade.php:51
+msgid ""
+"Use a uniquely identifying name for you. This will also help you to be found "
+"in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
+msgstr ""
+"Use um nome único e que lhe identifique. Isso também vai ajudar você a ser "
+"encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
+"a 30 caracteres."
+
+#: resources/views/user/signUp.blade.php:54
+msgid "Choose a password"
+msgstr "Escolha uma senha"
+
+#: resources/views/user/signUp.blade.php:55
+msgid ""
+"Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
+"points if you include lower-case and upper-case letters, as well as symbols."
+msgstr ""
+"Use pelo menos 6 caracteres aqui. Preferencialmente, com números e letras! "
+"Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
+"também."
+
+#: resources/views/user/signUp.blade.php:58
+msgid "Confirm the password"
+msgstr "Confirme a senha"
+
+#: resources/views/user/signUp.blade.php:59
+msgid "Just to be sure there's no typo, could you please repeat that password?"
+msgstr ""
+"Só pra ter certeza que você não digitou nada por engano, pode repetir a "
+"senha por favor?"
+
+#: resources/views/user/signUp.blade.php:63
+msgid "Tagline"
+msgstr "Descrição curta"
+
+#: resources/views/user/signUp.blade.php:65
+msgid "Describe your professional self in a phrase. What you do for a living?"
+msgstr "Descreva seu eu profissional numa frase. O que você faz da vida?"
+
+#: resources/views/user/signUp.blade.php:68
+msgid "Short bio"
+msgstr "Biografia curta"
+
+#: resources/views/user/signUp.blade.php:70
+msgid ""
+"Introduce yourself to the community! Write a couple of words to help others "
+"understand who you are."
+msgstr ""
+"Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
+"outros a entender quem você é."
+
+#: resources/views/user/signUp.blade.php:76
+msgid "Go to my profile"
+msgstr "Ir para o meu perfil"
 
 #: resources/views/user/profile.blade.php:16
 msgid "participant"

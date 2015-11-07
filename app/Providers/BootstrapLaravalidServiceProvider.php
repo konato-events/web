@@ -3,13 +3,11 @@ namespace App\Providers;
 
 use Collective\Html\HtmlBuilder;
 use LaravelArdent\Laravalid\LaravalidServiceProvider;
-use Resources\FormBuilder;
+use Resources\BootstrapFormBuilder as FormBuilder;
 
-class BootstrapLaravalidServiceProvider extends LaravalidServiceProvider
-{
+class BootstrapLaravalidServiceProvider extends LaravalidServiceProvider {
 
-    public function register()
-    {
+    public function register() {
         $this->registerResources();
 
         if (!isset($this->app['html'])) {
@@ -19,6 +17,7 @@ class BootstrapLaravalidServiceProvider extends LaravalidServiceProvider
         }
 
         $this->app->bindShared('laravalid', function ($app) {
+            /** @var \Illuminate\Contracts\Foundation\Application $app */
             $plugin             = \Config::get('laravalid.plugin');
             $converterClassName = 'LaravelArdent\Laravalid\Converter\\'.$plugin.'\Converter';
             $converter          = new $converterClassName();

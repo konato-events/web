@@ -1,7 +1,9 @@
 <?php
 namespace Resources;
 
-class FormBuilder extends \LaravelArdent\Laravalid\FormBuilder {
+use LaravelArdent\Laravalid\FormBuilder;
+
+class BootstrapFormBuilder extends FormBuilder {
 
     /** @var \LaravelArdent\Ardent\Ardent */
     protected $model;
