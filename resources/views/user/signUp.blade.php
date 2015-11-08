@@ -3,16 +3,15 @@
 $title     = _('Sign Up');
 $header    = _('Create your account');
 $subheader = _('Join the events community now!');
+const FORM_ID = 'signup';
 ?>
 @extends('layout-header')
 @section('title', $title)
 
 @section('js')
     <script type="text/javascript" src="/js/jquery.validate-1.14.0.js"></script>
-    <script type="text/javascript" src="/laravalid/jquery.validate.laravalid.js"></script>
+    <?=Form::validationScript(FORM_ID)?>
     <script type="text/javascript">
-        $('form#signup').validate();
-
         $username = $('#username');
         $('#email').on('keyup', function() {
             if ($username.attr('data-unset') == 'true') {
@@ -37,7 +36,7 @@ $subheader = _('Join the events community now!');
 
     <div class="row">
     <div class="col-xs-12   col-sm-8 col-sm-offset-2   col-md-6 col-md-offset-3   col-lg-4 col-lg-offset-4">
-        <?=Form::model($user, ['action' => 'UserController@postSignUp', 'id' => 'signup'])?>
+        <?=Form::model($user, ['action' => 'UserController@postSignUp', 'id' => FORM_ID])?>
 
             <?=Form::labelInput('name', _('Name'), 'text', null, ['input' => ['autofocus']])?>
 

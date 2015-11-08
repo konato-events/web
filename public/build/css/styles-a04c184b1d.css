@@ -853,10 +853,12 @@ p.btn-row .btn {
   box-shadow: none;
 }
 .form-control:focus {
-  border-color: #ea032d;
   -webkit-appearance: none;
   /* ios */
   box-shadow: none;
+}
+.input-group-addon {
+  border-radius: 10px;
 }
 textarea {
   resize: none;
@@ -6849,9 +6851,18 @@ label sup {
   font-size: 200%;
   top: 0.25em;
 }
-.form-group .help-block {
+.form-group .help-block,
+.form-group label.error {
+  font-weight: normal;
   font-style: italic;
   font-size: 80%;
+}
+.form-group.error-block label:not(.error) {
+  color: #ae5000;
+}
+.form-group.error-block input,
+.form-group.error-block .input-group-addon {
+  border-color: #ae5000;
 }
 
 .event-types label {

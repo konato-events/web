@@ -1,4 +1,5 @@
 @import 'theme.variables';
+@red: @darkestOrange;
 
 label sup {
     color: @darkestPrimaryColor;
@@ -6,7 +7,19 @@ label sup {
     top: 0.25em;
 }
 
-.form-group .help-block {
-    font-style: italic;
-    font-size: 80%;
+.form-group {
+    .help-block, label.error {
+        font-weight: normal;
+        font-style: italic;
+        font-size: 80%;
+    }
+
+    &.error-block {
+        label:not(.error) {
+            color: @red;
+        }
+        input, .input-group-addon {
+            border-color: @red;
+        }
+    }
 }

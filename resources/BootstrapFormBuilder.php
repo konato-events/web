@@ -8,8 +8,49 @@ class BootstrapFormBuilder extends FormBuilder {
     /** @var \LaravelArdent\Ardent\Ardent */
     protected $model;
 
+    /** @var string */
+    protected $id;
+
+    /** @var integer */
+    protected static $counter = 0;
+
     public function group(...$parts) {
         return '<div class="form-group">'.join("\n", $parts).'</div>';
+    }
+
+    public function open(array $options = [], $rules = null) {
+        if (isset($options['id'])) {
+            $this->id = $options['id'];
+            ++static::$counter;
+        } else {
+            $this->id = $options['id'] = 'form_'.(static::$counter++);
+        }
+        return parent::open($options, $rules);
+    }
+
+    public static function validationScript(string $id) {
+        return <<<HTML
+            <script type="text/javascript" src="/laravalid/jquery.validate.laravalid.js"></script>
+            <script type="text/javascript">
+                function bootstrapField(el) {
+                    var group = el.parent('.input-group');
+                    return group.length? group : el;
+                }
+                $('#$id').validate({
+                    errorPlacement: function(error, el) {
+                        bootstrapField(el).after(error);
+                    },
+                    highlight: function(el, error, valid) {
+                        bootstrapField($(el)).addClass(error).removeClass(valid)
+                            .parent().addClass(error+'-block').removeClass(valid+'-block');
+                    },
+                    unhighlight: function(el, error, valid) {
+                        bootstrapField($(el)).removeClass(error).addClass(valid)
+                            .parent().removeClass(error+'-block').addClass(valid+'-block');
+                    }
+                });
+            </script>
+HTML;
     }
 
     public function labelInput($name, $label, $type = 'text', $value = null, array $options = []) {
