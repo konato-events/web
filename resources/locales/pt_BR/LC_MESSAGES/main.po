@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-07 16:12-0300\n"
-"PO-Revision-Date: 2015-11-07 16:12-0300\n"
+"POT-Creation-Date: 2015-11-08 21:23-0300\n"
+"PO-Revision-Date: 2015-11-08 21:24-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -37,20 +37,28 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: resources/BootstrapFormBuilder.php:61
-#: resources/lang/default/validation.php:2
+#: resources/BootstrapFormBuilder.php:102
+#: resources/lang/gettext/validation.php:6
 msgid "Required field"
 msgstr "Campo obrigatório"
 
-#: resources/lang/default/validation.php:3
+#: resources/lang/gettext/validation.php:3
+msgid "password"
+msgstr "senha"
+
+#: resources/lang/gettext/validation.php:7
 msgid "This does not seem like an email"
 msgstr "Isso não parece com um e-mail"
 
-#: resources/lang/default/validation.php:5
+#: resources/lang/gettext/validation.php:8
+msgid "The :attribute confirmation doesn't match"
+msgstr "A confirmação de :attribute não bate"
+
+#: resources/lang/gettext/validation.php:10
 msgid "Too short"
 msgstr "Curto demais"
 
-#: resources/lang/default/validation.php:8
+#: resources/lang/gettext/validation.php:13
 msgid "This field should have between :min and :max characters"
 msgstr "Este campo deve ter entre :min e :max caracteres"
 
@@ -236,31 +244,37 @@ msgstr ""
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
-#: resources/views/user/signUp.blade.php:3
+#: resources/views/user/signUp.blade.php:4
 msgid "Sign Up"
 msgstr "Cadastre-se"
 
-#: resources/views/user/signUp.blade.php:4
+#: resources/views/user/signUp.blade.php:5
 msgid "Create your account"
 msgstr "Crie sua conta"
 
-#: resources/views/user/signUp.blade.php:5
+#: resources/views/user/signUp.blade.php:6
 msgid "Join the events community now!"
 msgstr "Entre agora para a comunidade de eventos!"
 
-#: resources/views/user/signUp.blade.php:42
+#: resources/views/user/signUp.blade.php:45
+msgid "Whoops! Some errors were found. Could you fix them before proceeding?"
+msgstr ""
+"Ops! Encontramos alguns erros. Você pode corrigi-los antes de seguir em "
+"frente?"
+
+#: resources/views/user/signUp.blade.php:56
 msgid "Name"
 msgstr "Nome"
 
-#: resources/views/user/signUp.blade.php:44
+#: resources/views/user/signUp.blade.php:58
 msgid "E-mail"
 msgstr "E-mail"
 
-#: resources/views/user/signUp.blade.php:46
+#: resources/views/user/signUp.blade.php:60
 msgid "Username"
 msgstr "Usuário"
 
-#: resources/views/user/signUp.blade.php:51
+#: resources/views/user/signUp.blade.php:65
 msgid ""
 "Use a uniquely identifying name for you. This will also help you to be found "
 "in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
@@ -269,11 +283,11 @@ msgstr ""
 "encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
 "a 30 caracteres."
 
-#: resources/views/user/signUp.blade.php:54
+#: resources/views/user/signUp.blade.php:68
 msgid "Choose a password"
 msgstr "Escolha uma senha"
 
-#: resources/views/user/signUp.blade.php:55
+#: resources/views/user/signUp.blade.php:69
 msgid ""
 "Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
 "points if you include lower-case and upper-case letters, as well as symbols."
@@ -282,29 +296,29 @@ msgstr ""
 "Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
 "também."
 
-#: resources/views/user/signUp.blade.php:58
+#: resources/views/user/signUp.blade.php:72
 msgid "Confirm the password"
 msgstr "Confirme a senha"
 
-#: resources/views/user/signUp.blade.php:59
+#: resources/views/user/signUp.blade.php:73
 msgid "Just to be sure there's no typo, could you please repeat that password?"
 msgstr ""
 "Só pra ter certeza que você não digitou nada por engano, pode repetir a "
 "senha por favor?"
 
-#: resources/views/user/signUp.blade.php:63
+#: resources/views/user/signUp.blade.php:77
 msgid "Tagline"
 msgstr "Descrição curta"
 
-#: resources/views/user/signUp.blade.php:65
+#: resources/views/user/signUp.blade.php:79
 msgid "Describe your professional self in a phrase. What you do for a living?"
 msgstr "Descreva seu eu profissional numa frase. O que você faz da vida?"
 
-#: resources/views/user/signUp.blade.php:68
+#: resources/views/user/signUp.blade.php:82
 msgid "Short bio"
 msgstr "Biografia curta"
 
-#: resources/views/user/signUp.blade.php:70
+#: resources/views/user/signUp.blade.php:84
 msgid ""
 "Introduce yourself to the community! Write a couple of words to help others "
 "understand who you are."
@@ -312,7 +326,7 @@ msgstr ""
 "Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
 "outros a entender quem você é."
 
-#: resources/views/user/signUp.blade.php:76
+#: resources/views/user/signUp.blade.php:90
 msgid "Go to my profile"
 msgstr "Ir para o meu perfil"
 

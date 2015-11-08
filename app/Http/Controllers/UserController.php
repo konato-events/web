@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User as UserReq;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ class UserController extends Controller {
         return view('user.signUp', compact('user'));
     }
 
-    public function postSignUp() {
+    public function postSignUp(UserReq $req) {
         !ddd($_POST);
     }
 

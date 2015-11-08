@@ -5773,6 +5773,9 @@ body.body-dark {
 .body-dark .comments-form {
   border-top: solid 1px #153a96;
 }
+.well {
+  border-radius: 10px;
+}
 
 #preloader {
   background-color: white;
@@ -6845,6 +6848,11 @@ ul.user-stats {
   margin-right: 20px;
   margin-bottom: 0;
 }
+.alert-danger {
+  color: #a94442 !important;
+  background-color: #f2dede !important;
+  border-color: #ebccd1 !important;
+}
 
 label sup {
   color: #ae5000;
@@ -6863,6 +6871,13 @@ label sup {
 .form-group.error-block input,
 .form-group.error-block .input-group-addon {
   border-color: #ae5000;
+}
+form .well.alert-danger p {
+  margin-bottom: 10px;
+}
+form .well.alert-danger ul {
+  list-style: disc inside;
+  margin-bottom: 0;
 }
 
 .event-types label {

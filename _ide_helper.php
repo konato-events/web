@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.22 (LTS) on 2015-11-02.
+ * Generated for Laravel 5.1.22 (LTS) on 2015-11-08.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11267,7 +11267,25 @@ namespace {
          * @static 
          */
         public static function group($parts = null){
-            return \Resources\FormBuilder::group($parts);
+            return \Resources\BootstrapFormBuilder::group($parts);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function open($options = array(), $rules = null){
+            return \Resources\BootstrapFormBuilder::open($options, $rules);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function validationScript($id){
+            return \Resources\BootstrapFormBuilder::validationScript($id);
         }
         
         /**
@@ -11276,7 +11294,7 @@ namespace {
          * @static 
          */
         public static function labelInput($name, $label, $type = 'text', $value = null, $options = array()){
-            return \Resources\FormBuilder::labelInput($name, $label, $type, $value, $options);
+            return \Resources\BootstrapFormBuilder::labelInput($name, $label, $type, $value, $options);
         }
         
         /**
@@ -11285,7 +11303,7 @@ namespace {
          * @static 
          */
         public static function input($type, $name, $value = null, $options = array()){
-            return \Resources\FormBuilder::input($type, $name, $value, $options);
+            return \Resources\BootstrapFormBuilder::input($type, $name, $value, $options);
         }
         
         /**
@@ -11294,7 +11312,7 @@ namespace {
          * @static 
          */
         public static function label($name, $value = null, $options = array()){
-            return \Resources\FormBuilder::label($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::label($name, $value, $options);
         }
         
         /**
@@ -11305,7 +11323,7 @@ namespace {
          */
         public static function setValidation($rules, $formName = null){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::setValidation($rules, $formName);
+            return \Resources\BootstrapFormBuilder::setValidation($rules, $formName);
         }
         
         /**
@@ -11315,7 +11333,7 @@ namespace {
          */
         public static function converter(){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::converter();
+            return \Resources\BootstrapFormBuilder::converter();
         }
         
         /**
@@ -11325,20 +11343,7 @@ namespace {
          */
         public static function resetValidation(){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::resetValidation();
-        }
-        
-        /**
-         * Opens form with a set of validation rules
-         *
-         * @param array $rules Laravel validation rules
-         * @see Collective\Html\FormBuilder
-         * @return string 
-         * @static 
-         */
-        public static function open($options = array(), $rules = null){
-            //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::open($options, $rules);
+            return \Resources\BootstrapFormBuilder::resetValidation();
         }
         
         /**
@@ -11352,7 +11357,7 @@ namespace {
          */
         public static function model($model, $options = array()){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::model($model, $options);
+            return \Resources\BootstrapFormBuilder::model($model, $options);
         }
         
         /**
@@ -11363,7 +11368,7 @@ namespace {
          */
         public static function textarea($name, $value = null, $options = array()){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::textarea($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::textarea($name, $value, $options);
         }
         
         /**
@@ -11374,7 +11379,7 @@ namespace {
          */
         public static function select($name, $list = array(), $selected = null, $options = array()){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::select($name, $list, $selected, $options);
+            return \Resources\BootstrapFormBuilder::select($name, $list, $selected, $options);
         }
         
         /**
@@ -11385,7 +11390,7 @@ namespace {
          */
         public static function close(){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\FormBuilder::close();
+            return \Resources\BootstrapFormBuilder::close();
         }
         
         /**
@@ -11397,7 +11402,7 @@ namespace {
          */
         public static function setModel($model){
             //Method inherited from \Collective\Html\FormBuilder            
-            \Resources\FormBuilder::setModel($model);
+            \Resources\BootstrapFormBuilder::setModel($model);
         }
         
         /**
@@ -11408,7 +11413,7 @@ namespace {
          */
         public static function token(){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::token();
+            return \Resources\BootstrapFormBuilder::token();
         }
         
         /**
@@ -11422,7 +11427,7 @@ namespace {
          */
         public static function text($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::text($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::text($name, $value, $options);
         }
         
         /**
@@ -11435,7 +11440,7 @@ namespace {
          */
         public static function password($name, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::password($name, $options);
+            return \Resources\BootstrapFormBuilder::password($name, $options);
         }
         
         /**
@@ -11449,7 +11454,7 @@ namespace {
          */
         public static function hidden($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::hidden($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::hidden($name, $value, $options);
         }
         
         /**
@@ -11463,7 +11468,7 @@ namespace {
          */
         public static function email($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::email($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::email($name, $value, $options);
         }
         
         /**
@@ -11477,7 +11482,7 @@ namespace {
          */
         public static function tel($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::tel($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::tel($name, $value, $options);
         }
         
         /**
@@ -11491,7 +11496,7 @@ namespace {
          */
         public static function number($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::number($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::number($name, $value, $options);
         }
         
         /**
@@ -11505,7 +11510,7 @@ namespace {
          */
         public static function date($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::date($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::date($name, $value, $options);
         }
         
         /**
@@ -11519,7 +11524,7 @@ namespace {
          */
         public static function time($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::time($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::time($name, $value, $options);
         }
         
         /**
@@ -11533,7 +11538,7 @@ namespace {
          */
         public static function url($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::url($name, $value, $options);
+            return \Resources\BootstrapFormBuilder::url($name, $value, $options);
         }
         
         /**
@@ -11546,7 +11551,7 @@ namespace {
          */
         public static function file($name, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::file($name, $options);
+            return \Resources\BootstrapFormBuilder::file($name, $options);
         }
         
         /**
@@ -11562,7 +11567,7 @@ namespace {
          */
         public static function selectRange($name, $begin, $end, $selected = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::selectRange($name, $begin, $end, $selected, $options);
+            return \Resources\BootstrapFormBuilder::selectRange($name, $begin, $end, $selected, $options);
         }
         
         /**
@@ -11578,7 +11583,7 @@ namespace {
          */
         public static function selectYear(){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::selectYear();
+            return \Resources\BootstrapFormBuilder::selectYear();
         }
         
         /**
@@ -11593,7 +11598,7 @@ namespace {
          */
         public static function selectMonth($name, $selected = null, $options = array(), $format = '%B'){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::selectMonth($name, $selected, $options, $format);
+            return \Resources\BootstrapFormBuilder::selectMonth($name, $selected, $options, $format);
         }
         
         /**
@@ -11607,7 +11612,7 @@ namespace {
          */
         public static function getSelectOption($display, $value, $selected){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::getSelectOption($display, $value, $selected);
+            return \Resources\BootstrapFormBuilder::getSelectOption($display, $value, $selected);
         }
         
         /**
@@ -11622,7 +11627,7 @@ namespace {
          */
         public static function checkbox($name, $value = 1, $checked = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::checkbox($name, $value, $checked, $options);
+            return \Resources\BootstrapFormBuilder::checkbox($name, $value, $checked, $options);
         }
         
         /**
@@ -11637,7 +11642,7 @@ namespace {
          */
         public static function radio($name, $value = null, $checked = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::radio($name, $value, $checked, $options);
+            return \Resources\BootstrapFormBuilder::radio($name, $value, $checked, $options);
         }
         
         /**
@@ -11650,7 +11655,7 @@ namespace {
          */
         public static function reset($value, $attributes = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::reset($value, $attributes);
+            return \Resources\BootstrapFormBuilder::reset($value, $attributes);
         }
         
         /**
@@ -11664,7 +11669,7 @@ namespace {
          */
         public static function image($url, $name = null, $attributes = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::image($url, $name, $attributes);
+            return \Resources\BootstrapFormBuilder::image($url, $name, $attributes);
         }
         
         /**
@@ -11677,7 +11682,7 @@ namespace {
          */
         public static function submit($value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::submit($value, $options);
+            return \Resources\BootstrapFormBuilder::submit($value, $options);
         }
         
         /**
@@ -11690,7 +11695,7 @@ namespace {
          */
         public static function button($value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::button($value, $options);
+            return \Resources\BootstrapFormBuilder::button($value, $options);
         }
         
         /**
@@ -11703,7 +11708,7 @@ namespace {
          */
         public static function getIdAttribute($name, $attributes){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::getIdAttribute($name, $attributes);
+            return \Resources\BootstrapFormBuilder::getIdAttribute($name, $attributes);
         }
         
         /**
@@ -11716,7 +11721,7 @@ namespace {
          */
         public static function getValueAttribute($name, $value = null){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::getValueAttribute($name, $value);
+            return \Resources\BootstrapFormBuilder::getValueAttribute($name, $value);
         }
         
         /**
@@ -11728,7 +11733,7 @@ namespace {
          */
         public static function old($name){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::old($name);
+            return \Resources\BootstrapFormBuilder::old($name);
         }
         
         /**
@@ -11739,7 +11744,7 @@ namespace {
          */
         public static function oldInputIsEmpty(){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::oldInputIsEmpty();
+            return \Resources\BootstrapFormBuilder::oldInputIsEmpty();
         }
         
         /**
@@ -11750,7 +11755,7 @@ namespace {
          */
         public static function getSessionStore(){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::getSessionStore();
+            return \Resources\BootstrapFormBuilder::getSessionStore();
         }
         
         /**
@@ -11762,7 +11767,7 @@ namespace {
          */
         public static function setSessionStore($session){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::setSessionStore($session);
+            return \Resources\BootstrapFormBuilder::setSessionStore($session);
         }
         
         /**
@@ -11775,7 +11780,7 @@ namespace {
          */
         public static function macro($name, $macro){
             //Method inherited from \Collective\Html\FormBuilder            
-            \Resources\FormBuilder::macro($name, $macro);
+            \Resources\BootstrapFormBuilder::macro($name, $macro);
         }
         
         /**
@@ -11787,7 +11792,7 @@ namespace {
          */
         public static function hasMacro($name){
             //Method inherited from \Collective\Html\FormBuilder            
-            return \Resources\FormBuilder::hasMacro($name);
+            return \Resources\BootstrapFormBuilder::hasMacro($name);
         }
         
     }

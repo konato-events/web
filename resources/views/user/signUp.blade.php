@@ -1,5 +1,6 @@
 <?php
 /** @var \App\Models\User $user */
+/** @var \Illuminate\Support\MessageBag $errors */
 $title     = _('Sign Up');
 $header    = _('Create your account');
 $subheader = _('Join the events community now!');
@@ -36,7 +37,21 @@ const FORM_ID = 'signup';
 
     <div class="row">
     <div class="col-xs-12   col-sm-8 col-sm-offset-2   col-md-6 col-md-offset-3   col-lg-4 col-lg-offset-4">
+
         <?=Form::model($user, ['action' => 'UserController@postSignUp', 'id' => FORM_ID])?>
+
+            <? if (isset($errors)): ?>
+                <div class="well alert-danger">
+                    <p><?=_('Whoops! Some errors were found. Could you fix them before proceeding?')?></p>
+                    <ul>
+                        <? foreach($errors->toArray() as $field => $msgs): ?>
+                            <? foreach($msgs as $msg): ?>
+                                <li><?=trans($msg, ['attribute' => _($field)])?></li>
+                            <? endforeach ?>
+                        <? endforeach ?>
+                    </ul>
+                </div>
+            <? endif ?>
 
             <?=Form::labelInput('name', _('Name'), 'text', null, ['input' => ['autofocus']])?>
 
