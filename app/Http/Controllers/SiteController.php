@@ -7,4 +7,8 @@ class SiteController extends Controller {
         return view('site.index');
     }
 
+    public function getPrivacyPolicy() {
+        return view('site.privacy');
+    }
+
 }
