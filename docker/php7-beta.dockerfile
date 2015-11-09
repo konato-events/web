@@ -17,7 +17,7 @@ RUN apt-get update && \
 # Installs Nginx and PHP7
 RUN apt-get install -y --force-yes \
 	nginx \
-	php7-beta1 \
+	php7-nightly \
 	supervisor
 
 # Configures PHP-FPM

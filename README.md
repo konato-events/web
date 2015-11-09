@@ -59,6 +59,8 @@ We use PostgreSQL here - as it's prepackaged in Heroku and has cool geolocation 
     postgres $ createdb -O konato konato
     postgres $ psql -h 127.0.0.1 -WU konato konato -f database/create.sql
 
+To access the PostgreSQL database inside the docker container, use `docker exec -it trusting_einstein psql -h 127.0.0.1 -WU konato konato`.
+
 Deploying to production
 -----------------------
 We needed to make some tweaks to the original project to have it running smoothly inside Heroku.
