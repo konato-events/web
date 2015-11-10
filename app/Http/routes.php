@@ -16,6 +16,7 @@ Route::get( 'event/{id_slug}',         'EventController@getDetails');
 /************************************************************/
 /* ******************** GENERIC ROUTES ******************** */
 /************************************************************/
+Route::controller('auth',     'AuthController');
 Route::controller('user',     'UserController');
 Route::controller('speakers', 'SpeakerController');
 Route::controller('event',    'EventController');

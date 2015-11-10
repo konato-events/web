@@ -1,10 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\User as UserReq;
-use App\Models\User;
-use Illuminate\Http\Request;
-
 class UserController extends Controller {
 
     const TYPE_SPEAKER  = 1;
@@ -29,15 +25,6 @@ class UserController extends Controller {
         list($id, $name_slug) = unslug($id_slug);
         $type = self::TYPE_SPEAKER;
         return view('user.profile', compact('id', 'name_slug', 'type'));
-    }
-
-    public function getSignUp() {
-        $user = new User;
-        return view('user.signUp', compact('user'));
-    }
-
-    public function postSignUp(UserReq $req) {
-        !ddd($_POST);
     }
 
 }

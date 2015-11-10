@@ -105,7 +105,7 @@ $lang_tag = substr(LOCALE, 0, 2);
                         </li>
                         <li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
                         <li>
-                            <a href="<?=act('user@signUp')?>" class="btn btn-theme <? if ($action == 'signUp'): ?>btn-theme-dark<? endif ?>">
+                            <a href="<?=act('auth@signUp')?>" class="btn btn-theme <? if ($action == 'signUp'): ?>btn-theme-dark<? endif ?>">
                                 <i class="fa fa-user-plus"></i> <?=_('Sign up')?>
                             </a>
                         </li>
