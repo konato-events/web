@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-08 21:23-0300\n"
-"PO-Revision-Date: 2015-11-08 21:24-0300\n"
+"POT-Creation-Date: 2015-11-10 02:36-0300\n"
+"PO-Revision-Date: 2015-11-10 02:39-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -79,44 +79,188 @@ msgstr "Locais"
 msgid "Speakers"
 msgstr "Palestrantes"
 
-#: resources/views/layout-master.blade.php:109
+#: resources/views/layout-master.blade.php:122
+msgid "My profile"
+msgstr "Meu perfil"
+
+#: resources/views/layout-master.blade.php:127
+msgid "Logout"
+msgstr "Sair"
+
+#: resources/views/layout-master.blade.php:136
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: resources/views/layout-master.blade.php:114
+#: resources/views/layout-master.blade.php:141
+#: resources/views/auth/login.blade.php:4
 msgid "Login"
 msgstr "Login"
 
-#: resources/views/layout-master.blade.php:162
+#: resources/views/layout-master.blade.php:190
 msgid "Discover amazing events on Konato"
 msgstr "Descubra eventos fantásticos no Konato"
 
-#: resources/views/layout-master.blade.php:164
+#: resources/views/layout-master.blade.php:192
 #, php-format
 msgid "%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro"
 msgstr ""
 "%sBastante trampo (e poutine!)%s tornou isso realidade, na&nbsp;Cidade&nbsp;"
 "Maravilhosa"
 
-#: resources/views/layout-master.blade.php:166
+#: resources/views/layout-master.blade.php:194
 msgid "Marvelous City, place of the Sugar Loaf"
 msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
 
-#: resources/views/layout-master.blade.php:169
+#: resources/views/layout-master.blade.php:197
 msgid "Get in touch"
 msgstr "Fale com a gente"
 
-#: resources/views/layout-master.blade.php:170
+#: resources/views/layout-master.blade.php:198
 msgid "We &#9829; open source"
 msgstr "Nós &#9829; open source"
 
-#: resources/views/layout-master.blade.php:171
+#: resources/views/layout-master.blade.php:199
 msgid "by igorsantos07"
 msgstr "by igorsantos07"
 
-#: resources/views/layout-master.blade.php:179
+#: resources/views/layout-master.blade.php:207
 msgid "Go to top"
 msgstr "Subir"
+
+#: resources/views/auth/finishSignUp.blade.php:6
+msgid "Social Sign Up"
+msgstr "Cadastro por rede social"
+
+#: resources/views/auth/finishSignUp.blade.php:7
+msgid "Finish creating your account"
+msgstr "Termine de criar sua conta"
+
+#: resources/views/auth/finishSignUp.blade.php:8
+#: resources/views/auth/signUp.blade.php:6
+msgid "Join the events community now!"
+msgstr "Entre agora para a comunidade de eventos!"
+
+#: resources/views/auth/finishSignUp.blade.php:32
+#: resources/views/auth/signUp.blade.php:48
+msgid "Whoops! Some errors were found. Could you fix them before proceeding?"
+msgstr ""
+"Ops! Encontramos alguns erros. Você pode corrigi-los antes de seguir em "
+"frente?"
+
+#: resources/views/auth/finishSignUp.blade.php:43
+#: resources/views/auth/signUp.blade.php:63
+msgid "Username"
+msgstr "Usuário"
+
+#: resources/views/auth/finishSignUp.blade.php:48
+#: resources/views/auth/signUp.blade.php:68
+msgid ""
+"Use a uniquely identifying name for you. This will also help you to be found "
+"in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
+msgstr ""
+"Use um nome único e que lhe identifique. Isso também vai ajudar você a ser "
+"encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
+"a 30 caracteres."
+
+#: resources/views/auth/finishSignUp.blade.php:53
+#: resources/views/auth/signUp.blade.php:93
+msgid "Go to my profile"
+msgstr "Ir para o meu perfil"
+
+#: resources/views/auth/login.blade.php:5
+msgid "Who's there?"
+msgstr "Quem fala?"
+
+#: resources/views/auth/login.blade.php:6
+msgid "Identify yourself to get access to the platform"
+msgstr "Identifique-se para ter acesso à plataforma"
+
+#: resources/views/auth/login.blade.php:14
+msgid ""
+"Currently you can only login with one of the following providers... Soon "
+"you'll be able to use username + password!"
+msgstr ""
+"Por enquanto só é possível logar com uma das redes sociais abaixo... Logo "
+"logo será possível usar usuário e senha!"
+
+#: resources/views/auth/signUp.blade.php:4
+msgid "Sign Up"
+msgstr "Cadastre-se"
+
+#: resources/views/auth/signUp.blade.php:5
+msgid "Create your account"
+msgstr "Crie sua conta"
+
+#: resources/views/auth/signUp.blade.php:37
+#, php-format
+msgid ""
+"There was an error with the %s authentication. Could you try again, please?"
+msgstr ""
+"Houve um problema com a autenticação no %s. Você poderia tentar de novo, por "
+"favor?"
+
+#: resources/views/auth/signUp.blade.php:41
+msgid ""
+"You can also sign up using one of the following websites, if you have a "
+"profile there:"
+msgstr ""
+"Você também pode se cadastrar usando um dos sites a seguir, se você tiver um "
+"perfil lá:"
+
+#: resources/views/auth/signUp.blade.php:59
+msgid "Name"
+msgstr "Nome"
+
+#: resources/views/auth/signUp.blade.php:61
+msgid "E-mail"
+msgstr "E-mail"
+
+#: resources/views/auth/signUp.blade.php:71
+msgid "Choose a password"
+msgstr "Escolha uma senha"
+
+#: resources/views/auth/signUp.blade.php:72
+msgid ""
+"Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
+"points if you include lower-case and upper-case letters, as well as symbols."
+msgstr ""
+"Use pelo menos 6 caracteres aqui. Preferencialmente, com números e letras! "
+"Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
+"também."
+
+#: resources/views/auth/signUp.blade.php:75
+msgid "Confirm the password"
+msgstr "Confirme a senha"
+
+#: resources/views/auth/signUp.blade.php:76
+msgid "Just to be sure there's no typo, could you please repeat that password?"
+msgstr ""
+"Só pra ter certeza que você não digitou nada por engano, pode repetir a "
+"senha por favor?"
+
+#: resources/views/auth/signUp.blade.php:80
+msgid "Tagline"
+msgstr "Descrição curta"
+
+#: resources/views/auth/signUp.blade.php:82
+msgid "Describe your professional self in a phrase. What you do for a living?"
+msgstr "Descreva seu eu profissional numa frase. O que você faz da vida?"
+
+#: resources/views/auth/signUp.blade.php:85
+msgid "Short bio"
+msgstr "Biografia curta"
+
+#: resources/views/auth/signUp.blade.php:87
+msgid ""
+"Introduce yourself to the community! Write a couple of words to help others "
+"understand who you are."
+msgstr ""
+"Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
+"outros a entender quem você é."
+
+#: resources/views/site/privacy.blade.php:1
+msgid "Privacy Policy"
+msgstr "Política de Privacidade"
 
 #: resources/views/site/index.blade.php:59
 msgid "Expand your horizons"
@@ -243,92 +387,6 @@ msgstr ""
 #: resources/views/site/index.blade.php:221
 msgid "Submit your event"
 msgstr "Inclua seu evento"
-
-#: resources/views/user/signUp.blade.php:4
-msgid "Sign Up"
-msgstr "Cadastre-se"
-
-#: resources/views/user/signUp.blade.php:5
-msgid "Create your account"
-msgstr "Crie sua conta"
-
-#: resources/views/user/signUp.blade.php:6
-msgid "Join the events community now!"
-msgstr "Entre agora para a comunidade de eventos!"
-
-#: resources/views/user/signUp.blade.php:45
-msgid "Whoops! Some errors were found. Could you fix them before proceeding?"
-msgstr ""
-"Ops! Encontramos alguns erros. Você pode corrigi-los antes de seguir em "
-"frente?"
-
-#: resources/views/user/signUp.blade.php:56
-msgid "Name"
-msgstr "Nome"
-
-#: resources/views/user/signUp.blade.php:58
-msgid "E-mail"
-msgstr "E-mail"
-
-#: resources/views/user/signUp.blade.php:60
-msgid "Username"
-msgstr "Usuário"
-
-#: resources/views/user/signUp.blade.php:65
-msgid ""
-"Use a uniquely identifying name for you. This will also help you to be found "
-"in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
-msgstr ""
-"Use um nome único e que lhe identifique. Isso também vai ajudar você a ser "
-"encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
-"a 30 caracteres."
-
-#: resources/views/user/signUp.blade.php:68
-msgid "Choose a password"
-msgstr "Escolha uma senha"
-
-#: resources/views/user/signUp.blade.php:69
-msgid ""
-"Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
-"points if you include lower-case and upper-case letters, as well as symbols."
-msgstr ""
-"Use pelo menos 6 caracteres aqui. Preferencialmente, com números e letras! "
-"Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
-"também."
-
-#: resources/views/user/signUp.blade.php:72
-msgid "Confirm the password"
-msgstr "Confirme a senha"
-
-#: resources/views/user/signUp.blade.php:73
-msgid "Just to be sure there's no typo, could you please repeat that password?"
-msgstr ""
-"Só pra ter certeza que você não digitou nada por engano, pode repetir a "
-"senha por favor?"
-
-#: resources/views/user/signUp.blade.php:77
-msgid "Tagline"
-msgstr "Descrição curta"
-
-#: resources/views/user/signUp.blade.php:79
-msgid "Describe your professional self in a phrase. What you do for a living?"
-msgstr "Descreva seu eu profissional numa frase. O que você faz da vida?"
-
-#: resources/views/user/signUp.blade.php:82
-msgid "Short bio"
-msgstr "Biografia curta"
-
-#: resources/views/user/signUp.blade.php:84
-msgid ""
-"Introduce yourself to the community! Write a couple of words to help others "
-"understand who you are."
-msgstr ""
-"Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
-"outros a entender quem você é."
-
-#: resources/views/user/signUp.blade.php:90
-msgid "Go to my profile"
-msgstr "Ir para o meu perfil"
 
 #: resources/views/user/profile.blade.php:16
 msgid "participant"

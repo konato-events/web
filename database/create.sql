@@ -1,17 +1,5 @@
 SET CLIENT_MIN_MESSAGES TO WARNING;
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE IF NOT EXISTS users (
-    id       SERIAL PRIMARY KEY,
-    name     TEXT      NOT NULL,
-    email    TEXT      NOT NULL UNIQUE,
-    password TEXT      NULL DEFAULT NULL,
-    username TEXT      NOT NULL UNIQUE,
-    tagline  TEXT      NULL DEFAULT NULL,
-    bio      TEXT      NULL DEFAULT NULL,
-    birthday TIMESTAMP NULL DEFAULT NULL
-);
-
 DROP TABLE IF EXISTS locations;
 CREATE TABLE IF NOT EXISTS locations (
     id          SERIAL PRIMARY KEY,
@@ -19,6 +7,34 @@ CREATE TABLE IF NOT EXISTS locations (
     coordinates POINT NOT NULL,
     parent_id   INT   NOT NULL REFERENCES locations (id)
 );
+
+-- DROP TABLE IF EXISTS timezones;
+-- CREATE TABLE IF NOT EXISTS timezones (
+--     id       SERIAL PRIMARY KEY,
+--     name     TEXT NOT NULL UNIQUE,
+--     "offset" INT  NOT NULL
+-- );
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE IF NOT EXISTS users (
+    id             SERIAL PRIMARY KEY,
+    name           TEXT      NOT NULL,
+    email          TEXT      NOT NULL UNIQUE,
+    username       TEXT      NOT NULL UNIQUE,
+    password       TEXT      NULL,
+    remember_token TEXT      NULL,
+    tagline        TEXT      NULL,
+    bio            TEXT      NULL,
+    birthday       DATE      NULL,
+    gender         "char"    NULL, -- a custom type "gender" as ENUM is not used because "char" uses 1B, ENUM uses 4B
+    avatar         TEXT      NULL,
+    picture        TEXT      NULL,
+    created_at     TIMESTAMP NOT NULL,
+    updated_at     TIMESTAMP NOT NULL,
+    location_id    INT       NULL REFERENCES locations (id)--,
+--     timezone_id INT       NULL REFERENCES timezones (id)
+);
+COMMENT ON COLUMN users.gender IS 'M/F';
 
 DROP TABLE IF EXISTS event_types;
 CREATE TABLE IF NOT EXISTS event_types (
@@ -60,8 +76,8 @@ CREATE TABLE IF NOT EXISTS themes (
     id          SERIAL PRIMARY KEY,
     name        TEXT NOT NULL UNIQUE,
     slug        TEXT NOT NULL UNIQUE,
-    description TEXT NULL DEFAULT NULL,
-    link        TEXT NULL DEFAULT NULL,
+    description TEXT NULL,
+    link        TEXT NULL,
     parent_id   INT  NOT NULL REFERENCES themes (id)
 );
 
@@ -75,8 +91,8 @@ DROP TABLE IF EXISTS materials;
 CREATE TABLE IF NOT EXISTS materials (
     id               SERIAL PRIMARY KEY,
     title            TEXT NOT NULL,
-    shortname        TEXT NULL DEFAULT NULL,
-    url              TEXT NULL DEFAULT NULL,
+    shortname        TEXT NULL,
+    url              TEXT NULL,
     user_id          INT  NOT NULL REFERENCES users (id),
     material_type_id INT  NOT NULL REFERENCES material_types (id)
 );
@@ -85,7 +101,7 @@ DROP TABLE IF EXISTS sessions;
 CREATE TABLE IF NOT EXISTS sessions (
     id          SERIAL PRIMARY KEY,
     title       TEXT        NOT NULL,
-    description TEXT        NULL DEFAULT NULL,
+    description TEXT        NULL,
     time        TIMESTAMPTZ NOT NULL,
     event_id    INT REFERENCES events (id)
 );
@@ -95,8 +111,8 @@ CREATE TABLE IF NOT EXISTS claim_requests (
     id       SERIAL PRIMARY KEY,
     phone    TEXT NOT NULL,
     email    TEXT NOT NULL,
-    details  TEXT NULL DEFAULT NULL,
-    webpage  TEXT NULL DEFAULT NULL,
+    details  TEXT NULL,
+    webpage  TEXT NULL,
     user_id  INT  NOT NULL REFERENCES users (id),
     event_id INT  NOT NULL REFERENCES events (id)
 );
@@ -155,6 +171,13 @@ CREATE TABLE IF NOT EXISTS event_language (
     event_id    INT NOT NULL REFERENCES events (id),
     language_id INT NOT NULL REFERENCES languages (id),
     PRIMARY KEY (event_id, language_id)
+);
+
+DROP TABLE IF EXISTS language_user;
+CREATE TABLE IF NOT EXISTS language_user (
+    user_id     INT NOT NULL REFERENCES users (id),
+    language_id INT NOT NULL REFERENCES languages (id),
+    PRIMARY KEY (user_id, language_id)
 );
 
 DROP TABLE IF EXISTS following_user;

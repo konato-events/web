@@ -17,7 +17,7 @@
 @darkTeal:          #068287;
 @teal:              #269398;
 @lightTeal:         #4CABAF;
-@tealBg:    lighten(#91D0D3, 10%);
+@tealBg:    lighten(#91D0D3, 20%);
 
 @darkestPrimaryColor: @darkestOrange;
 @darkPrimaryColor:    @darkOrange;

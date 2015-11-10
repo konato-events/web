@@ -220,9 +220,16 @@ header {
 	}
 
 	ul li {
-		background: #f2f2f2;
+		background: @lightSecondaryColor;
+        border-bottom: 1px solid @secondaryColorBg;
+        &:last-child {
+            border-bottom-width: 0;
+        }
+        i.fa {
+            padding-right: 5px;
+        }
 		a:hover {
-			background: #0D1D31;
+			background: @darkSecondaryColor;
 		}
 	}
 
@@ -295,6 +302,21 @@ header {
 	.mobile-submenu {
 		background-color: @primaryColor;
 	}
+}
+
+.navigation .user-profile {
+    .btn {
+        padding: 5px 15px 5px 5px !important;
+        margin-top: -5px;
+        i.fa-caret-down {
+            padding-left: 5px;
+        }
+    }
+    img {
+        height: 40px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
 }
 
 #hero-block .caption-title {

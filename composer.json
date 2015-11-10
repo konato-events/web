@@ -28,7 +28,8 @@
         "laravel-ardent/laravalid": "2.*",
         "laravelbook/ardent": "3.*",
 
-        "barryvdh/laravel-ide-helper": "^2.1"
+        "barryvdh/laravel-ide-helper": "^2.1",
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*",

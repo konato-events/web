@@ -27,6 +27,7 @@
 @section('content')
 <div class="container">
 <div class="row">
+    <!-- TODO: melhorar a partir do http://resultadosdigitais.com.br/blog/como-montar-uma-politica-de-privacidade/ -->
     <div class="col-xs-12 col-md-10 col-md-offset-1">
     <p>
         Todas as suas informações pessoais recolhidas serão usadas para tornar a sua visita ao Konato mais produtiva e agradável possível. A garantia da confidencialidade dos dados pessoais dos usuários do Konato é importante para nós.

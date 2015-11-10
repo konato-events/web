@@ -5991,10 +5991,17 @@ header .sf-menu a:hover {
   color: white;
 }
 .sf-menu ul li {
-  background: #f2f2f2;
+  background: #5d78bd;
+  border-bottom: 1px solid #c2cde9;
+}
+.sf-menu ul li:last-child {
+  border-bottom-width: 0;
+}
+.sf-menu ul li i.fa {
+  padding-right: 5px;
 }
 .sf-menu ul li a:hover {
-  background: #0D1D31;
+  background: #153a96;
 }
 .sf-menu.nav > li > a:hover,
 .sf-menu.nav > li > a:focus {
@@ -6042,6 +6049,18 @@ header .sf-menu a:hover {
   .mobile-submenu {
     background-color: #fb953e;
   }
+}
+.navigation .user-profile .btn {
+  padding: 5px 15px 5px 5px !important;
+  margin-top: -5px;
+}
+.navigation .user-profile .btn i.fa-caret-down {
+  padding-left: 5px;
+}
+.navigation .user-profile img {
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 #hero-block .caption-title {
   color: white;
@@ -6852,6 +6871,11 @@ ul.user-stats {
   color: #a94442 !important;
   background-color: #f2dede !important;
   border-color: #ebccd1 !important;
+}
+.alert-info {
+  color: #016469 !important;
+  background-color: #daeff0 !important;
+  border-color: #4cabaf !important;
 }
 
 label sup {

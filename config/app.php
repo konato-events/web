@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => env('APP_ROOT_URL'),
 
     /*
     |--------------------------------------------------------------------------
@@ -145,9 +145,10 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\BootstrapLaravalidServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        App\Providers\BootstrapLaravalidServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -198,6 +199,7 @@ return [
 
         'HTML'      => Collective\Html\HtmlFacade::class,
         'Form'      => LaravelArdent\Laravalid\Facade::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 
