@@ -72,9 +72,7 @@ const FORM_ID = 'signup';
     'help' => _('Use at least 6 chars here. Preferably, with numbers and letters! Bonus points if you include lower-case and upper-case letters, as well as symbols.')
 ])?>
 
-<?=Form::labelInput('password_confirmation', _('Confirm the password'), 'password', null, [
-    'help' => _('Just to be sure there\'s no typo, could you please repeat that password?')
-])?>
+<?//=Form::labelInput('password_confirmation', _('Confirm the password'), 'password', null, ['help' => _('Just to be sure there\'s no typo, could you please repeat that password?')])?>
 
 <!-- Hidden to get out of the way of our new user!
     <?=Form::labelInput('tagline', _('Tagline'), 'text', null, [

@@ -28,6 +28,11 @@ class AuthController extends Controller {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
+    protected function loginAfterSignUp(User $user) {
+        \Auth::login($user);
+        return $this->handleUserWasAuthenticated(request(), $this->isUsingThrottlesLoginsTrait());
+    }
+
     /* *****************************  SOCIALITE ROUTES ***************************** */
 
     public function getProvider(string $provider) {
@@ -46,8 +51,7 @@ class AuthController extends Controller {
                 ->first();
 
             if ($link) {
-                \Auth::login($link->user);
-                return $this->handleUserWasAuthenticated(request(), $this->isUsingThrottlesLoginsTrait());
+                return $this->loginAfterSignUp($link->user);
             }
 
             $user = new User();
@@ -63,7 +67,6 @@ class AuthController extends Controller {
             session(['user' => $user]);
             return view('auth.finishSignUp', compact('user', 'provider', 'provider_id'));
         } catch (\Exception $e) {
-            $class = classname($e);
             \Log::error(classname($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
             return redirect()
                 ->action('AuthController@getSignUp')
@@ -99,8 +102,7 @@ class AuthController extends Controller {
                              ->with('provider', $req->provider);
         }
 
-
-        return redirect('/');
+        return redirect()->intended($this->redirectPath());
     }
 
     /** @todo going to receive a ping whenever a user deauthorizes in the provider - test with Facebook! */
@@ -116,8 +118,9 @@ class AuthController extends Controller {
     }
 
     public function postSignUp(UserReq $req) {
-        $user = new User($_POST);
-        !ddd($user);
+        $user = new User(\Input::except('_token'));
+        $user->save();
+        return $this->loginAfterSignUp($user);
     }
 }
 
