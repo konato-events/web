@@ -38,23 +38,12 @@ const FORM_ID = 'signup';
 </div>
 <? endif ?>
 
-<? $intro = _('You can also sign up using one of the following websites, if you have a profile there:') ?>
+<? $intro = _('You can also sign up using an account from one of those websites:') ?>
 @include('auth._providers_list', ['intro' => $intro])
 
 <?=Form::model($user, ['action' => 'AuthController@postSignUp', 'id' => FORM_ID])?>
 
-    <? if ($errors->any()): ?>
-        <div class="well alert-danger">
-            <p><?=_('Whoops! Some errors were found. Could you fix them before proceeding?')?></p>
-            <ul>
-                <? foreach($errors->toArray() as $field => $msgs): ?>
-                    <? foreach($msgs as $msg): ?>
-                        <li><?=trans($msg, ['attribute' => _($field)])?></li>
-                    <? endforeach ?>
-                <? endforeach ?>
-            </ul>
-        </div>
-    <? endif ?>
+    @include('components.form_errors')
 
     <?=Form::labelInput('name', _('Name'), 'text', null, ['input' => ['autofocus']])?>
 
@@ -68,11 +57,11 @@ const FORM_ID = 'signup';
         'help'  => _('Use a uniquely identifying name for you. This will also help you to be found in the search. Use only letters, numbers and underlines, from 4 to 30 chars.')
     ])?>
 
-<?=Form::labelInput('password', _('Choose a password'), 'password', null, [
-    'help' => _('Use at least 6 chars here. Preferably, with numbers and letters! Bonus points if you include lower-case and upper-case letters, as well as symbols.')
-])?>
+    <?=Form::labelInput('password', _('Choose a password'), 'password', null, [
+        'help' => _('Use at least 6 chars here. Preferably, with numbers and letters! Bonus points if you include lower-case and upper-case letters, as well as symbols.')
+    ])?>
 
-<?//=Form::labelInput('password_confirmation', _('Confirm the password'), 'password', null, ['help' => _('Just to be sure there\'s no typo, could you please repeat that password?')])?>
+    <?//=Form::labelInput('password_confirmation', _('Confirm the password'), 'password', null, ['help' => _('Just to be sure there\'s no typo, could you please repeat that password?')])?>
 
 <!-- Hidden to get out of the way of our new user!
     <?=Form::labelInput('tagline', _('Tagline'), 'text', null, [

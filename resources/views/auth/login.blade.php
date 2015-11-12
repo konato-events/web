@@ -11,6 +11,21 @@ $subheader = _('Identify yourself to get access to the platform');
 @section('header-subtitle', $subheader)
 
 @section('form')
-    <? $intro = _('Currently you can only login with one of the following providers... Soon you\'ll be able to use username + password!') ?>
-    @include('auth._providers_list', ['intro' => $intro])
+<? $intro = _('You can also login using one of the following providers:') ?>
+@include('auth._providers_list', ['intro' => $intro])
+
+<?=Form::model(new \App\Models\User, ['action' => 'AuthController@postLogin', 'novalidate' => true])?>
+    @include('components.form_errors')
+    <?=Form::labelInput('email', _('Username').' / '._('E-mail'), 'email', null, [
+            'help' => _('Here you can use either your username or your e-mail: both works!')
+    ])?>
+    <?=Form::labelInput('password', _('Password'), 'password')?>
+
+    <div class="row">
+        <div class="col-xs-8">
+            <?=Form::submit(_('Let me in'), ['class' => 'btn btn-theme btn-theme-lg'])?>
+        </div>
+    </div>
+
+<?=Form::close()?>
 @endsection
