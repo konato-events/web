@@ -176,7 +176,7 @@
                 <?php
                 foreach($events as $event):
                     list($img, $title, $desc) = $event;
-                    $dimensions = getimagesize(APP_ROOT.'/public'.$img);
+                    $dimensions = getimagesize(public_path($img));
                     $size_class = ($dimensions[0] > $dimensions[1])? 'larger-x' : 'larger-y';
                 ?>
                     <div class="col-md-3 col-sm-6 photos">

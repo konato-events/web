@@ -11,4 +11,8 @@ class SiteController extends Controller {
         return view('site.privacy');
     }
 
+    public function getValidation(string $rule) {
+        echo 'true';
+    }
+
 }

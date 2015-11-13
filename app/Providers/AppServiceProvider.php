@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-        require_once APP_ROOT.'/resources/views/helpers.php';
+        require_once public_path('../resources/views/helpers.php');
         $this->bootLocalization();
 
         /** @var View $view */
