@@ -121,7 +121,9 @@ DROP TABLE IF EXISTS social_networks CASCADE;
 CREATE TABLE IF NOT EXISTS social_networks (
     id   SERIAL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
-    url  TEXT NOT NULL UNIQUE
+    url  TEXT NOT NULL UNIQUE,
+    icon TEXT NOT NULL,
+    position SMALLINT UNIQUE
 );
 
 DROP TABLE IF EXISTS social_links CASCADE;
@@ -288,12 +290,21 @@ COMMIT;
 -- Data for table social_networks
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO social_networks (name, url) VALUES ('LinkedIn', 'https://*.linkedin.com/in/');
-INSERT INTO social_networks (name, url) VALUES ('Currículo Lattes', 'http://lattes.cnpq.br/');
-INSERT INTO social_networks (name, url) VALUES ('Slideshare', 'http://www.slideshare.net/');
-INSERT INTO social_networks (name, url) VALUES ('Twitter', 'https://twitter.com/');
-INSERT INTO social_networks (name, url) VALUES ('Google+', 'http://www.google.com/+');
-INSERT INTO social_networks (name, url) VALUES ('Facebook', 'https://www.facebook.com/');
-INSERT INTO social_networks (name, url) VALUES ('ResearchGate', 'http://www.researchgate.net/profile/');
-INSERT INTO social_networks (name, url) VALUES ('Personal website', 'http');
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Currículo Lattes', 'http://lattes.cnpq.br/','icon-site-lattes', 1);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('ResearchGate', 'http://www.researchgate.net/profile/', 'icon-site-researchgate', 2);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('LinkedIn', 'https://*.linkedin.com/in/', 'fa fa-linkedin-square', 3);
+
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Facebook', 'https://www.facebook.com/', 'fa fa-facebook-square', 4);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Twitter', 'https://twitter.com/', 'fa fa-twitter-square', 5);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Google+', 'http://www.google.com/+', 'fa fa-google-plus-square', 6);
+
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Slideshare', 'http://www.slideshare.net/', 'fa fa-slideshare', 7);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Speaker Deck', 'https://speakerdeck.com/', 'icon-site-speaker-deck', 8);
+
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Flickr', 'https://www.flickr.com/photos/', 'fa fa-flickr', 9);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Behance', 'https://www.behance.net/' , 'fa fa-behance-square', 10);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('GitHub', 'https://www.github.com/' , 'fa fa-github-square', 11);
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Bitbucket', 'https://www.bitbucket.org/' , 'fa fa-bitbucket-square', 12);
+
+INSERT INTO social_networks (name, url, icon, position) VALUES ('Personal website', 'http', 'fa fa-globe', 99);
 COMMIT;
