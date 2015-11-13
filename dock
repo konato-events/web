@@ -1,0 +1,52 @@
+#!/usr/bin/env php
+<?php
+$container = getenv('CONTAINER');
+if (!$container) {
+    $command = 'help';
+} else {
+    $command = isset($argv[1])? $argv[1] : 'start';
+}
+
+//echo "Container set: $container\n";
+
+switch ($command) {
+    case 'help':
+    case '--help':
+    case '-h':
+        echo <<<'HELP'
+== Docker helper script ==
+
+First of all:
+    You need a $CONTAINER environment variable set so we know the container's name :)
+    You can create it by issuing "export CONTAINER=trusting_einstein"
+
+List of available commands:
+    help        this thing you're seeing right now
+    start       [default] starts up the given $CONTAINER
+    psql        opens up the psql prompt with the right user
+    artisan/art runs an Artisan command (i.e. ./dock art migrate --force)
+
+HELP;
+        die;
+
+    case 'psql':
+        $cmd = 'exec -it';
+        $run = 'psql -h 127.0.0.1 -WU konato konato';
+        break;
+
+    case 'art':
+    case 'artisan':
+        $artisan = join(' ', array_splice($argv, 2));
+        $cmd = 'exec';
+        $run = './artisan '.$artisan;
+        break;
+
+    default:
+    case 'start':
+        $cmd = 'start';
+        $run = '';
+}
+
+$cmd = "> docker $cmd $container $run";
+echo $cmd."\n";
+passthru($cmd);
