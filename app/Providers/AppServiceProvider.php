@@ -139,7 +139,7 @@ class AppServiceProvider extends ServiceProvider {
                 Log::warning("Locale is not readable: $file_path");
                 return false;
             } else {
-                Log::debug("Locale found: $file_path");
+//                Log::debug("Locale found: $file_path");
                 return true;
             }
         };
