@@ -182,19 +182,23 @@ $date_fmt   = _('m/d/Y');
     <hr class="page-divider transparent visible-xs"/>
 
     <aside id="sidebar-info" class="sidebar col-sm-4 col-md-3">
-        <div class="widget widget-sm">
-            <button class="btn btn-theme btn-wrap btn-sm">
-                <i class="fa fa-user-plus"></i> <?=_('Add as a connection')?>
-            </button>
-            <a class="note" href="#"><?=_('See my connections')?></a>
-        </div>
+        <? if (!$myself): ?>
+        <!-- related to #92, #93
+            <div class="widget widget-sm">
+                <button class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-user-plus"></i> <?=_('Add as a connection')?>
+                </button>
+                <a class="note" href="#"><?=_('See my connections')?></a>
+            </div>
+        -->
 
-        <div class="widget widget-sm">
-            <button class="btn btn-theme btn-wrap btn-sm">
-                <i class="fa fa-mail-forward"></i> <?=($male)? _('Follow him') : _('Follow her')?>
-            </button>
-            <a class="note" href="#"><?=_('See my following preferences')?></a>
-        </div>
+            <div class="widget widget-sm">
+                <button class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-mail-forward"></i> <?=($male)? _('Follow him') : _('Follow her')?>
+                </button>
+                <a class="note" href="#"><?=_('See my following preferences')?></a>
+            </div>
+        <? endif ?>
 
         <div class="widget">
             <div class="panel-group">
