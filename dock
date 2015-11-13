@@ -24,6 +24,7 @@ First of all:
 List of available commands:
     help        this thing you're seeing right now
     start       [default] starts up the given $CONTAINER
+    exec        executes what's given after through docker (i.e. ./dock exec ./deploy)
     psql        opens up the psql prompt with the right user
     bash/shell  opens up the shell prompt
     artisan/art runs an Artisan command (i.e. ./dock art migrate --force)
@@ -31,6 +32,11 @@ List of available commands:
 
 HELP;
         die;
+
+    case 'exec':
+        $cmd = 'exec';
+        $run = join(' ', array_splice($argv, 2));
+        break;
 
     case 'psql':
         $cmd = 'exec -it';
