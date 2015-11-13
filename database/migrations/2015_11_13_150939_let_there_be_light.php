@@ -8,4 +8,6 @@ class LetThereBeLight extends Migration {
         DB::connection()->getPdo()->exec($sql);
     }
 
+    public function down() {}
+
 }
