@@ -1,4 +1,4 @@
-<?php
+<?
 use App\Http\Controllers\UserController as Controller;
 use App\Models\User;
 
@@ -123,38 +123,19 @@ $date_fmt   = _('m/d/Y');
         <? endif ?>
 
         <p class="function">
-            <?php if($type == Controller::TYPE_SPEAKER): ?>
+            <? if($type == Controller::TYPE_SPEAKER): ?>
                 <i class="fa part-speaker inverted" data-toggle="tooltip"
                    title="<?=ucfirst(_r('%s has participated in events as a speaker', $male? _('he') : _('she')))?>"></i>
-            <?php endif ?>
+            <? endif ?>
             <?=$user->tagline?>
         </p>
         <p class="bio"><?=$user->bio?></p>
         <div class="social-profiles float-bottom">
             <h2><?=($male)? _('Him elsewhere:') : _('Her elsewhere:')?></h2>
-            <?php
-            $profiles = [
-                'LinkedIn'         => 'fa fa-linkedin-square',
-                'Facebook'         => 'fa fa-facebook-square',
-                'Twitter'          => 'fa fa-twitter-square',
-                'ResearchGate'     => 'icon-site-researchgate',
-                'Currículo Lattes' => 'icon-site-lattes',
-                'Flickr'           => 'fa fa-flickr',
-                'Behance'          => 'fa fa-behance-square',
-                'GitHub'           => 'fa fa-github-square',
-                'Bitbucket'        => 'fa fa-bitbucket-square',
-                'Speaker Deck'     => 'icon-site-speaker-deck',
-                'Slideshare'       => 'fa fa-slideshare',
-                'Website'          => 'fa fa-globe'
-            ];
-            foreach($profiles as $profile => $class):
-                if (is_numeric($profile)) {
-                    $profile = $class;
-                    $class   = str_slug($class);
-                }
-            ?>
-                <a class="<?=$class?>" target="_blank" href="#" data-toggle="tooltip" data-trigger="hover focus click" data-placement="top" title="<?=$profile?>"></a>
-            <?php endforeach ?>
+            <? foreach($user->links as $link): ?>
+                <a class="<?=$link->network->icon?>" target="_blank" href="<?=$link->url?>" title="<?=$link->network->name?>"
+                   data-toggle="tooltip" data-trigger="hover focus click" data-placement="top"></a>
+            <? endforeach ?>
         </div>
     </div>
 </div>
@@ -165,12 +146,12 @@ $date_fmt   = _('m/d/Y');
 <div class="container-fluid">
     <section id="content" class="content col-sm-8 col-md-9">
         <ul class="user-stats">
-            <?php foreach($stats as $id => $stat): ?>
+            <? foreach($stats as $id => $stat): ?>
                 <li class="part-{{$id}}">
                     <i class="fa"></i>
                     {{$stat}}x {{$participations[$id]}}
                 </li>
-            <?php endforeach ?>
+            <? endforeach ?>
         </ul>
 
         <div class="panel panel-default">
@@ -190,7 +171,7 @@ $date_fmt   = _('m/d/Y');
                                 @if (($id+1) % 2 == 0)
                                     </div><div class="row">
                                 @endif
-                            @endforeach <?php //TODO: use a forelse instead, this needs an empty clause ?>
+                            @endforeach <? //TODO: use a forelse instead, this needs an empty clause ?>
                         </div>
                     </div>
                 </div>
@@ -222,7 +203,7 @@ $date_fmt   = _('m/d/Y');
                         <h4 class="panel-title"><?=($male)? _('His themes of interest') : _('Her themes of interest')?></h4>
                     </div>
                     <div class="panel-body">
-                        <?php //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
+                        <? //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
                         @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $user->gender])
                     </div>
                 </div>
@@ -233,9 +214,9 @@ $date_fmt   = _('m/d/Y');
                     </div>
                     <div class="panel-body">
                         <ul>
-                            <?php foreach(['Rio de Janeiro, Brazil','São Paulo, Brazil','Halifax, Canada'] as $place):?>
+                            <? foreach(['Rio de Janeiro, Brazil','São Paulo, Brazil','Halifax, Canada'] as $place):?>
                                 <li><a href="<?=act('event@search', ['place' => $place])?>"><?=$place?></a></li>
-                            <?php endforeach ?>
+                            <? endforeach ?>
                         </ul>
                     </div>
                 </div>

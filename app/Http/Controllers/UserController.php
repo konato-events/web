@@ -19,7 +19,7 @@ class UserController extends Controller {
     //TODO: needs a redirect between user and speaker profiles. The user object should be verified to understand its type
     protected function profile(int $type, string $id_slug) {
         list($id, $name_slug) = unslug($id_slug);
-        $user = User::with('location')->findOrFail($id);
+        $user = User::with('location', 'links', 'links.network')->findOrFail($id);
         return view('user.profile', compact('id', 'name_slug', 'type', 'user'));
     }
 

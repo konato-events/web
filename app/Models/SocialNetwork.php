@@ -1,9 +1,13 @@
-<?php
-namespace App\Models;
+<?php namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use LaravelArdent\Ardent\Ardent;
 
 /**
+ * @property string name
+ * @property string url
+ * @property string icon
+ * @property int position
+ * @property SocialLink links
  * @method HasMany links
  */
 class SocialNetwork extends Ardent {
