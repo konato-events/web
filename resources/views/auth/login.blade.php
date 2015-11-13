@@ -11,7 +11,7 @@ $subheader = _('Identify yourself to get access to the platform');
 @section('header-subtitle', $subheader)
 
 @section('form')
-<? $intro = _('You can also login using one of the following providers:') ?>
+<? $intro = _('You can also login using an account from one of those websites:') ?>
 @include('auth._providers_list', ['intro' => $intro])
 
 <?=Form::model(new \App\Models\User, ['action' => 'AuthController@postLogin', 'novalidate' => true])?>
