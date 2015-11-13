@@ -18,7 +18,8 @@ $participations = [
 if ($type != Controller::TYPE_SPEAKER) {
     unset($participations[User::SPEAKER]);
 }
-$male = ($user->gender == 'M');
+$female    = ($user->gender == 'F');
+$pronoun   = $female? _('she') : _('he');
 
 $participation = [];
 $stats = [];
@@ -108,7 +109,9 @@ $date_fmt   = _('m/d/Y');
 @section('header-content')
 <div class="row">
     <div class="photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
-        <img src="<?=$user->picture?>" alt="<?=_r('%s on Konato', $user->name)?>" />
+        <? $pic_help = str_contains($user->picture, 'gravatar')? _r('%s still don\'t have a picture :(', ucfirst($pronoun)) : '' ?>
+        <img src="<?=$user->picture?>" alt="<?=_r('%s on Konato', $user->name)?>"
+             <? if ($pic_help): ?>data-toggle="tooltip" title="<?=$pic_help?>"<? endif ?> />
     </div>
 
     <?//TODO: this height should be defined though JS, so we can save network trips inside the server ?>
@@ -125,13 +128,13 @@ $date_fmt   = _('m/d/Y');
         <p class="function">
             <? if($type == Controller::TYPE_SPEAKER): ?>
                 <i class="fa part-speaker inverted" data-toggle="tooltip"
-                   title="<?=ucfirst(_r('%s has participated in events as a speaker', $male? _('he') : _('she')))?>"></i>
+                   title="<?=_r('%s has participated in events as a speaker', ucfirst($pronoun))?>"></i>
             <? endif ?>
             <?=$user->tagline?>
         </p>
         <p class="bio"><?=$user->bio?></p>
         <div class="social-profiles float-bottom">
-            <h2><?=($male)? _('Him elsewhere:') : _('Her elsewhere:')?></h2>
+            <h2><?=($female)? _('Her elsewhere:') : _('Him elsewhere:')?></h2>
             <? foreach($user->links as $link): ?>
                 <a class="<?=$link->network->icon?>" target="_blank" href="<?=$link->url?>" title="<?=$link->network->name?>"
                    data-toggle="tooltip" data-trigger="hover focus click" data-placement="top"></a>
@@ -156,7 +159,7 @@ $date_fmt   = _('m/d/Y');
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h2 class="panel-title"><?=($male)? _('Him in events') : _('Her in events')?></h2>
+                <h2 class="panel-title"><?=($female)? _('Her in events') : _('Him in events')?></h2>
             </div>
             <div id="grid-view" class="panel-body">
                 <div class="thumbnails events">
@@ -194,7 +197,7 @@ $date_fmt   = _('m/d/Y');
 
             <div class="widget widget-sm">
                 <button class="btn btn-theme btn-wrap btn-sm">
-                    <i class="fa fa-mail-forward"></i> <?=($male)? _('Follow him') : _('Follow her')?>
+                    <i class="fa fa-mail-forward"></i> <?=($female)? _('Follow her') : _('Follow him')?>
                 </button>
                 <a class="note" href="#"><?=_('See my following preferences')?></a>
             </div>
@@ -204,7 +207,7 @@ $date_fmt   = _('m/d/Y');
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><?=($male)? _('His themes of interest') : _('Her themes of interest')?></h4>
+                        <h4 class="panel-title"><?=($female)? _('Her themes of interest') : _('His themes of interest')?></h4>
                     </div>
                     <div class="panel-body">
                         <? //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
