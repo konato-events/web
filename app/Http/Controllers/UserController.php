@@ -1,5 +1,5 @@
-<?php
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
+use App\Models\User;
 
 class UserController extends Controller {
 
@@ -16,15 +16,19 @@ class UserController extends Controller {
         }
     }
 
-    public function getProfile($id_slug) {
+    //TODO: needs a redirect between user and speaker profiles. The user object should be verified to understand its type
+    protected function profile(int $type, string $id_slug) {
         list($id, $name_slug) = unslug($id_slug);
-        return view('user.profile', compact('id', 'name_slug'));
+        $user = User::with('location')->findOrFail($id);
+        return view('user.profile', compact('id', 'name_slug', 'type', 'user'));
+    }
+
+    public function getProfile($id_slug) {
+        return $this->profile(self::TYPE_USER, $id_slug);
     }
 
     public function getSpeaker(string $id_slug) {
-        list($id, $name_slug) = unslug($id_slug);
-        $type = self::TYPE_SPEAKER;
-        return view('user.profile', compact('id', 'name_slug', 'type'));
+        return $this->profile(self::TYPE_SPEAKER, $id_slug);
     }
 
 }

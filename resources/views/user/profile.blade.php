@@ -1,35 +1,24 @@
 <?php
 use App\Http\Controllers\UserController as Controller;
+use App\Models\User;
 
-/** @var string $name_slug */
+/** @var string $user->name_slug */
 /** @var int    $id */
 /** @var array  $speakers */
 /** @var array  $events */
+/** @var User   $user */
 /** @var int    $type */
-$type = $type ?? Controller::TYPE_USER;
 
-const PART_ATTEND   = 'participant';
-const PART_SPOKE    = 'speaker';
-const PART_INVOLVED = 'involved';
-const PART_STAFF    = 'staff';
 $participations = [
-    PART_ATTEND   => _('participant'),
-    PART_SPOKE    => _('speaker'),
-    PART_INVOLVED => _('involved'),
-    PART_STAFF    => _('staff')
+    User::PARTICIPANT => _('participant'),
+    User::SPEAKER     => _('speaker'),
+    User::INVOLVED    => _('involved'),
+    User::STAFF       => _('staff')
 ];
 if ($type != Controller::TYPE_SPEAKER) {
-    unset($participations[PART_SPOKE]);
+    unset($participations[User::SPEAKER]);
 }
-
-$user = current(array_filter($speakers, function($speaker) use ($name_slug) {
-    return str_slug($speaker[1], '_') == $name_slug;
-}));
-if (!$user) {
-    throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('User not found');
-}
-list($img, $name, $place, $spk_themes, $on_theme, $total, $bio, $gender) = $user;
-$male       = $gender == 'M';
+$male = ($user->gender == 'M');
 
 $participation = [];
 $stats = [];
@@ -47,11 +36,10 @@ switch ($type) {
     default:
     case Controller::TYPE_USER:     $type_str = _('profile');         break;
 }
-$title      = "$name - $type_str";
-$function   = 'Web developer at InEvent; Student at Estácio de Sá';
+$title = "$user->name - $type_str";
 
-$img_height = getimagesize(APP_ROOT.'/public/'.$img)[1];
-$img_height = ($img_height > 250? 250 : $img_height);
+$avatar_height = getimagesize($user->picture)[1];
+$avatar_height = ($avatar_height > 250? 250 : $avatar_height);
 $date_fmt   = _('m/d/Y');
 ?>
 @extends('layout-header')
@@ -120,20 +108,28 @@ $date_fmt   = _('m/d/Y');
 @section('header-content')
 <div class="row">
     <div class="photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
-        <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>" />
+        <img src="<?=$user->picture?>" alt="<?=_r('%s on Konato', $user->name)?>" />
     </div>
 
-    <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$img_height?>px">
-        <h1><?=$name?></h1>
-        <a class="place" href="<?=act('event@search', ['place' => $place])?>"><?=nbsp($place)?></a>
+    <?//TODO: this height should be defined though JS, so we can save network trips inside the server ?>
+    <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$avatar_height?>px">
+
+        <h1><?=$user->name?></h1>
+
+        <? if($user->location): ?>
+            <a class="place" href="<?=act('event@search', ['place' => $user->location->name])?>">
+                <?=nbsp($user->location->name)?>
+            </a>
+        <? endif ?>
+
         <p class="function">
             <?php if($type == Controller::TYPE_SPEAKER): ?>
                 <i class="fa part-speaker inverted" data-toggle="tooltip"
                    title="<?=ucfirst(_r('%s has participated in events as a speaker', $male? _('he') : _('she')))?>"></i>
             <?php endif ?>
-            <?=$function?>
+            <?=$user->tagline?>
         </p>
-        <p class="bio"><?=$bio?></p>
+        <p class="bio"><?=$user->bio?></p>
         <div class="social-profiles float-bottom">
             <h2><?=($male)? _('Him elsewhere:') : _('Her elsewhere:')?></h2>
             <?php
@@ -189,7 +185,7 @@ $date_fmt   = _('m/d/Y');
                                 @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
                                     'compact'     => true,
                                     'participant' => $participation[$id],
-                                    'participant_gender' => $gender
+                                    'participant_gender' => $user->gender
                                 ]))
                                 @if (($id+1) % 2 == 0)
                                     </div><div class="row">
@@ -227,7 +223,7 @@ $date_fmt   = _('m/d/Y');
                     </div>
                     <div class="panel-body">
                         <?php //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
-                        @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $gender])
+                        @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $user->gender])
                     </div>
                 </div>
 

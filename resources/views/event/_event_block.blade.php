@@ -6,7 +6,7 @@
   * @var bool  $participant_gender
   * @var array $themes
   * @var array $event */
-use Illuminate\Support\Str;
+use App\Models\User;
 
 list($img, $title, $place, $begin, $end, $desc) = $event;
 $link = act('event@details', slugify($id, $title));
@@ -15,19 +15,19 @@ $participant = $participant ?? false;
 
 if ($participant) {
     switch ($participant) {
-        case PART_ATTEND:
+        case User::PARTICIPANT:
             $color     = 'participant';
             $part_desc = _('%s participated');
             break;
-        case PART_INVOLVED:
+        case User::INVOLVED:
             $color     = 'involved';
             $part_desc = _('%s was involved / volunteered');
             break;
-        case PART_STAFF:
+        case User::STAFF:
             $color     = 'staff';
             $part_desc = _('%s was part of staff');
             break;
-        case PART_SPOKE:
+        case User::SPEAKER:
             $color     = 'speaker';
             $part_desc = _('%s was a speaker');
             break;

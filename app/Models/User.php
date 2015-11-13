@@ -29,6 +29,11 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
 //    public $autoHydrateEntityFromInput = true;
 
+    const PARTICIPANT = 'participant';
+    const SPEAKER     = 'speaker';
+    const INVOLVED    = 'involved';
+    const STAFF       = 'staff';
+
     public static $rules = [
         'name'                  => ['required', 'min:4'],
         'email'                 => ['required', 'email', /*'unique:users'*/],
@@ -43,7 +48,8 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     ];
 
     public static $relationsData = [
-        'links' => [self::HAS_MANY, SocialLink::class]
+        'links'    => [self::HAS_MANY, SocialLink::class],
+        'location' => [self::BELONGS_TO, Location::class]
     ];
 
     public function beforeSave() {
