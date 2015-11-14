@@ -2,11 +2,6 @@
 
 use Illuminate\Support\Str;
 
-function classname($class):string {
-    $class = is_object($class)? get_class($class) : $class;
-    return substr($class, strrpos($class, '\\')+1);
-}
-
 function printr(array $data):string {
     $dump = print_r($data, true);
     $dump = strtr($dump, ["Array\n" => '', "\n" => ', ', '    ' => '']);

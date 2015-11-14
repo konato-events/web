@@ -32,4 +32,6 @@ class UserController extends Controller {
         return $this->profile(self::TYPE_SPEAKER, $id_slug);
     }
 
+    public function getFollow
+
 }

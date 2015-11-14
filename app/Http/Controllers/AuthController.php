@@ -80,7 +80,7 @@ class AuthController extends Controller {
             session(['user' => $user]);
             return view('auth.finishSignUp', compact('user', 'provider', 'provider_id'));
         } catch (\Exception $e) {
-            \Log::error(classname($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
+            \Log::error(class_basename($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
             return redirect()
                 ->action('AuthController@getSignUp')
                 ->with('social_error', true)
@@ -109,7 +109,7 @@ class AuthController extends Controller {
             });
         }
         catch (\Exception $e) {
-            \Log::error(classname($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
+            \Log::error(class_basename($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
             return redirect()->action('AuthController@getSignUp')
                              ->with('social_error', true)
                              ->with('provider', $req->provider);
