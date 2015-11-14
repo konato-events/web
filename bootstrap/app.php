@@ -12,7 +12,7 @@
 */
 
 $app = new Illuminate\Foundation\Application(
-    realpath(__DIR__.'/../')
+    (getenv('APP_ENV') == 'prod')? '/app/' : realpath(__DIR__.'/../')
 );
 
 /*
