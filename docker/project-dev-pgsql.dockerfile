@@ -12,23 +12,8 @@ RUN apt-get update && \
 		vim \
 		wget \
 
-# Prepares the path for Memcached
-# we might need SASL support. If so: http://blog.memcachier.com/2014/11/05/ubuntu-libmemcached-and-sasl-support/
-RUN groupadd memcached
-RUN useradd -r -g memcached -s /sbin/nologin -M -d /var/run/memcached memcached
-RUN apt-get install -y --force-yes \
-    memcached \
-    libmemcached-dev
-RUN https://github.com/php-memcached-dev/php-memcached/archive/php7.tar.gz -O php7-memcached.tar.gz
-RUN tar -xaf php7-memcached.tar.gz
-RUN cd php-memcached-php7
-RUN phpize
-RUN ./configure --disable-memcached-sasl
-RUN make
-RUN make install
-
 # Installs HTTP, DB and process manager
-RUN apt-get install -y --force-yes  \
+RUN apt-get install -y --force-yes \
 	nginx \
     postgresql-9.3 \
     postgresql-9.3-client \
@@ -36,10 +21,11 @@ RUN apt-get install -y --force-yes  \
 
 # Installs PHP7 compile dependencies
 # based on: https://www.howtoforge.com/tutorial/install-php-7-on-debian-8-jessie/#compilenbspphp-with-phpfpm-and-fastcgi and http://www.hashbangcode.com/blog/compiling-and-installing-php7-ubuntu
-RUN apt-get install -y --force-yes   \
+RUN apt-get install -y --force-yes \
     build-essential \
     autoconf \
     bison \
+    libbz2-dev \
     libbz2-dev \
     libc-client2007e \
     libc-client2007e-dev \
@@ -109,17 +95,17 @@ RUN ./configure \
     --with-xmlrpc \
     --with-xsl \
     --with-zlib \
-    --with-zlib-dir \
-    --with-memcached
+    --with-zlib \
+    --with-zlib-dir
 #    --with-imap \
-#    --with-imap-ssl
+#    --with-imap-ssl \
 RUN make
 RUN make install
 
 # Configures PHP-FPM
 COPY usr_local_php7_etc_php-fpm.conf /usr/local/php7/etc/php-fpm.conf
-COPY php.ini-development /usr/local/php7/lib/
-COPY php.ini-production  /usr/local/php7/lib/
+COPY php.ini-development /usr/local/php7/etc/
+COPY php.ini-production  /usr/local/php7/etc/
 
 # Configures supervisord
 COPY etc_supervisor_conf.d_supervisord.conf /etc/supervisor/conf.d/supervisord.conf

@@ -1,24 +1,4 @@
 <?php
-function memcacheConfig(string $provider):array {
-    if ($provider == 'localhost') {
-        $config = [
-            'servers' => [
-                ['host' => '127.0.0.1', 'port' => 11211, 'weight' => 100]
-            ]
-        ];
-    } else {
-        $url = parse_url(getenv("{$provider}_SERVERS"));
-        $config = [
-            'persistent_id' => 'laravel',
-            'sasl'          => [getenv("{$provider}_USERNAME"), getenv("{$provider}_PASSWORD")],
-            'servers'       => [
-                ['host' => $url['host'], 'port' => $url['port'], 'weight' => getenv("{$provider}_WEIGHT")],
-            ]
-        ];
-    }
-
-    return array_merge(['driver' => 'memcached'], $config);
-}
 
 return [
 
@@ -67,8 +47,14 @@ return [
             'path'   => storage_path('framework/cache'),
         ],
 
-        'memcached'         => memcacheConfig((getenv('APP_ENV') == 'prod')? 'MEMCACHEDCLOUD' : 'localhost'),
-        'memcached_session' => memcacheConfig((getenv('APP_ENV') == 'prod')? 'MEMCACHIER' : 'localhost'),
+        'memcached' => [
+            'driver'  => 'memcached',
+            'servers' => [
+                [
+                    'host' => '127.0.0.1', 'port' => 11211, 'weight' => 100,
+                ],
+            ],
+        ],
 
         'redis' => [
             'driver' => 'redis',

@@ -73,12 +73,6 @@ Current list of custom variables we had to setup to have the application working
 - APP_ENV=prod
 - APP_DEBUG=false
 - APP_KEY=secretDuh
-- FACEBOOK_ID=xxx
-- FACEBOOK_SECRET=xxx
-- MEMCACHIER_WEIGHT=45
-- MEMCACHEDCLOUD_WEIGHT=55
-
-> _Note_: the Memcached servers weight was calculated based on their available memory (in the free tier, 25MB and 30MB respectively).
 
 ### Logging
 Inside Heroku, logs must be sent to `stdout`/`stderr`. Inside Laravel 5, this is done by configuring logs to go to _errorlog_. Using the above mentioned env var, we defined the production environment to log to _errorlog_, and other instances to keep logging in a _single_ file. PaperTrail is a Heroku addon that enables us to see the log stream, live - it can be accessed from the Heroku Dashboard as well.

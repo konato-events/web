@@ -16,21 +16,7 @@ return [
     |
     */
 
-    'driver' => 'memcached',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Session Cache Store
-    |--------------------------------------------------------------------------
-    |
-    | When using the "memcached" session driver, you may specify a cache store
-    | that should be used for these sessions. This should correspond to a
-    | store in your cache configuration options which uses the memcached
-    | driver.
-    |
-    */
-
-    'memcached_store' => 'memcached_session',
+    'driver' => env('SESSION_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
