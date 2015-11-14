@@ -6,5 +6,6 @@
 
 echo `./artisan migrate`;
 echo `./artisan route:cache`;
-echo `./artisan config:cache`;
+//FIXME: config can't be cached since build and runtime paths are different
+//echo `./artisan config:cache`;
 echo `node_modules/.bin/gulp --production`;
