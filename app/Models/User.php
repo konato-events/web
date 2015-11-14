@@ -3,6 +3,9 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use LaravelArdent\Ardent\Ardent;
 
 /**
@@ -16,7 +19,14 @@ use LaravelArdent\Ardent\Ardent;
  * @property string gender
  * @property string avatar
  * @property string picture
+ *
  * @property SocialLink[] links
+ * @property Location location
+ * @method BelongsTo location
+ * @property User[] follows
+ * @method BelongsToMany follows
+ * @property User[] followed_by
+ * @method BelongsToMany followed_by
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -46,10 +56,17 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         'gender'                => ['in:M,F'],
     ];
 
+    /** @see Ardent::handleRelationalArray() */
     public static $relationsData = [
-        'links'    => [self::HAS_MANY, SocialLink::class],
+//      'links'    => [self::HAS_MANY, SocialLink::class], //defined by method as we need ordering here
         'location' => [self::BELONGS_TO, Location::class]
     ];
+
+    public function links() {
+        return $this->hasMany(SocialLink::class)
+            ->join('social_networks AS n', 'n.id', '=', 'social_network_id')
+            ->orderBy('n.position');
+    }
 
     public function beforeSave() {
 //        unset($this->password_confirmation);
