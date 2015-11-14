@@ -12,7 +12,9 @@ use App\Models\User;
 
 class AuthController extends Controller {
 
-    use AuthenticatesUsers, ThrottlesLogins, SocialiteHelpers;
+    use AuthenticatesUsers, ThrottlesLogins, SocialiteHelpers {
+        AuthenticatesUsers::getLogin as getLoginBasic;
+    }
 //    use ResetsPasswords;
 
     protected $redirectPath = '/';
@@ -132,6 +134,14 @@ class AuthController extends Controller {
         $user = new User(\Input::except('_token'));
         $user->save();
         return $this->loginAfterSignUp($user);
+    }
+
+    public function getLogin() {
+        if (!\Session::has('url.intended')) {
+            \Session::put('url.intended', $_SERVER['HTTP_REFERER']);
+        }
+
+        return $this->getLoginBasic();
     }
 }
 
