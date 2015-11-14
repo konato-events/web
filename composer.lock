@@ -4,9 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "34679ed48e1d2e44ac89a52a434c716c",
-    "content-hash": "556aeb75701f20c27c79775873ce51a2",
+    "hash": "815f94beb79736f645a13f6d6ab2345b",
+    "content-hash": "427317930e80d10c599af27214a7236d",
     "packages": [
+        {
+            "name": "b3it/laravel-memcached-plus",
+            "version": "2.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/b3it/laravel-memcached-plus.git",
+                "reference": "ecfb443f2c0287a5ef4ecb1700be4b8a3c099ad8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/b3it/laravel-memcached-plus/zipball/ecfb443f2c0287a5ef4ecb1700be4b8a3c099ad8",
+                "reference": "ecfb443f2c0287a5ef4ecb1700be4b8a3c099ad8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-memcached": "*",
+                "illuminate/cache": "5.*",
+                "illuminate/session": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "B3IT\\MemcachedPlus\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Castleman",
+                    "email": "tom.castleman@b3-it.com"
+                }
+            ],
+            "description": "Extends the built-in Laravel 5 Cache Memcached driver adding support for persistent connections, SASL and Memcached options.",
+            "keywords": [
+                "cache",
+                "heroku",
+                "laravel",
+                "memcached",
+                "memcachedcloud",
+                "memcachier",
+                "options",
+                "persistent",
+                "sasl"
+            ],
+            "time": "2015-03-06 19:17:17"
+        },
         {
             "name": "barryvdh/laravel-ide-helper",
             "version": "v2.1.0",
@@ -3757,7 +3807,8 @@
     "platform": {
         "php": "~7.0@beta",
         "ext-gettext": "*",
-        "ext-mcrypt": "*"
+        "ext-mcrypt": "*",
+        "ext-memcached": "*"
     },
     "platform-dev": []
 }

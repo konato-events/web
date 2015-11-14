@@ -22,6 +22,7 @@
         "php": "~7.0@beta",
         "ext-gettext": "*",
         "ext-mcrypt": "*",
+        "ext-memcached": "*",
 
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
@@ -29,7 +30,8 @@
         "laravelbook/ardent": "3.*",
 
         "barryvdh/laravel-ide-helper": "^2.1",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "b3it/laravel-memcached-plus": "^2.1"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*",
