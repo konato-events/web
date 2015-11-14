@@ -25,7 +25,6 @@ const FORM_ID = 'signup';
 @section('form')
 <?=Form::model($user, ['action' => 'AuthController@postFinishSignUp', 'id' => FORM_ID])?>
     <?=Form::hidden('provider', $provider)?>
-    <?=Form::hidden('provider_id', $provider_id)?>
 
     <? if ($errors->any()): ?>
         <div class="well alert-danger">

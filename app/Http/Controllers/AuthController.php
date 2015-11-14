@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\User as UserReq;
 use App\Models\User;
+use LaravelArdent\Ardent\InvalidModelException;
 
 class AuthController extends Controller {
 
@@ -76,9 +77,9 @@ class AuthController extends Controller {
                 $this->fillUser($user, $data->user, $data, $provider);
             }
 
-            $provider_id = $data->getId();
-            session(['user' => $user]);
-            return view('auth.finishSignUp', compact('user', 'provider', 'provider_id'));
+            //for some odd reason, Laravel is unable to automatically serialize the user object(?), so we do it by hand
+            session()->set('signup.user', serialize($user));
+            return view('auth.finishSignUp', compact('user', 'provider'));
         } catch (\Exception $e) {
             \Log::error(class_basename($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
             return redirect()
@@ -93,22 +94,43 @@ class AuthController extends Controller {
 
         try {
             \DB::transaction(function() use ($req) {
-                $network = SocialNetwork::find($req->provider);
-                $link    = new SocialLink();
-                $user    = session('user');
-
+                $user = unserialize(session('signup.user'));
                 $user->username = $req->username;
                 $user->throwOnValidation = true; //todo: https://github.com/laravel-ardent/ardent/issues/279
                 $user->save();
 
-                $link->username = $req->provider_id;
-                $link->network()->associate($network);
-                $link->user()->associate($user);
-                $link->throwOnValidation = true;
-                $link->save();
+                $relations = session('signup.relations');
+                foreach ($relations as $relation => $data) {
+                    switch ($relation) {
+                        case 'links':
+                            foreach ($data as $provider => $username) {
+                                $link = new SocialLink();
+                                $link->network()->associate(SocialNetwork::find($provider));
+                                $link->user()->associate($user);
+                                $link->username = $username;
+                                $link->throwOnValidation = true;
+                                $link->save();
+                            }
+                            break;
+
+                        default:
+                            \Log::emergency("Not yet implemented Sign Up relation called $relation: ".printr($data));
+                    }
+                }
+
+                //those fields should not be "pulled" as an error might rise and their values can be reused in a 2nd try
+                session()->remove('signup.user');
+                session()->remove('signup.relations');
             });
         }
+        catch (InvalidModelException $e) {
+            return redirect()->action('AuthController@getSignUp')
+                             ->with('social_error', true)
+                             ->with('provider', $req->provider)
+                             ->withErrors($e->getErrors());
+        }
         catch (\Exception $e) {
+            throw $e;
             \Log::error(class_basename($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
             return redirect()->action('AuthController@getSignUp')
                              ->with('social_error', true)
@@ -153,9 +175,8 @@ class AuthController extends Controller {
 class FinishSignUpReq extends Request {
     function rules() {
         return [
-            'username'    => User::$rules['username'],
-            'provider'    => 'required',
-            'provider_id' => 'required'
+            'username' => User::$rules['username'],
+            'provider' => 'required'
         ];
     }
 }
