@@ -100,16 +100,24 @@ return [
     |
     */
 
-    'redis' => [
-
-        'cluster' => false,
-
-        'default' => [
-            'host'     => '127.0.0.1',
-            'port'     => 6379,
-            'database' => 0,
-        ],
-
-    ],
+    'redis' => call_user_func(function() {
+        $redis = [
+            'cluster' => false,
+            'local'   => ['host' => '127.0.0.1', 'port' => 6379, 'database' => 0]
+        ];
+        if (getenv('APP_ENV') == 'prod') {
+            foreach(['REDIS' => 'heroku', 'REDISCLOUD' => 'redis_cloud'] as $provider => $key) {
+                $url = parse_url(getenv("{$provider}_URL"));
+                $redis[$key] = [
+                    'host'     => $url['host'],
+                    'port'     => $url['port'],
+                    'username' => $url['user'],
+                    'password' => $url['pass'],
+                    'database' => 0
+                ];
+            }
+        }
+        return $redis;
+    }),
 
 ];

@@ -29,7 +29,8 @@
         "laravelbook/ardent": "3.*",
 
         "barryvdh/laravel-ide-helper": "^2.1",
-        "laravel/socialite": "^2.0"
+        "laravel/socialite": "^2.0",
+        "predis/predis": "^1.0"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*",

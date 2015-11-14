@@ -15,17 +15,17 @@ RUN apt-get update && \
 # Installs HTTP, DB and process manager
 RUN apt-get install -y --force-yes \
 	nginx \
+	redis-server \
     postgresql-9.3 \
     postgresql-9.3-client \
 	supervisor
 
 # Installs PHP7 compile dependencies
 # based on: https://www.howtoforge.com/tutorial/install-php-7-on-debian-8-jessie/#compilenbspphp-with-phpfpm-and-fastcgi and http://www.hashbangcode.com/blog/compiling-and-installing-php7-ubuntu
-RUN apt-get install -y --force-yes \
+RUN apt-get install -y --force-yes  \
     build-essential \
     autoconf \
     bison \
-    libbz2-dev \
     libbz2-dev \
     libc-client2007e \
     libc-client2007e-dev \
@@ -94,7 +94,6 @@ RUN ./configure \
     --with-png-dir=/usr \
     --with-xmlrpc \
     --with-xsl \
-    --with-zlib \
     --with-zlib \
     --with-zlib-dir
 #    --with-imap \

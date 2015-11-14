@@ -47,19 +47,17 @@ return [
             'path'   => storage_path('framework/cache'),
         ],
 
-        'memcached' => [
-            'driver'  => 'memcached',
-            'servers' => [
-                [
-                    'host' => '127.0.0.1', 'port' => 11211, 'weight' => 100,
-                ],
-            ],
-        ],
+//        'memcached' => [
+//            'driver'  => 'memcached',
+//            'servers' => [
+//                [
+//                    'host' => '127.0.0.1', 'port' => 11211, 'weight' => 100,
+//                ],
+//            ],
+//        ],
 
-        'redis' => [
-            'driver' => 'redis',
-            'connection' => 'default',
-        ],
+        'redis_session' => ['driver' => 'redis', 'connection' => getenv('APP_ENV') == 'prod'? 'heroku' : 'local'],
+        'redis'         => ['driver' => 'redis', 'connection' => getenv('APP_ENV') == 'prod'? 'redis_cloud' : 'local'],
 
     ],
 
