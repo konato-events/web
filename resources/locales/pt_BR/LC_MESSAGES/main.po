@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-13 20:09-0300\n"
-"PO-Revision-Date: 2015-11-13 20:10-0300\n"
+"POT-Creation-Date: 2015-11-14 00:17-0300\n"
+"PO-Revision-Date: 2015-11-14 00:19-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -441,57 +441,65 @@ msgid "%s on Konato"
 msgstr "%s no Konato"
 
 #: resources/views/user/profile.blade.php:131
+msgid ""
+"There's nothing to say about this user...<br/> He prefers to keep an air of "
+"mistery about him, I guess."
+msgstr ""
+"Não há nada para dizer sobre esse usuário...<br/> Ele prefere se manter num "
+"ar de mistério, pelo visto."
+
+#: resources/views/user/profile.blade.php:138
 #, php-format
 msgid "%s has participated in events as a speaker"
 msgstr "%s já participou de eventos como palestrante"
 
-#: resources/views/user/profile.blade.php:137
+#: resources/views/user/profile.blade.php:147
 msgid "Her elsewhere:"
 msgstr "Ela em outros lugares:"
 
-#: resources/views/user/profile.blade.php:137
+#: resources/views/user/profile.blade.php:147
 msgid "Him elsewhere:"
 msgstr "Ele em outros lugares:"
 
-#: resources/views/user/profile.blade.php:162
+#: resources/views/user/profile.blade.php:173
 msgid "Her in events"
 msgstr "Ela nos eventos"
 
-#: resources/views/user/profile.blade.php:162
+#: resources/views/user/profile.blade.php:173
 msgid "Him in events"
 msgstr "Ele nos eventos"
 
-#: resources/views/user/profile.blade.php:192
+#: resources/views/user/profile.blade.php:203
 msgid "Add as a connection"
 msgstr "Adicionar como conexão"
 
-#: resources/views/user/profile.blade.php:194
+#: resources/views/user/profile.blade.php:205
 msgid "See my connections"
 msgstr "Ver minhas conexões"
 
-#: resources/views/user/profile.blade.php:200
+#: resources/views/user/profile.blade.php:211
 msgid "Follow her"
 msgstr "Segui-la"
 
-#: resources/views/user/profile.blade.php:200
+#: resources/views/user/profile.blade.php:211
 msgid "Follow him"
 msgstr "Segui-lo"
 
-#: resources/views/user/profile.blade.php:202
+#: resources/views/user/profile.blade.php:213
 #: resources/views/event/theme.blade.php:180
 #: resources/views/event/details.blade.php:313
 msgid "See my following preferences"
 msgstr "Configurar o que acompanho"
 
-#: resources/views/user/profile.blade.php:210
+#: resources/views/user/profile.blade.php:221
 msgid "Her themes of interest"
 msgstr "Seus temas de interesse"
 
-#: resources/views/user/profile.blade.php:210
+#: resources/views/user/profile.blade.php:221
 msgid "His themes of interest"
 msgstr "Seus temas de interesse"
 
-#: resources/views/user/profile.blade.php:220
+#: resources/views/user/profile.blade.php:231
 msgid "Most visited places"
 msgstr "Lugares mais visitados"
 

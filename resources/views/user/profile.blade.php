@@ -125,6 +125,13 @@ $date_fmt   = _('m/d/Y');
             </a>
         <? endif ?>
 
+        <? if (!$user->tagline && !$user->bio): ?>
+            <p class="mistery">
+                <i class="fa fa-user-secret"></i>
+                <span><?=_('There\'s nothing to say about this user...<br/> He prefers to keep an air of mistery about him, I guess.')?></span>
+            </p>
+        <? endif ?>
+
         <p class="function">
             <? if($type == Controller::TYPE_SPEAKER): ?>
                 <i class="fa part-speaker inverted" data-toggle="tooltip"
@@ -132,14 +139,18 @@ $date_fmt   = _('m/d/Y');
             <? endif ?>
             <?=$user->tagline?>
         </p>
+
         <p class="bio"><?=$user->bio?></p>
-        <div class="social-profiles float-bottom">
-            <h2><?=($female)? _('Her elsewhere:') : _('Him elsewhere:')?></h2>
-            <? foreach($user->links as $link): ?>
-                <a class="<?=$link->network->icon?>" target="_blank" href="<?=$link->url?>" title="<?=$link->network->name?>"
-                   data-toggle="tooltip" data-trigger="hover focus click" data-placement="top"></a>
-            <? endforeach ?>
-        </div>
+
+        <? if (sizeof($user->links)): ?>
+            <div class="social-profiles float-bottom">
+                <h2><?=($female)? _('Her elsewhere:') : _('Him elsewhere:')?></h2>
+                <? foreach($user->links as $link): ?>
+                    <a class="<?=$link->network->icon?>" target="_blank" href="<?=$link->url?>" title="<?=$link->network->name?>"
+                       data-toggle="tooltip" data-trigger="hover focus click" data-placement="top"></a>
+                <? endforeach ?>
+            </div>
+        <? endif ?>
     </div>
 </div>
 @endsection

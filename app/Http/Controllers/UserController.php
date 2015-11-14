@@ -20,7 +20,7 @@ class UserController extends Controller {
     protected function profile(int $type, string $id_slug) {
         list($id, $name_slug) = unslug($id_slug);
         $user   = User::with('location', 'links', 'links.network')->findOrFail($id);
-        $myself = (\Auth::user()->id == $user->id);
+        $myself = (\Auth::user() && \Auth::user()->id == $user->id);
         return view('user.profile', compact('id', 'name_slug', 'type', 'user', 'myself'));
     }
 
