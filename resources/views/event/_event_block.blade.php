@@ -7,6 +7,7 @@
   * @var array $themes
   * @var array $event */
 use App\Models\User;
+use Illuminate\Support\Str;
 
 list($img, $title, $place, $begin, $end, $desc) = $event;
 $link = act('event@details', slugify($id, $title));
