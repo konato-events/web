@@ -59,7 +59,9 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     /** @see Ardent::handleRelationalArray() */
     public static $relationsData = [
 //      'links'    => [self::HAS_MANY, SocialLink::class], //defined by method as we need ordering here
-        'location' => [self::BELONGS_TO, Location::class]
+        'location' => [self::BELONGS_TO, Location::class],
+        'follows'  => [self::BELONGS_TO_MANY, self::class, 'table' => 'following_user', 'foreignKey' => 'follower_id'],
+        'followed_by' => [self::BELONGS_TO_MANY, self::class, 'table' => 'following_user', 'otherKey' => 'follower_id'],
     ];
 
     public function links() {

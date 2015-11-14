@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-14 00:17-0300\n"
-"PO-Revision-Date: 2015-11-14 00:19-0300\n"
+"POT-Creation-Date: 2015-11-14 03:34-0300\n"
+"PO-Revision-Date: 2015-11-14 03:35-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -477,29 +477,37 @@ msgstr "Adicionar como conexão"
 msgid "See my connections"
 msgstr "Ver minhas conexões"
 
-#: resources/views/user/profile.blade.php:211
+#: resources/views/user/profile.blade.php:212
+msgid "Unfollow her"
+msgstr "Deixar de segui-la"
+
+#: resources/views/user/profile.blade.php:212
+msgid "Unfollow him"
+msgstr "Deixar de segui-lo"
+
+#: resources/views/user/profile.blade.php:216
 msgid "Follow her"
 msgstr "Segui-la"
 
-#: resources/views/user/profile.blade.php:211
+#: resources/views/user/profile.blade.php:216
 msgid "Follow him"
 msgstr "Segui-lo"
 
-#: resources/views/user/profile.blade.php:213
+#: resources/views/user/profile.blade.php:220
 #: resources/views/event/theme.blade.php:180
 #: resources/views/event/details.blade.php:313
 msgid "See my following preferences"
 msgstr "Configurar o que acompanho"
 
-#: resources/views/user/profile.blade.php:221
+#: resources/views/user/profile.blade.php:229
 msgid "Her themes of interest"
 msgstr "Seus temas de interesse"
 
-#: resources/views/user/profile.blade.php:221
+#: resources/views/user/profile.blade.php:229
 msgid "His themes of interest"
 msgstr "Seus temas de interesse"
 
-#: resources/views/user/profile.blade.php:231
+#: resources/views/user/profile.blade.php:239
 msgid "Most visited places"
 msgstr "Lugares mais visitados"
 

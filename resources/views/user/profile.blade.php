@@ -2,7 +2,6 @@
 use App\Http\Controllers\UserController as Controller;
 use App\Models\User;
 
-/** @var string $user->name_slug */
 /** @var int    $id */
 /** @var array  $speakers */
 /** @var array  $events */
@@ -26,9 +25,9 @@ $stats = [];
 foreach ($participations as $part => $xxx) {
     $stats[$part] = 0;
 }
-foreach ($events as $id => $event) {
-    $participation[$id] = array_rand($participations);
-    ++$stats[$participation[$id]];
+foreach ($events as $ev_id => $event) {
+    $participation[$ev_id] = array_rand($participations);
+    ++$stats[$participation[$ev_id]];
 }
 $stats = array_filter($stats);
 
@@ -160,10 +159,10 @@ $date_fmt   = _('m/d/Y');
 <div class="container-fluid">
     <section id="content" class="content col-sm-8 col-md-9">
         <ul class="user-stats">
-            <? foreach($stats as $id => $stat): ?>
-                <li class="part-{{$id}}">
+            <? foreach($stats as $st_id => $stat): ?>
+                <li class="part-{{$st_id}}">
                     <i class="fa"></i>
-                    {{$stat}}x {{$participations[$id]}}
+                    {{$stat}}x {{$participations[$st_id]}}
                 </li>
             <? endforeach ?>
         </ul>
@@ -176,13 +175,13 @@ $date_fmt   = _('m/d/Y');
                 <div class="thumbnails events">
                     <div class="container-fluid">
                         <div class="row">
-                            @foreach($events as $id => $event)
+                            @foreach($events as $ev_id => $event)
                                 @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
                                     'compact'     => true,
-                                    'participant' => $participation[$id],
+                                    'participant' => $participation[$ev_id],
                                     'participant_gender' => $user->gender
                                 ]))
-                                @if (($id+1) % 2 == 0)
+                                @if (($ev_id + 1) % 2 == 0)
                                     </div><div class="row">
                                 @endif
                             @endforeach <? //TODO: use a forelse instead, this needs an empty clause ?>
@@ -198,19 +197,27 @@ $date_fmt   = _('m/d/Y');
     <aside id="sidebar-info" class="sidebar col-sm-4 col-md-3">
         <? if (!$myself): ?>
         <!-- related to #92, #93
-            <div class="widget widget-sm">
-                <button class="btn btn-theme btn-wrap btn-sm">
-                    <i class="fa fa-user-plus"></i> <?=_('Add as a connection')?>
-                </button>
-                <a class="note" href="#"><?=_('See my connections')?></a>
-            </div>
+        <div class="widget widget-sm">
+            <button class="btn btn-theme btn-wrap btn-sm">
+                <i class="fa fa-user-plus"></i> <?=_('Add as a connection')?>
+            </button>
+            <a class="note" href="#"><?=_('See my connections')?></a>
+        </div>
         -->
 
             <div class="widget widget-sm">
-                <button class="btn btn-theme btn-wrap btn-sm">
-                    <i class="fa fa-mail-forward"></i> <?=($female)? _('Follow her') : _('Follow him')?>
-                </button>
+                <? if (\Auth::user()->follows()->where('user_id', $id)->count()): ?>
+                    <a href="<?=act('user@unfollow', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                        <i class="fa fa-chain-broken"></i> <?=($female)? _('Unfollow her') : _('Unfollow him')?>
+                    </a>
+                <? else: ?>
+                    <a href="<?=act('user@follow', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                        <i class="fa fa-chain"></i> <?=($female)? _('Follow her') : _('Follow him')?>
+                    </a>
+                <? endif ?>
+                <!-- related to #94
                 <a class="note" href="#"><?=_('See my following preferences')?></a>
+                -->
             </div>
         <? endif ?>
 
