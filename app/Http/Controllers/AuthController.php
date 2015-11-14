@@ -138,7 +138,7 @@ class AuthController extends Controller {
 
     public function getLogin() {
         if (!\Session::has('url.intended')) {
-            \Session::put('url.intended', $_SERVER['HTTP_REFERER']);
+            \Session::put('url.intended', $_SERVER['HTTP_REFERER']?? '/');
         }
 
         return $this->getLoginBasic();
