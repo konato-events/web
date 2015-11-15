@@ -118,7 +118,7 @@ $lang_tag = substr(LOCALE, 0, 2);
 
                                     <ul class="dropdown-menu" aria-labelledby="profileButton">
                                         <li>
-                                            <a href="<?=act('user@profile', slugify($user->id, $user->name))?>">
+                                            <a href="<?=act('user@profile', slugify($user->id, $user->username))?>">
                                                 <i class="fa fa-user"></i> <?=_('My profile')?>
                                             </a>
                                         </li>
