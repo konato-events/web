@@ -1,15 +1,17 @@
 <?php
-$root_url  = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'])? 'https' : 'http';
-$root_url .= '://'.($_SERVER['HTTP_HOST']?? 'localhost:81');
-define('ROOT_URL', $root_url);
+if (!defined('ROOT_URL')) {
+    $root_url  = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'])? 'https' : 'http';
+    $root_url .= '://'.($_SERVER['HTTP_HOST']?? 'localhost:81');
+    define('ROOT_URL', $root_url);
+}
 
-$auth_provider = function(string $name) use ($root_url) {
+$auth_provider = function(string $name) {
 
     $caps = strtoupper($name);
     return [$name => [
         'client_id'     => env($caps.'_ID'),
         'client_secret' => env($caps.'_SECRET'),
-        'redirect'      => $root_url.'/auth/callback/'.$name
+        'redirect'      => ROOT_URL.'/auth/callback/'.$name
     ]];
 };
 
