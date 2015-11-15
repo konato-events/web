@@ -45,10 +45,10 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public static $rules = [
         'name'                  => ['required', 'min:4'],
-        'email'                 => ['required', 'email', /*'unique:users'*/],
+        'email'                 => ['required', 'email', 'unique:users'],
         //TODO: password should be required and confirmed on signup
         'password'              => ['min:6'],
-        'username'              => ['required', 'between:4,30', /*'unique:users'*/],
+        'username'              => ['required', 'between:4,30', 'unique:users'],
         'tagline'               => ['max:50'],
         'bio'                   => ['max:200'],
         //TODO: validate birthday range correctly

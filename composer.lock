@@ -693,16 +693,16 @@
         },
         {
             "name": "laravel-ardent/laravalid",
-            "version": "v2.3.0",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-ardent/laravalid.git",
-                "reference": "76997f065709cf9a6578592a33fd7607462377af"
+                "reference": "2c64b5ebdc99d5aa74270c3ab32d1d3caab1560d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-ardent/laravalid/zipball/76997f065709cf9a6578592a33fd7607462377af",
-                "reference": "76997f065709cf9a6578592a33fd7607462377af",
+                "url": "https://api.github.com/repos/laravel-ardent/laravalid/zipball/2c64b5ebdc99d5aa74270c3ab32d1d3caab1560d",
+                "reference": "2c64b5ebdc99d5aa74270c3ab32d1d3caab1560d",
                 "shasum": ""
             },
             "require": {
@@ -747,7 +747,7 @@
                 "laravel5",
                 "validation"
             ],
-            "time": "2015-11-13 19:59:16"
+            "time": "2015-11-15 02:36:04"
         },
         {
             "name": "laravel/framework",

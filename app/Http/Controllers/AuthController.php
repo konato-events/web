@@ -15,7 +15,7 @@ use Session;
 class AuthController extends Controller {
 
     use AuthenticatesUsers, ThrottlesLogins, SocialiteHelpers {
-        AuthenticatesUsers::getLogin as getLoginBasic;
+        AuthenticatesUsers::getLogin as loginBasic;
     }
 //    use ResetsPasswords;
 
@@ -176,7 +176,7 @@ class AuthController extends Controller {
             Session::put('url.intended', $_SERVER['HTTP_REFERER']?? null);
         }
 
-        return $this->getLoginBasic();
+        return $this->loginBasic();
     }
 }
 

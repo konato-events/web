@@ -2,6 +2,6 @@
 return [
     'useLaravelMessages' => true,
     'plugin'             => 'JqueryValidation',
-    'route'              => 'site/validation',
+    'route'              => 'validation',
     'action'             => 'SiteController@getValidation'
 ];

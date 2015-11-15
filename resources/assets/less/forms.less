@@ -12,10 +12,14 @@ label sup {
         font-weight: normal;
         font-style: italic;
         font-size: 80%;
+        margin: 5px 0 10px 0;
+    }
+    label.error + .help-block {
+        margin-top: -5px;
     }
 
     &.error-block {
-        label:not(.error) {
+        label {
             color: @red;
         }
         input, .input-group-addon {

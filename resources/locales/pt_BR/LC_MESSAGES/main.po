@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-14 23:21-0300\n"
-"PO-Revision-Date: 2015-11-14 23:22-0300\n"
+"POT-Creation-Date: 2015-11-15 00:57-0300\n"
+"PO-Revision-Date: 2015-11-15 00:58-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -54,13 +54,35 @@ msgstr "Isso não parece com um e-mail"
 msgid "The :attribute confirmation doesn't match"
 msgstr "A confirmação de :attribute não bate"
 
-#: resources/lang/gettext/validation.php:10
+#: resources/lang/gettext/validation.php:9
+msgid "This :attribute is already in use"
+msgstr "Este :attribute já está em uso"
+
+#: resources/lang/gettext/validation.php:11
 msgid "Too short"
 msgstr "Curto demais"
 
-#: resources/lang/gettext/validation.php:13
+#: resources/lang/gettext/validation.php:14
 msgid "This field should have between :min and :max characters"
 msgstr "Este campo deve ter entre :min e :max caracteres"
+
+#: resources/lang/gettext/validation.php:19
+msgid ""
+"This username is already taken. Try something different! If you already have "
+"an account but don't remember your password, try to use the Recovery link "
+"from the Login page."
+msgstr ""
+"Este usuário já foi usado. Tente algo diferente! Se você já tem uma conta "
+"mas não lembra sua senha, tente usar o link de Recuperação, na página de "
+"Login."
+
+#: resources/lang/gettext/validation.php:20
+msgid ""
+"This e-mail is already in use. Hmm... Is this you? If you don't remember "
+"your password, try to use the Recovery link from the Login page."
+msgstr ""
+"Este e-mail já está em uso. Hum... É você? Se não lembra sua senha, tente "
+"usar o link de Recuperação, na página de Login."
 
 #: resources/views/layout-master.blade.php:21
 msgid "Event Discovery"

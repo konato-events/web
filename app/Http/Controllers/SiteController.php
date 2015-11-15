@@ -12,7 +12,7 @@ class SiteController extends Controller {
     }
 
     public function getValidation(string $rule) {
-        echo 'true';
+        return app('laravalid')->remoteValidation($rule);
     }
 
 }

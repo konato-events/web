@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.22 (LTS) on 2015-11-14.
+ * Generated for Laravel 5.1.22 (LTS) on 2015-11-15.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12296,6 +12296,18 @@ namespace {
         public static function resetValidation(){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
             return \Resources\BootstrapFormBuilder::resetValidation();
+        }
+        
+        /**
+         * Executes the remote validation and returns true or the error message
+         *
+         * @param string $rule
+         * @return array|\Illuminate\Http\JsonResponse|mixed 
+         * @static 
+         */
+        public static function remoteValidation($rule){
+            //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
+            return \Resources\BootstrapFormBuilder::remoteValidation($rule);
         }
         
         /**
