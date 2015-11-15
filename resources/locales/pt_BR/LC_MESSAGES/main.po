@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-15 00:57-0300\n"
-"PO-Revision-Date: 2015-11-15 00:58-0300\n"
+"POT-Creation-Date: 2015-11-15 01:11-0300\n"
+"PO-Revision-Date: 2015-11-15 01:11-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -16,6 +16,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: app\n"
 "X-Poedit-SearchPath-1: resources\n"
+
+#: app/Models/SocialNetwork.php:5
+msgid "Personal website"
+msgstr "Site pessoal"
 
 #: app/Providers/AppServiceProvider.php:52
 msgid "Congresses"

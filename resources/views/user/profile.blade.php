@@ -145,7 +145,7 @@ $date_fmt   = _('m/d/Y');
             <div class="social-profiles float-bottom">
                 <h2><?=($female)? _('Her elsewhere:') : _('Him elsewhere:')?></h2>
                 <? foreach($user->links as $link): ?>
-                    <a class="<?=$link->network->icon?>" target="_blank" href="<?=$link->url?>" title="<?=$link->network->name?>"
+                    <a class="<?=$link->network->icon?>" target="_blank" href="<?=$link->url?>" title="<?=_($link->network->name)?>"
                        data-toggle="tooltip" data-trigger="hover focus click" data-placement="top"></a>
                 <? endforeach ?>
             </div>

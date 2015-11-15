@@ -2,6 +2,8 @@
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use LaravelArdent\Ardent\Ardent;
 
+_('Personal website'); //just so gettext finds our unique "social network" that needs translation :)
+
 /**
  * @property string name
  * @property string url
