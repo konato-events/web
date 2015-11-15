@@ -2,6 +2,7 @@
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller {
 
@@ -40,7 +41,14 @@ class UserController extends Controller {
     }
 
     public function getFollow(int $id) {
-        \Auth::user()->follows()->attach($id);
+        try {
+            \Auth::user()->follows()->attach($id);
+        }
+        catch (QueryException $e) {
+            if ($e->getCode() != 23505) { //unique violation... it means the relation already existed, so everything is fine
+                throw $e;
+            }
+        }
         return redirect()->back();
     }
 

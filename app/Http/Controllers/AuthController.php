@@ -4,12 +4,13 @@ use App\Http\Controllers\Traits\SocialiteHelpers;
 use App\Http\Requests\Request;
 use App\Models\SocialLink;
 use App\Models\SocialNetwork;
-use Auth;
+use App\Models\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Requests\User as UserReq;
-use App\Models\User;
 use LaravelArdent\Ardent\InvalidModelException;
+use Auth;
+use Session;
 
 class AuthController extends Controller {
 
@@ -17,8 +18,6 @@ class AuthController extends Controller {
         AuthenticatesUsers::getLogin as getLoginBasic;
     }
 //    use ResetsPasswords;
-
-    protected $redirectPath = '/';
 
     /**
      * This is actually the default value. This property is where the user will be sent if auth fails - not where the
@@ -28,6 +27,21 @@ class AuthController extends Controller {
 
     public function __construct() {
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    /**
+     * Overwrites the intended URL if we notice the user would be sent to a "useless" page
+     * @return string
+     */
+    public function redirectPath() {
+        $intended = Session::get('url.intended');
+        $useless  = [null, '', ROOT_URL.'/', act('auth@login'), act('auth@signUp')];
+        if (in_array($intended, $useless)) {
+            Session::remove('url.intended');
+            return act('user@profile', slugify(Auth::user()->id, Auth::user()->username));
+        } else {
+            return property_exists($this, 'redirectTo')? $this->redirectTo : '/home';
+        }
     }
 
     /**
@@ -130,7 +144,6 @@ class AuthController extends Controller {
                              ->withErrors($e->getErrors());
         }
         catch (\Exception $e) {
-            throw $e;
             \Log::error(class_basename($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
             return redirect()->action('AuthController@getSignUp')
                              ->with('social_error', true)
@@ -159,8 +172,8 @@ class AuthController extends Controller {
     }
 
     public function getLogin() {
-        if (!\Session::has('url.intended')) {
-            \Session::put('url.intended', $_SERVER['HTTP_REFERER']?? '/');
+        if (!Session::has('url.intended')) {
+            Session::put('url.intended', $_SERVER['HTTP_REFERER']?? null);
         }
 
         return $this->getLoginBasic();

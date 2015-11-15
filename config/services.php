@@ -1,6 +1,7 @@
 <?php
 $root_url  = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'])? 'https' : 'http';
 $root_url .= '://'.($_SERVER['HTTP_HOST']?? 'localhost:81');
+define('ROOT_URL', $root_url);
 
 $auth_provider = function(string $name) use ($root_url) {
 
