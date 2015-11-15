@@ -51,7 +51,7 @@ trait SocialiteHelpers {
             'rel:location'     => 'location.name',
             'rel:timezone'     => 'timezone',
             'rel:locale'       => 'locale',
-            'rel:social_links' => 'website',
+            'rel:website'      => 'website',
             "rel:$provider"    => 'link',
             'tagline'          => 'work',
             'avatar'           => '',
@@ -96,11 +96,12 @@ trait SocialiteHelpers {
                 $relation = substr($field, 4);
                 //TODO: implement relationships here
                 switch ($relation) {
-                    case 'social_links':
+                    case 'website':
                         $url = $user_data[$key];
                         if (!preg_match('|^https?://|', $url)) {
                             $url = 'http://'.$url;
                         }
+                        $url = substr($url, 4); //personal website prefix length
                         $relations_data['links']['personal website'] = $url;
                         break;
 

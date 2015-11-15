@@ -20,6 +20,7 @@ class SocialNetwork extends Ardent {
 
     /**
      * Finds a SocialNetwork by its ID or name (case-insensitive)
+     * @todo these results should be cached to improve website performance. Ideally, all entries would be fetched at once and inside this method we would retrieve from cache - if not found, run the current implementation
      * @param int|string $id_or_name
      * @param array $columns
      * @return self
