@@ -13,7 +13,7 @@ function printr(array $data):string {
 /**
  * Shorthand function for {@link action()}, removing the need to indicate "Controller" for the classname
  * and "get" for the method name. Other HTTP verbs are still required. `getIndex` is also optional.
- * This version also uses urlencode() in parameters.
+ * This version does not generate absolute URLs as it's {@link action()} default.
  * Examples:
  * - user > UserController@getIndex
  * - user@profile > UserController@getProfile
@@ -41,7 +41,7 @@ function act(string $route, ...$vars):string {
         $action = 'get'.ucfirst($action);
     }
 
-    return action("{$controller}Controller@$action", ...$vars);
+    return action("{$controller}Controller@$action", $vars, false);
 }
 
 function nbsp(string $str):string {
