@@ -42,11 +42,9 @@ Down to the rabbit hole (you should check the [latest NVM release][nvm-release] 
 [nvm-release]: https://github.com/creationix/nvm/releases/latest
 
 ### Assets management
-Laravel comes pre-packed with [Elixir], an easier way to run Gulp tasks. _No, it's not the [Brazilian easier version of Erlang][elixir-erlang]._ Coincidentally enough, our CSS framework of choice ([Semantic UI]) also uses Gulp for building its assets. Thus, both were bounded together so we can have a party.
+Laravel comes pre-packed with [Elixir], an easier way to run Gulp tasks. _No, it's not the [Brazilian easier version of Erlang][elixir-erlang]._
 
-You can find more information on how to configure and enjoy Semantic UI at `resources/assets/semantic/README.md`, but for now it's good to know the following:
-
-- You'll be mainly working with the `gulpfile.js` from the root dir. Elixir functions are baked there and Semantic UI tasks were placed there as well;
+- You'll be mainly working with the `gulpfile.js` from the root dir. Elixir functions are baked there;
 - To compile once, run `gulp` from the root dir;
 - To compile for production usage, run `gulp --production`;
 - To keep compiling while you develop, use `gulp watch`.
@@ -59,7 +57,7 @@ We use PostgreSQL here - as it's prepackaged in Heroku and has cool geolocation 
     postgres $ createdb -O konato konato
     postgres $ psql -h 127.0.0.1 -WU konato konato -f database/create.sql
 
-To access the PostgreSQL database inside the docker container, use `docker exec -it trusting_einstein psql -h 127.0.0.1 -WU konato konato`.
+To access the PostgreSQL database inside the docker container, use `./dock psql` (that will run something like `docker exec -it «container_name» psql -h 127.0.0.1 -WU konato konato`).
 
 Deploying to production
 -----------------------
@@ -73,10 +71,14 @@ Current list of custom variables we had to setup to have the application working
 - APP_ENV=prod
 - APP_DEBUG=false
 - APP_KEY=secretDuh
+- FACEBOOK_ID=secretDuh
+- FACEBOOK_SECRET=secretDuh
 
 ### Logging
 Inside Heroku, logs must be sent to `stdout`/`stderr`. Inside Laravel 5, this is done by configuring logs to go to _errorlog_. Using the above mentioned env var, we defined the production environment to log to _errorlog_, and other instances to keep logging in a _single_ file. PaperTrail is a Heroku addon that enables us to see the log stream, live - it can be accessed from the Heroku Dashboard as well.
 
+### Additional deployment procedures
+To make matters easier, there's a helper script in the root folder called `deploy`. It's scheduled to run in Composer every time a new `composer install` command is issued -- but rest assured, it won't complicate your development life: it verifies the environment before compressing and caching files ;)
 
 [elixir]: http://laravel.com/docs/5.1/elixir
 [elixir-erlang]: https://en.wikipedia.org/wiki/Elixir_(programming_language)

@@ -9,7 +9,7 @@ _('Personal website'); //just so gettext finds our unique "social network" that 
  * @property string url
  * @property string icon
  * @property int position
- * @property SocialLink links
+ * @property SocialLink[] links
  * @method HasMany links
  */
 class SocialNetwork extends Ardent {
