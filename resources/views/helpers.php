@@ -21,11 +21,11 @@ function printr(array $data):string {
  *
  * @link https://github.com/laravel/framework/issues/10659
  * @param string $route A "route" string as explained in the examples
- * @param mixed  ...$vars Path variables
+ * @param mixed  ...$params Path variables
  * @see action()
  * @return string
  */
-function act(string $route, ...$vars):string {
+function act(string $route, ...$params):string {
     $parts      = explode('@', $route);
     $controller = ucfirst($parts[0]);
     $action     = $parts[1] ?? 'getIndex';
@@ -41,7 +41,11 @@ function act(string $route, ...$vars):string {
         $action = 'get'.ucfirst($action);
     }
 
-    return action("{$controller}Controller@$action", $vars, false);
+    if (sizeof($params) == 1 && is_array($params[0])) {
+        $params = $params[0];
+    }
+
+    return action("{$controller}Controller@$action", $params, false);
 }
 
 function nbsp(string $str):string {
