@@ -106,7 +106,14 @@ $lang_tag = substr(LOCALE, 0, 2);
                         <li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
 
                         <? if (\Auth::check()): ?>
-                        <? /** @var \App\Models\User $user */ $user = \Auth::getUser() ?>
+                            <? /** @var \App\Models\User $user */ $user = \Auth::getUser() ?>
+
+                            <li>
+                                <a href="<?=act('event@submit')?>" class="btn btn-theme <? if ($action == 'submit'): ?>btn-theme-dark<? endif ?>">
+                                    <i class="fa fa-calendar-plus"></i> <?=_('Submit event')?>
+                                </a>
+                            </li>
+
                             <li class="user-profile">
                                 <div class="dropdown">
                                     <button class="btn btn-theme btn-theme-light" data-target="#" data-toggle="dropdown"
