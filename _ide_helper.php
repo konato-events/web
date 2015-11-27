@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.22 (LTS) on 2015-11-25.
+ * Generated for Laravel 5.1.22 (LTS) on 2015-11-27.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12247,6 +12247,15 @@ namespace {
          */
         public static function labelInput($name, $label, $type = 'text', $value = null, $options = array()){
             return \Resources\BootstrapFormBuilder::labelInput($name, $label, $type, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function labelCheckbox($name, $label, $value, $options = array()){
+            return \Resources\BootstrapFormBuilder::labelCheckbox($name, $label, $value, $options);
         }
         
         /**
