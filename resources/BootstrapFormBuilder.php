@@ -53,16 +53,35 @@ class BootstrapFormBuilder extends FormBuilder {
 HTML;
     }
 
-    public function labelInput($name, $label, $type = 'text', $value = null, array $options = []) {
+    protected function normalizeInputOptions(array &$options) {
         foreach (['label', 'input'] as $tag) {
             if (!isset($options[$tag])) {
                 $options[$tag] = [];
             }
         }
+    }
+
+    public function labelInput($name, $label, $type = 'text', $value = null, array $options = []) {
+        if ($type == 'checkbox') {
+            return $this->labelCheckbox($name, $label, $value, $options);
+        }
+
+        $this->normalizeInputOptions($options);
 
         return $this->group(
             $this->label($name, $label, $options['label']),
             $this->input($type, $name, $value, $options['input']),
+            isset($options['help'])? "<p class='help-block'>{$options['help']}</p>" : ''
+        );
+    }
+
+    public function labelCheckbox($name, $label, $value = null, array $options = []) {
+        $this->normalizeInputOptions($options);
+
+        return $this->group(
+            $this->hidden($name, 0),
+            $this->checkbox($name, 1, (bool)$value, $options['input']),
+            $this->label($name, $label, $options['label']),
             isset($options['help'])? "<p class='help-block'>{$options['help']}</p>" : ''
         );
     }
@@ -76,7 +95,7 @@ HTML;
             $html .= "<div class='input-group-addon'>{$options['prefix']}</div>";
         }
 
-        if (!in_array($type, ['submit', 'reset', 'button'])) {
+        if (!in_array($type, ['submit', 'reset', 'button', 'checkbox', 'radio'])) {
             $options['class'] = isset($options['class'])? $options['class'].' form-control' : 'form-control';
         }
 
