@@ -32,20 +32,47 @@ class BootstrapFormBuilder extends FormBuilder {
         return <<<HTML
             <script type="text/javascript" src="/laravalid/jquery.validate.laravalid.js"></script>
             <script type="text/javascript">
+                //slides errors up and then, removes the element
+                $.validator.prototype.hideThese = function(errors) {
+                    this.addWrapper(errors).slideUp('fast', function() { this.remove(); });
+                    errors.not(this.containers).text('');
+                };
+
                 function bootstrapField(el) {
                     var group = el.parent('.input-group');
                     return group.length? group : el;
                 }
+
+                /** @see http://jqueryvalidation.org/validate/ */
                 $('#$id').validate({
+                    wrapper: 'p',
+
                     errorPlacement: function(error, el) {
-                        bootstrapField(el).after(error);
+                        error.hide(); //hides the error, so we can append it and then slideDown
+
+                        var input = bootstrapField(el);
+                        switch (input.attr('type')) {
+                            case 'checkbox':
+                                input.next('label').after(error);
+                            break;
+
+                            case 'radio': //untested!
+                                input.parent().append(error);
+                            break;
+
+                            default:
+                                input.after(error);
+                        }
+                        error.slideDown();
                     },
+
                     highlight: function(el, error, valid) {
                         bootstrapField($(el)).addClass(error).removeClass(valid)
                             .parent().addClass(error+'-block').removeClass(valid+'-block');
                     },
                     unhighlight: function(el, error, valid) {
-                        bootstrapField($(el)).removeClass(error).addClass(valid)
+                        bootstrapField($(el))
+                            .removeClass(error).addClass(valid)
                             .parent().removeClass(error+'-block').addClass(valid+'-block');
                     }
                 });

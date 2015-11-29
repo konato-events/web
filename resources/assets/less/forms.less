@@ -8,14 +8,26 @@ label sup {
 }
 
 .form-group {
+    @margin-top: 5px;
+    p {
+        //the P here should not have margin, as it would cause issues with slideUp; the min-height is used
+        //so we can offset the zeroed margin-top in a subsequent help-block when the error vanishes
+        margin: 0;
+        min-height: @margin-top;
+        .help-block {
+            margin-top: 0;
+        }
+    }
     .help-block, label.error {
+        font-size: 80%;
         font-weight: normal;
         font-style: italic;
-        font-size: 80%;
-        margin: 5px 0 10px 0;
+        margin: @margin-top 0;
     }
-    label.error + .help-block {
-        margin-top: -5px;
+
+    label, input, .input-group-addon {
+        transition-property: color, border-color;
+        transition-duration: 0.5s;
     }
 
     &.error-block {
@@ -25,6 +37,10 @@ label sup {
         input, .input-group-addon {
             border-color: @red;
         }
+    }
+
+    input[type=checkbox] + label {
+        display: inline;
     }
 }
 
