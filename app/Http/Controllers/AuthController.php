@@ -105,10 +105,10 @@ class AuthController extends Controller {
 
     public function postFinishSignUp(FinishSignUpReq $req) {
         /** @var User $user */
+        $user = unserialize(session('signup.user'));
 
         try {
-            \DB::transaction(function() use ($req) {
-                $user = unserialize(session('signup.user'));
+            \DB::transaction(function() use ($req, $user) {
                 $user->username = $req->username;
                 $user->throwOnValidation = true; //todo: https://github.com/laravel-ardent/ardent/issues/279
                 $user->save();
@@ -150,7 +150,7 @@ class AuthController extends Controller {
                              ->with('provider', $req->provider);
         }
 
-        return redirect()->intended($this->redirectPath());
+        return $this->loginAfterSignUp($user);
     }
 
     /** @todo going to receive a ping whenever a user deauthorizes in the provider - test with Facebook! */
