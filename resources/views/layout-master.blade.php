@@ -103,14 +103,14 @@ $lang_tag = substr(LOCALE, 0, 2);
                                 <input type="submit" hidden="hidden" />
                             </form>
                         </li>
-                        <li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
+                        {{--<li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>--}}
 
                         <? if (\Auth::check()): ?>
                             <? /** @var \App\Models\User $user */ $user = \Auth::getUser() ?>
 
                             <li>
                                 <a href="<?=act('event@submit')?>" class="btn btn-theme <? if ($action == 'submit'): ?>btn-theme-dark<? endif ?>">
-                                    <i class="fa fa-calendar-plus"></i> <?=_('Submit event')?>
+                                    <i class="fa fa-calendar-plus-o"></i> <?=_('Submit event')?>
                                 </a>
                             </li>
 
