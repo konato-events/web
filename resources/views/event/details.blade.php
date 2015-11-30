@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController as Controller;use Carbon\Carbon;
 /** @var array  $speakers */
 /** @var int    $type */
 
-
+//FIXME: escape all user strings!!!!
 $title   = _r('%s - event', $event->title);
 $tagline = 'A tagline do evento vai aqui';
 
@@ -18,11 +18,12 @@ $date_fmt   = _('m/d/Y');
 $time_fmt   = _('h:i A');
 $date_fmt_lg= _('%A, %B %d, %Y'); //TODO: https://github.com/briannesbitt/Carbon/issues/535
 
-function url_main_part(string $url = null):string {
+function url_main_part(string $url = null, $include_path = false):string {
     if (!$url) {
         return '';
     }
-    preg_match('|^https?://(www.)?([\w\.]+)/?|', $url, $parts);
+    $good_part = $include_path? '(.+)' : '([\w\.]+)/?';
+    preg_match("|^https?://(www.)?$good_part|", $url, $parts);
     return (array_key_exists(2, $parts))? $parts[2] : $url;
 }
 
@@ -160,9 +161,15 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                     </a>
                 <? endif ?>
 
+                    <? if ($event->facebook): ?>
+                    <a href="<?=$event->facebook?>">
+                        <i class="fa fa-facebook"></i> <?=url_main_part($event->facebook, true)?>
+                    </a>
+                <? endif ?>
+
                 <? if ($event->facebook): ?>
-                    <a href="https://facebook.com/<?=$event->facebook?>">
-                        <i class="fa fa-facebook"></i> <?=$event->facebook?>
+                    <a href="<?=$event->facebook_event?>">
+                        <i class="fa fa-facebook-square"></i> <?=_('Facebook Event')?>
                     </a>
                 <? endif ?>
             </p>
@@ -198,11 +205,11 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
     <section id="content" class="content col-sm-12 col-md-8 col-lg-9">
 
         <div class="row">
-            <? if ($event->desc): ?>
+            <? if ($event->description): ?>
                 <div class="col-md-12 col-lg-5 pull-left">
                     <div>
                         <?=section_title('institution', _('The Event'), $event->tagline)?>
-                        <p class="basic-text">{!! strtr(e($event->desc), ["\n" => '</p><p class="basic-text">']) !!}</p>
+                        <p class="basic-text">{!! strtr(e($event->description), ["\n" => '</p><p class="basic-text">']) !!}</p>
                     </div>
 
                     {{--<p class="btn-row">--}}
@@ -330,10 +337,15 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 
     <aside id="sidebar-info" class="sidebar col-sm-12 col-md-4 col-lg-3">
         <div class="widget widget-sm">
+            <? if ($event->isStaff()): ?>
+                <a href="<?=act('event@edit', $event->id)?>" class="btn btn-theme btn-theme-light btn-wrap btn-md">
+                    <i class="fa fa-edit"></i> <?=_('Edit event information')?>
+                </a>
+            <? endif ?>
             <? if ($event->tickets_url): ?>
-                <button class="btn btn-theme btn-theme-light btn-wrap btn-md">
+                <a href="{{$event->tickets_url}}" class="btn btn-theme btn-theme-light btn-wrap btn-md">
                     <i class="fa fa-ticket"></i> <?=_('Buy ticket')?>
-                </button>
+                </a>
             <? endif ?>
 
             <button class="btn btn-theme btn-wrap btn-sm">
@@ -357,7 +369,8 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                     </div>
                     <div class="panel-body">
                         <p>
-                            <?=$event->location?>
+                            <?=nl2br(e($event->address."\n"))?>
+                            {{$event->location}}
                             <!--
                             <br>
                             <a href="#"><i class="fa fa-map"></i> <?=_('See on a map')?></a><br>
@@ -369,13 +382,14 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                                 <strong><?=_('Begin')?>:</strong> <?=$event->begin->formatLocalized($date_fmt_lg)?><br>
                                 <strong><?=_('End')?>:</strong>   <?=$event->end->formatLocalized($date_fmt_lg)?><br>
 
-                                <?=ucfirst(_r('from %s to %s',
+                                <? //TODO: include a way to input event times ?>
+                                <!--<?=ucfirst(_r('from %s to %s',
                                     $event->begin->format($time_fmt),
                                     $event->end->format($time_fmt)
-                                )) ?>
+                                )) ?>-->
                             <? else: ?>
                                 <?=ucfirst($event->begin->formatLocalized($date_fmt_lg))?><br>
-                                <?=ucfirst(_r('beginning at %s', $event->begin->format($time_fmt))) ?>
+                                <!--<?=ucfirst(_r('beginning at %s', $event->begin->format($time_fmt))) ?>-->
                             <? endif ?>
                             <!--
                                 <br>

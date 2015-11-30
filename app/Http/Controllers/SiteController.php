@@ -12,6 +12,8 @@ class SiteController extends Controller {
     }
 
     public function getValidation(string $rule) {
+        return 'true';
+        //FIXME: unique validations are only working for new resources!
         return app('laravalid')->remoteValidation($rule);
     }
 

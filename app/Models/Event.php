@@ -1,12 +1,19 @@
 <?php namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
  * @property int        id
  * @property string     title
  * @property string     location   Temporary field until we get the location table right (#130)
- * @property string     slug
+ * @property string     address
+ * @property string     postal_code
+ * @property string     description
  * @property string     website
  * @property string     tickets_url
  * @property string     facebook
@@ -26,8 +33,16 @@ use Carbon\Carbon;
  * @future-property Location  location
  * @property EventType  type
  * @property Event[]    issues
+ * @property Collection staff
  * @property User[]     speakers
  * @property Material[] materials
+ *
+ * @method BelongsTo        type
+ * @method HasManyThrough   issues
+ * @method BelongsToMany    staff
+ * @method BelongsTo        event_staff
+ * @method BelongsToMany    speakers
+ * @method HasMany          materials
  */
 class Event extends Base {
 
@@ -36,21 +51,33 @@ class Event extends Base {
     protected $dateFormat = 'Y-m-d H:i:sO';
 
     public static $rules = [
-        'title'         => ['required', 'min:4', 'max:100'],
-        'location'      => ['required', 'min:4', 'max:50'],
-        'website'       => ['url'],
-        'tickets_url'   => ['url'],
-        'free'          => ['boolean'],
-        'closed'        => ['boolean'],
-        'hidden'        => ['boolean'],
-        'event_type_id' => ['required']
+        'title'          => ['required', 'min:4', 'max:100', 'unique:events'],
+        'tagline'        => ['min:5', 'max:50'],
+        'description'    => ['min:20'],
+        'location'       => ['required', 'min:4', 'max:50'],
+        'address'        => ['min:10'],
+        'postal_code'    => ['min:3'],
+        'begin'          => ['date'],
+        'end'            => ['date'],
+        'website'        => ['url'],
+        'twitter'        => ['min:2'],
+        'hashtag'        => ['min:4'],
+        'facebook'       => ['url'],
+        'facebook_event' => ['url'],
+        'tickets_url'    => ['url'],
+        'free'           => ['boolean'],
+        'closed'         => ['boolean'],
+        'hidden'         => ['boolean'],
+        'event_type_id'  => ['required']
     ];
 
     public static $relationsData = [
-        'type'      => [self::BELONGS_TO, EventType::class],
-        'issues'    => [self::HAS_MANY_THROUGH, self::class, 'through' => EventIssue::class, 'firstKey' => 'id'],
-        'speakers'  => [self::BELONGS_TO_MANY, User::class, 'table' => 'event_speaker'],
-        'materials' => [self::HAS_MANY, Material::class],
+        'type'        => [self::BELONGS_TO, EventType::class],
+        'issues'      => [self::HAS_MANY_THROUGH, self::class, 'through' => EventIssue::class, 'firstKey' => 'id'],
+        'speakers'    => [self::BELONGS_TO_MANY, User::class, 'table' => 'event_speaker'],
+        'staff'       => [self::BELONGS_TO_MANY, User::class, 'table' => 'event_staff'],
+        'event_staff' => [self::HAS_MANY, EventStaff::class],
+        'materials'   => [self::HAS_MANY, Material::class],
         //        'location' => [self::BELONGS_TO, Location::class],
     ];
 
@@ -62,4 +89,29 @@ class Event extends Base {
         $img = User::generateGravatar($this->title, 128);
         return $img;
     }
+
+    public function setEndAttribute(string $datetime = null) {
+        $this->attributes['end'] = $datetime?: null;
+    }
+
+    protected function clearFacebookURL(string $url) {
+        $url = strtok($url, '?');
+        $url = strtr($url, ['facebook.com' => 'fb.com']);
+        $url = rtrim($url, '/');
+        return $url;
+    }
+
+    public function setFacebookAttribute(string $url = null) {
+        $this->attributes['facebook'] = $url? $this->clearFacebookURL($url) : null;
+    }
+
+    public function setFacebookEventAttribute(string $url = null) {
+        $this->attributes['facebook_event'] = $url? $this->clearFacebookURL($url) : null;
+    }
+
+    public function isStaff(User $user = null) {
+        $user = $user?: \Auth::user();
+        return (bool)$this->event_staff()->where('user_id', $user->id)->count();
+    }
+
 }

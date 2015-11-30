@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use LaravelArdent\Ardent\Ardent;
 
 /**
+ * @property int    id
  * @property string name
  * @property string email
  * @property string password

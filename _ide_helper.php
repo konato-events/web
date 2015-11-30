@@ -12306,6 +12306,15 @@ namespace {
          *
          * @static 
          */
+        public static function textarea($name, $value = null, $options = array()){
+            return \Resources\BootstrapFormBuilder::textarea($name, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
         public static function label($name, $value = null, $options = array()){
             return \Resources\BootstrapFormBuilder::label($name, $value, $options);
         }
@@ -12365,17 +12374,6 @@ namespace {
         public static function model($model, $options = array()){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
             return \Resources\BootstrapFormBuilder::model($model, $options);
-        }
-        
-        /**
-         * 
-         *
-         * @see Collective\Html\FormBuilder
-         * @static 
-         */
-        public static function textarea($name, $value = null, $options = array()){
-            //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\BootstrapFormBuilder::textarea($name, $value, $options);
         }
         
         /**
