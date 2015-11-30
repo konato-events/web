@@ -33,11 +33,11 @@ $lang_tag = substr(LOCALE, 0, 2);
     {{--<link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">--}}
     <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
     {{--<link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">--}}
-    <?php if($prod): ?>
+    <? if($prod): ?>
         <link rel="stylesheet" href="{{ elixir('css/styles.css') }}">
-    <?php else: ?>
+    <? else: ?>
         <link rel="stylesheet" href="/css/styles.css">
-    <?php endif ?>
+    <? endif ?>
 
     <link rel="stylesheet" href="/img/icons/extra-sites/extra-sites.css">
 
@@ -48,6 +48,16 @@ $lang_tag = substr(LOCALE, 0, 2);
 
     @yield('css')
     @yield('head-js')
+
+    <?php
+        $host  = (isset($_SERVER['HTTPS'])? 'https://' : 'http://').$_SERVER['HTTP_HOST'];
+        $path  = $host.$_SERVER['REQUEST_URI'];
+        $query = $_SERVER['QUERY_STRING']? '&'.$_SERVER['QUERY_STRING'] : '';
+        foreach (\App\Providers\AppServiceProvider::getAvailableLocales() as $locale) {
+            echo "<link rel='alternate' hreflang='$locale' href='{$path}?locale={$locale}{$query}' />";
+        }
+    ?>
+    <link rel="alternate" hreflang="x-default" href="<?=$path?><?=$query? '?'.$query : ''?>" />
 </head>
 
 <?php
@@ -243,6 +253,20 @@ $lang_tag = substr(LOCALE, 0, 2);
 {{--<script src="/assets/plugins/smooth-scrollbar.min.js"></script>--}}
 <?php if ($prod): ?>
     <script src="{{ elixir('js/app.js') }}"></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-58159624-2', 'auto');
+        ga('require', 'linkid');
+        <? if (\Auth::check()): ?>
+            ga('set', '&uid', '<?=Auth::user()->id?>');
+        <? endif ?>
+        ga('send', 'pageview');
+    </script>
 <?php else: ?>
     <script src="/js/app.js"></script>
 <?php endif ?>

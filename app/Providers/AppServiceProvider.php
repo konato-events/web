@@ -1,14 +1,12 @@
-<?php
-
-namespace App\Providers;
-
-use Illuminate\Support\Facades\Log;
+<?php namespace App\Providers;
+use Log;
 use Illuminate\Support\ServiceProvider;
 use \Illuminate\View\Factory as View;
 
 class AppServiceProvider extends ServiceProvider {
 
-    const LOCALES_PATH = '../resources/locales';
+    const LOCALES_PATH   = '../resources/locales';
+    const DEFAULT_LOCALE = 'en_CA';
 
     /**
      * Bootstrap any application services.
@@ -122,12 +120,11 @@ class AppServiceProvider extends ServiceProvider {
         if (defined('LOCALE')) {
             return;
         }
-        define('DEFAULT_LOCALE', 'en_CA');
 
         $valid_locale = function ($locale) use ($domain) {
             if (!$locale) return false;
-            if ($locale == DEFAULT_LOCALE) {
-                Log::info("Using default locale: ".DEFAULT_LOCALE);
+            if ($locale == self::DEFAULT_LOCALE) {
+                Log::info("Using default locale: ".self::DEFAULT_LOCALE);
                 return true;
             }
 
@@ -162,11 +159,18 @@ class AppServiceProvider extends ServiceProvider {
             }
 
             if (!defined('LOCALE')) { //could not find any useful language. fallback!
-                define('LOCALE', DEFAULT_LOCALE);
+                define('LOCALE', self::DEFAULT_LOCALE);
             }
         }
 
         // as we are returning arrays from the lang files, we can use gettext there as well :)
         \App::setLocale('gettext');
+    }
+
+    /**
+     * @todo cache this!!
+     */
+    public static function getAvailableLocales() {
+        return [self::DEFAULT_LOCALE] + array_diff(scandir(self::LOCALES_PATH), ['.', '..', 'README.md']);
     }
 }
