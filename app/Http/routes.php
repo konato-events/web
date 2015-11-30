@@ -33,4 +33,12 @@ Route::get('speaker/{id_slug}', 'UserController@getSpeaker');
 /************************************************************/
 /* ************** CATCH-ALL / MAIN ROUTES ***************** */
 /************************************************************/
+
+//imported from vendor/barryvdh/laravel-debugbar/src/ServiceProvider.php:72
+//TODO: without re-declaring those here, the SiteController catch-all would get precedence
+Route::get('_debugbar/open', ['uses' => 'OpenHandlerController@handle', 'as' => 'debugbar.openhandler']);
+Route::get('_debugbar/clockwork/{id}', ['uses' => 'OpenHandlerController@clockwork', 'as' => 'debugbar.clockwork']);
+Route::get('_debugbar/assets/stylesheets', ['uses' => 'AssetController@css', 'as' => 'debugbar.assets.css']);
+Route::get('_debugbar/assets/javascript', ['uses' => 'AssetController@js', 'as' => 'debugbar.assets.js']);
+
 Route::controller('/', 'SiteController');

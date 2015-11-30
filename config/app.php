@@ -149,6 +149,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\BootstrapLaravalidServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
     ],
