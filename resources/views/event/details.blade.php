@@ -1,27 +1,27 @@
 <?php
-use App\Http\Controllers\UserController as Controller;
+use App\Http\Controllers\UserController as Controller;use Carbon\Carbon;
 
 /** @var string $name_slug */
 /** @var int    $id */
-/** @var array  $events */
+/** @var \App\Models\Event  $event */
 /** @var array  $materials */
 /** @var array  $speakers */
 /** @var int    $type */
 
-$event = current(array_filter($events, function($event) use ($name_slug) {
-    return str_slug($event[1], '_') == $name_slug;
-}));
-list($img, $name, $place, $begin, $end, $desc, $status, $url, $twitter, $hashtag) = $event;
 
-$title   = _r('%s - event', $name);
+$title   = _r('%s - event', $event->title);
 $tagline = 'A tagline do evento vai aqui';
 
-$img_height = getimagesize(APP_ROOT.'/public/'.$img)[1];
+$img_height = getimagesize($event->publicImg)[1];
 $img_height = ($img_height > 250? 250 : $img_height);
 $date_fmt   = _('m/d/Y');
-$date_fmt_lg= _('l, F j, Y');
+$time_fmt   = _('h:i A');
+$date_fmt_lg= _('%A, %B %d, %Y'); //TODO: https://github.com/briannesbitt/Carbon/issues/535
 
-function url_main_part(string $url):string {
+function url_main_part(string $url = null):string {
+    if (!$url) {
+        return '';
+    }
     preg_match('|^https?://(www.)?([\w\.]+)/?|', $url, $parts);
     return (array_key_exists(2, $parts))? $parts[2] : $url;
 }
@@ -43,11 +43,10 @@ SECTION;
 
 //TODO: cache this in memcache
 //TODO: here we can include later on more information on the days, such as: do we need to display month/year, or only the day would suffice? this could be done turning the array into: ['structure' => ['show_month' => true], 'days' => [timestamps] ]
-function get_days(int $begin, int $end = null):array {
+
+function get_days(Carbon $begin, Carbon $end = null):array {
     $end = $end ?? $begin;
 
-    $begin   = new DateTime("@$begin");
-    $end     = new DateTime("@$end");
     $diff    = $begin->diff($end);
     $one_day = new DateInterval('P1D');
     $days    = [];
@@ -56,16 +55,16 @@ function get_days(int $begin, int $end = null):array {
     }
     return $days;
 }
-$days = get_days($begin, $end);
-$editions = [2015, 2012, 2011];
+$days = get_days($event->begin, $event->end);
+$editions = [];
 
-$dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):string {
+$dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
     if ($compact) {
         $date_fmt = substr($date_fmt, 0, -2);
     }
-    $str = date($date_fmt, $begin);
-    if ($end) {
-        $str .= ' ~ '.date($date_fmt, $end);
+    $str = $event->begin->format($date_fmt);
+    if ($event->end) {
+        $str .= ' ~ '.$event->end->format($date_fmt);
     }
     return $str;
 }
@@ -135,21 +134,42 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
 @section('header-bg', '/img/bg-event.jpg')
 @section('header-content')
     <div class="row">
-        <div class="details col-md-7 col-sm-7">
-            <h1><?=$name?></h1>
+        <div class="details col-md-12">
+        {{--<div class="details col-md-7 col-sm-7">--}}
+            <h1><?=$event->title?></h1>
             <? if (false): ?>
                 <span class="status" data-toggle="tooltip" title="<?=_('This is a private event - acessible only by a group of selected people')?>"><?=_('Closed')?></span>
             <? endif ?>
             <p class="date"><?=$dates_str()?></p>
             <p class="links">
-                <a href="<?=$url?>"><i class="fa fa-globe"></i> <?=url_main_part($url)?></a>
-                <a href="https://twitter.com/hashtag/<?=$hashtag?>"><i class="fa fa-quote-left"></i> #<?=$hashtag?></a>
-                <a href="https://twitter.com/<?=$twitter?>"><i class="fa fa-twitter"></i> @<?=$twitter?></a>
-                <a href="https://facebook.com/<?=$twitter?>"><i class="fa fa-facebook"></i> <?=$twitter?> </a>
+                <? if ($event->website): ?>
+                    <a href="<?=$event->website?>">
+                        <i class="fa fa-globe"></i> <?=url_main_part($event->website)?>
+                    </a>
+                <? endif ?>
+
+                <? if ($event->hashtag): ?>
+                    <a href="https://twitter.com/hashtag/<?=$event->hashtag?>">
+                        <i class="fa fa-quote-left"></i> #<?=$event->hashtag?>
+                    </a>
+                <? endif ?>
+
+                <? if ($event->twitter): ?>
+                    <a href="https://twitter.com/<?=$event->twitter?>">
+                        <i class="fa fa-twitter"></i> @<?=$event->twitter?>
+                    </a>
+                <? endif ?>
+
+                <? if ($event->facebook): ?>
+                    <a href="https://facebook.com/<?=$event->facebook?>">
+                        <i class="fa fa-facebook"></i> <?=$event->facebook?>
+                    </a>
+                <? endif ?>
             </p>
         </div>
 
 
+        <!--
         <div class="stats col-sm-5">
             <p><?=_r('%s&nbsp;speakers on %s&nbsp;sessions and %s&nbsp;cases', '<strong>'.rand(5,50).'</strong>', '<strong>'.rand(20,30).'</strong>', '<strong>'.rand(5,10).'</strong>')?></p>
             <p><?=_r('%s&nbsp;resumes and %s&nbsp;articles submitted', '<strong>'.rand(5,50).'</strong>', '<strong>'.rand(20,30).'</strong>')?></p>
@@ -157,17 +177,20 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
             <p><?=_r('%s&nbsp;of&nbsp;%s known participants', '<strong>'.rand(5,50), rand(20,30).'</strong>')?></p>
             <p><strong><?=rand(5,50)?></strong> <?=_('followers')?></p>
         </div>
+        -->
     </div>
 @endsection
 
 @section('content')
 <ul class="container nav nav-tabs nav-tabs-bottom" role="tablist">
-    <a href="#"><?=_('Editions')?>:</a>
-    <? foreach($editions as $i => $edition): ?>
-        <li role="presentation" <? if ($i == 0): ?>class="active"<? endif ?>>
-            <a role="tab" href="#"><?=$edition?></a>
-        </li>
-    <? endforeach ?>
+    <? if (sizeof($event->issues)): ?>
+        <a href="#"><?=_('Editions')?>:</a>
+        <? foreach($editions as $i => $edition): ?>
+            <li role="presentation" <? if ($i == 0): ?>class="active"<? endif ?>>
+                <a role="tab" href="#"><?=$edition?></a>
+            </li>
+        <? endforeach ?>
+    <? endif ?>
 </ul>
 
 <section class="page-section with-sidebar sidebar-right first-section">
@@ -175,20 +198,22 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
     <section id="content" class="content col-sm-12 col-md-8 col-lg-9">
 
         <div class="row">
-            <div class="col-md-12 col-lg-5 pull-left">
-                <div>
-                    <?=section_title('institution', _('The Event'), $tagline)?>
-                    <p class="basic-text">{!! strtr(e($desc), ["\n" => '</p><p class="basic-text">']) !!}</p>
+            <? if ($event->desc): ?>
+                <div class="col-md-12 col-lg-5 pull-left">
+                    <div>
+                        <?=section_title('institution', _('The Event'), $event->tagline)?>
+                        <p class="basic-text">{!! strtr(e($event->desc), ["\n" => '</p><p class="basic-text">']) !!}</p>
+                    </div>
+
+                    {{--<p class="btn-row">--}}
+                        {{--<a href="#" class="btn btn-theme btn-theme-lg scroll-to">Register <i class="fa fa-arrow-circle-right"></i></a>--}}
+                        {{--<a href="#" class="btn btn-theme btn-theme-lg btn-theme-transparent">Watch video</a>--}}
+                    {{--</p>--}}
                 </div>
 
-                {{--<p class="btn-row">--}}
-                    {{--<a href="#" class="btn btn-theme btn-theme-lg scroll-to">Register <i class="fa fa-arrow-circle-right"></i></a>--}}
-                    {{--<a href="#" class="btn btn-theme btn-theme-lg btn-theme-transparent">Watch video</a>--}}
-                {{--</p>--}}
-            </div>
-
-            <hr class="page-divider transparent visible-md"/>
-
+                <hr class="page-divider transparent visible-md"/>
+            <? endif ?>
+<!--
             <div class="col-md-12 col-lg-7 pull-right">
                 <?=section_title('calendar-check-o', _('Schedule'), $dates_str(true))?>
                 <? if (sizeof($days > 1)): ?>
@@ -264,7 +289,9 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
                 </div>
             </div>
 
+
             <hr class="page-divider transparent visible-md"/>
+-->
 
             <div class="col-md-12 col-lg-5 pull-left">
                 <?=section_title('microphone', _('The speakers'))?>
@@ -318,21 +345,34 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><?=_('When & Where')?></h4>
+                        <h4 class="panel-title"><?=_('Where & When')?></h4>
                     </div>
                     <div class="panel-body">
                         <p>
-                            NYC - Financial Freedom Investor<br>
-                            Madison Ave<br>
-                            New York, NY 10010<br>
+                            <?=$event->location?>
+                            <!--
+                            <br>
                             <a href="#"><i class="fa fa-map"></i> <?=_('See on a map')?></a><br>
                             <a href="#"><i class="fa fa-map-signs"></i> <?=nbsp(_('Get directions'))?></a>
+                            -->
                         </p>
                         <p>
-                            <? if ($end): ?><strong><?=_('Begin')?>:</strong> <? endif ?><?=date($date_fmt_lg, $begin)?><br>
-                            <? if ($end): ?><strong><?=_('End')?>:</strong> <?=date($date_fmt_lg, $end)?><br><? endif ?>
-                            from 9:00 AM to 6:30 PM<br>
-                            <a href="#"><i class="fa fa-calendar-plus-o"></i> <?=_('Add to My Calendar')?></a>
+                            <? if ($event->end): ?>
+                                <strong><?=_('Begin')?>:</strong> <?=$event->begin->formatLocalized($date_fmt_lg)?><br>
+                                <strong><?=_('End')?>:</strong>   <?=$event->end->formatLocalized($date_fmt_lg)?><br>
+
+                                <?=ucfirst(_r('from %s to %s',
+                                    $event->begin->format($time_fmt),
+                                    $event->end->format($time_fmt)
+                                )) ?>
+                            <? else: ?>
+                                <?=ucfirst($event->begin->formatLocalized($date_fmt_lg))?><br>
+                                <?=ucfirst(_r('beginning at %s', $event->begin->format($time_fmt))) ?>
+                            <? endif ?>
+                            <!--
+                                <br>
+                                <a href="#"><i class="fa fa-calendar-plus-o"></i> <?=_('Add to My Calendar')?></a>
+                            -->
                         </p>
                     </div>
                 </div>
@@ -347,6 +387,7 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
                     </div>
                 </div>
 
+                <!--
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"><?=_('Organization')?></h4>
@@ -364,6 +405,7 @@ $dates_str = function(bool $compact = false) use ($begin, $end, $date_fmt):strin
                         </a>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </aside>

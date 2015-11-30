@@ -1,5 +1,4 @@
-<?php
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Models\Event as Model;
 use Illuminate\Http\Request;
@@ -23,7 +22,8 @@ class EventController extends Controller {
 
 	public function getDetails(string $id_slug) {
 		list($id, $name_slug) = unslug($id_slug);
-        return view('event.details', compact('id', 'name_slug'));
+        $event = Model::find($id);
+        return view('event.details', compact('id', 'name_slug', 'event'));
 	}
 
 	public function getTheme(string $id_slug, Request $req) {

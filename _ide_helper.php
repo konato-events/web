@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.22 (LTS) on 2015-11-27.
+ * Generated for Laravel 5.1.24 (LTS) on 2015-11-30.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -6789,15 +6789,28 @@ namespace {
     class Lang extends \Illuminate\Support\Facades\Lang{
         
         /**
-         * Determine if a translation exists.
+         * Determine if a translation exists for a given locale.
          *
          * @param string $key
          * @param string $locale
          * @return bool 
          * @static 
          */
-        public static function has($key, $locale = null){
-            return \Illuminate\Translation\Translator::has($key, $locale);
+        public static function hasForLocale($key, $locale = null){
+            return \Illuminate\Translation\Translator::hasForLocale($key, $locale);
+        }
+        
+        /**
+         * Determine if a translation exists.
+         *
+         * @param string $key
+         * @param string $locale
+         * @param bool $fallback
+         * @return bool 
+         * @static 
+         */
+        public static function has($key, $locale = null, $fallback = true){
+            return \Illuminate\Translation\Translator::has($key, $locale, $fallback);
         }
         
         /**
@@ -6806,11 +6819,12 @@ namespace {
          * @param string $key
          * @param array $replace
          * @param string $locale
+         * @param bool $fallback
          * @return string 
          * @static 
          */
-        public static function get($key, $replace = array(), $locale = null){
-            return \Illuminate\Translation\Translator::get($key, $replace, $locale);
+        public static function get($key, $replace = array(), $locale = null, $fallback = true){
+            return \Illuminate\Translation\Translator::get($key, $replace, $locale, $fallback);
         }
         
         /**
@@ -9818,6 +9832,7 @@ namespace {
          *
          * @param array $controllers
          * @return void 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function controllers($controllers){
@@ -9831,6 +9846,7 @@ namespace {
          * @param string $controller
          * @param array $names
          * @return void 
+         * @deprecated since version 5.1.
          * @static 
          */
         public static function controller($uri, $controller, $names = array()){
@@ -12254,8 +12270,17 @@ namespace {
          *
          * @static 
          */
-        public static function labelCheckbox($name, $label, $value, $options = array()){
+        public static function labelCheckbox($name, $label, $value = null, $options = array()){
             return \Resources\BootstrapFormBuilder::labelCheckbox($name, $label, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function labelSelect($name, $label, $list = array(), $selected = null, $options = array()){
+            return \Resources\BootstrapFormBuilder::labelSelect($name, $label, $list, $selected, $options);
         }
         
         /**
@@ -12265,6 +12290,15 @@ namespace {
          */
         public static function input($type, $name, $value = null, $options = array()){
             return \Resources\BootstrapFormBuilder::input($type, $name, $value, $options);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function select($name, $list = array(), $selected = null, $options = array()){
+            return \Resources\BootstrapFormBuilder::select($name, $list, $selected, $options);
         }
         
         /**
@@ -12342,17 +12376,6 @@ namespace {
         public static function textarea($name, $value = null, $options = array()){
             //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
             return \Resources\BootstrapFormBuilder::textarea($name, $value, $options);
-        }
-        
-        /**
-         * 
-         *
-         * @see Collective\Html\FormBuilder
-         * @static 
-         */
-        public static function select($name, $list = array(), $selected = null, $options = array()){
-            //Method inherited from \LaravelArdent\Laravalid\FormBuilder            
-            return \Resources\BootstrapFormBuilder::select($name, $list, $selected, $options);
         }
         
         /**
@@ -12484,6 +12507,34 @@ namespace {
         public static function date($name, $value = null, $options = array()){
             //Method inherited from \Collective\Html\FormBuilder            
             return \Resources\BootstrapFormBuilder::date($name, $value, $options);
+        }
+        
+        /**
+         * Create a datetime input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function datetime($name, $value = null, $options = array()){
+            //Method inherited from \Collective\Html\FormBuilder            
+            return \Resources\BootstrapFormBuilder::datetime($name, $value, $options);
+        }
+        
+        /**
+         * Create a datetime-local input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function datetimeLocal($name, $value = null, $options = array()){
+            //Method inherited from \Collective\Html\FormBuilder            
+            return \Resources\BootstrapFormBuilder::datetimeLocal($name, $value, $options);
         }
         
         /**
@@ -12646,6 +12697,20 @@ namespace {
         }
         
         /**
+         * Create a color input field.
+         *
+         * @param string $name
+         * @param string $value
+         * @param array $options
+         * @return string 
+         * @static 
+         */
+        public static function color($name, $value = null, $options = array()){
+            //Method inherited from \Collective\Html\FormBuilder            
+            return \Resources\BootstrapFormBuilder::color($name, $value, $options);
+        }
+        
+        /**
          * Create a submit button element.
          *
          * @param string $value
@@ -12723,7 +12788,7 @@ namespace {
         /**
          * Get the session store implementation.
          *
-         * @return \Illuminate\Session\Store $session
+         * @return \Illuminate\Session\SessionInterface $session
          * @static 
          */
         public static function getSessionStore(){
@@ -12734,7 +12799,7 @@ namespace {
         /**
          * Set the session store implementation.
          *
-         * @param \Illuminate\Session\Store $session
+         * @param \Illuminate\Session\SessionInterface $session
          * @return $this 
          * @static 
          */

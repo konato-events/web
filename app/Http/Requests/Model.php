@@ -1,10 +1,9 @@
-<?php
-namespace App\Http\Requests;
+<?php namespace App\Http\Requests;
 
 /**
  * Model requests automatically discover their model rules given their classnames.
  * Models are autoloaded from \App\Models namespace.
- * @todo could this be done directly inside the Ardent's model class?
+ * @todo could this be done directly inside the Ardent package?
  * @package App\Http\Requests
  */
 abstract class Model extends Request {

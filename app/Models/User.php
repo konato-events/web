@@ -76,7 +76,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         $this->picture = $this->picture ?? self::generateGravatar($this->email, 1920);
     }
 
-    protected static function generateGravatar(string $email, int $size = 80) {
+    public static function generateGravatar(string $email, int $size = 80) {
         $rating = 'g';  //g | pg | r | x
         $set    = 'identicon'; //mm | identicon | monsterid | wavatar
 
