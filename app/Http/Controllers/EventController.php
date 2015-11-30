@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Event;
+use App\Models\Event as Model;
 use Illuminate\Http\Request;
 
 class EventController extends Controller {
@@ -33,14 +33,16 @@ class EventController extends Controller {
 	}
 
 	public function getSubmit() {
-		$event = new Event();
+		$event = new Model();
 		return view('event.submit', compact('event'));
 	}
 
-	public function postSubmit(EventReq $req) {
-		$event = new Event();
+	public function postSubmit(Event $req) {
+		$event = new Model();
 		$event->save();
-		$id_slug = slugify($event->id, $event->name);
+		$id_slug = slugify($event->id, $event->title);
 		return redirect()->action('EventController@getDetails', $id_slug);
 	}
 }
+
+class Event extends \App\Http\Requests\Model {}

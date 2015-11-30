@@ -8,6 +8,9 @@ class Base extends Ardent {
     public $throwOnValidation = true;
 //    public static $throwOnFind = true;
 
+    public $autoHydrateEntityFromInput = true;
+    public $autoPurgeRedundantAttributes = true;
+
     /** @todo this should be sent to Ardent itself */
     public static $passwordAttributes = ['password'];
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-11-27 02:15-0300\n"
-"PO-Revision-Date: 2015-11-27 02:19-0300\n"
+"POT-Creation-Date: 2015-11-30 00:37-0300\n"
+"PO-Revision-Date: 2015-11-30 00:37-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -20,6 +20,46 @@ msgstr ""
 #: app/Models/SocialNetwork.php:5
 msgid "Personal website"
 msgstr "Site pessoal"
+
+#: app/Models/EventType.php:6
+msgid "Meeting"
+msgstr "Encontro"
+
+#: app/Models/EventType.php:6
+msgid "Single talk"
+msgstr "Palestra individual"
+
+#: app/Models/EventType.php:6
+msgid "Talks"
+msgstr "Ciclo de palestras"
+
+#: app/Models/EventType.php:6
+msgid "Course"
+msgstr "Curso"
+
+#: app/Models/EventType.php:6
+msgid "Workshop"
+msgstr "Workshop"
+
+#: app/Models/EventType.php:6
+msgid "Conference"
+msgstr "Conferência"
+
+#: app/Models/EventType.php:6
+msgid "Symposium"
+msgstr "Simpósio"
+
+#: app/Models/EventType.php:6
+msgid "Congress"
+msgstr "Congresso"
+
+#: app/Models/EventType.php:6
+msgid "University meeting"
+msgstr "Encontro universitário"
+
+#: app/Models/EventType.php:6
+msgid "Entertainment"
+msgstr "Entretenimento"
 
 #: app/Providers/AppServiceProvider.php:52
 msgid "Congresses"
@@ -41,7 +81,7 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: resources/BootstrapFormBuilder.php:121
+#: resources/BootstrapFormBuilder.php:163
 #: resources/lang/gettext/validation.php:6
 msgid "Required field"
 msgstr "Campo obrigatório"
@@ -642,19 +682,19 @@ msgstr "%s foi palestrante"
 msgid "See more details"
 msgstr "Veja mais detalhes"
 
-#: resources/views/event/submit.blade.php:4
+#: resources/views/event/submit.blade.php:5
 msgid "Submit a new event"
 msgstr "Envie um novo evento"
 
-#: resources/views/event/submit.blade.php:6
+#: resources/views/event/submit.blade.php:7
 msgid "Help the community grow, telling us about a new event"
 msgstr "Ajude a comunidade a crescer, nos conte sobre um novo evento"
 
-#: resources/views/event/submit.blade.php:25
+#: resources/views/event/submit.blade.php:26
 msgid "Title"
 msgstr "Título"
 
-#: resources/views/event/submit.blade.php:27
+#: resources/views/event/submit.blade.php:28
 msgid ""
 "What's the event name? Probably something like 'React.js Conf' or "
 "'International Congress of Mathematicians'?"
@@ -662,15 +702,23 @@ msgstr ""
 "Qual o nome do evento? Provavelmente algo como 'React.js Conf' ou 'Congresso "
 "Internacional de Matemáticos'?"
 
-#: resources/views/event/submit.blade.php:30
+#: resources/views/event/submit.blade.php:31
 msgid "City"
 msgstr "Cidade"
 
-#: resources/views/event/submit.blade.php:32
+#: resources/views/event/submit.blade.php:33
+msgid "Event type"
+msgstr "Tipos de evento"
+
+#: resources/views/event/submit.blade.php:33
+msgid "Select an option"
+msgstr "Selecione uma opção"
+
+#: resources/views/event/submit.blade.php:35
 msgid "This is a free event"
 msgstr "Este evento é gratuito"
 
-#: resources/views/event/submit.blade.php:33
+#: resources/views/event/submit.blade.php:36
 msgid ""
 "Tell users if they have to pay to get in or not. In both cases you'll be "
 "able to provide a page for participants to register or buy tickets."
@@ -679,11 +727,11 @@ msgstr ""
 "será possível indicar uma página para os participantes se registrarem ou "
 "comprarem ingressos."
 
-#: resources/views/event/submit.blade.php:35
+#: resources/views/event/submit.blade.php:38
 msgid "This is a closed-doors / invite-only event"
 msgstr "Este é um evento de portas fechadas / somente para convidados"
 
-#: resources/views/event/submit.blade.php:36
+#: resources/views/event/submit.blade.php:39
 msgid ""
 "You can inform users they cannot buy entrances to this event. Some examples: "
 "event open to institution students only; employees company meeting; etc. "
@@ -695,11 +743,11 @@ msgstr ""
 "funcionários da empresa; etc. Isso é somente informativo: se este for um "
 "evento privado, você também deve marcar a próxima opção."
 
-#: resources/views/event/submit.blade.php:38
+#: resources/views/event/submit.blade.php:41
 msgid "This event should be kept hidden for now"
 msgstr "Este evento deve ficar oculto por enquanto"
 
-#: resources/views/event/submit.blade.php:39
+#: resources/views/event/submit.blade.php:42
 msgid ""
 "This can be used if it's private, or you're still planning it and don't want "
 "the general public to see it. It will be hidden from searches and only "
@@ -709,7 +757,7 @@ msgstr ""
 "planejando e não quiser que o público veja. Ele não vai aparecer nas "
 "pesquisas e só vai ser acessível pela URL."
 
-#: resources/views/event/submit.blade.php:44
+#: resources/views/event/submit.blade.php:47
 msgid "Submit it"
 msgstr "Enviar evento"
 
@@ -923,9 +971,6 @@ msgstr "Ver perfil completo"
 
 #~ msgid "Speakers on your frequent themes"
 #~ msgstr "Palestrantes nos seus temas mais co"
-
-#~ msgid "Event type"
-#~ msgstr "Tipos de evento"
 
 #~ msgid "Theme or keyword"
 #~ msgstr "Tema ou palavra-chave"

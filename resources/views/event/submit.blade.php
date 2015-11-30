@@ -1,6 +1,7 @@
 <?php
 /** @var \App\Models\Event $event */
 /** @var \Illuminate\Support\MessageBag $errors */
+use App\Models\EventType;
 $title     = _('Submit a new event');
 $header    = $title;
 $subheader = _('Help the community grow, telling us about a new event');
@@ -28,6 +29,8 @@ const FORM_ID = 'submit';
     ])?>
 
     <?=Form::labelInput('location', _('City'), 'text')?>
+
+    <?=Form::labelSelect('event_type_id', _('Event type'), EventType::toTransList(_('Select an option')))?>
 
     <?=Form::labelCheckbox('free', _('This is a free event'), null, [
         'help' => _('Tell users if they have to pay to get in or not. In both cases you\'ll be able to provide a page for participants to register or buy tickets.')
