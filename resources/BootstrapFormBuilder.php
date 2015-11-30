@@ -113,6 +113,16 @@ HTML;
         );
     }
 
+    public function labelSelect($name, $label, array $list = [], $selected = null, array $options = []) {
+        $this->normalizeInputOptions($options);
+
+        return $this->group(
+            $this->label($name, $label, $options['label']),
+            $this->select($name, $list, $selected, $options['input']),
+            isset($options['help'])? "<p class='help-block'>{$options['help']}</p>" : ''
+        );
+    }
+
     public function input($type, $name, $value = null, $options = []) {
         $group = false;
         $html  = '';
@@ -134,6 +144,11 @@ HTML;
         }
 
         return $group? "<div class='input-group'>$html</div>" : $html;
+    }
+
+    public function select($name, $list = [], $selected = null, $options = []) {
+        $options['class'] = isset($options['class'])? $options['class'].' form-control' : 'form-control';
+        return parent::select($name, $list, $selected, $options);
     }
 
 //TODO: these two methods could be sent into Laravalid\FormBuilder if we can find a way to put the required-field title into the config files

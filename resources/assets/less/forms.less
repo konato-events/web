@@ -7,6 +7,17 @@ label sup {
     top: 0.25em;
 }
 
+select.form-control {
+    background: url(/img/chevron-down-light.png) no-repeat right 8px top 50%;
+    &:focus {
+        background-image: url(/img/chevron-down-focus.png);
+    }
+}
+
+option[value=''] {
+    font-style: italic;
+}
+
 .form-group {
     @margin-top: 5px;
     p {
