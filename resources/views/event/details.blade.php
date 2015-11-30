@@ -293,26 +293,30 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
             <hr class="page-divider transparent visible-md"/>
 -->
 
-            <div class="col-md-12 col-lg-5 pull-left">
-                <?=section_title('microphone', _('The speakers'))?>
-                @include('components.speakers_list', ['speakers' => $speakers, 'columns' => true])
-            </div>
+            <? if (sizeof($event->speakers)): ?>
+                <div class="col-md-12 col-lg-5 pull-left">
+                    <?=section_title('microphone', _('The speakers'))?>
+                    @include('components.speakers_list', ['speakers' => $event->speakers, 'columns' => true])
+                </div>
 
-            <hr class="page-divider transparent visible-md"/>
+                <hr class="page-divider transparent visible-md"/>
+            <? endif ?>
 
-            <div class="col-md-12 col-lg-5 pull-left">
-                <?=section_title('download', _('Materials'))?>
-                <ul class="materials">
-                    <? foreach ($materials as $material): ?>
-                        <li class="<?=$material[2]?>">
-                            <a href="<?=$material[0]?>" target="_blank" class="title"><?=$material[1]?></a>,
-                            <?=_('by')?> <a href="<?=act('user@speaker', slugify(0, $material[3][1]))?>" class="speaker"><?=$material[3][1]?></a>
-                        </li>
-                    <?php endforeach ?>
-                </ul>
-            </div>
+            <? if (sizeof($event->speakers)): ?>
+                <div class="col-md-12 col-lg-5 pull-left">
+                    <?=section_title('download', _('Materials'))?>
+                    <ul class="materials">
+                        <? foreach ($materials as $material): ?>
+                            <li class="<?=$material[2]?>">
+                                <a href="<?=$material[0]?>" target="_blank" class="title"><?=$material[1]?></a>,
+                                <?=_('by')?> <a href="<?=act('user@speaker', slugify(0, $material[3][1]))?>" class="speaker"><?=$material[3][1]?></a>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
 
-            {{--<hr class="page-divider transparent visible-md"/>--}}
+                {{--<hr class="page-divider transparent visible-md"/>--}}
+            <? endif ?>
 
             <!--<div class="col-md-12 col-lg-5 pull-left">
                 <?=section_title('thumbs-up', _('Event sponsors'))?>
@@ -326,9 +330,11 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 
     <aside id="sidebar-info" class="sidebar col-sm-12 col-md-4 col-lg-3">
         <div class="widget widget-sm">
-            <button class="btn btn-theme btn-theme-light btn-wrap btn-md">
-                <i class="fa fa-ticket"></i> <?=_('Buy ticket')?>
-            </button>
+            <? if ($event->tickets_url): ?>
+                <button class="btn btn-theme btn-theme-light btn-wrap btn-md">
+                    <i class="fa fa-ticket"></i> <?=_('Buy ticket')?>
+                </button>
+            <? endif ?>
 
             <button class="btn btn-theme btn-wrap btn-sm">
                 <i class="fa fa-hand-o-up"></i> <?=_('I\'m going!')?>
@@ -337,7 +343,9 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
             <button class="btn btn-theme btn-wrap btn-sm">
                 <i class="fa fa-mail-forward"></i> <?=_('Follow this event')?>
             </button>
-            <a class="note" href="#"><?=_('See my following preferences')?></a>
+            <!--
+                <a class="note" href="#"><?=_('See my following preferences')?></a>
+            -->
         </div>
 
         <?php //todo: make this sidebar more mobile-friendly, with blocks staying side by side if they have little information to make a full 12 column block ?>
