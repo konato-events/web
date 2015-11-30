@@ -15,6 +15,7 @@ class UserController extends Controller {
 
     //FIXME: Yet another Laravel router "bug". If we define the user/{id_slug} route before the controller route, we get wrong paths, but if we define later, the paths work fine but the actual route, don't. Fixing paths is harder, so we implemented this missingMethod to override the not found route issue.
     public function missingMethod($id_slug = []) {
+        $id_slug = is_array($id_slug)? current($id_slug) : $id_slug;
         if (preg_match(app('router')->getPatterns()['id_slug'], $id_slug)) {
             view()->share('action_name', 'profile');
             return $this->getProfile($id_slug);
