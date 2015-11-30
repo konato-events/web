@@ -369,7 +369,9 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                     </div>
                     <div class="panel-body">
                         <p>
-                            <?=nl2br(e($event->address."\n"))?>
+                            <? if ($event->address): ?>
+                                <?=nl2br(e($event->address))?><br/>
+                            <? endif ?>
                             {{$event->location}}
                             <!--
                             <br>

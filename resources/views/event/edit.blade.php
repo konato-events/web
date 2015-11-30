@@ -86,11 +86,7 @@ function icon(string $name) {
 
                         <?=Form::labelInput('postal_code', _('Postal code'))?>
 
-                        @include('event._form_basic_fields', ['fields' => ['location']])
-
-                        <?=Form::labelInput('begin', _('Begin'), 'date', $event->begin->format('Y-m-d'))?>
-
-                        <?=Form::labelInput('end', _('End'), 'date', $event->end? $event->end->format('Y-m-d') : null)?>
+                        @include('event._form_basic_fields', ['fields' => ['location', 'begin', 'end']])
                     </div>
                 </div>
 
