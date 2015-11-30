@@ -1390,16 +1390,16 @@
         },
         {
             "name": "laravelbook/ardent",
-            "version": "v3.1.1",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-ardent/ardent.git",
-                "reference": "f6ad9043c0472619ff45de19a20381fcf99e0a98"
+                "reference": "73fba066c87db1e69d05bffc388c8d9dcb28edf7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-ardent/ardent/zipball/f6ad9043c0472619ff45de19a20381fcf99e0a98",
-                "reference": "f6ad9043c0472619ff45de19a20381fcf99e0a98",
+                "url": "https://api.github.com/repos/laravel-ardent/ardent/zipball/73fba066c87db1e69d05bffc388c8d9dcb28edf7",
+                "reference": "73fba066c87db1e69d05bffc388c8d9dcb28edf7",
                 "shasum": ""
             },
             "require": {
@@ -1442,7 +1442,7 @@
                 "sql",
                 "validation"
             ],
-            "time": "2015-11-30 05:39:14"
+            "time": "2015-11-30 20:10:39"
         },
         {
             "name": "laravelcollective/html",
