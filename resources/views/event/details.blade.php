@@ -399,6 +399,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                     </div>
                 </div>
 
+                <!--
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"><?=_('Main themes')?></h4>
@@ -408,6 +409,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                         @include('components.themes_list')
                     </div>
                 </div>
+                -->
 
                 <!--
                 <div class="panel panel-default">
