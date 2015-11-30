@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class EventController extends Controller {
 
 	public function __construct() {
-		$this->middleware('guest', ['except' => ['getSubmit', 'postSubmit']]);
+		$this->middleware('auth', ['only' => ['getSubmit', 'postSubmit']]);
 	}
 
 	public function getSearch(Request $req) {
