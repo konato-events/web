@@ -97,8 +97,11 @@ HTML;
 
         return $this->group(
             $this->label($name, $label, $options['label']),
-            $this->input($type, $name, $value, $options['input']),
-            isset($options['help'])? "<p class='help-block'>{$options['help']}</p>" : ''
+            ($type == 'textarea'?
+                $this->textarea($name, $value, $options['input']) :
+                $this->input($type, $name, $value, $options['input'])
+            ),
+            (isset($options['help'])? "<p class='help-block'>{$options['help']}</p>" : '')
         );
     }
 
@@ -151,13 +154,18 @@ HTML;
         return parent::select($name, $list, $selected, $options);
     }
 
+    public function textarea($name, $value = null, $options = []) {
+        $options['class'] = isset($options['class'])? $options['class'].' form-control' : 'form-control';
+        return parent::textarea($name, $value, $options);
+    }
+
 //TODO: these two methods could be sent into Laravalid\FormBuilder if we can find a way to put the required-field title into the config files
 
     public function label($name, $value = null, $options = []) {
         $this->labels[] = $name;
 
         $options = $this->html->attributes($options);
-        $value   = e($this->formatLabel($name, $value));
+        $value   = $this->formatLabel($name, $value);
 
         if ($this->isRequired($name)) {
             $value .= '<sup title="'._('Required field').'">*</sup>';
