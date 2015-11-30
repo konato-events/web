@@ -10,11 +10,8 @@ namespace App\Http\Requests;
 abstract class Model extends Request {
 
     public function rules() {
-        $class = static::class;
-        $class = substr($class, strrpos($class, '\\') + 1);
-
         /** @var \LaravelArdent\Ardent\Ardent $model */
-        $model = '\App\Models\\'.$class;
+        $model = '\App\Models\\'.class_basename(static::class);
         return $model::$rules;
     }
 
