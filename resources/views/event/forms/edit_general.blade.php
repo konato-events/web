@@ -24,6 +24,8 @@ function icon(string $name) {
 <section class="page-section with-sidebar sidebar-right first-section">
 <div class="container">
 
+    @include('event.forms._edit_tabs')
+
 <?=Form::model($event, ['action' => 'EventController@postEdit', 'id' => FORM_ID])?>
 <?=Form::hidden('id')?>
 <div class="row">
@@ -37,7 +39,7 @@ function icon(string $name) {
                 <h4 class="panel-title"><?=_('Basic information')?></h4>
             </div>
             <div class="panel-body">
-                @include('event._form_basic_fields', ['fields' => ['title', 'event_type_id']])
+                @include('event.forms._basic_fields', ['fields' => ['title', 'event_type_id']])
 
                 <?=Form::labelInput('description', _('Description'), 'textarea', null, ['input' => ['rows' => 5]])?>
 
@@ -86,7 +88,7 @@ function icon(string $name) {
 
                         <?=Form::labelInput('postal_code', _('Postal code'))?>
 
-                        @include('event._form_basic_fields', ['fields' => ['location', 'begin', 'end']])
+                        @include('event.forms._basic_fields', ['fields' => ['location', 'begin', 'end']])
                     </div>
                 </div>
 
@@ -95,7 +97,7 @@ function icon(string $name) {
                         <h4 class="panel-title"><?=_('Additional options')?></h4>
                     </div>
                     <div class="panel-body">
-                        @include('event._form_checkboxes')
+                        @include('event.forms._checkboxes')
                     </div>
                 </div>
             </div>

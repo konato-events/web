@@ -21,8 +21,8 @@ const FORM_ID = 'submit';
     <?=Form::model($event, ['action' => 'EventController@postSubmit', 'id' => FORM_ID])?>
 
         @include('components.form_errors')
-        @include('event._form_basic_fields')
-        @include('event._form_checkboxes')
+        @include('event.forms._basic_fields')
+        @include('event.forms._checkboxes')
 
         <div class="row">
             <div class="col-xs-8">

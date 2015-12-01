@@ -56,7 +56,7 @@ class EventController extends Controller {
 
     public function getEdit(int $id) {
         $event = Event::find($id);
-        return view('event.edit', compact('event'));
+        return view('event.forms.edit_general', compact('event'));
     }
 
     public function postEdit(EventReq $req) {
@@ -72,6 +72,22 @@ class EventController extends Controller {
                 ->withInput($req->except($req->dontFlash))
                 ->withErrors($e->getErrors(), 'default');
         }
+    }
+
+    public function getEditThemes(int $id) {
+
+    }
+
+    public function getEditSpeakers(int $id) {
+
+    }
+
+    public function getEditMaterials(int $id) {
+
+    }
+
+    public function getEditSchedule(int $id) {
+
     }
 }
 

@@ -11,6 +11,41 @@ function printr(array $data):string {
 }
 
 /**
+ * Generates a link inside a parent element (li?). That parent will include the "active" class if the action passed is
+ * the same that was called (found by the "globals" created by {@link \App\Listener\Route}).
+ * @param string $title What will become the link
+ * @param string $act The link action, as used by {@link act{})
+ * @param array  $params Action params
+ * @param string $wrapper What will wrap the link and receive the 'active' class
+ * @param array $attributes Attributes for both the wrapper and the link.
+ *                          Specify like `['wrap' => ['class' => 'presentation'], 'link' => ['data-block' => 'xxx']]`.
+ * @return string
+ * @see act()
+ */
+function activableLink($title, $act, array $params = [], $wrapper = 'li', array $attributes = []):string {
+    $final_attrs = [];
+    foreach(['wrap', 'link'] as $el) {
+        $attrs = $attributes[$el] ?? [];
+
+        //separates the class and removes it from the standard attributes array, so we can include the needed class
+        $classes = $attrs['class'] ?? '';
+        unset($attrs['class']);
+        if ($el == 'wrap' && ($act) == app()['controller'].'@'.app()['action']) {
+            $classes .= ' active';
+        }
+        $attrs = ['class' => $classes];
+
+        foreach($attrs as $attr => $value) {
+            $attrs[] = "$attr='$value'";
+        }
+        $final_attrs[$el] = join(' ', $attrs);
+    }
+
+    $action = act($act, $params);
+    return "<$wrapper {$final_attrs['wrap']}><a href='$action' {$final_attrs['link']}>$title</a></$wrapper>";
+}
+
+/**
  * Shorthand function for {@link action()}, removing the need to indicate "Controller" for the classname
  * and "get" for the method name. Other HTTP verbs are still required. `getIndex` is also optional.
  * This version does not generate absolute URLs as it's {@link action()} default.
