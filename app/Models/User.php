@@ -6,14 +6,10 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use LaravelArdent\Ardent\Ardent;
+use Illuminate\Database\Eloquent\Collection;
 
 //tricking gettext to find our four participation types
-_('participant');
-_('speaker');
-_('involved');
-_('staff');
+_('participant'); _('speaker'); _('involved'); _('staff');
 
 /**
  * @property int          id
@@ -28,14 +24,21 @@ _('staff');
  * @property string       avatar
  * @property string       picture
  * @property int[]        stats
+ * @property Event[]      events
  *
  * @property SocialLink[] links
  * @property Location     location
- * @method BelongsTo location
+ * @method BelongsTo      location
  * @property User[]       follows
- * @method BelongsToMany follows
- * @property User[]       followed_by
- * @method BelongsToMany followed_by
+ * @method BelongsToMany  follows
+ * @property Collection   organized
+ * @method BelongsToMany  organized
+ * @property Collection   spoke
+ * @method BelongsToMany  spoke
+ * @property Collection   following_events
+ * @method BelongsToMany  following_events
+ * @property Collection   participated
+ * @method BelongsToMany  participated
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -51,6 +54,12 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     const SPEAKER = 'speaker';
     const INVOLVED = 'involved'; //todo: include a "voluntary" or "lesser staff" role
     const STAFF = 'staff';
+
+    const PARTICIPATION_RELATIONS = [
+        'organized'    => self::STAFF,
+        'spoke'        => self::SPEAKER,
+        'participated' => self::PARTICIPANT
+    ];
 
     public static $rules = [
         'name'     => ['required', 'min:4'],
@@ -111,17 +120,25 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     }
 
     public function getStatsAttribute() {
-        $participations = [
-            'organized' => self::STAFF,
-            'spoke' => self::SPEAKER,
-            'participated' => self::PARTICIPANT
-        ];
-
         $stats = [];
-        foreach ($participations as $relation => $name) {
+        foreach (static::PARTICIPATION_RELATIONS as $relation => $name) {
             $stats[$name] = $this->$relation()->count();
         }
 
         return $stats;
+    }
+
+    public function getEventsAttribute() {
+        $events = [];
+        foreach(static::PARTICIPATION_RELATIONS as $relation => $name) {
+            foreach ($this->$relation->all() as $event) {
+                $events[$event->id] = [
+                    'event'         => $event,
+                    'participation' => $name
+                ];
+            }
+        }
+        ksort($events);
+        return $events;
     }
 }

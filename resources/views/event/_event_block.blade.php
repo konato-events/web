@@ -1,41 +1,39 @@
 <?php
 /** @var string $date_fmt
-  * @var int $id
-  * @var bool  $compact
-  * @var bool  $participant
-  * @var bool  $participant_gender
-  * @var array $themes
-  * @var array $event */
+  * @var bool              $compact
+  * @var string            $participation
+  * @var string            $gender
+  * @var array             $themes
+  * @var \App\Models\Event $event */
 use App\Models\User;
 use Illuminate\Support\Str;
 
-list($img, $title, $place, $begin, $end, $desc) = $event;
-$link = act('event@details', slugify($id, $title));
+$link = act('event@details', slugify($event->id, $event->title));
 $compact = $compact ?? false;
-$participant = $participant ?? false;
+$participation = $participation ?? false;
 
-if ($participant) {
-    switch ($participant) {
+if ($participation) {
+    switch ($participation) {
         case User::PARTICIPANT:
-            $color     = 'participant';
-            $part_desc = _('%s participated');
+            $color             = 'participant';
+            $participation_str = _('%s participated');
             break;
         case User::INVOLVED:
-            $color     = 'involved';
-            $part_desc = _('%s was involved / volunteered');
+            $color             = 'involved';
+            $participation_str = _('%s was involved / volunteered');
             break;
         case User::STAFF:
-            $color     = 'staff';
-            $part_desc = _('%s was part of staff');
+            $color             = 'staff';
+            $participation_str = _('%s was part of staff');
             break;
         case User::SPEAKER:
-            $color     = 'speaker';
-            $part_desc = _('%s was a speaker');
+            $color             = 'speaker';
+            $participation_str = _('%s was a speaker');
             break;
     }
-    $part_desc = ucfirst(sprintf($part_desc, ($participant_gender == 'M')? _('he') : _('she')));
+    $participation_str = ucfirst(sprintf($participation_str, ($gender == 'M')? _('he') : _('she')));
 } else {
-    $color = $part_desc = false;
+    $color = $participation_str = false;
 }
 ?>
 
@@ -44,7 +42,7 @@ if ($participant) {
         <div class="col-md-3 col-sm-3 col-xs-4">
             <div class="media">
                 <?php //TODO: adding a link to this image wont work ?>
-                <img src="<?=$img?>" alt="<?=$title?>">
+                <img src="<?=$event->publicImg?>" alt="<?=$event->title?>">
 
                 {{--<a href="#" class="like"><i class="fa fa-heart"></i></a>--}}
                 {{--<a href="#" class="like"><i class="fa fa-heart-o"></i></a>--}}
@@ -62,18 +60,19 @@ if ($participant) {
                 {{--</a>--}}
                 <h3 class="caption-title">
                     <?php if ($color): ?>
-                        <i class="fa part-<?=$color?>" title="<?=$part_desc?>"
+                        <i class="fa part-<?=$color?>" title="<?=$participation_str?>"
                            data-toggle="tooltip" data-trigger="hover click" data-container="body"></i>
                     <?php endif ?>
-                    <a href="<?=$link?>"><?=$title?></a>
+                    <a href="<?=$link?>"><?=$event->title?></a>
                 </h3>
 
                 <p class="caption-category">
                     <i class="fa fa-calendar"></i>
-                        <?=date($date_fmt, $begin)?> <?=($end)? ' ~ '.date($date_fmt, $end) : '' ?>
+                    <?=$event->begin->format($date_fmt)?>
+                    <?=($event->end)? ' ~ '.$event->end->format($date_fmt) : '' ?>
                     <br/>
                     <i class="fa fa-map-marker"></i>
-                        <a class="alt" href="<?=act('event@search', ['place' => $place])?>"><?=$place?></a>
+                    <a class="alt" href="<?=act('event@search', ['location' => $event->location])?>"><?=$event->location?></a>
                 </p>
 
                 {{--<p class="caption-price">Tickets from $49,99</p>--}}

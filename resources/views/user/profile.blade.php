@@ -165,15 +165,18 @@ $date_fmt   = _('m/d/Y');
                 <div class="thumbnails events">
                     <div class="container-fluid">
                         <div class="row">
-                            @foreach($events as $ev_id => $event)
-                                @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
-                                    'compact'     => true,
-                                    //'participant' => $participation[$ev_id],
-                                    'participant_gender' => $user->gender
-                                ]))
-                                @if (($ev_id + 1) % 2 == 0)
+                            <? $i = 0 ?>
+                            @foreach($user->events as $ev_id => $data)
+                                @include('event._event_block', [
+                                    'date_fmt'      => $date_fmt,
+                                    'event'         => $data['event'],
+                                    'compact'       => true,
+                                    'participation' => $data['participation'],
+                                    'gender'        => $user->gender
+                                ])
+                                <? if (($i++ + 1) % 2 == 0): ?>
                                     </div><div class="row">
-                                @endif
+                                <? endif ?>
                             @endforeach <? //TODO: use a forelse instead, this needs an empty clause ?>
                         </div>
                     </div>
