@@ -226,6 +226,18 @@ $lang_tag = substr(LOCALE, 0, 2);
 
 <!-- JS Global -->
 
+<script type="text/javascript" src="/js/alertify.js"></script>
+<script type="text/javascript">
+    alertify
+        .closeLogOnClick(true)
+        .delay(10000)
+        .logPosition('top left');
+
+    <? if(session('error')): ?>
+        alertify.error("<?=addslashes(session('error'))?>");
+    <? endif ?>
+</script>
+
 <?php
     const JQUERY_VERSION = '2.1.4';
     const JQUERY_COMPAT_VERSION = '1.11.3';

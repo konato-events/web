@@ -8,7 +8,14 @@ use LaravelArdent\Ardent\InvalidModelException;
 class EventController extends Controller {
 
 	public function __construct() {
-		$this->middleware('auth', ['only' => ['getSubmit', 'postSubmit', 'getEdit', 'postEdit']]);
+        $edits = [
+            'getEdit', 'postEdit',
+            'getEditThemes', 'postEditThemes',
+            'getEditSpeakers', 'postEditSpeakers',
+            'getEditSchedule', 'postEditSchedule',
+        ];
+		$this->middleware('auth', ['only' => ['getSubmit', 'postSubmit'] + $edits]);
+		$this->middleware('staff', ['only' => $edits]);
 	}
 
 	public function getSearch(Request $req) {
@@ -47,7 +54,6 @@ class EventController extends Controller {
 		return redirect()->action('EventController@getDetails', $id_slug);
 	}
 
-    //FIXME: verify if the user is staff!!!
     public function getEdit(int $id) {
         $event = Event::find($id);
         return view('event.edit', compact('event'));
