@@ -1,5 +1,7 @@
 <?php
 /** @var bool $prod */
+/** @var string $action */
+/** @var string $controller */
 /** @var string $action_name To be used when we need to manually specify the action name (i.e. when inside missingMethod) */
 $lang_tag = substr(LOCALE, 0, 2);
 ?>
@@ -60,12 +62,6 @@ $lang_tag = substr(LOCALE, 0, 2);
     <link rel="alternate" hreflang="x-default" href="<?=$path?><?=$query? '?'.$query : ''?>" />
 </head>
 
-<?php
-    $controller = explode('\\', strtok(Route::currentRouteAction(), '@'));
-    $controller = end($controller);
-    $controller = strtolower(substr($controller, 0, strpos($controller, 'Controller')));
-    $action     = $action_name ?? camel_case(preg_replace('/^(get|post|put|delete|patch)/', '', strtok('')));
-?>
 <body id="<?=$controller?>" class="wide body-light multipage <?=$controller?>-<?=$action?>">
 
 <div class="wrapper">

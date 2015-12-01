@@ -17,7 +17,7 @@ class UserController extends Controller {
     public function missingMethod($id_slug = []) {
         $id_slug = is_array($id_slug)? current($id_slug) : $id_slug;
         if (preg_match(app('router')->getPatterns()['id_slug'], $id_slug)) {
-            view()->share('action_name', 'profile');
+            view()->share('action', app()['action'] = 'profile');
             return $this->getProfile($id_slug);
         } else {
             return parent::missingMethod($id_slug);

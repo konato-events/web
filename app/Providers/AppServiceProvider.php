@@ -18,9 +18,10 @@ class AppServiceProvider extends ServiceProvider {
         $this->bootLocalization();
 
         /** @var View $view */
+        $app  = app();
         $view = view();
-        $view->share('env', \App::environment());
-        $view->share('prod', \App::environment('prod'));
+        $view->share('env', $app->environment());
+        $view->share('prod', $app->environment('prod'));
         $this->loadMocks($view);
     }
 
