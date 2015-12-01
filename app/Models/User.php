@@ -23,8 +23,10 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  * @property string       gender
  * @property string       avatar
  * @property string       picture
+ *
  * @property int[]        stats
- * @property Event[]      events
+ * @property array        events
+ * @property array        most_visited
  *
  * @property SocialLink[] links
  * @property Location     location
@@ -119,6 +121,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         ]);
     }
 
+    //TODO: cache
     public function getStatsAttribute() {
         $stats = [];
         foreach (static::PARTICIPATION_RELATIONS as $relation => $name) {
@@ -128,6 +131,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         return $stats;
     }
 
+    //TODO: cache
     public function getEventsAttribute() {
         $events = [];
         foreach(static::PARTICIPATION_RELATIONS as $relation => $name) {
@@ -140,5 +144,19 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         }
         ksort($events);
         return $events;
+    }
+
+    //TODO: cache
+    public function getMostVisitedAttribute() {
+        $places = [];
+        foreach ($this->events as $event) {
+            if (!isset($places[$event['event']->location])) {
+                $places[$event['event']->location] = 1;
+            } else {
+                ++$places[$event['event']->location];
+            }
+        }
+        asort($places);
+        return $places;
     }
 }

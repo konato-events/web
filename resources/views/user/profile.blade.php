@@ -232,8 +232,8 @@ $date_fmt   = _('m/d/Y');
                     </div>
                     <div class="panel-body">
                         <ul>
-                            <? foreach(['Rio de Janeiro, Brazil','São Paulo, Brazil','Halifax, Canada'] as $place):?>
-                                <li><a href="<?=act('event@search', ['place' => $place])?>"><?=$place?></a></li>
+                            <? foreach($user->most_visited as $location => $count):?>
+                                <li><a href="<?=act('event@search', ['location' => $location])?>"><?=$location?></a></li>
                             <? endforeach ?>
                         </ul>
                     </div>
