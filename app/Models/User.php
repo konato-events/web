@@ -50,6 +50,9 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public $autoHashPasswordAttributes = true;
 
+    protected $most_visited = [];
+    protected $events = [];
+
 //    public $autoHydrateEntityFromInput = true;
 
     const PARTICIPANT = 'participant';
@@ -133,30 +136,32 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     //TODO: cache
     public function getEventsAttribute() {
-        $events = [];
-        foreach(static::PARTICIPATION_RELATIONS as $relation => $name) {
-            foreach ($this->$relation->all() as $event) {
-                $events[$event->id] = [
-                    'event'         => $event,
-                    'participation' => $name
-                ];
+        if (!$this->events) {
+            foreach (static::PARTICIPATION_RELATIONS as $relation => $name) {
+                foreach ($this->$relation->all() as $event) {
+                    $this->events[$event->id] = [
+                        'event'         => $event,
+                        'participation' => $name
+                    ];
+                }
             }
+            ksort($this->events);
         }
-        ksort($events);
-        return $events;
+        return $this->events;
     }
 
     //TODO: cache
     public function getMostVisitedAttribute() {
-        $places = [];
-        foreach ($this->events as $event) {
-            if (!isset($places[$event['event']->location])) {
-                $places[$event['event']->location] = 1;
-            } else {
-                ++$places[$event['event']->location];
+        if (!$this->most_visited) {
+            foreach ($this->events as $event) {
+                if (!isset($this->most_visited[$event['event']->location])) {
+                    $this->most_visited[$event['event']->location] = 1;
+                } else {
+                    ++$this->most_visited[$event['event']->location];
+                }
             }
+            asort($this->most_visited);
         }
-        asort($places);
-        return $places;
+        return $this->most_visited;
     }
 }

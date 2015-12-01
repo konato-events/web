@@ -161,7 +161,7 @@ body {
     font-size: 16px; //original size: 18px. too much?
     line-height: 1.33;
     background: #fbfbfb;
-    color: #6d7a83;
+    color: @textColor;
 
     -webkit-font-kerning: auto;
     -webkit-font-smoothing: antialiased;
@@ -171,7 +171,7 @@ body {
     /*overflow-x: hidden;*/
 }
 body.boxed {
-    background: #6d7a83;
+    background: @textColor;
 }
 
 /* overflow the content area
@@ -807,7 +807,7 @@ p.btn-row .btn {margin-top: 10px; margin-right: 10px;}
     border-radius: @inputRadius;
     border: 1px solid #c8cdd2;
     font-size: 18px;
-    color: #6d7a83;
+    color: @textColor;
     -webkit-appearance: none; /* ios */
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -830,7 +830,7 @@ textarea {
     border: 1px solid #c8cdd2;
     border-radius: 10px;
     font-size: 18px;
-    color: #6d7a83 !important;
+    color: @textColor !important;
     -webkit-appearance: none; /* ios */
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -1689,12 +1689,12 @@ nav .btn:hover {
 .featured-line .countdown-wrapper.countdown-featured {font-family: 'Raleway', sans-serif; margin-top: 0;}
 .featured-line .countdown-wrapper.countdown-featured .defaultCountdown {}
 .featured-line .countdown-wrapper.countdown-featured .countdown-row {overflow: hidden; display: block;}
-.featured-line .countdown-wrapper.countdown-featured .countdown-section {border: solid 1px #6d7a83; border-radius: 4px;}
+.featured-line .countdown-wrapper.countdown-featured .countdown-section {border: solid 1px @textColor; border-radius: 4px;}
 .featured-line .countdown-wrapper.countdown-featured .countdown-section {}
 .featured-line .countdown-wrapper.countdown-featured .countdown-show4 .countdown-section {width: 22.75%;}
 .featured-line .countdown-wrapper.countdown-featured .countdown-show4 .countdown-section + .countdown-section {margin-left: 3%;}
-.featured-line .countdown-wrapper.countdown-featured .countdown-amount {text-shadow: none; font-family: 'Raleway', sans-serif; font-size: 36px; line-height: 36px; font-weight: bold; color: #6d7a83; display: block; margin: 5px 0 13px 0; vertical-align: middle;}
-.featured-line .countdown-wrapper.countdown-featured .countdown-period {text-shadow: none; font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 12px; font-weight: bold; color: #6d7a83; border-top: solid 1px #6d7a83; padding: 8px 3px;}
+.featured-line .countdown-wrapper.countdown-featured .countdown-amount {text-shadow: none; font-family: 'Raleway', sans-serif; font-size: 36px; line-height: 36px; font-weight: bold; color: @textColor; display: block; margin: 5px 0 13px 0; vertical-align: middle;}
+.featured-line .countdown-wrapper.countdown-featured .countdown-period {text-shadow: none; font-family: 'Raleway', sans-serif; font-size: 12px; line-height: 12px; font-weight: bold; color: @textColor; border-top: solid 1px @textColor; padding: 8px 3px;}
 .featured-line .btn-details {margin-top: 15px;}
 .featured-line .btn-details {
     font-size: 14px;
@@ -4399,7 +4399,7 @@ div.pp_overlay {
 .price-per {}
 .price-description {}
 .price-table-row {
-    color: #6d7a83;
+    color: @textColor;
     font-size: 16px;
     padding: 25px 0;
     border-top: solid 1px #c5c7c9;

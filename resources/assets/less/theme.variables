@@ -1,3 +1,8 @@
+@textColor:         #6d7a83;
+@lightTextColor:    #96a0aa;
+@fontColor:         @textColor;
+@lightFontColor:    @lightTextColor;
+
 @darkestOrange:     #AE5000;
 @darkOrange:        #E06C08;
 @orange:            #FB953E;

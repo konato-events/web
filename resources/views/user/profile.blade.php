@@ -166,7 +166,7 @@ $date_fmt   = _('m/d/Y');
                     <div class="container-fluid">
                         <div class="row">
                             <? $i = 0 ?>
-                            @foreach($user->events as $ev_id => $data)
+                            @forelse($user->events as $ev_id => $data)
                                 @include('event._event_block', [
                                     'date_fmt'      => $date_fmt,
                                     'event'         => $data['event'],
@@ -177,7 +177,13 @@ $date_fmt   = _('m/d/Y');
                                 <? if (($i++ + 1) % 2 == 0): ?>
                                     </div><div class="row">
                                 <? endif ?>
-                            @endforeach <? //TODO: use a forelse instead, this needs an empty clause ?>
+                            @empty
+                                <div class="col-xs-8 col-xs-push-2 text-center empty-block">
+                                    <?=_('This user have not yet interacted with the events in the platform')?>
+                                    <i class="fa fa-calendar-o"></i>
+                                    {{--<i class="fa fa-meh-o"></i>--}}
+                                </div>
+                            @endforelse <? //TODO: use a forelse instead, this needs an empty clause ?>
                         </div>
                     </div>
                 </div>
@@ -226,18 +232,20 @@ $date_fmt   = _('m/d/Y');
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><?=_('Most visited places')?></h4>
+                <? if ($user->most_visited): ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><?=_('Most visited places')?></h4>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <? foreach($user->most_visited as $location => $count):?>
+                                    <li><a href="<?=act('event@search', ['location' => $location])?>"><?=$location?></a></li>
+                                <? endforeach ?>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <ul>
-                            <? foreach($user->most_visited as $location => $count):?>
-                                <li><a href="<?=act('event@search', ['location' => $location])?>"><?=$location?></a></li>
-                            <? endforeach ?>
-                        </ul>
-                    </div>
-                </div>
+                <? endif ?>
             </div>
         </div>
     </aside>
