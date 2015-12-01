@@ -1,4 +1,4 @@
-<?
+<?php
 use App\Http\Controllers\UserController as Controller;
 use App\Models\User;
 
@@ -17,19 +17,10 @@ $participations = [
 if ($type != Controller::TYPE_SPEAKER) {
     unset($participations[User::SPEAKER]);
 }
-$female    = ($user->gender == 'F');
-$pronoun   = $female? _('she') : _('he');
+$female  = ($user->gender == 'F');
+$pronoun = $female? _('she') : _('he');
 
 $participation = [];
-$stats = [];
-foreach ($participations as $part => $xxx) {
-    $stats[$part] = 0;
-}
-foreach ($events as $ev_id => $event) {
-    $participation[$ev_id] = array_rand($participations);
-    ++$stats[$participation[$ev_id]];
-}
-$stats = array_filter($stats);
 
 switch ($type) {
     case Controller::TYPE_SPEAKER:  $type_str = _('speaker profile'); break;
@@ -159,10 +150,9 @@ $date_fmt   = _('m/d/Y');
 <div class="container-fluid">
     <section id="content" class="content col-sm-8 col-md-9">
         <ul class="user-stats">
-            <? foreach($stats as $st_id => $stat): ?>
-                <li class="part-{{$st_id}}">
-                    <i class="fa"></i>
-                    {{$stat}}x {{$participations[$st_id]}}
+            <? foreach(array_filter($user->stats) as $name => $number): ?>
+                <li class="part-<?=$name?>">
+                    <i class="fa"></i> <?=$number?>x <?=_($name)?>
                 </li>
             <? endforeach ?>
         </ul>
@@ -178,7 +168,7 @@ $date_fmt   = _('m/d/Y');
                             @foreach($events as $ev_id => $event)
                                 @include('event._event_block', array_merge(compact('date_fmt', 'id', 'event'), [
                                     'compact'     => true,
-                                    'participant' => $participation[$ev_id],
+                                    //'participant' => $participation[$ev_id],
                                     'participant_gender' => $user->gender
                                 ]))
                                 @if (($ev_id + 1) % 2 == 0)
