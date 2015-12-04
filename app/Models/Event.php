@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -110,8 +111,12 @@ class Event extends Base {
     }
 
     public function isStaff(User $user = null) {
-        $user = $user?: \Auth::user();
-        return (bool)$this->event_staff()->where('user_id', $user->id)->count();
+        if (!Auth::check()) {
+            return false;
+        } else {
+            $user = $user?: Auth::user();
+            return (bool)$this->event_staff()->where('user_id', $user->id)->count();
+        }
     }
 
 }

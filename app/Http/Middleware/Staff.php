@@ -2,6 +2,7 @@
 
 use App\Models\Event;
 use App\Models\EventStaff;
+use Auth;
 use Illuminate\Http\Request;
 
 class Staff {
@@ -17,14 +18,14 @@ class Staff {
             }
         };
 
-        $path = $request->getPathInfo();
-        $last_param = substr($path, strrpos($path, '/')+1, strrpos($path, '-')?: strlen($path)+1);
-        if (!$last_param) { //should never arrive here
+        $path  = $request->getPathInfo();
+        $param = substr($path, strrpos($path, '/')+1, strrpos($path, '-')?: strlen($path)+1);
+        if (!$param) { //should never arrive here
             \Log::warning('Tried to search for event ID in Staff middleware, but it was not found: '.$path);
-            return $forbidden($last_param);
+            return $forbidden($param);
         } else {
-            if (!EventStaff::where('user_id', \Auth::user()->id)->where('event_id', $last_param)->count()) {
-                return $forbidden($last_param);
+            if (!Auth::check() || !EventStaff::where('user_id', Auth::user()->id)->where('event_id', $param)->count()) {
+                return $forbidden($param);
             }
         }
 
