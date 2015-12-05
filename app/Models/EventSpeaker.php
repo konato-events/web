@@ -8,6 +8,6 @@
  */
 class EventSpeaker extends Base {
 
-
+    protected $table = 'event_speaker';
 
 }

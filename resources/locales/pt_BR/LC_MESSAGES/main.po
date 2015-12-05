@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-12-01 20:12-0300\n"
-"PO-Revision-Date: 2015-12-01 20:12-0300\n"
+"POT-Creation-Date: 2015-12-03 22:46-0300\n"
+"PO-Revision-Date: 2015-12-03 22:47-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -17,9 +17,10 @@ msgstr ""
 "X-Poedit-SearchPath-0: app\n"
 "X-Poedit-SearchPath-1: resources\n"
 
-#: app/Models/SocialNetwork.php:5
-msgid "Personal website"
-msgstr "Site pessoal"
+#: app/Http/Middleware/Staff.php:16
+msgid "Sorry, but it seems you don't have permission to edit this event..."
+msgstr ""
+"Desculpe, mas parece que você não tem permissão para editar este evento..."
 
 #: app/Models/User.php:12 resources/views/user/profile.blade.php:12
 msgid "participant"
@@ -36,6 +37,10 @@ msgstr "envolvido"
 #: app/Models/User.php:12 resources/views/user/profile.blade.php:15
 msgid "staff"
 msgstr "staff"
+
+#: app/Models/SocialNetwork.php:5
+msgid "Personal website"
+msgstr "Site pessoal"
 
 #: app/Models/EventType.php:6
 msgid "Meeting"
@@ -97,57 +102,10 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: app/Http/Middleware/Staff.php:16
-msgid "Sorry, but it seems you don't have permission to edit this event..."
-msgstr ""
-"Desculpe, mas parece que você não tem permissão para editar este evento..."
-
 #: resources/BootstrapFormBuilder.php:171
 #: resources/lang/gettext/validation.php:6
 msgid "Required field"
 msgstr "Campo obrigatório"
-
-#: resources/lang/gettext/validation.php:3
-msgid "password"
-msgstr "senha"
-
-#: resources/lang/gettext/validation.php:7
-msgid "This does not seem like an email"
-msgstr "Isso não parece com um e-mail"
-
-#: resources/lang/gettext/validation.php:8
-msgid "The :attribute confirmation doesn't match"
-msgstr "A confirmação de :attribute não bate"
-
-#: resources/lang/gettext/validation.php:9
-msgid "This :attribute is already in use"
-msgstr "Este :attribute já está em uso"
-
-#: resources/lang/gettext/validation.php:11
-msgid "Too short"
-msgstr "Curto demais"
-
-#: resources/lang/gettext/validation.php:14
-msgid "This field should have between :min and :max characters"
-msgstr "Este campo deve ter entre :min e :max caracteres"
-
-#: resources/lang/gettext/validation.php:19
-msgid ""
-"This username is already taken. Try something different! If you already have "
-"an account but don't remember your password, try to use the Recovery link "
-"from the Login page."
-msgstr ""
-"Este usuário já foi usado. Tente algo diferente! Se você já tem uma conta "
-"mas não lembra sua senha, tente usar o link de Recuperação, na página de "
-"Login."
-
-#: resources/lang/gettext/validation.php:20
-msgid ""
-"This e-mail is already in use. Hmm... Is this you? If you don't remember "
-"your password, try to use the Recovery link from the Login page."
-msgstr ""
-"Este e-mail já está em uso. Hum... É você? Se não lembra sua senha, tente "
-"usar o link de Recuperação, na página de Login."
 
 #: resources/views/layout-master.blade.php:23
 msgid "Event Discovery"
@@ -162,8 +120,10 @@ msgid "Places"
 msgstr "Locais"
 
 #: resources/views/layout-master.blade.php:104
-#: resources/views/event/forms/edit_general.blade.php:30
 #: resources/views/speaker/index.blade.php:76
+#: resources/views/event/forms/edit_themes_speakers.blade.php:65
+#: resources/views/event/forms/edit_themes_speakers.blade.php:74
+#: resources/views/event/forms/edit_common.blade.php:25
 msgid "Speakers"
 msgstr "Palestrantes"
 
@@ -219,76 +179,571 @@ msgstr "by igorsantos07"
 msgid "Go to top"
 msgstr "Subir"
 
-#: resources/views/auth/finishSignUp.blade.php:6
-msgid "Social Sign Up"
-msgstr "Cadastro por rede social"
+#: resources/views/speaker/index.blade.php:6
+#, php-format
+msgid "Speakers on %s"
+msgstr "Palestrantes em %s"
 
-#: resources/views/auth/finishSignUp.blade.php:7
-msgid "Finish creating your account"
-msgstr "Termine de criar sua conta"
+#: resources/views/speaker/index.blade.php:6
+msgid "Speakers on your themes of interest"
+msgstr "Palestrantes nos seus temas de interesse"
 
-#: resources/views/auth/finishSignUp.blade.php:8
-#: resources/views/auth/signUp.blade.php:6
-msgid "Join the events community now!"
-msgstr "Entre agora para a comunidade de eventos!"
+#: resources/views/speaker/index.blade.php:90
+#: resources/views/event/theme.blade.php:119
+msgid "Related themes"
+msgstr "Temas relacionados"
 
-#: resources/views/auth/finishSignUp.blade.php:31
-#: resources/views/components/form_errors.blade.php:4
-msgid "Whoops! Some errors were found. Could you fix them before proceeding?"
+#: resources/views/speaker/index.blade.php:90
+msgid "Most common themes"
+msgstr "Temas mais comuns"
+
+#: resources/views/speaker/index.blade.php:120
+#: resources/views/user/profile.blade.php:103
+#: resources/views/components/speakers_list.blade.php:12
+#, php-format
+msgid "%s on Konato"
+msgstr "%s no Konato"
+
+#: resources/views/speaker/index.blade.php:133
+msgid "See full profile"
+msgstr "Ver perfil completo"
+
+#: resources/views/event/details.blade.php:12
+#, php-format
+msgid "%s - event"
+msgstr "%s - evento"
+
+#: resources/views/event/details.blade.php:17
+#: resources/views/event/search.blade.php:152
+#: resources/views/event/theme.blade.php:147
+#: resources/views/user/profile.blade.php:34
+msgid "m/d/Y"
+msgstr "d/m/Y"
+
+#: resources/views/event/details.blade.php:18
+msgid "h:i A"
+msgstr "H:i"
+
+#: resources/views/event/details.blade.php:19
+msgid "%A, %B %d, %Y"
+msgstr "%A, %d de %B de %Y"
+
+#: resources/views/event/details.blade.php:142
+msgid "This is a private event - acessible only by a group of selected people"
 msgstr ""
-"Ops! Encontramos alguns erros. Você pode corrigi-los antes de seguir em "
-"frente?"
+"Este evento é privado - acessível somente por um grupo de pessoas "
+"selecionadas"
 
-#: resources/views/auth/finishSignUp.blade.php:42
-#: resources/views/auth/login.blade.php:19
-#: resources/views/auth/signUp.blade.php:52
-msgid "Username"
-msgstr "Usuário"
+#: resources/views/event/details.blade.php:142
+msgid "Closed"
+msgstr "Fechado"
 
-#: resources/views/auth/finishSignUp.blade.php:47
-#: resources/views/auth/signUp.blade.php:57
+#: resources/views/event/details.blade.php:172
+#: resources/views/event/forms/edit_general.blade.php:43
+msgid "Facebook Event"
+msgstr "Evento no Facebook"
+
+#: resources/views/event/details.blade.php:181
+#, php-format
+msgid "%s&nbsp;speakers on %s&nbsp;sessions and %s&nbsp;cases"
+msgstr "%s&nbsp;palestrantes em %s&nbsp;sessões e %s&nbsp;cases"
+
+#: resources/views/event/details.blade.php:182
+#, php-format
+msgid "%s&nbsp;resumes and %s&nbsp;articles submitted"
+msgstr "%s&nbsp; resumos e %s&nbsp;artigos submetidos"
+
+#: resources/views/event/details.blade.php:184
+#, php-format
+msgid "%s&nbsp;of&nbsp;%s known participants"
+msgstr "%s&nbsp;de&nbsp;%s participantes conhecidos"
+
+#: resources/views/event/details.blade.php:185
+msgid "followers"
+msgstr "seguidores"
+
+#: resources/views/event/details.blade.php:194
+msgid "Editions"
+msgstr "Edições"
+
+#: resources/views/event/details.blade.php:211
+msgid "The Event"
+msgstr "O Evento"
+
+#: resources/views/event/details.blade.php:225
+#: resources/views/event/forms/edit_common.blade.php:27
+msgid "Schedule"
+msgstr "Programação"
+
+#: resources/views/event/details.blade.php:305
+msgid "The speakers"
+msgstr "Os palestrantes"
+
+#: resources/views/event/details.blade.php:314
+#: resources/views/event/forms/edit_common.blade.php:26
+msgid "Materials"
+msgstr "Materiais"
+
+#: resources/views/event/details.blade.php:319
+msgid "by"
+msgstr "por"
+
+#: resources/views/event/details.blade.php:329
+msgid "Event sponsors"
+msgstr "Patrocinadores"
+
+#: resources/views/event/details.blade.php:342
+msgid "Edit event information"
+msgstr "Editar dados do evento"
+
+#: resources/views/event/details.blade.php:347
+msgid "Buy ticket"
+msgstr "Comprar ingresso"
+
+#: resources/views/event/details.blade.php:352
+msgid "I'm going!"
+msgstr "Eu vou!"
+
+#: resources/views/event/details.blade.php:356
+msgid "Follow this event"
+msgstr "Acompanhar este evento"
+
+#: resources/views/event/details.blade.php:359
+#: resources/views/event/theme.blade.php:180
+#: resources/views/user/profile.blade.php:218
+msgid "See my following preferences"
+msgstr "Configurar o que acompanho"
+
+#: resources/views/event/details.blade.php:368
+#: resources/views/event/forms/edit_general.blade.php:58
+msgid "Where & When"
+msgstr "Onde e Quando"
+
+#: resources/views/event/details.blade.php:378
+msgid "See on a map"
+msgstr "Ver no mapa"
+
+#: resources/views/event/details.blade.php:379
+msgid "Get directions"
+msgstr "Ver trajeto"
+
+#: resources/views/event/details.blade.php:384
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/forms/_basic_fields.blade.php:25
+msgid "Begin"
+msgstr "Início"
+
+#: resources/views/event/details.blade.php:385
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/forms/_basic_fields.blade.php:29
+msgid "End"
+msgstr "Fim"
+
+#: resources/views/event/details.blade.php:388
+#, php-format
+msgid "from %s to %s"
+msgstr "das %s às %s"
+
+#: resources/views/event/details.blade.php:394
+#, php-format
+msgid "beginning at %s"
+msgstr "começando às %s"
+
+#: resources/views/event/details.blade.php:398
+msgid "Add to My Calendar"
+msgstr "Adicionar ao meu calendário"
+
+#: resources/views/event/details.blade.php:407
+msgid "Main themes"
+msgstr "Temas principais"
+
+#: resources/views/event/details.blade.php:419
+msgid "Organization"
+msgstr "Organização"
+
+#: resources/views/event/details.blade.php:430
+msgid "Send a message"
+msgstr "Enviar uma mensagem"
+
+#: resources/views/event/_event_block.blade.php:19
+#, php-format
+msgid "%s participated"
+msgstr "%s participou"
+
+#: resources/views/event/_event_block.blade.php:23
+#, php-format
+msgid "%s was involved / volunteered"
+msgstr "%s estava envolvido / se voluntariou"
+
+#: resources/views/event/_event_block.blade.php:27
+#, php-format
+msgid "%s was part of staff"
+msgstr "%s foi parte do staff"
+
+#: resources/views/event/_event_block.blade.php:31
+#, php-format
+msgid "%s was a speaker"
+msgstr "%s foi palestrante"
+
+#: resources/views/event/_event_block.blade.php:34
+#: resources/views/user/profile.blade.php:21
+#: resources/views/components/themes_list.blade.php:9
+msgid "he"
+msgstr "ele"
+
+#: resources/views/event/_event_block.blade.php:34
+#: resources/views/user/profile.blade.php:21
+#: resources/views/components/themes_list.blade.php:9
+msgid "she"
+msgstr "ela"
+
+#: resources/views/event/_event_block.blade.php:91
+msgid "See more details"
+msgstr "Veja mais detalhes"
+
+#: resources/views/event/search.blade.php:5
+msgid "Search terms"
+msgstr "Termos da busca"
+
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/theme.blade.php:91
+msgid "Event types"
+msgstr "Tipos de evento"
+
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/theme.blade.php:109
+msgid "Free"
+msgstr "Grátis"
+
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/theme.blade.php:110
+msgid "Both"
+msgstr "Ambos"
+
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/theme.blade.php:111
+msgid "Paid"
+msgstr "Pago"
+
+#: resources/views/event/search.blade.php:5
+msgid "Theme"
+msgstr "Tema"
+
+#: resources/views/event/search.blade.php:5
+#: resources/views/event/search.blade.php:144
+#: resources/views/event/theme.blade.php:138
+msgid "Date"
+msgstr "Data"
+
+#: resources/views/event/search.blade.php:6
+#, php-format
+msgid "\"%s\" events search"
+msgstr "\"%s\" - busca de eventos"
+
+#: resources/views/event/search.blade.php:143
+#: resources/views/event/theme.blade.php:137
+msgid "Relevance"
+msgstr "Relevância"
+
+#: resources/views/event/theme.blade.php:7
+#, php-format
+msgid "Events about %s"
+msgstr "Eventos sobre %s"
+
+#: resources/views/event/theme.blade.php:178
+msgid "Follow this theme"
+msgstr "Acompanhar este tema"
+
+#: resources/views/event/theme.blade.php:187
+msgid "Popularity"
+msgstr "Popularidade"
+
+#: resources/views/event/theme.blade.php:199
+msgid "Popular speakers"
+msgstr "Palestrantes populares"
+
+#: resources/views/event/theme.blade.php:203
+#, php-format
+msgid "See all speakers on %s"
+msgstr "Veja todos os palestrantes em %s"
+
+#: resources/views/event/forms/_checkboxes.blade.php:1
+msgid "This is a free event"
+msgstr "Este evento é gratuito"
+
+#: resources/views/event/forms/_checkboxes.blade.php:2
 msgid ""
-"Use a uniquely identifying name for you. This will also help you to be found "
-"in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
+"Tell users if they have to pay to get in or not. In both cases you'll be "
+"able to provide a page for participants to register or buy tickets."
 msgstr ""
-"Use um nome único e que lhe identifique. Isso também vai ajudar você a ser "
-"encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
-"a 30 caracteres."
+"Diz para os usuários se eles deverão pagar para entrar. De qualquer forma, "
+"será possível indicar uma página para os participantes se registrarem ou "
+"comprarem ingressos."
 
-#: resources/views/auth/finishSignUp.blade.php:52
-#: resources/views/auth/signUp.blade.php:80
-msgid "Go to my profile"
-msgstr "Ir para o meu perfil"
+#: resources/views/event/forms/_checkboxes.blade.php:4
+msgid "This is a closed-doors / invite-only event"
+msgstr "Este é um evento de portas fechadas / somente para convidados"
 
-#: resources/views/auth/login.blade.php:5
-msgid "Who's there?"
-msgstr "Quem fala?"
-
-#: resources/views/auth/login.blade.php:6
-msgid "Identify yourself to get access to the platform"
-msgstr "Identifique-se para ter acesso à plataforma"
-
-#: resources/views/auth/login.blade.php:14
-msgid "You can also login using an account from one of those websites:"
-msgstr "Você também pode se logar usando a conta de um desses sites:"
-
-#: resources/views/auth/login.blade.php:19
-#: resources/views/auth/signUp.blade.php:50
-msgid "E-mail"
-msgstr "E-mail"
-
-#: resources/views/auth/login.blade.php:20
-msgid "Here you can use either your username or your e-mail: both works!"
+#: resources/views/event/forms/_checkboxes.blade.php:5
+msgid ""
+"You can inform users they cannot buy entrances to this event. Some examples: "
+"event open to institution students only; employees company meeting; etc. "
+"This is only informational: if this is a private event, you should check the "
+"next box as well."
 msgstr ""
-"Aqui você pode usar tanto seu usuário ou seu e-mail: os dois funcionam!"
+"Você pode avisar aos usuários que eles não podem comprar entradas. Exemplos: "
+"um evento aberto somente a alunos de uma instituição; encontro de "
+"funcionários da empresa; etc. Isso é somente informativo: se este for um "
+"evento privado, você também deve marcar a próxima opção."
 
-#: resources/views/auth/login.blade.php:22
-msgid "Password"
-msgstr "Senha"
+#: resources/views/event/forms/_checkboxes.blade.php:7
+msgid "This event should be kept hidden for now"
+msgstr "Este evento deve ficar oculto por enquanto"
 
-#: resources/views/auth/login.blade.php:26
-msgid "Let me in"
-msgstr "Logar"
+#: resources/views/event/forms/_checkboxes.blade.php:8
+msgid ""
+"This can be used if it's private, or you're still planning it and don't want "
+"the general public to see it. It will be hidden from searches and only "
+"accessible through the URL."
+msgstr ""
+"Isso pode ser usado se for um evento privado, ou se você ainda estiver "
+"planejando e não quiser que o público veja. Ele não vai aparecer nas "
+"pesquisas e só vai ser acessível pela URL."
+
+#: resources/views/event/forms/edit_themes_speakers.blade.php:68
+msgid "To add a speaker, search for a user in this list:"
+msgstr "Para adicionar um palestrante, selecione um usuário na lista:"
+
+#: resources/views/event/forms/edit_themes_speakers.blade.php:75
+msgid "unsaved"
+msgstr "não salvo"
+
+#: resources/views/event/forms/edit_themes_speakers.blade.php:97
+#: resources/views/event/forms/edit_common.blade.php:25
+msgid "Themes"
+msgstr "Temas"
+
+#: resources/views/event/forms/edit_themes_speakers.blade.php:101
+msgid "Write event themes separated by commas:"
+msgstr "Digite os temas do evento, separados por vírgulas:"
+
+#: resources/views/event/forms/submit.blade.php:4
+msgid "Submit a new event"
+msgstr "Envie um novo evento"
+
+#: resources/views/event/forms/submit.blade.php:6
+msgid "Help the community grow, telling us about a new event"
+msgstr "Ajude a comunidade a crescer, nos conte sobre um novo evento"
+
+#: resources/views/event/forms/submit.blade.php:29
+msgid "Submit it"
+msgstr "Enviar evento"
+
+#: resources/views/event/forms/edit_general.blade.php:13
+msgid "Basic information"
+msgstr "Informações básicas"
+
+#: resources/views/event/forms/edit_general.blade.php:18
+msgid "Description"
+msgstr "Descrição"
+
+#: resources/views/event/forms/edit_general.blade.php:20
+#: resources/views/auth/signUp.blade.php:67
+msgid "Tagline"
+msgstr "Descrição curta"
+
+#: resources/views/event/forms/edit_general.blade.php:20
+msgid ""
+"Describe it in a few words. This will appear above the description in the "
+"event page, and in some other places where we need a smaller piece of text."
+msgstr ""
+"Descreva-o em algumas palavras. Isso vai aparecer acima da descrição, na "
+"página do evento, e em alguns outros lugares onde precisamos de um texto "
+"menor."
+
+#: resources/views/event/forms/edit_general.blade.php:26
+msgid "External pages"
+msgstr "Páginas externas"
+
+#: resources/views/event/forms/edit_general.blade.php:29
+msgid "Event website"
+msgstr "Site do evento"
+
+#: resources/views/event/forms/edit_general.blade.php:31
+msgid "Tickets page"
+msgstr "Página de ingressos"
+
+#: resources/views/event/forms/edit_general.blade.php:33
+msgid "Twitter handle"
+msgstr "Usuário no Twitter"
+
+#: resources/views/event/forms/edit_general.blade.php:34
+msgid "Event hashtag"
+msgstr "Hashtag do evento"
+
+#: resources/views/event/forms/edit_general.blade.php:36
+msgid ""
+"This will suggest participants to post using this hashtag, helping to find "
+"what's being said about the event and increasing the buzz."
+msgstr ""
+"Isso vai sugerir aos participantes postarem usando esta hashtag, ajudando a "
+"descobrir o que está sendo falado sobre o evento e aumentando o buzz."
+
+#: resources/views/event/forms/edit_general.blade.php:39
+msgid "Facebook page"
+msgstr "Página no Facebook"
+
+#: resources/views/event/forms/edit_general.blade.php:44
+msgid ""
+"This can help your users spread the word through Facebook, and it's another "
+"channel to get in touch with the public."
+msgstr ""
+"Isso pode ajudar seus usuários a espalharem o evento pelo Facebook, e é "
+"outro canal para entrar em contato com o público."
+
+#: resources/views/event/forms/edit_general.blade.php:61
+msgid "Address"
+msgstr "Endereço"
+
+#: resources/views/event/forms/edit_general.blade.php:63
+msgid "Postal code"
+msgstr "CEP"
+
+#: resources/views/event/forms/edit_general.blade.php:71
+msgid "Additional options"
+msgstr "Opções extras"
+
+#: resources/views/event/forms/_basic_fields.blade.php:10
+msgid "Title"
+msgstr "Título"
+
+#: resources/views/event/forms/_basic_fields.blade.php:12
+msgid ""
+"What's the event name? Probably something like 'React.js Conf' or "
+"'International Congress of Mathematicians'?"
+msgstr ""
+"Qual o nome do evento? Provavelmente algo como 'React.js Conf' ou 'Congresso "
+"Internacional de Matemáticos'?"
+
+#: resources/views/event/forms/_basic_fields.blade.php:17
+msgid "City"
+msgstr "Cidade"
+
+#: resources/views/event/forms/_basic_fields.blade.php:21
+msgid "Event type"
+msgstr "Tipos de evento"
+
+#: resources/views/event/forms/_basic_fields.blade.php:21
+msgid "Select an option"
+msgstr "Selecione uma opção"
+
+#: resources/views/event/forms/_basic_fields.blade.php:30
+msgid ""
+"You only need to fill this field if the event lasts for more than one day."
+msgstr "Você só precisa preencher este campo se o evento durar mais de um dia"
+
+#: resources/views/event/forms/edit_common.blade.php:3
+#, php-format
+msgid "Edit event - %s"
+msgstr "Editar evento - %s"
+
+#: resources/views/event/forms/edit_common.blade.php:4
+msgid "Editing event information"
+msgstr "Editando dados do evento"
+
+#: resources/views/event/forms/edit_common.blade.php:24
+msgid "General information"
+msgstr "Informações básicas"
+
+#: resources/views/event/forms/edit_common.blade.php:37
+msgid "Go back"
+msgstr "Voltar"
+
+#: resources/views/event/forms/edit_common.blade.php:38
+msgid "Save"
+msgstr "Salvar"
+
+#: resources/views/user/profile.blade.php:26
+msgid "speaker profile"
+msgstr "perfil de palestrante"
+
+#: resources/views/user/profile.blade.php:28
+msgid "profile"
+msgstr "perfil"
+
+#: resources/views/user/profile.blade.php:102
+#, php-format
+msgid "%s still don't have a picture :("
+msgstr "%s ainda não tem uma foto :("
+
+#: resources/views/user/profile.blade.php:121
+msgid ""
+"There's nothing to say about this user...<br/> He prefers to keep an air of "
+"mistery about him, I guess."
+msgstr ""
+"Não há nada para dizer sobre esse usuário...<br/> Ele prefere se manter num "
+"ar de mistério, pelo visto."
+
+#: resources/views/user/profile.blade.php:128
+#, php-format
+msgid "%s has participated in events as a speaker"
+msgstr "%s já participou de eventos como palestrante"
+
+#: resources/views/user/profile.blade.php:137
+msgid "Her elsewhere:"
+msgstr "Ela em outros lugares:"
+
+#: resources/views/user/profile.blade.php:137
+msgid "Him elsewhere:"
+msgstr "Ele em outros lugares:"
+
+#: resources/views/user/profile.blade.php:162
+msgid "Her in events"
+msgstr "Ela nos eventos"
+
+#: resources/views/user/profile.blade.php:162
+msgid "Him in events"
+msgstr "Ele nos eventos"
+
+#: resources/views/user/profile.blade.php:182
+msgid "This user have not yet interacted with the events in the platform"
+msgstr "Este usuário ainda não interagiu com nenhum evento da plataforma"
+
+#: resources/views/user/profile.blade.php:201
+msgid "Add as a connection"
+msgstr "Adicionar como conexão"
+
+#: resources/views/user/profile.blade.php:203
+msgid "See my connections"
+msgstr "Ver minhas conexões"
+
+#: resources/views/user/profile.blade.php:210
+msgid "Unfollow her"
+msgstr "Deixar de seguir"
+
+#: resources/views/user/profile.blade.php:210
+msgid "Unfollow him"
+msgstr "Deixar de seguir"
+
+#: resources/views/user/profile.blade.php:214
+msgid "Follow her"
+msgstr "Seguir"
+
+#: resources/views/user/profile.blade.php:214
+msgid "Follow him"
+msgstr "Seguir"
+
+#: resources/views/user/profile.blade.php:227
+msgid "Her themes of interest"
+msgstr "Seus temas de interesse"
+
+#: resources/views/user/profile.blade.php:227
+msgid "His themes of interest"
+msgstr "Seus temas de interesse"
+
+#: resources/views/user/profile.blade.php:238
+msgid "Most visited places"
+msgstr "Lugares mais visitados"
 
 #: resources/views/auth/signUp.blade.php:4
 msgid "Sign Up"
@@ -297,6 +752,11 @@ msgstr "Cadastre-se"
 #: resources/views/auth/signUp.blade.php:5
 msgid "Create your account"
 msgstr "Crie sua conta"
+
+#: resources/views/auth/signUp.blade.php:6
+#: resources/views/auth/finishSignUp.blade.php:8
+msgid "Join the events community now!"
+msgstr "Entre agora para a comunidade de eventos!"
 
 #: resources/views/auth/signUp.blade.php:37
 #, php-format
@@ -314,6 +774,27 @@ msgstr "Você também pode se cadastrar usando a conta de um desses sites:"
 msgid "Name"
 msgstr "Nome"
 
+#: resources/views/auth/signUp.blade.php:50
+#: resources/views/auth/login.blade.php:19
+msgid "E-mail"
+msgstr "E-mail"
+
+#: resources/views/auth/signUp.blade.php:52
+#: resources/views/auth/login.blade.php:19
+#: resources/views/auth/finishSignUp.blade.php:42
+msgid "Username"
+msgstr "Usuário"
+
+#: resources/views/auth/signUp.blade.php:57
+#: resources/views/auth/finishSignUp.blade.php:47
+msgid ""
+"Use a uniquely identifying name for you. This will also help you to be found "
+"in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
+msgstr ""
+"Use um nome único e que lhe identifique. Isso também vai ajudar você a ser "
+"encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
+"a 30 caracteres."
+
 #: resources/views/auth/signUp.blade.php:60
 msgid "Choose a password"
 msgstr "Escolha uma senha"
@@ -326,11 +807,6 @@ msgstr ""
 "Use pelo menos 6 caracteres aqui. Preferencialmente, com números e letras! "
 "Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
 "também."
-
-#: resources/views/auth/signUp.blade.php:67
-#: resources/views/event/forms/edit_general.blade.php:52
-msgid "Tagline"
-msgstr "Descrição curta"
 
 #: resources/views/auth/signUp.blade.php:69
 msgid "Describe your professional self in a phrase. What you do for a living?"
@@ -348,9 +824,50 @@ msgstr ""
 "Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
 "outros a entender quem você é."
 
-#: resources/views/site/privacy.blade.php:1
-msgid "Privacy Policy"
-msgstr "Política de Privacidade"
+#: resources/views/auth/signUp.blade.php:80
+#: resources/views/auth/finishSignUp.blade.php:52
+msgid "Go to my profile"
+msgstr "Ir para o meu perfil"
+
+#: resources/views/auth/login.blade.php:5
+msgid "Who's there?"
+msgstr "Quem fala?"
+
+#: resources/views/auth/login.blade.php:6
+msgid "Identify yourself to get access to the platform"
+msgstr "Identifique-se para ter acesso à plataforma"
+
+#: resources/views/auth/login.blade.php:14
+msgid "You can also login using an account from one of those websites:"
+msgstr "Você também pode se logar usando a conta de um desses sites:"
+
+#: resources/views/auth/login.blade.php:20
+msgid "Here you can use either your username or your e-mail: both works!"
+msgstr ""
+"Aqui você pode usar tanto seu usuário ou seu e-mail: os dois funcionam!"
+
+#: resources/views/auth/login.blade.php:22
+msgid "Password"
+msgstr "Senha"
+
+#: resources/views/auth/login.blade.php:26
+msgid "Let me in"
+msgstr "Logar"
+
+#: resources/views/auth/finishSignUp.blade.php:6
+msgid "Social Sign Up"
+msgstr "Cadastro por rede social"
+
+#: resources/views/auth/finishSignUp.blade.php:7
+msgid "Finish creating your account"
+msgstr "Termine de criar sua conta"
+
+#: resources/views/auth/finishSignUp.blade.php:31
+#: resources/views/components/form_errors.blade.php:4
+msgid "Whoops! Some errors were found. Could you fix them before proceeding?"
+msgstr ""
+"Ops! Encontramos alguns erros. Você pode corrigi-los antes de seguir em "
+"frente?"
 
 #: resources/views/site/index.blade.php:59
 msgid "Expand your horizons"
@@ -478,119 +995,14 @@ msgstr ""
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
-#: resources/views/user/profile.blade.php:21
+#: resources/views/site/privacy.blade.php:1
+msgid "Privacy Policy"
+msgstr "Política de Privacidade"
+
 #: resources/views/components/themes_list.blade.php:9
-#: resources/views/event/_event_block.blade.php:34
-msgid "she"
-msgstr "ela"
-
-#: resources/views/user/profile.blade.php:21
-#: resources/views/components/themes_list.blade.php:9
-#: resources/views/event/_event_block.blade.php:34
-msgid "he"
-msgstr "ele"
-
-#: resources/views/user/profile.blade.php:26
-msgid "speaker profile"
-msgstr "perfil de palestrante"
-
-#: resources/views/user/profile.blade.php:28
-msgid "profile"
-msgstr "perfil"
-
-#: resources/views/user/profile.blade.php:34
-#: resources/views/event/theme.blade.php:147
-#: resources/views/event/details.blade.php:17
-#: resources/views/event/search.blade.php:152
-msgid "m/d/Y"
-msgstr "d/m/Y"
-
-#: resources/views/user/profile.blade.php:102
 #, php-format
-msgid "%s still don't have a picture :("
-msgstr "%s ainda não tem uma foto :("
-
-#: resources/views/user/profile.blade.php:103
-#: resources/views/components/speakers_list.blade.php:12
-#: resources/views/speaker/index.blade.php:120
-#, php-format
-msgid "%s on Konato"
-msgstr "%s no Konato"
-
-#: resources/views/user/profile.blade.php:121
-msgid ""
-"There's nothing to say about this user...<br/> He prefers to keep an air of "
-"mistery about him, I guess."
-msgstr ""
-"Não há nada para dizer sobre esse usuário...<br/> Ele prefere se manter num "
-"ar de mistério, pelo visto."
-
-#: resources/views/user/profile.blade.php:128
-#, php-format
-msgid "%s has participated in events as a speaker"
-msgstr "%s já participou de eventos como palestrante"
-
-#: resources/views/user/profile.blade.php:137
-msgid "Her elsewhere:"
-msgstr "Ela em outros lugares:"
-
-#: resources/views/user/profile.blade.php:137
-msgid "Him elsewhere:"
-msgstr "Ele em outros lugares:"
-
-#: resources/views/user/profile.blade.php:162
-msgid "Her in events"
-msgstr "Ela nos eventos"
-
-#: resources/views/user/profile.blade.php:162
-msgid "Him in events"
-msgstr "Ele nos eventos"
-
-#: resources/views/user/profile.blade.php:182
-msgid "This user have not yet interacted with the events in the platform"
-msgstr "Este usuário ainda não interagiu com nenhum evento da plataforma"
-
-#: resources/views/user/profile.blade.php:201
-msgid "Add as a connection"
-msgstr "Adicionar como conexão"
-
-#: resources/views/user/profile.blade.php:203
-msgid "See my connections"
-msgstr "Ver minhas conexões"
-
-#: resources/views/user/profile.blade.php:210
-msgid "Unfollow her"
-msgstr "Deixar de seguir"
-
-#: resources/views/user/profile.blade.php:210
-msgid "Unfollow him"
-msgstr "Deixar de seguir"
-
-#: resources/views/user/profile.blade.php:214
-msgid "Follow her"
-msgstr "Seguir"
-
-#: resources/views/user/profile.blade.php:214
-msgid "Follow him"
-msgstr "Seguir"
-
-#: resources/views/user/profile.blade.php:218
-#: resources/views/event/theme.blade.php:180
-#: resources/views/event/details.blade.php:359
-msgid "See my following preferences"
-msgstr "Configurar o que acompanho"
-
-#: resources/views/user/profile.blade.php:227
-msgid "Her themes of interest"
-msgstr "Seus temas de interesse"
-
-#: resources/views/user/profile.blade.php:227
-msgid "His themes of interest"
-msgstr "Seus temas de interesse"
-
-#: resources/views/user/profile.blade.php:238
-msgid "Most visited places"
-msgstr "Lugares mais visitados"
+msgid "How many times %s has spoken about this subject"
+msgstr "Quantas vezes %s já palestrou sobre esse assunto"
 
 #: resources/views/components/speakers_list.blade.php:15
 #, php-format
@@ -606,445 +1018,47 @@ msgid_plural "%d events total"
 msgstr[0] "%d evento no total"
 msgstr[1] "%d eventos no total"
 
-#: resources/views/components/themes_list.blade.php:9
-#, php-format
-msgid "How many times %s has spoken about this subject"
-msgstr "Quantas vezes %s já palestrou sobre esse assunto"
+#: resources/lang/gettext/validation.php:3
+msgid "password"
+msgstr "senha"
 
-#: resources/views/event/theme.blade.php:7
-#, php-format
-msgid "Events about %s"
-msgstr "Eventos sobre %s"
+#: resources/lang/gettext/validation.php:7
+msgid "This does not seem like an email"
+msgstr "Isso não parece com um e-mail"
 
-#: resources/views/event/theme.blade.php:91
-#: resources/views/event/search.blade.php:5
-msgid "Event types"
-msgstr "Tipos de evento"
+#: resources/lang/gettext/validation.php:8
+msgid "The :attribute confirmation doesn't match"
+msgstr "A confirmação de :attribute não bate"
 
-#: resources/views/event/theme.blade.php:109
-#: resources/views/event/search.blade.php:5
-msgid "Free"
-msgstr "Grátis"
+#: resources/lang/gettext/validation.php:9
+msgid "This :attribute is already in use"
+msgstr "Este :attribute já está em uso"
 
-#: resources/views/event/theme.blade.php:110
-#: resources/views/event/search.blade.php:5
-msgid "Both"
-msgstr "Ambos"
+#: resources/lang/gettext/validation.php:11
+msgid "Too short"
+msgstr "Curto demais"
 
-#: resources/views/event/theme.blade.php:111
-#: resources/views/event/search.blade.php:5
-msgid "Paid"
-msgstr "Pago"
+#: resources/lang/gettext/validation.php:14
+msgid "This field should have between :min and :max characters"
+msgstr "Este campo deve ter entre :min e :max caracteres"
 
-#: resources/views/event/theme.blade.php:119
-#: resources/views/speaker/index.blade.php:90
-msgid "Related themes"
-msgstr "Temas relacionados"
-
-#: resources/views/event/theme.blade.php:137
-#: resources/views/event/search.blade.php:143
-msgid "Relevance"
-msgstr "Relevância"
-
-#: resources/views/event/theme.blade.php:138
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/search.blade.php:144
-msgid "Date"
-msgstr "Data"
-
-#: resources/views/event/theme.blade.php:178
-msgid "Follow this theme"
-msgstr "Acompanhar este tema"
-
-#: resources/views/event/theme.blade.php:187
-msgid "Popularity"
-msgstr "Popularidade"
-
-#: resources/views/event/theme.blade.php:199
-msgid "Popular speakers"
-msgstr "Palestrantes populares"
-
-#: resources/views/event/theme.blade.php:203
-#, php-format
-msgid "See all speakers on %s"
-msgstr "Veja todos os palestrantes em %s"
-
-#: resources/views/event/_event_block.blade.php:19
-#, php-format
-msgid "%s participated"
-msgstr "%s participou"
-
-#: resources/views/event/_event_block.blade.php:23
-#, php-format
-msgid "%s was involved / volunteered"
-msgstr "%s estava envolvido / se voluntariou"
-
-#: resources/views/event/_event_block.blade.php:27
-#, php-format
-msgid "%s was part of staff"
-msgstr "%s foi parte do staff"
-
-#: resources/views/event/_event_block.blade.php:31
-#, php-format
-msgid "%s was a speaker"
-msgstr "%s foi palestrante"
-
-#: resources/views/event/_event_block.blade.php:91
-msgid "See more details"
-msgstr "Veja mais detalhes"
-
-#: resources/views/event/details.blade.php:12
-#, php-format
-msgid "%s - event"
-msgstr "%s - evento"
-
-#: resources/views/event/details.blade.php:18
-msgid "h:i A"
-msgstr "H:i"
-
-#: resources/views/event/details.blade.php:19
-msgid "%A, %B %d, %Y"
-msgstr "%A, %d de %B de %Y"
-
-#: resources/views/event/details.blade.php:142
-msgid "This is a private event - acessible only by a group of selected people"
-msgstr ""
-"Este evento é privado - acessível somente por um grupo de pessoas "
-"selecionadas"
-
-#: resources/views/event/details.blade.php:142
-msgid "Closed"
-msgstr "Fechado"
-
-#: resources/views/event/details.blade.php:172
-#: resources/views/event/forms/edit_general.blade.php:75
-msgid "Facebook Event"
-msgstr "Evento no Facebook"
-
-#: resources/views/event/details.blade.php:181
-#, php-format
-msgid "%s&nbsp;speakers on %s&nbsp;sessions and %s&nbsp;cases"
-msgstr "%s&nbsp;palestrantes em %s&nbsp;sessões e %s&nbsp;cases"
-
-#: resources/views/event/details.blade.php:182
-#, php-format
-msgid "%s&nbsp;resumes and %s&nbsp;articles submitted"
-msgstr "%s&nbsp; resumos e %s&nbsp;artigos submetidos"
-
-#: resources/views/event/details.blade.php:184
-#, php-format
-msgid "%s&nbsp;of&nbsp;%s known participants"
-msgstr "%s&nbsp;de&nbsp;%s participantes conhecidos"
-
-#: resources/views/event/details.blade.php:185
-msgid "followers"
-msgstr "seguidores"
-
-#: resources/views/event/details.blade.php:194
-msgid "Editions"
-msgstr "Edições"
-
-#: resources/views/event/details.blade.php:211
-msgid "The Event"
-msgstr "O Evento"
-
-#: resources/views/event/details.blade.php:225
-#: resources/views/event/forms/edit_general.blade.php:32
-msgid "Schedule"
-msgstr "Programação"
-
-#: resources/views/event/details.blade.php:305
-msgid "The speakers"
-msgstr "Os palestrantes"
-
-#: resources/views/event/details.blade.php:314
-#: resources/views/event/forms/edit_general.blade.php:31
-msgid "Materials"
-msgstr "Materiais"
-
-#: resources/views/event/details.blade.php:319
-msgid "by"
-msgstr "por"
-
-#: resources/views/event/details.blade.php:329
-msgid "Event sponsors"
-msgstr "Patrocinadores"
-
-#: resources/views/event/details.blade.php:342
-msgid "Edit event information"
-msgstr "Editar dados do evento"
-
-#: resources/views/event/details.blade.php:347
-msgid "Buy ticket"
-msgstr "Comprar ingresso"
-
-#: resources/views/event/details.blade.php:352
-msgid "I'm going!"
-msgstr "Eu vou!"
-
-#: resources/views/event/details.blade.php:356
-msgid "Follow this event"
-msgstr "Acompanhar este evento"
-
-#: resources/views/event/details.blade.php:368
-#: resources/views/event/forms/edit_general.blade.php:90
-msgid "Where & When"
-msgstr "Onde e Quando"
-
-#: resources/views/event/details.blade.php:378
-msgid "See on a map"
-msgstr "Ver no mapa"
-
-#: resources/views/event/details.blade.php:379
-msgid "Get directions"
-msgstr "Ver trajeto"
-
-#: resources/views/event/details.blade.php:384
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/forms/_basic_fields.blade.php:25
-msgid "Begin"
-msgstr "Início"
-
-#: resources/views/event/details.blade.php:385
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/forms/_basic_fields.blade.php:29
-msgid "End"
-msgstr "Fim"
-
-#: resources/views/event/details.blade.php:388
-#, php-format
-msgid "from %s to %s"
-msgstr "das %s às %s"
-
-#: resources/views/event/details.blade.php:394
-#, php-format
-msgid "beginning at %s"
-msgstr "começando às %s"
-
-#: resources/views/event/details.blade.php:398
-msgid "Add to My Calendar"
-msgstr "Adicionar ao meu calendário"
-
-#: resources/views/event/details.blade.php:407
-msgid "Main themes"
-msgstr "Temas principais"
-
-#: resources/views/event/details.blade.php:419
-msgid "Organization"
-msgstr "Organização"
-
-#: resources/views/event/details.blade.php:430
-msgid "Send a message"
-msgstr "Enviar uma mensagem"
-
-#: resources/views/event/search.blade.php:5
-msgid "Search terms"
-msgstr "Termos da busca"
-
-#: resources/views/event/search.blade.php:5
-msgid "Theme"
-msgstr "Tema"
-
-#: resources/views/event/search.blade.php:6
-#, php-format
-msgid "\"%s\" events search"
-msgstr "\"%s\" - busca de eventos"
-
-#: resources/views/event/forms/_checkboxes.blade.php:1
-msgid "This is a free event"
-msgstr "Este evento é gratuito"
-
-#: resources/views/event/forms/_checkboxes.blade.php:2
+#: resources/lang/gettext/validation.php:19
 msgid ""
-"Tell users if they have to pay to get in or not. In both cases you'll be "
-"able to provide a page for participants to register or buy tickets."
+"This username is already taken. Try something different! If you already have "
+"an account but don't remember your password, try to use the Recovery link "
+"from the Login page."
 msgstr ""
-"Diz para os usuários se eles deverão pagar para entrar. De qualquer forma, "
-"será possível indicar uma página para os participantes se registrarem ou "
-"comprarem ingressos."
+"Este usuário já foi usado. Tente algo diferente! Se você já tem uma conta "
+"mas não lembra sua senha, tente usar o link de Recuperação, na página de "
+"Login."
 
-#: resources/views/event/forms/_checkboxes.blade.php:4
-msgid "This is a closed-doors / invite-only event"
-msgstr "Este é um evento de portas fechadas / somente para convidados"
-
-#: resources/views/event/forms/_checkboxes.blade.php:5
+#: resources/lang/gettext/validation.php:20
 msgid ""
-"You can inform users they cannot buy entrances to this event. Some examples: "
-"event open to institution students only; employees company meeting; etc. "
-"This is only informational: if this is a private event, you should check the "
-"next box as well."
+"This e-mail is already in use. Hmm... Is this you? If you don't remember "
+"your password, try to use the Recovery link from the Login page."
 msgstr ""
-"Você pode avisar aos usuários que eles não podem comprar entradas. Exemplos: "
-"um evento aberto somente a alunos de uma instituição; encontro de "
-"funcionários da empresa; etc. Isso é somente informativo: se este for um "
-"evento privado, você também deve marcar a próxima opção."
-
-#: resources/views/event/forms/_checkboxes.blade.php:7
-msgid "This event should be kept hidden for now"
-msgstr "Este evento deve ficar oculto por enquanto"
-
-#: resources/views/event/forms/_checkboxes.blade.php:8
-msgid ""
-"This can be used if it's private, or you're still planning it and don't want "
-"the general public to see it. It will be hidden from searches and only "
-"accessible through the URL."
-msgstr ""
-"Isso pode ser usado se for um evento privado, ou se você ainda estiver "
-"planejando e não quiser que o público veja. Ele não vai aparecer nas "
-"pesquisas e só vai ser acessível pela URL."
-
-#: resources/views/event/forms/edit_general.blade.php:3
-#, php-format
-msgid "Edit event - %s"
-msgstr "Editar evento - %s"
-
-#: resources/views/event/forms/edit_general.blade.php:4
-msgid "Editing event information"
-msgstr "Editando dados do evento"
-
-#: resources/views/event/forms/edit_general.blade.php:28
-#, fuzzy
-msgid "General information"
-msgstr "Informações básicas"
-
-#: resources/views/event/forms/edit_general.blade.php:29
-msgid "Themes"
-msgstr "Temas"
-
-#: resources/views/event/forms/edit_general.blade.php:45
-msgid "Basic information"
-msgstr "Informações básicas"
-
-#: resources/views/event/forms/edit_general.blade.php:50
-msgid "Description"
-msgstr "Descrição"
-
-#: resources/views/event/forms/edit_general.blade.php:52
-msgid ""
-"Describe it in a few words. This will appear above the description in the "
-"event page, and in some other places where we need a smaller piece of text."
-msgstr ""
-"Descreva-o em algumas palavras. Isso vai aparecer acima da descrição, na "
-"página do evento, e em alguns outros lugares onde precisamos de um texto "
-"menor."
-
-#: resources/views/event/forms/edit_general.blade.php:58
-msgid "External pages"
-msgstr "Páginas externas"
-
-#: resources/views/event/forms/edit_general.blade.php:61
-msgid "Event website"
-msgstr "Site do evento"
-
-#: resources/views/event/forms/edit_general.blade.php:63
-msgid "Tickets page"
-msgstr "Página de ingressos"
-
-#: resources/views/event/forms/edit_general.blade.php:65
-msgid "Twitter handle"
-msgstr "Usuário no Twitter"
-
-#: resources/views/event/forms/edit_general.blade.php:66
-msgid "Event hashtag"
-msgstr "Hashtag do evento"
-
-#: resources/views/event/forms/edit_general.blade.php:68
-msgid ""
-"This will suggest participants to post using this hashtag, helping to find "
-"what's being said about the event and increasing the buzz."
-msgstr ""
-"Isso vai sugerir aos participantes postarem usando esta hashtag, ajudando a "
-"descobrir o que está sendo falado sobre o evento e aumentando o buzz."
-
-#: resources/views/event/forms/edit_general.blade.php:71
-msgid "Facebook page"
-msgstr "Página no Facebook"
-
-#: resources/views/event/forms/edit_general.blade.php:76
-msgid ""
-"This can help your users spread the word through Facebook, and it's another "
-"channel to get in touch with the public."
-msgstr ""
-"Isso pode ajudar seus usuários a espalharem o evento pelo Facebook, e é "
-"outro canal para entrar em contato com o público."
-
-#: resources/views/event/forms/edit_general.blade.php:93
-msgid "Address"
-msgstr "Endereço"
-
-#: resources/views/event/forms/edit_general.blade.php:95
-msgid "Postal code"
-msgstr "CEP"
-
-#: resources/views/event/forms/edit_general.blade.php:103
-msgid "Additional options"
-msgstr "Opções extras"
-
-#: resources/views/event/forms/edit_general.blade.php:117
-msgid "Go back"
-msgstr "Voltar"
-
-#: resources/views/event/forms/edit_general.blade.php:118
-msgid "Save"
-msgstr "Salvar"
-
-#: resources/views/event/forms/_basic_fields.blade.php:10
-msgid "Title"
-msgstr "Título"
-
-#: resources/views/event/forms/_basic_fields.blade.php:12
-msgid ""
-"What's the event name? Probably something like 'React.js Conf' or "
-"'International Congress of Mathematicians'?"
-msgstr ""
-"Qual o nome do evento? Provavelmente algo como 'React.js Conf' ou 'Congresso "
-"Internacional de Matemáticos'?"
-
-#: resources/views/event/forms/_basic_fields.blade.php:17
-msgid "City"
-msgstr "Cidade"
-
-#: resources/views/event/forms/_basic_fields.blade.php:21
-msgid "Event type"
-msgstr "Tipos de evento"
-
-#: resources/views/event/forms/_basic_fields.blade.php:21
-msgid "Select an option"
-msgstr "Selecione uma opção"
-
-#: resources/views/event/forms/_basic_fields.blade.php:30
-msgid ""
-"You only need to fill this field if the event lasts for more than one day."
-msgstr "Você só precisa preencher este campo se o evento durar mais de um dia"
-
-#: resources/views/event/forms/submit.blade.php:4
-msgid "Submit a new event"
-msgstr "Envie um novo evento"
-
-#: resources/views/event/forms/submit.blade.php:6
-msgid "Help the community grow, telling us about a new event"
-msgstr "Ajude a comunidade a crescer, nos conte sobre um novo evento"
-
-#: resources/views/event/forms/submit.blade.php:29
-msgid "Submit it"
-msgstr "Enviar evento"
-
-#: resources/views/speaker/index.blade.php:6
-#, php-format
-msgid "Speakers on %s"
-msgstr "Palestrantes em %s"
-
-#: resources/views/speaker/index.blade.php:6
-msgid "Speakers on your themes of interest"
-msgstr "Palestrantes nos seus temas de interesse"
-
-#: resources/views/speaker/index.blade.php:90
-msgid "Most common themes"
-msgstr "Temas mais comuns"
-
-#: resources/views/speaker/index.blade.php:133
-msgid "See full profile"
-msgstr "Ver perfil completo"
+"Este e-mail já está em uso. Hum... É você? Se não lembra sua senha, tente "
+"usar o link de Recuperação, na página de Login."
 
 #~ msgid "at %s"
 #~ msgstr "às %s"

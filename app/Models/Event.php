@@ -37,6 +37,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  * @property Collection staff
  * @property User[]     speakers
  * @property Material[] materials
+ * @property Theme[]    themes
  *
  * @method BelongsTo        type
  * @method HasManyThrough   issues
@@ -77,6 +78,7 @@ class Event extends Base {
         'issues'      => [self::HAS_MANY_THROUGH, self::class, 'through' => EventIssue::class, 'firstKey' => 'id'],
         'speakers'    => [self::BELONGS_TO_MANY, User::class, 'table' => 'event_speaker'],
         'staff'       => [self::BELONGS_TO_MANY, User::class, 'table' => 'event_staff'],
+        'themes'      => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'event_theme'],
         'event_staff' => [self::HAS_MANY, EventStaff::class],
         'materials'   => [self::HAS_MANY, Material::class],
         //        'location' => [self::BELONGS_TO, Location::class],

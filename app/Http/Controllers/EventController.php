@@ -2,6 +2,9 @@
 
 use App\Http\Requests\Model as ModelReq;
 use App\Models\Event;
+use App\Models\EventSpeaker;
+use App\Models\EventTheme;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 use LaravelArdent\Ardent\InvalidModelException;
 
@@ -10,9 +13,9 @@ class EventController extends Controller {
 	public function __construct() {
         $edits = [
             'getEdit', 'postEdit',
-            'getEditThemes', 'postEditThemes',
-            'getEditSpeakers', 'postEditSpeakers',
             'getEditSchedule', 'postEditSchedule',
+            'getEditMaterials', 'postEditMaterials',
+            'getEditThemesSpeakers', 'postEditThemesSpeakers',
         ];
 		$this->middleware('auth', ['only' => ['getSubmit', 'postSubmit'] + $edits]);
 		$this->middleware('staff', ['only' => $edits]);
@@ -55,8 +58,7 @@ class EventController extends Controller {
 	}
 
     public function getEdit(int $id) {
-        $event = Event::find($id);
-        return view('event.forms.edit_general', compact('event'));
+        return $this->edit('general', $id);
     }
 
     public function postEdit(EventReq $req) {
@@ -64,8 +66,7 @@ class EventController extends Controller {
         try {
             $event->fill($req->except('_token'));
             $event->save();
-            $id_slug = slugify($event->id, $event->title);
-            return redirect()->action('EventController@getDetails', $id_slug);
+            return $this->edit('general', $event);
         }
         catch (InvalidModelException $e) {
             return redirect()->back()
@@ -74,20 +75,46 @@ class EventController extends Controller {
         }
     }
 
-    public function getEditThemes(int $id) {
-
+    public function getEditThemesSpeakers(int $id) {
+        return $this->edit('themes_speakers', $id);
     }
 
-    public function getEditSpeakers(int $id) {
+    public function postEditThemesSpeakers(Request $req) {
+        $event_id = $req->id;
+        $speakers = array_filter(explode(',', $req->speaker_ids));
+        $themes   = array_filter(explode(',', $req->theme_ids));
 
+        foreach($speakers as $user_id) {
+            EventSpeaker::create(compact('event_id', 'user_id'));
+        }
+
+        foreach ($themes as $name) {
+            $theme_id = Theme::firstOrCreate(compact('name'))->id;
+            EventTheme::create(compact('event_id', 'theme_id'));
+        }
+
+        return redirect(act('event@editThemesSpeakers', $req->id));
     }
 
     public function getEditMaterials(int $id) {
-
+        return $this->edit('materials', $id);
     }
 
     public function getEditSchedule(int $id) {
+        return $this->edit('schedule', $id);
+    }
 
+    /**
+     * Displays one of the edit forms.
+     * @param string    $name  Form name, as in "event.forms.edit_$name"
+     * @param int|Event $event Event ID or Event object
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    protected function edit($name, $event) {
+        if (is_integer($event)) {
+            $event = Event::find($event);
+        }
+        return view('event.forms.edit_'.$name, compact('event'));
     }
 }
 

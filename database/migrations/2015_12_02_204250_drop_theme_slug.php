@@ -24,7 +24,7 @@ class DropThemeSlug extends Migration {
      */
     public function down() {
         Schema::table('themes', function (Blueprint $table) {
-            $table->text('slug');
+            $table->text('slug')->nullable();
             $table->integer('parent_id')->change();
         });
     }

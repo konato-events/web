@@ -2998,7 +2998,7 @@ footer.post-meta .post-categories {display: block;}
     overflow: hidden;
     padding: 15px;
     //background-color: transparent; /*dc143c*/
-    background-color: opacify(@primaryColor, 0.6);
+    background-color: fade(@primaryColor, 60%);
     color: white;
     z-index: 10;
 }
@@ -4495,7 +4495,7 @@ div.pp_overlay {
 }
 
 .google-map-widget {
-    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0) scale(1.0, 1.0);
 }
 .google-map-widget .google-map,
 .google-map-widget #map-canvas {

@@ -1,33 +1,7 @@
-<?php
-/** @var \App\Models\Event $event */
-$title    = _r('Edit event - %s', $event->title);
-$subtitle = _('Editing event information');
-const FORM_ID = 'submit';
+<?php /** @var \App\Models\Event $event */ ?>
+@extends('event.forms.edit_common')
 
-
-function icon(string $name) {
-    return " <i class='fa fa-$name'></i> ";
-}
-?>
-@extends('layout-header')
-@section('title', $title)
-@section('header-bg', '/img/bg-event.jpg')
-@section('header-title', $event->title)
-@section('header-subtitle', $subtitle)
-
-@section('js')
-    <script type="text/javascript" src="/js/jquery.validate-1.14.0.js"></script>
-    <?=Form::validationScript(FORM_ID)?>
-@endsection
-
-@section('content')
-<section class="page-section with-sidebar sidebar-right first-section">
-<div class="container">
-
-    @include('event.forms._edit_tabs')
-
-<?=Form::model($event, ['action' => 'EventController@postEdit', 'id' => FORM_ID])?>
-<?=Form::hidden('id')?>
+@section('form_content')
 <div class="row">
 
     <section id="content" class="content col-sm-12 col-md-8 col-lg-9">
@@ -106,13 +80,4 @@ function icon(string $name) {
     </aside>
 
 </div>
-
-<div class="row text-center">
-    <a href="<?=act('event@details', $event->id)?>" class="btn btn-theme btn-theme-lg btn-theme-grey-dark"><?=_('Go back')?></a>
-    <?=Form::submit(_('Save'), ['class' => 'btn btn-theme btn-theme-lg'])?>
-</div>
-<?=Form::close()?>
-
-</div>
-</section>
 @endsection

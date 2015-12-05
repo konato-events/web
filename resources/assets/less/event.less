@@ -97,11 +97,17 @@
     }
 }
 
-.event-edit {
+body[class*=event-edit] {
     .nav-tabs + form {
         padding: 10px 5px 20px 5px;
         box-shadow: 0 1px 10px;
         border: 1px solid #C4C4C4;
         border-top-width: 0;
+    }
+}
+
+#speakers_list {
+    h4 span {
+        display: none;
     }
 }

@@ -11,6 +11,15 @@ function printr(array $data):string {
 }
 
 /**
+ * Syntatic sugar to create FontAwesome i-icons to concat with strings.
+ * @param string $name The icon name, as in fa-"facebook"
+ * @return string
+ */
+function icon(string $name) {
+    return " <i class='fa fa-$name'></i> ";
+}
+
+/**
  * Generates a link inside a parent element (li?). That parent will include the "active" class if the action passed is
  * the same that was called (found by the "globals" created by {@link \App\Listener\Route}).
  * @param string $title What will become the link

@@ -2,11 +2,11 @@
 
 /**
  * @property int event_id
- * @property int user_id
+ * @property int theme_id
  */
-class EventStaff extends Base {
+class EventTheme extends Base {
 
-    protected $table = 'event_staff';
+    protected $table = 'event_theme';
     protected $primaryKey = 'event_id';
 
 }
