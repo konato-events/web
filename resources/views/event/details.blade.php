@@ -309,7 +309,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                 <hr class="page-divider transparent visible-md"/>
             <? endif ?>
 
-            <? if (sizeof($event->speakers)): ?>
+            <? if (sizeof($event->materials)): ?>
                 <div class="col-md-12 col-lg-5 pull-left">
                     <?=section_title('download', _('Materials'))?>
                     <ul class="materials">
