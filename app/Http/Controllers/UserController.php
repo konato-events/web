@@ -1,13 +1,14 @@
 <?php namespace App\Http\Controllers;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Database\QueryException;
 
 class UserController extends Controller {
 
+    use Traits\Followable;
+
     const TYPE_SPEAKER  = 1;
     const TYPE_USER     = 2;
+
+    protected function followRelation() { return 'follows'; }
 
     public function __construct() {
         $this->middleware('auth', ['only' => ['getFollow', 'getUnfollow']]);
@@ -39,23 +40,6 @@ class UserController extends Controller {
 
     public function getSpeaker(string $id_slug) {
         return $this->profile(self::TYPE_SPEAKER, $id_slug);
-    }
-
-    public function getFollow(int $id) {
-        try {
-            \Auth::user()->follows()->attach($id);
-        }
-        catch (QueryException $e) {
-            if ($e->getCode() != 23505) { //unique violation... it means the relation already existed, so everything is fine
-                throw $e;
-            }
-        }
-        return redirect()->back();
-    }
-
-    public function getUnfollow(int $id) {
-        \Auth::user()->follows()->detach($id);
-        return redirect()->back();
     }
 
 }

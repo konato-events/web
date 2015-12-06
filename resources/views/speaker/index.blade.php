@@ -72,7 +72,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
         <ul class="breadcrumb">
             <li><a href="#">IT (Information Technologies)</a></li>
             <li><a href="#">Languages</a></li>
-            <li><a href="<?=act('event@theme', slugify(1, $theme))?>"><?=$theme?></a></li>
+            <li><a href="<?=act('theme@events', slugify(1, $theme))?>"><?=$theme?></a></li>
             <li class="active"><?=_('Speakers')?></li>
         </ul>
     @endif

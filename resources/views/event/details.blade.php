@@ -401,15 +401,17 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><?=_('Main themes')?></h4>
+                <? if (sizeof($event->themes)): ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><?=_('Main themes')?></h4>
+                        </div>
+                        <div class="panel-body">
+                            <? //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
+                            @include('components.themes_list', ['themes' => $event->themes])
+                        </div>
                     </div>
-                    <div class="panel-body">
-                        <? //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
-                        @include('components.themes_list', ['themes' => $event->themes])
-                    </div>
-                </div>
+                <? endif ?>
 
                 <!--
                 <div class="panel panel-default">

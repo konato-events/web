@@ -5,6 +5,7 @@ use App\Models\Event;
 use App\Models\EventSpeaker;
 use App\Models\EventTheme;
 use App\Models\Theme;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use LaravelArdent\Ardent\InvalidModelException;
 
@@ -36,13 +37,6 @@ class EventController extends Controller {
         list($id, $name_slug) = unslug($id_slug);
         $event = Event::find($id);
         return view('event.details', compact('id', 'name_slug', 'event'));
-    }
-
-    public function getTheme(string $id_slug, Request $req) {
-        $id = unslug($id_slug)[0];
-        $paid = $req->input('paid', 0);
-        $theme = Theme::with('events')->find($id);
-        return view('event.theme', compact('id', 'theme', 'paid'));
     }
 
     public function getSubmit() {
@@ -104,9 +98,16 @@ class EventController extends Controller {
             EventSpeaker::create(compact('event_id', 'user_id'));
         }
 
-        foreach ($themes as $name) {
-            $theme_id = Theme::firstOrCreate(compact('name'))->id;
-            EventTheme::create(compact('event_id', 'theme_id'));
+        foreach ($themes as $theme) {
+            $theme_id = Theme::firstOrCreate(['name' => ['ilike', $theme]])->id; //TODO: usar ilike
+            try {
+                EventTheme::create(compact('event_id', 'theme_id'));
+            }
+            catch (QueryException $e) {
+                if ($e->getCode() != EventTheme::ERR_UNIQUE_VIOLATION) { //the relation already existed, so it's fine
+                    throw $e;
+                }
+            }
         }
 
         return redirect(act('event@editThemesSpeakers', $req->id));
@@ -126,6 +127,9 @@ class EventReq extends ModelReq {
     public function rules() {
         $rules = Event::$rules;
         foreach ($rules as &$constraints) {
+            if (is_string($constraints)) {
+                $constraints = explode('|', $constraints);
+            }
             $constraints = array_filter($constraints, function($constraint) {
                 return strpos($constraint, 'unique') === false;
             });

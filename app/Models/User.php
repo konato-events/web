@@ -10,41 +10,44 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 //tricking gettext to find our four participation types
-_('participant'); _('speaker'); _('involved'); _('staff');
+_('participant');
+_('speaker');
+_('involved');
+_('staff');
 
 /**
- * @property int          id
- * @property string       name
- * @property string       email
- * @property string       password
- * @property string       username
- * @property string       tagline
- * @property string       bio
- * @property string       birthday
- * @property string       gender
- * @property string       avatar
- * @property string       picture
+ * @property int                       id
+ * @property string                    name
+ * @property string                    email
+ * @property string                    password
+ * @property string                    username
+ * @property string                    tagline
+ * @property string                    bio
+ * @property string                    birthday
+ * @property string                    gender
+ * @property string                    avatar
+ * @property string                    picture
  *
- * @property int[]        stats
- * @property array        events
- * @property array        most_visited
+ * @property int[]                     stats
+ * @property array                     events
+ * @property array                     most_visited
  *
- * @property Collection|SocialLink[] links
- * @property Location                location
+ * @property Collection|SocialLink[]   links
+ * @property Location                  location
  * @method BelongsTo                 location
- * @property Collection|User[]       follows
+ * @property Collection|User[]         follows
  * @method BelongsToMany             follows
- * @property Collection|User[]       followed_by
+ * @property Collection|User[]         followed_by
  * @method BelongsToMany             followed_by
- * @property Collection|Event[]      participated
+ * @property Collection|Event[]        participated
  * @method BelongsToMany             participated
- * @property Collection|Event[]      organized
+ * @property Collection|Event[]        organized
  * @method BelongsToMany             organized
- * @property Collection|Event[]      spoke
+ * @property Collection|Event[]        spoke
  * @method BelongsToMany             spoke
- * @property Collection|Event[]      following_events
+ * @property Collection|Event[]        following_events
  * @method BelongsToMany             following_events
- * @property Collection|Theme[]      following_themes
+ * @property Collection|Theme[]        following_themes
  * @method BelongsToMany             following_themes
  * @property Collection|EventSpeaker[] spoke_pivot
  * @method HasMany spoke_pivot
@@ -55,26 +58,28 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     use Authenticatable, CanResetPassword;
 
-    protected $hidden = ['password', /*'remember_token'*/];
+    protected $hidden                     = ['password', /*'remember_token'*/];
 
-    public $autoHashPasswordAttributes = true;
+    public    $autoHashPasswordAttributes = true;
 
-    protected $most_visited = [];
-    protected $events = [];
-    protected $sessions = [];
-    protected $all_themes = [];
+    protected $most_visited               = [];
+
+    protected $events                     = [];
+
+    protected $sessions                   = [];
+
+    protected $all_themes                 = [];
 
 //    public $autoHydrateEntityFromInput = true;
 
     const PARTICIPANT = 'participant';
-    const SPEAKER = 'speaker';
-    const INVOLVED = 'involved'; //todo: include a "voluntary" or "lesser staff" role
-    const STAFF = 'staff';
-
+    const SPEAKER     = 'speaker';
+    const INVOLVED    = 'involved'; //todo: include a "voluntary" or "lesser staff" role
+    const STAFF       = 'staff';
     const PARTICIPATION_RELATIONS = [
-        'organized'    => self::STAFF,
+        'participated' => self::PARTICIPANT,
         'spoke'        => self::SPEAKER,
-        'participated' => self::PARTICIPANT
+        'organized'    => self::STAFF,
     ];
 
     public static $rules = [
@@ -98,20 +103,27 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
             self::BELONGS_TO_MANY,
             self::class,
             'table'      => 'following_user',
-            'foreignKey' => 'follower_id'
+            'foreignKey' => 'follower_id',
+            'timestamps' => true
         ],
         'followed_by'      => [
             self::BELONGS_TO_MANY,
             self::class,
-            'table'    => 'following_user',
-            'otherKey' => 'follower_id'
+            'table'      => 'following_user',
+            'otherKey'   => 'follower_id',
+            'timestamps' => true
         ],
-        'organized'        => [self::BELONGS_TO_MANY, Event::class, 'table' => 'event_staff'],
-        'spoke'            => [self::BELONGS_TO_MANY, Event::class, 'table' => 'event_speaker'],
+        'spoke'            => [
+            self::BELONGS_TO_MANY,
+            Event::class,
+            'table'     => 'event_speaker',
+            'pivotKeys' => ['important']
+        ],
         'spoke_pivot'      => [self::HAS_MANY, EventSpeaker::class],
+        'organized'        => [self::BELONGS_TO_MANY, Event::class, 'table' => 'event_staff'],
         'participated'     => [self::BELONGS_TO_MANY, Event::class, 'table' => 'participating_event'],
-        'following_events' => [self::BELONGS_TO_MANY, Event::class, 'table' => 'following_event'],
-        'following_themes' => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'following_theme'],
+        'following_events' => [self::BELONGS_TO_MANY, Event::class, 'table' => 'following_event', 'timestamps' => true],
+        'following_themes' => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'following_theme', 'timestamps' => true],
         //'links'          => [self::HAS_MANY, SocialLink::class], //defined by method as we need ordering here
     ];
 

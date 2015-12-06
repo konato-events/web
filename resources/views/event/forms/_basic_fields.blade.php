@@ -1,4 +1,6 @@
 <?php
+/** @var \App\Models\Event $event */
+Form::model($event); //TODO: find a better way to share the model through partials of forms
 use App\Models\EventType;
 $fields = isset($fields)? $fields : [];
 $showField = function(string $name) use ($fields):bool {

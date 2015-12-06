@@ -70,7 +70,10 @@ class Event extends Base {
         'free'           => ['boolean'],
         'closed'         => ['boolean'],
         'hidden'         => ['boolean'],
-        'event_type_id'  => ['required']
+        'event_type_id'  => ['required'],
+
+        'speakers' => '',
+        'themes_str' => '',
     ];
 
     public static $relationsData = [

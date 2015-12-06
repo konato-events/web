@@ -181,9 +181,15 @@ $types = \App\Models\EventType::toTransList();
     <aside id="sidebar-info" class="sidebar col-md-3">
 
         <div class="widget">
-            <button class="btn btn-theme btn-wrap">
-                <i class="fa fa-mail-forward"></i> <?=_('Follow this theme')?>
-            </button>
+            <? if (\Auth::check() && \Auth::user()->following_themes()->where('theme_id', $theme->id)->count()): ?>
+                <a href="<?=act('theme@unfollow', $theme->id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-remove"></i> <?=_('Unfollow this theme')?>
+                </a>
+            <? else: ?>
+                <a href="<?=act('theme@follow', $theme->id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-mail-forward"></i> <?=_('Follow this theme')?>
+                </a>
+            <? endif ?>
             <!--<a class="note" href="#"><?=_('See my following preferences')?></a>-->
         </div>
 

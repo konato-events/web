@@ -85,7 +85,7 @@ if ($participation) {
                         <ul class="piped">
                             <? foreach ($event->themes as $ev_theme): ?>
                                 <li>
-                                    <a href="<?=act('event@theme', $ev_theme->slug)?>">{{$ev_theme->name}}</a>
+                                    <a href="<?=act('theme@events', $ev_theme->slug)?>">{{$ev_theme->name}}</a>
                                 </li>
                             <?php endforeach ?>
                         </ul>
