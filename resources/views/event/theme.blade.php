@@ -1,10 +1,13 @@
 <?php
-/** @var string   $theme
-  * @var int      $paid
-  * @var string[] $types
-  * @var int[]    $selected_types */
+/**
+ * @var \App\Models\Theme $theme
+ * @var int               $paid
+ * @var int[]             $selected_types
+ */
 
-$title = sprintf(_('Events about %s'), $theme);
+$title = sprintf(_('Events about %s'), $theme->name);
+
+$types = \App\Models\EventType::toTransList();
 ?>
 @extends('layout-header')
 @section('title', $title)
@@ -66,14 +69,14 @@ $title = sprintf(_('Events about %s'), $theme);
     </script>
 @endsection
 
-@section('header-title', $theme)
+@section('header-title', $theme->name)
 @section('header-bg', '/img/theme-sample1.jpg')
 @section('header-breadcrumbs')
-    @if ($theme)
+    @if ($theme->parent)
         <ul class="breadcrumb">
-            <li><a href="#">IT (Information Technologies)</a></li>
-            <li><a href="#">Languages</a></li>
-            <li class="active"><?=$theme?></li>
+            {{--<li><a href="#">IT (Information Technologies)</a></li>--}}
+            {{--<li><a href="#">Languages</a></li>--}}
+            {{--<li class="active">{{$theme}}</li>--}}
         </ul>
     @endif
 @endsection
@@ -82,6 +85,7 @@ $title = sprintf(_('Events about %s'), $theme);
 <section class="page-section with-sidebar first-section">
 <div class="container-fluid">
     <div class="row">
+        <!--
     <aside id="sidebar" class="sidebar col-md-3">
 
         <form class="widget">
@@ -92,10 +96,9 @@ $title = sprintf(_('Events about %s'), $theme);
                     </div>
                     <div class="panel-body">
                         <div class="checkbox event-types">
-                            <?php foreach($types as $id => $value):
-                                $check = in_array($id, $selected_types); ?>
+                            <?php foreach($types as $id => $value): ?>
                                 <label>
-                                    <input type="checkbox" name="theme" value="{{$id}}" <?=$check? 'checked':''?>>
+                                    <input type="checkbox" name="theme" value="{{$id}}" <?=in_array($id, $selected_types)? 'checked':''?>>
                                     <?=$value?>
                                 </label>
                             <?php endforeach ?>
@@ -119,7 +122,7 @@ $title = sprintf(_('Events about %s'), $theme);
                         <h4 class="panel-title"><?=_('Related themes')?></h4>
                     </div>
                     <div class="panel-body">
-                        @include('components.themes_list')
+                        {{--@include('components.themes_list')--}}
                     </div>
                 </div>
             </div>
@@ -129,8 +132,11 @@ $title = sprintf(_('Events about %s'), $theme);
 
     <hr class="page-divider transparent visible-xs">
 
-    <section id="content" class="content col-md-6">
+-->
+    {{--<section id="content" class="content col-md-6">--}}
+    <section id="content" class="content col-md-9">
 
+        <!--
         <div class="listing-meta">
 
             <div class="options">
@@ -139,20 +145,21 @@ $title = sprintf(_('Events about %s'), $theme);
             </div>
 
         </div>
+            -->
 
         <?php //TODO: see if this block is repeatable enough to become a component as well ?>
         <div class="tab-content">
             <div id="list-view" class="tab-pane fade active in" role="tabpanel">
                 <div class="thumbnails events vertical">
                     <?php $date_fmt = _('m/d/Y') ?>
-                    @foreach($events as $id => $event)
+                    @foreach($theme->events as $id => $event)
                         @include('event._event_block', compact('date_fmt', 'id', 'event'))
                         <hr class="page-divider half"/>
                         <?php //TODO: use a forelse instead, this needs an empty clause ?>
                     @endforeach
                 </div>
 
-                <!-- Pagination -->
+                <!-- Pagination
                 <div class="pagination-wrapper">
                     <ul class="pagination">
                         <?php //TODO: improve styling for disabled buttons ?>
@@ -164,7 +171,7 @@ $title = sprintf(_('Events about %s'), $theme);
                         <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
-                <!-- /Pagination -->
+                 /Pagination -->
             </div>
         </div>
     </section>
@@ -177,11 +184,13 @@ $title = sprintf(_('Events about %s'), $theme);
             <button class="btn btn-theme btn-wrap">
                 <i class="fa fa-mail-forward"></i> <?=_('Follow this theme')?>
             </button>
-            <a class="note" href="#"><?=_('See my following preferences')?></a>
+            <!--<a class="note" href="#"><?=_('See my following preferences')?></a>-->
         </div>
 
+        <? if ($theme->speakers): ?>
         <div class="widget">
             <div class="panel-group">
+                <!--
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"><?=_('Popularity')?></h4>
@@ -192,20 +201,22 @@ $title = sprintf(_('Events about %s'), $theme);
                         </div>
                     </div>
                 </div>
+                -->
 
-                @if ($speakers)
+                <? if ($theme->speakers): ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"><?=_('Popular speakers')?></h4>
                         </div>
                         <div class="panel-body">
-                            @include('components.speakers_list', ['speakers' => $speakers])
-                            <a href="<?=act('speaker@theme', slugify(1, $theme))?>" class="see-more"><?=_r('See all speakers on %s', $theme)?></a>
+                            @include('components.speakers_list', ['speakers' => $theme->speakers])
+                            <a href="<?=act('speaker@theme', $theme->slug)?>" class="see-more"><?=_r('See all speakers on %s', $theme->name)?></a>
                         </div>
                     </div>
-                @endif
+                <? endif ?>
             </div>
         </div>
+        <? endif ?>
 
     </aside>
 </div>

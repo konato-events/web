@@ -29,6 +29,7 @@ switch ($type) {
 }
 $title = "$user->name - $type_str";
 
+        $avatar_height = 512;
 $avatar_height = getimagesize($user->picture)[1];
 $avatar_height = ($avatar_height > 250? 250 : $avatar_height);
 $date_fmt   = _('m/d/Y');
@@ -228,7 +229,7 @@ $date_fmt   = _('m/d/Y');
                     </div>
                     <div class="panel-body">
                         <? //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
-                        @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $user->gender])
+                        @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $user->gender, 'themes' => $user->all_themes])
                     </div>
                 </div>
 

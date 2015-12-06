@@ -1,14 +1,16 @@
 <?php
-/** @var string $date_fmt
-  * @var bool              $compact
-  * @var string            $participation
-  * @var string            $gender
-  * @var array             $themes
-  * @var \App\Models\Event $event */
+/**
+ * @var string              $date_fmt
+ * @var bool                $compact
+ * @var string              $participation
+ * @var string              $gender
+ * @var \App\Models\Theme[] $themes
+ * @var \App\Models\Event   $event
+ */
 use App\Models\User;
 use Illuminate\Support\Str;
 
-$link = act('event@details', slugify($event->id, $event->title));
+$link = act('event@details', $event->slug);
 $compact = $compact ?? false;
 $participation = $participation ?? false;
 
@@ -77,18 +79,17 @@ if ($participation) {
 
                 {{--<p class="caption-price">Tickets from $49,99</p>--}}
                 <?php if (!$compact): ?>
-                    <p class="caption-text"><?=Str::words($desc, 15, ' [...]')?></p>
+                    <p class="caption-text"><?=Str::words($event->description, 15, ' [...]')?></p>
 
                     <div class="caption-more">
                         <ul class="piped">
-                            <?php foreach (array_rand($themes, 3) as $id):
-                                $link = act('event@theme', slugify($id, $themes[$id])); ?>
+                            <? foreach ($event->themes as $ev_theme): ?>
                                 <li>
-                                    <a href="{{$link}}">{{$themes[$id]}}</a>
+                                    <a href="<?=act('event@theme', $ev_theme->slug)?>">{{$ev_theme->name}}</a>
                                 </li>
                             <?php endforeach ?>
                         </ul>
-                        <a href="#" class="btn btn-theme"><?=_('See more details')?></a>
+                        <a href="{{$link}}" class="btn btn-theme"><?=_('See more details')?></a>
                     </div>
                 <?php endif ?>
             </div>

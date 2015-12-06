@@ -10,4 +10,8 @@ class EventSpeaker extends Base {
 
     protected $table = 'event_speaker';
 
+    public static $relationsData = [
+        'sessions' => [self::BELONGS_TO_MANY, Session::class, 'table' => 'session_speaker']
+    ];
+
 }

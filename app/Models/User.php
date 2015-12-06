@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 //tricking gettext to find our four participation types
 _('participant'); _('speaker'); _('involved'); _('staff');
@@ -28,19 +29,27 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  * @property array        events
  * @property array        most_visited
  *
- * @property SocialLink[] links
- * @property Location     location
- * @method BelongsTo      location
- * @property User[]       follows
- * @method BelongsToMany  follows
- * @property Collection   organized
- * @method BelongsToMany  organized
- * @property Collection   spoke
- * @method BelongsToMany  spoke
- * @property Collection   following_events
- * @method BelongsToMany  following_events
- * @property Collection   participated
- * @method BelongsToMany  participated
+ * @property Collection|SocialLink[] links
+ * @property Location                location
+ * @method BelongsTo                 location
+ * @property Collection|User[]       follows
+ * @method BelongsToMany             follows
+ * @property Collection|User[]       followed_by
+ * @method BelongsToMany             followed_by
+ * @property Collection|Event[]      participated
+ * @method BelongsToMany             participated
+ * @property Collection|Event[]      organized
+ * @method BelongsToMany             organized
+ * @property Collection|Event[]      spoke
+ * @method BelongsToMany             spoke
+ * @property Collection|Event[]      following_events
+ * @method BelongsToMany             following_events
+ * @property Collection|Theme[]      following_themes
+ * @method BelongsToMany             following_themes
+ * @property Collection|EventSpeaker[] spoke_pivot
+ * @method HasMany spoke_pivot
+ * @property Collection|Session[]      sessions
+ * @property Collection|Theme[]        all_themes
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -52,6 +61,8 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     protected $most_visited = [];
     protected $events = [];
+    protected $sessions = [];
+    protected $all_themes = [];
 
 //    public $autoHydrateEntityFromInput = true;
 
@@ -97,8 +108,10 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         ],
         'organized'        => [self::BELONGS_TO_MANY, Event::class, 'table' => 'event_staff'],
         'spoke'            => [self::BELONGS_TO_MANY, Event::class, 'table' => 'event_speaker'],
-        'following_events' => [self::BELONGS_TO_MANY, Event::class, 'table' => 'following_event'],
+        'spoke_pivot'      => [self::HAS_MANY, EventSpeaker::class],
         'participated'     => [self::BELONGS_TO_MANY, Event::class, 'table' => 'participating_event'],
+        'following_events' => [self::BELONGS_TO_MANY, Event::class, 'table' => 'following_event'],
+        'following_themes' => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'following_theme'],
         //'links'          => [self::HAS_MANY, SocialLink::class], //defined by method as we need ordering here
     ];
 
@@ -134,7 +147,10 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         return $stats;
     }
 
-    //TODO: cache
+    /**
+     * @todo cache
+     * @return array Events indexed by ID, with 'event' (Event) and 'participation' (string) keys
+     */
     public function getEventsAttribute() {
         if (!$this->events) {
             foreach (static::PARTICIPATION_RELATIONS as $relation => $name) {
@@ -147,7 +163,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
             }
             ksort($this->events);
         }
-        return $this->events;
+        return Collection::make($this->events);
     }
 
     //TODO: cache
@@ -163,5 +179,34 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
             asort($this->most_visited);
         }
         return $this->most_visited;
+    }
+
+    public function getSessionsAttribute() {
+        if (!$this->sessions) {
+            foreach ($this->spoke_pivot()->get() as $pivot) {
+                $this->sessions += $pivot->sessions->keyBy('id')->all();
+            }
+            ksort($this->most_visited);
+        }
+        return $this->sessions;
+    }
+
+    /**
+     * @todo we should differentiate themes he's following, that are taken from his sessions and from the events
+     * @todo cache
+     * @return Theme[]|Collection
+     */
+    public function getAllThemesAttribute() {
+        if (!$this->all_themes) {
+            $this->all_themes = $this->following_events()->get()->keyBy('id')->all();
+            foreach ($this->getSessionsAttribute() as $session) {
+                $this->all_themes += $session->themes->keyBy('id')->all();
+            }
+            foreach ($this->getEventsAttribute() as $event_data) {
+                $this->all_themes += $event_data['event']->themes->keyBy('id')->all();
+            }
+            ksort($this->most_visited);
+        }
+        return $this->all_themes;
     }
 }

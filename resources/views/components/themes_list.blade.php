@@ -1,12 +1,12 @@
 <?php
-/** @var Theme[] $themes */
+/** @var App\Models\Theme[] $themes */
 /** @var bool    $speaker */
 /** @var string  $gender */
 
 $speaker = $speaker ?? false;
 $gender  = $gender ?? 'M';
 $route = $speaker? 'speaker@theme' : 'event@theme';
-    $tooltip = _r('How many times %s has spoken about this subject', ($gender == 'M')? _('he') : _('she'));
+$tooltip = _r('How many times %s has spoken about this subject', ($gender == 'M')? _('he') : _('she'));
 ?>
 <ul class="themes">
     <?php foreach($themes as $theme): ?>
