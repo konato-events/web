@@ -127,6 +127,11 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         //'links'          => [self::HAS_MANY, SocialLink::class], //defined by method as we need ordering here
     ];
 
+    public static function findSpeakers() {
+        $ids = \DB::table('event_speaker')->select('user_id')->distinct()->get();
+        return self::whereIn('id', array_column($ids, 'user_id'))->get();
+    }
+
     public function links() {
         return $this->hasMany(SocialLink::class)->join('social_networks AS n', 'n.id', '=', 'social_network_id')
                     ->orderBy('n.position');

@@ -101,7 +101,7 @@ $lang_tag = substr(LOCALE, 0, 2);
                     <ul class="sf-menu nav">
                         <!--<li{{-- class="active"--}}><a href="/"><i class="fa fa-table"></i> <?=_('Dashboard')?></a></li>-->
                         <!--<li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>-->
-                        <li><a href="{{act('speaker')}}"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
+                        <li><a href="{{act('user@speakers')}}"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
 
                         <li class="header-search-wrapper">
                             <form action="#" class="header-search-form">

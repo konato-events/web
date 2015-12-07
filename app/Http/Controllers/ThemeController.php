@@ -20,4 +20,14 @@ class ThemeController extends Controller {
         return view('theme.events', compact('theme', 'paid'));
     }
 
+    public function getSpeakers(string $id_slug) {
+        if (!$id_slug) {
+            return redirect(act('speaker'));
+        }
+
+        list($id, $theme) = explode('-', $id_slug);
+        $themes = explode(' ', 'PHP MySQL JavaScript Design WebDesign WebDevelopment UserExperience Agile WebOperations SinglePageApps');
+        return view('user.speakers', compact('theme', 'themes'));
+    }
+
 }

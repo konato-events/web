@@ -18,7 +18,6 @@ Route::get( 'event/{id_slug}',         'EventController@getDetails');
 /************************************************************/
 Route::controller('auth',         'AuthController');
 Route::controller('user',         'UserController');
-Route::controller('speakers',     'SpeakerController');
 Route::controller('event',        'EventController');
 Route::controller('theme',        'ThemeController');
 Route::controller('autocomplete', 'AutoCompleteController');

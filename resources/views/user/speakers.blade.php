@@ -1,9 +1,22 @@
 <?php
-/** @var string $theme */
-/** @var array $speakers */
+/** @var App\Models\Theme $theme */
+/** @var bool $themed_speakers */
+/** @var bool $single_theme */
+/** @var App\Models\User[] $speakers */
 
-$theme = $theme ?? null;
-$title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of interest');
+if ($theme) {
+    $title = _r('Speakers on %s', $theme->name);
+    $panel = _('Related themes');
+} else {
+    if (\Auth::check()) {
+        $title = _('Speakers on your themes of interest');
+        $panel = _('Themes of interest');
+    } else {
+        $title = _('Speakers on the most frequent themes');
+        $panel = _('Most common themes');
+    }
+}
+
 ?>
 @extends('layout-header')
 @section('title', $title)
@@ -70,9 +83,9 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
 @section('header-breadcrumbs')
     @if ($theme)
         <ul class="breadcrumb">
-            <li><a href="#">IT (Information Technologies)</a></li>
-            <li><a href="#">Languages</a></li>
-            <li><a href="<?=act('theme@events', slugify(1, $theme))?>"><?=$theme?></a></li>
+            {{--<li><a href="#">IT (Information Technologies)</a></li>--}}
+            {{--<li><a href="#">Languages</a></li>--}}
+            <li><a href="<?=act('theme@events', $theme->slug)?>"><?=$theme->name?></a></li>
             <li class="active"><?=_('Speakers')?></li>
         </ul>
     @endif
@@ -87,7 +100,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title"><?=$theme? _('Related themes') : _('Most common themes')?></h4>
+                                <h4 class="panel-title"><?=$panel?></h4>
                             </div>
                             <div class="panel-body">
                                 @include('components.themes_list', [ 'link_speakers' => true ])
@@ -105,30 +118,40 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
 
                 <div class="tab-content">
                     <div id="grid-view" class="tab-pane fade active in" role="tabpanel">
+
+                        <? if (!$themed_speakers): ?>
+                            <div class="row">
+                                <div class="col-xs-10 col-xs-push-1 col-xs-pull-1 text-center empty-block">
+                                    <p><?=__('Hmmm... This is awkward, but it seems we still have no speakers on this theme. Meanwhile, these are our most frequent speakers:', 'Hmmm... This is awkward, but it seems we still have no speakers on these themes. Meanwhile, these are our most frequent speakers:', $single_theme? 1 : 2)?></p>
+                                    {{--<i class="fa fa-flag-o"></i>--}}
+                                </div>
+                            </div>
+                        <? endif ?>
+
                         <div class="row thumbnails events">
 
-                            <?php
-                            $columns = ['lg' => 3, 'md' => 4, 'sm' => 6, 'xs' => 6];
-                            foreach($speakers as $id => $speaker):
-                                list($img, $name, $place, $themes, $on_theme, $total, $bio) = $speaker;
-                                $link = act('user@speaker', slugify($id, $name));
-                            ?>
-                                <div class="<?php foreach ($columns as $sign => $size) echo "col-$sign-$size " ?> isotype-item festival">
+                            <? $columns = ['lg' => 3, 'md' => 4, 'sm' => 6, 'xs' => 6] ?>
+                            <? foreach($speakers as $id => $speaker): ?>
+                            <? $link = act('user@speaker', $speaker->slug) ?>
+                                <div class="<? foreach ($columns as $sign => $size) echo "col-$sign-$size " ?> isotype-item festival">
                                     <div class="thumbnail no-border no-padding">
                                         <div class="media">
-                                            <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                                            <img src="<?=$img?>" alt="<?=_r('%s on Konato', $name)?>">
+                                            {{--<a href="#" class="like"><i class="fa fa-heart-o"></i></a>--}}
+                                            <img src="<?=$speaker->picture?>" alt="<?=_r('%s on Konato', $speaker->name)?>">
+                                            <? //TODO: provide here a srcset with the two pictures ?>
                                         </div>
                                         <div class="caption">
                                             <h3 class="caption-title">
-                                                <a href="<?=$link?>"><?=$name?></a>
+                                                <a href="<?=$link?>"><?=$speaker->name?></a>
                                             </h3>
-                                            <div class="caption-category">
-                                                <i class="fa fa-map-marker"></i> <?=$place?> <br>
-                                                @include('components.themes_list')
-                                            </div>
+                                            <? if ($speaker->location): ?>
+                                                <div class="caption-category">
+                                                    <i class="fa fa-map-marker"></i> <?=$speaker->location?> <br>
+                                                    {{--@include('components.themes_list')--}}
+                                                </div>
+                                            <? endif ?>
                                             {{--<p class="caption-price">Tickets from $49,99</p>--}}
-                                            <p class="caption-text"><?=$bio?></p>
+                                            <p class="caption-text"><?=$speaker->tagline?></p>
                                             <p class="caption-more">
                                                 <a href="<?=$link?>" class="btn btn-theme"><?=_('See full profile')?></a>
                                             </p>
@@ -141,11 +164,11 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                                         <div class="cleafix col-{{$sign}}-12 visible-{{$sign}}"></div>
                                     @endif
                                 @endforeach
-                            <?php endforeach ?>
+                            <? endforeach ?>
 
                         </div>
 
-                        <!-- Pagination -->
+                        <!-- Pagination
                         <div class="pagination-wrapper">
                             <ul class="pagination">
                                 <li class="disabled"><a href="#"><i class="fa fa-chevron-left"></i></a></li>
@@ -156,7 +179,7 @@ $title = $theme? _r('Speakers on %s', $theme) : _('Speakers on your themes of in
                                 <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
                             </ul>
                         </div>
-                        <!-- /Pagination -->
+                        /Pagination -->
                     </div>
                 </div>
             </section>

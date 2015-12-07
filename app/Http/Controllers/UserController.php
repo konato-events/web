@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
+use App\Models\EventTheme;
+use App\Models\Theme;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserController extends Controller {
 
@@ -42,4 +45,37 @@ class UserController extends Controller {
         return $this->profile(self::TYPE_SPEAKER, $id_slug);
     }
 
+    public function getSpeakers(string $id_slug = null) {
+        $single_theme = isset($id_slug);
+
+        if (!$id_slug) {
+            /** @var Theme[] $themes */
+            $theme = null;
+            if (\Auth::check()) {
+                $themes = \Auth::user()->following_themes()->get();
+            } else {
+                $themes = Theme::mostFrequent();
+            }
+        } else {
+            $id = unslug($id_slug)[0];
+            $theme  = Theme::find($id);
+            $themes = [$theme]; //FIXME: find a way to create a list of "related" themes
+        }
+
+        $speakers = [];
+        foreach ($themes as $t) { //take care to not override $theme
+            foreach ($t->sessions as $session) { /** @var \App\Models\Session $session */
+                $speakers += $session->speakers->all();
+            }
+        }
+
+        $themed_speakers = (bool)sizeof($speakers);
+        if (!$speakers) {
+            $speakers = User::findSpeakers();
+        }
+
+        return view('user.speakers', compact('theme', 'themes', 'speakers', 'themed_speakers', 'single_theme'));
+    }
+
 }
+
