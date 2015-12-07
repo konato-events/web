@@ -81,8 +81,7 @@ Form::model($event); //TODO: find a better way to share the model through partia
                     <div id="speakers_list">
                         <? $speakers = $event->speakers ?>
                         <h4 <? if (!sizeof($speakers)): ?>style="display:none"<? endif ?>>
-                            <?=_('Speakers')?>
-                            <span>(<?=_('unsaved')?>)</span>
+                            <?=_('Speakers')?><span> (<?=_('unsaved')?>)</span>:
                         </h4>
                         <ul>
                             <? foreach ($event->speakers as $speaker): ?>

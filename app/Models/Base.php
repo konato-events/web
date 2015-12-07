@@ -28,9 +28,10 @@ class Base extends Ardent {
 
     public static function firstOrCreate(array $attributes) {
         $query = (new static)->newQueryWithoutScopes();
-        foreach ($attributes as $name => $value) {
+        foreach ($attributes as $name => &$value) {
             if (is_array($value)) {
                 $query->where($name, $value[0], $value[1]);
+                $value = $value[1];
             } else {
                 $query->where($name, $value);
             }
