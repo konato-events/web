@@ -165,6 +165,7 @@
     {{-- TIP: here used to be testimonials. This might be useful later, so see original theme for markup --}}
 
     {{-- TIP: here we had a horizontal list to filter pictures from the list below --}}
+    <!-- FIXME: hidden as we have not enough events and no pictures to be displayed here
     <section class="page-section no-padding-top light">
         <div class="container full-width">
 
@@ -208,6 +209,7 @@
             {{-- TIP: here used to be a centered button to open up all photos --}}
         </div>
     </section>
+    -->
 
     {{-- TIP: here used to be a caroussel of sponsors. Not sure this would be useful but... the markup is in the theme --}}
 
@@ -224,7 +226,7 @@
 
             <p><?=_('<b>Konato</b> is the best place to market your event.<br>Here we bring together all sorts of people, and they can find it by their interests - this makes sure you receive the right public, and our users find exactly the type of activities they\'re looking for.')?></p>
 
-            <div><a href="#" class="btn btn-theme btn-theme-md"><?=_('Submit your event')?></a></div>
+            <div><a href="<?=act('event@submit')?>" class="btn btn-theme btn-theme-md"><?=_('Submit your event')?></a></div>
         </div>
     </section>
     <!-- /PAGE -->
@@ -240,80 +242,4 @@
 
         </div>
     </section>
-@endsection
-
-@section('popups')
-    <div class="modal fade login-register" id="popup-login" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg" id="main-slider">
-            <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-
-            <div class="form-background">
-                <div class="col-sm-6 popup-form">
-                    <div class="form-header color">
-                        <h1 class="section-title">
-                            <span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                            <span class="title-inner">Login</span>
-                        </h1>
-                    </div>
-                    <form method="post" action="#" class="registration-form alt" name="registration-form-alt" id="registration-form-alt">
-                        <div class="row">
-                            <div class="col-sm-12 form-alert"></div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" placeholder="User Name" title="" data-toggle="tooltip" class="form-control input-name" data-original-title="Name is required">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Password" title="" data-toggle="tooltip" class="form-control input-password" data-original-title="Password">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-theme btn-block submit-button"> Log in
-                                        <i class="fa fa-arrow-circle-right"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="form-footer color">
-                        <a href="#" class="popup-password"> Lost your password?</a>
-                    </div>
-                </div>
-
-                <div class="popup-form col-sm-6">
-                    <div class="form-header color">
-                        <h1 class="section-title">
-                            <span class="icon-inner"><span class="fa-stack"><i class="fa rhex fa-stack-2x"></i><i class="fa fa-ticket fa-stack-1x"></i></span></span>
-                            <span class="title-inner">Register</span>
-                        </h1>
-                    </div>
-                    <form method="post" action="#" class="registration-form alt" name="registration-form-alt" id="registration-form-alt">
-                        <div class="row">
-                            <div class="col-sm-12 form-alert"></div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" placeholder="User Name" title="" data-toggle="tooltip" class="form-control input-name" data-original-title="Name is required">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <input type="text" placeholder="E-mail" title="" data-toggle="tooltip" class="form-control input-password" data-original-title="Password">
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-theme btn-block submit-button" data-animation-delay="100" data-animation="flipInY"> Register Now
-                                        <i class="fa fa-arrow-circle-right"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
 @endsection
