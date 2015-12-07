@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-12-06 23:42-0300\n"
-"PO-Revision-Date: 2015-12-06 23:43-0300\n"
+"POT-Creation-Date: 2015-12-07 01:38-0300\n"
+"PO-Revision-Date: 2015-12-07 01:39-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -185,9 +185,9 @@ msgid "%s - event"
 msgstr "%s - evento"
 
 #: resources/views/event/details.blade.php:17
-#: resources/views/event/search.blade.php:152
+#: resources/views/event/search.blade.php:168
 #: resources/views/user/profile.blade.php:35
-#: resources/views/theme/events.blade.php:154
+#: resources/views/theme/events.blade.php:151
 msgid "m/d/Y"
 msgstr "d/m/Y"
 
@@ -281,7 +281,7 @@ msgstr "Acompanhar este evento"
 
 #: resources/views/event/details.blade.php:359
 #: resources/views/user/profile.blade.php:219
-#: resources/views/theme/events.blade.php:193
+#: resources/views/theme/events.blade.php:190
 msgid "See my following preferences"
 msgstr "Configurar o que acompanho"
 
@@ -299,13 +299,13 @@ msgid "Get directions"
 msgstr "Ver trajeto"
 
 #: resources/views/event/details.blade.php:384
-#: resources/views/event/search.blade.php:5
+#: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:27
 msgid "Begin"
 msgstr "Início"
 
 #: resources/views/event/details.blade.php:385
-#: resources/views/event/search.blade.php:5
+#: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:31
 msgid "End"
 msgstr "Fim"
@@ -372,47 +372,51 @@ msgstr "ela"
 msgid "See more details"
 msgstr "Veja mais detalhes"
 
-#: resources/views/event/search.blade.php:5
+#: resources/views/event/search.blade.php:6
 msgid "Search terms"
 msgstr "Termos da busca"
 
-#: resources/views/event/search.blade.php:5
-#: resources/views/theme/events.blade.php:95
+#: resources/views/event/search.blade.php:6
+#: resources/views/theme/events.blade.php:92
 msgid "Event types"
 msgstr "Tipos de evento"
 
-#: resources/views/event/search.blade.php:5
-#: resources/views/theme/events.blade.php:112
+#: resources/views/event/search.blade.php:6
+#: resources/views/theme/events.blade.php:109
 msgid "Free"
 msgstr "Grátis"
 
-#: resources/views/event/search.blade.php:5
-#: resources/views/theme/events.blade.php:113
+#: resources/views/event/search.blade.php:6
+#: resources/views/theme/events.blade.php:110
 msgid "Both"
 msgstr "Ambos"
 
-#: resources/views/event/search.blade.php:5
-#: resources/views/theme/events.blade.php:114
+#: resources/views/event/search.blade.php:6
+#: resources/views/theme/events.blade.php:111
 msgid "Paid"
 msgstr "Pago"
 
-#: resources/views/event/search.blade.php:5
+#: resources/views/event/search.blade.php:6
 msgid "Theme"
 msgstr "Tema"
 
-#: resources/views/event/search.blade.php:5
-#: resources/views/event/search.blade.php:144
-#: resources/views/theme/events.blade.php:144
+#: resources/views/event/search.blade.php:6
+#: resources/views/event/search.blade.php:159
+#: resources/views/theme/events.blade.php:141
 msgid "Date"
 msgstr "Data"
 
-#: resources/views/event/search.blade.php:6
+#: resources/views/event/search.blade.php:7
 #, php-format
 msgid "\"%s\" events search"
 msgstr "\"%s\" - busca de eventos"
 
-#: resources/views/event/search.blade.php:143
-#: resources/views/theme/events.blade.php:143
+#: resources/views/event/search.blade.php:93
+msgid "Update search"
+msgstr "Atualizar busca"
+
+#: resources/views/event/search.blade.php:158
+#: resources/views/theme/events.blade.php:140
 msgid "Relevance"
 msgstr "Relevância"
 
@@ -707,7 +711,7 @@ msgid "Speakers on %s"
 msgstr "Palestrantes em %s"
 
 #: resources/views/user/speakers.blade.php:9
-#: resources/views/theme/events.blade.php:122
+#: resources/views/theme/events.blade.php:119
 msgid "Related themes"
 msgstr "Temas relacionados"
 
@@ -869,47 +873,47 @@ msgstr ""
 "Ops! Encontramos alguns erros. Você pode corrigi-los antes de seguir em "
 "frente?"
 
-#: resources/views/site/index.blade.php:59
+#: resources/views/site/index.blade.php:62
 msgid "Expand your horizons"
 msgstr "Expanda seus horizontes"
 
-#: resources/views/site/index.blade.php:60
+#: resources/views/site/index.blade.php:63
 msgid ""
 "Discover even more.<br>Share your knowledge.<br>Get to know great people!"
 msgstr ""
 "Descubra ainda mais.<br>Compartilhe o que sabe.<br>Conheça pessoas "
 "fantásticas!"
 
-#: resources/views/site/index.blade.php:63
+#: resources/views/site/index.blade.php:68
 #, php-format
 msgid ""
-"Find %sconferences%s, %stalks%s, %smeetings%s, %sfairs%s, %sexhibitions%s, "
-"and even %sspeakers%s"
+"Find %sconferences%s, %stalks%s, %smeetings%s, %ssymposiums%s, %suniversity "
+"events%s and more"
 msgstr ""
-"Ache %sconferências%s, %spalestras%s, %sencontros%s, %sfeiras%s, %sexibições"
-"%s, e até mesmo %spalestrantes%s"
+"Ache %sconferências%s, %spalestras%s, %sencontros%s, %ssimpósios%s, "
+"%seventos universitários%s e mais"
 
-#: resources/views/site/index.blade.php:78
+#: resources/views/site/index.blade.php:82
 msgid "Find by theme or keyword"
 msgstr "Encontre por tema ou palavra-chave"
 
-#: resources/views/site/index.blade.php:89
+#: resources/views/site/index.blade.php:94
 msgid "Popular events"
 msgstr "Eventos populares"
 
-#: resources/views/site/index.blade.php:90
+#: resources/views/site/index.blade.php:95
 msgid "Latest events"
 msgstr "Eventos mais recentes"
 
-#: resources/views/site/index.blade.php:118
+#: resources/views/site/index.blade.php:124
 msgid "Explore new meetings"
 msgstr "Explore novos encontros"
 
-#: resources/views/site/index.blade.php:118
+#: resources/views/site/index.blade.php:124
 msgid "About: exploration"
 msgstr "Sobre: explorações"
 
-#: resources/views/site/index.blade.php:119
+#: resources/views/site/index.blade.php:125
 msgid ""
 "Ever though <em>\"Hey, I never heard of that event! How could I miss such "
 "thing?\"</em> Enter <strong>Konato</strong>: it won't happen again!"
@@ -917,15 +921,15 @@ msgstr ""
 "<em>\"Ei, eu nunca ouvi falar nesse evento! Como eu pude perder?\"</em> Já "
 "passou por isso?<br><strong>Konato</strong>: não vai acontecer de novo!"
 
-#: resources/views/site/index.blade.php:121
+#: resources/views/site/index.blade.php:127
 msgid "Meet new people"
 msgstr "Encontre novas pessoas"
 
-#: resources/views/site/index.blade.php:121
+#: resources/views/site/index.blade.php:127
 msgid "About: networking"
 msgstr "Sobre: networking"
 
-#: resources/views/site/index.blade.php:122
+#: resources/views/site/index.blade.php:128
 msgid ""
 "Make new contacts, expand your network and meet like-minded students or "
 "professionals - not only those who live nearby."
@@ -933,15 +937,15 @@ msgstr ""
 "Faça novos contatos, expanda sua rede e encontre estudantes ou profissionais "
 "com gostos em comum - não só aqueles mais próximos."
 
-#: resources/views/site/index.blade.php:124
+#: resources/views/site/index.blade.php:130
 msgid "Prepare for the event"
 msgstr "Prepare-se para o evento"
 
-#: resources/views/site/index.blade.php:124
+#: resources/views/site/index.blade.php:130
 msgid "About: preparation"
 msgstr "Sobre: preparação"
 
-#: resources/views/site/index.blade.php:125
+#: resources/views/site/index.blade.php:131
 msgid ""
 "See the schedule and organize yourself. On <b>Konato</b> you're sure not to "
 "miss the activities of your interest."
@@ -949,15 +953,15 @@ msgstr ""
 "Veja a programação e se organize. No <strong>Konato</strong> você com "
 "certeza não vai perder nenhuma das atividades que lhe interessam."
 
-#: resources/views/site/index.blade.php:127
+#: resources/views/site/index.blade.php:133
 msgid "Spread what you know"
 msgstr "Espalhe seus conhecimentos"
 
-#: resources/views/site/index.blade.php:127
+#: resources/views/site/index.blade.php:133
 msgid "About: knowledge"
 msgstr "Sobre: conhecimento"
 
-#: resources/views/site/index.blade.php:128
+#: resources/views/site/index.blade.php:134
 msgid ""
 "Reach new audiences and get close to your public - or <em>that</em> speaker "
 "from the last congress you've been."
@@ -965,21 +969,21 @@ msgstr ""
 "Alcance novas audiências e se aproxime do seu público - ou talvez "
 "<em>daquele</em> palestrante, do congresso que você foi há pouco tempo."
 
-#: resources/views/site/index.blade.php:172
+#: resources/views/site/index.blade.php:178
 msgid "Great events"
 msgstr "Grandes eventos"
 
-#: resources/views/site/index.blade.php:172
+#: resources/views/site/index.blade.php:178
 msgid "that we're proud to have been part of"
 msgstr "que temos orgulho de ter participado"
 
-#: resources/views/site/index.blade.php:217
+#: resources/views/site/index.blade.php:223
 msgid "Join a growing platform of events of all types and sizes"
 msgstr ""
 "Venha para a plataforma de eventos de todos os tipos e tamanhos, que só "
 "cresce"
 
-#: resources/views/site/index.blade.php:219
+#: resources/views/site/index.blade.php:225
 msgid ""
 "<b>Konato</b> is the best place to market your event.<br>Here we bring "
 "together all sorts of people, and they can find it by their interests - this "
@@ -991,7 +995,7 @@ msgstr ""
 "seus interesses - dessa forma, você recebe o público certo, e os usuários "
 "encontram exatamente as atividades que buscam."
 
-#: resources/views/site/index.blade.php:221
+#: resources/views/site/index.blade.php:227
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
@@ -1004,28 +1008,28 @@ msgstr "Política de Privacidade"
 msgid "How many times %s has spoken about this subject"
 msgstr "Quantas vezes %s já palestrou sobre esse assunto"
 
-#: resources/views/theme/events.blade.php:8
+#: resources/views/theme/events.blade.php:7
 #, php-format
 msgid "Events about %s"
 msgstr "Eventos sobre %s"
 
-#: resources/views/theme/events.blade.php:186
+#: resources/views/theme/events.blade.php:183
 msgid "Unfollow this theme"
 msgstr "Não acompanhar mais o tema"
 
-#: resources/views/theme/events.blade.php:190
+#: resources/views/theme/events.blade.php:187
 msgid "Follow this theme"
 msgstr "Acompanhar este tema"
 
-#: resources/views/theme/events.blade.php:202
+#: resources/views/theme/events.blade.php:199
 msgid "Popularity"
 msgstr "Popularidade"
 
-#: resources/views/theme/events.blade.php:215
+#: resources/views/theme/events.blade.php:212
 msgid "Popular speakers"
 msgstr "Palestrantes populares"
 
-#: resources/views/theme/events.blade.php:219
+#: resources/views/theme/events.blade.php:216
 #, php-format
 msgid "See all speakers on %s"
 msgstr "Veja todos os palestrantes em %s"

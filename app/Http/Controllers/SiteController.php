@@ -1,10 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\EventType;
+
 class SiteController extends Controller {
 
     public function getIndex() {
-        return view('site.index');
+        $types = array_flip(EventType::toList());
+        return view('site.index', compact('types'));
     }
 
     public function getPrivacyPolicy() {

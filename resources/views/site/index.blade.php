@@ -1,4 +1,7 @@
-<?php /** @var array $events */ ?>
+<?
+/** @var array $events */
+/** @var array $types */
+?>
 @extends('layout-master')
 
 @section('js')
@@ -60,13 +63,14 @@
                             <h2 class="caption-subtitle"><?=_('Discover even more.<br>Share your knowledge.<br>Get to know great people!')?></h2>
                             <h4>
                                 <span>
-                                    <?=sprintf(_('Find %sconferences%s, %stalks%s, %smeetings%s, %sfairs%s, %sexhibitions%s, and even %sspeakers%s'),
-                                    '<a href="#">','</a>',
-                                    '<a href="#">','</a>',
-                                    '<a href="#">','</a>',
-                                    '<a href="#">','</a>',
-                                    '<a href="#">','</a>',
-                                    '<a href="#">','</a>')?>
+                                    <? $search_url = act('event@search'); ?>
+                                    <!--?=sprintf(_('Find %sconferences%s, %stalks%s, %smeetings%s, %ssymposiums%s, %sexhibitions%s, and even %sspeakers%s'),-->
+                                    <?=sprintf(_('Find %sconferences%s, %stalks%s, %smeetings%s, %ssymposiums%s, %suniversity events%s and more'),
+                                    "<a href='$search_url?types[]={$types['conference']}'>",'</a>',
+                                    "<a href='$search_url?types[]={$types['talks']}&types[]={$types['single talk']}'>",'</a>',
+                                    "<a href='$search_url?types[]={$types['meeting']}'>",'</a>',
+                                    "<a href='$search_url?types[]={$types['symposium']}'>",'</a>',
+                                    "<a href='$search_url?types[]={$types['university meeting']}'>",'</a>')?>
                                 </span>
                             </h4>
 
@@ -86,8 +90,10 @@
                                 </div>
                             </div>
                             <p class="caption-text">
+                                <!--
                                 <a class="btn btn-theme btn-theme-dark scroll-to" href="#"><?=_('Popular events')?></a>
                                 <a class="btn btn-theme btn-theme-light" href="#"><?=_('Latest events')?></a>
+                                -->
 
                                 {{-- TIP: How to include a video inside a modal --}}
                                 {{--<a class="btn btn-theme btn-theme btn-theme-transparent-white" href="http://www.youtube.com/watch?v=O-zpOMYRi0w" data-gal="prettyPhoto">Latest Events</a>--}}

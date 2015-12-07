@@ -4,7 +4,7 @@
 
 //FIXME: forcing gettext to find those strings, that are used inside blade code
 _('Search terms'); _('Event types'); _('Free'); _('Both'); _('Paid'); _('Theme'); _('Date'); _('Begin'); _('End');
-$title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not always we will have a $query!
+$title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not always we will have a $query!
 ?>
 @extends('layout-master')
 @section('title' , $title)
@@ -109,8 +109,8 @@ $title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not 
                     @include('components.accordion_panel', [
                         'title'      => _('Event types'),
                         'open'       => true,
-                        'checklist'  => [$types, $selected_types],
-                        'name'       => 'type',
+                        'checklist'  => [$all_types, $types],
+                        'name'       => 'types[]',
                         'content' => '
                             <div class="row" id="paid_select">
                                 <div class="col-xs-12">

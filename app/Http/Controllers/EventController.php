@@ -4,6 +4,7 @@ use App\Http\Requests\Model as ModelReq;
 use App\Models\Event;
 use App\Models\EventSpeaker;
 use App\Models\EventTheme;
+use App\Models\EventType;
 use App\Models\Theme;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\QueryException;
@@ -30,16 +31,22 @@ class EventController extends Controller {
         $query = $req->input('q', '');
         $paid  = $req->input('paid', 0);
         $place = $req->input('place', '');
-        $types = \App\Models\EventType::toTransList();
+        $all_types = EventType::toTransList();
+        $types = $req->input('types', []);
         $ilikey = function(string $str) { return strtr(" $str ", ' ', '%'); };
 
         /** @var Builder $db_query */
-        $db_query = Event::where('title', 'ilike', $ilikey($query)); //FIXME: improve this text search
+        $db_query = Event::where('hidden', 0);
+        if ($query) { $db_query->where('title', 'ilike', $ilikey($query)); } //FIXME: improve this text search
         if ($paid)  { $db_query->where('paid', ($paid == 1)); }
         if ($place) { $db_query->where('location', 'ilike', $ilikey($place)); }
         $events = $db_query->get();
 
-        return view('event.search', compact('query', 'paid', 'place', 'types', 'events'));
+        if (sizeof($events) == 1 && $query) {
+            return redirect()->to(act('event@details', $events[0]->slug));
+        }
+
+        return view('event.search', compact('query', 'paid', 'place', 'all_types', 'types', 'events'));
     }
 
     public function getDetails(string $id_slug) {
