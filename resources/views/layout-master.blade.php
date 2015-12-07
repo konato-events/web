@@ -136,6 +136,11 @@ $lang_tag = substr(LOCALE, 0, 2);
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="<?=act('user@edit')?>">
+                                                <i class="fa fa-edit"></i> <?=_('Edit my profile')?>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="<?=act('auth@logout')?>">
                                                 <i class="fa fa-sign-out"></i> <?=_('Logout')?>
                                             </a>

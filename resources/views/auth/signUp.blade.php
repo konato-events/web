@@ -45,41 +45,13 @@ const FORM_ID = 'signup';
 
     @include('components.form_errors')
 
-    <?=Form::labelInput('name', _('Name'), 'text', null, ['input' => ['autofocus']])?>
+    @include('user._common_fields', ['signup' => true])
 
-    <?=Form::labelInput('email', _('E-mail'), 'email')?>
-
-    <?=Form::labelInput('username', _('Username'), 'text', null, [
-        'input' => [
-            'data-unset' => 'true',
-            'prefix' => preg_replace('|https?://|', '', act('user@profile', ['id_slug' => '123']).'-')
-        ],
-        'help'  => _('Use a uniquely identifying name for you. This will also help you to be found in the search. Use only letters, numbers and underlines, from 4 to 30 chars.')
-    ])?>
-
-    <?=Form::labelInput('password', _('Choose a password'), 'password', null, [
-        'help' => _('Use at least 6 chars here. Preferably, with numbers and letters! Bonus points if you include lower-case and upper-case letters, as well as symbols.')
-    ])?>
-
-    <?//=Form::labelInput('password_confirmation', _('Confirm the password'), 'password', null, ['help' => _('Just to be sure there\'s no typo, could you please repeat that password?')])?>
-
-<!-- Hidden to get out of the way of our new user!
-    <?=Form::labelInput('tagline', _('Tagline'), 'text', null, [
-        'input' => ['placeholder' => 'Example: Job at Acme Inc.'],
-        'help'  => _('Describe your professional self in a phrase. What you do for a living?')
-    ])?>
-
-    <?=Form::labelInput('bio', _('Short bio'), 'text', null, [
-        'input' => ['placeholder' => 'Example: Job at Acme Inc.'],
-        'help'  => _('Introduce yourself to the community! Write a couple of words to help others understand who you are.')
-    ])?>
--->
-
-<div class="row">
-    <div class="col-xs-8">
-        <?=Form::submit(_('Go to my profile'), ['class' => 'btn btn-theme btn-theme-lg'])?>
+    <div class="row">
+        <div class="col-xs-8">
+            <?=Form::submit(_('Go to my profile'), ['class' => 'btn btn-theme btn-theme-lg'])?>
+        </div>
     </div>
-</div>
 
 <?=Form::close()?>
 @endsection

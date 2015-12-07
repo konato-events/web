@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -23,7 +24,7 @@ _('staff');
  * @property string                    username
  * @property string                    tagline
  * @property string                    bio
- * @property string                    birthday
+ * @property Carbon                    birthday
  * @property string                    gender
  * @property string                    avatar
  * @property string                    picture
@@ -60,6 +61,8 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     protected $hidden                     = ['password', /*'remember_token'*/];
 
+    protected $dates                      = ['created_at', 'updated_at', 'birthday'];
+
     public    $autoHashPasswordAttributes = true;
 
     protected $most_visited               = [];
@@ -72,10 +75,10 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
 //    public $autoHydrateEntityFromInput = true;
 
-    const PARTICIPANT = 'participant';
-    const SPEAKER     = 'speaker';
-    const INVOLVED    = 'involved'; //todo: include a "voluntary" or "lesser staff" role
-    const STAFF       = 'staff';
+    const PARTICIPANT             = 'participant';
+    const SPEAKER                 = 'speaker';
+    const INVOLVED                = 'involved'; //todo: include a "voluntary" or "lesser staff" role
+    const STAFF                   = 'staff';
     const PARTICIPATION_RELATIONS = [
         'participated' => self::PARTICIPANT,
         'spoke'        => self::SPEAKER,

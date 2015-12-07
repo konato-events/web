@@ -14,7 +14,7 @@ class UserController extends Controller {
     protected function followRelation() { return 'follows'; }
 
     public function __construct() {
-        $this->middleware('auth', ['only' => ['getFollow', 'getUnfollow']]);
+        $this->middleware('auth', ['only' => ['getFollow', 'getUnfollow', 'getEdit', 'postEdit']]);
     }
 
     //FIXME: Yet another Laravel router "bug". If we define the user/{id_slug} route before the controller route, we get wrong paths, but if we define later, the paths work fine but the actual route, don't. Fixing paths is harder, so we implemented this missingMethod to override the not found route issue.
@@ -75,6 +75,11 @@ class UserController extends Controller {
         }
 
         return view('user.speakers', compact('theme', 'themes', 'speakers', 'themed_speakers', 'single_theme'));
+    }
+
+    public function getEdit() {
+        $user = \Auth::user();
+        return view('user.edit', compact('user'));
     }
 
 }

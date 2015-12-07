@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-12-07 01:38-0300\n"
-"PO-Revision-Date: 2015-12-07 01:39-0300\n"
+"POT-Creation-Date: 2015-12-07 12:47-0300\n"
+"PO-Revision-Date: 2015-12-07 12:48-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -22,19 +22,19 @@ msgid "Sorry, but it seems you don't have permission to edit this event..."
 msgstr ""
 "Desculpe, mas parece que você não tem permissão para editar este evento..."
 
-#: app/Models/User.php:13 resources/views/user/profile.blade.php:12
+#: app/Models/User.php:14 resources/views/user/profile.blade.php:12
 msgid "participant"
 msgstr "participante"
 
-#: app/Models/User.php:14 resources/views/user/profile.blade.php:13
+#: app/Models/User.php:15 resources/views/user/profile.blade.php:13
 msgid "speaker"
 msgstr "palestrante"
 
-#: app/Models/User.php:15 resources/views/user/profile.blade.php:14
+#: app/Models/User.php:16 resources/views/user/profile.blade.php:14
 msgid "involved"
 msgstr "envolvido"
 
-#: app/Models/User.php:16 resources/views/user/profile.blade.php:15
+#: app/Models/User.php:17 resources/views/user/profile.blade.php:15
 msgid "staff"
 msgstr "staff"
 
@@ -136,46 +136,50 @@ msgid "My profile"
 msgstr "Meu perfil"
 
 #: resources/views/layout-master.blade.php:140
+msgid "Edit my profile"
+msgstr "Editar meu perfil"
+
+#: resources/views/layout-master.blade.php:145
 msgid "Logout"
 msgstr "Sair"
 
-#: resources/views/layout-master.blade.php:149
+#: resources/views/layout-master.blade.php:154
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: resources/views/layout-master.blade.php:154
+#: resources/views/layout-master.blade.php:159
 #: resources/views/auth/login.blade.php:4
 msgid "Login"
 msgstr "Login"
 
-#: resources/views/layout-master.blade.php:203
+#: resources/views/layout-master.blade.php:208
 msgid "Discover amazing events on Konato"
 msgstr "Descubra eventos fantásticos no Konato"
 
-#: resources/views/layout-master.blade.php:205
+#: resources/views/layout-master.blade.php:210
 #, php-format
 msgid "%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro"
 msgstr ""
 "%sBastante trampo (e poutine!)%s tornou isso realidade, na&nbsp;Cidade&nbsp;"
 "Maravilhosa"
 
-#: resources/views/layout-master.blade.php:207
+#: resources/views/layout-master.blade.php:212
 msgid "Marvelous City, place of the Sugar Loaf"
 msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
 
-#: resources/views/layout-master.blade.php:210
+#: resources/views/layout-master.blade.php:215
 msgid "Get in touch"
 msgstr "Fale com a gente"
 
-#: resources/views/layout-master.blade.php:211
+#: resources/views/layout-master.blade.php:216
 msgid "We &#9829; open source"
 msgstr "Nós &#9829; open source"
 
-#: resources/views/layout-master.blade.php:212
+#: resources/views/layout-master.blade.php:217
 msgid "by igorsantos07"
 msgstr "by igorsantos07"
 
-#: resources/views/layout-master.blade.php:220
+#: resources/views/layout-master.blade.php:225
 msgid "Go to top"
 msgstr "Subir"
 
@@ -186,7 +190,7 @@ msgstr "%s - evento"
 
 #: resources/views/event/details.blade.php:17
 #: resources/views/event/search.blade.php:168
-#: resources/views/user/profile.blade.php:35
+#: resources/views/user/profile.blade.php:41
 #: resources/views/theme/events.blade.php:151
 msgid "m/d/Y"
 msgstr "d/m/Y"
@@ -280,7 +284,7 @@ msgid "Follow this event"
 msgstr "Acompanhar este evento"
 
 #: resources/views/event/details.blade.php:359
-#: resources/views/user/profile.blade.php:219
+#: resources/views/user/profile.blade.php:225
 #: resources/views/theme/events.blade.php:190
 msgid "See my following preferences"
 msgstr "Configurar o que acompanho"
@@ -420,11 +424,11 @@ msgstr "Atualizar busca"
 msgid "Relevance"
 msgstr "Relevância"
 
-#: resources/views/event/forms/_checkboxes.blade.php:1
+#: resources/views/event/forms/_checkboxes.blade.php:2
 msgid "This is a free event"
 msgstr "Este evento é gratuito"
 
-#: resources/views/event/forms/_checkboxes.blade.php:2
+#: resources/views/event/forms/_checkboxes.blade.php:3
 msgid ""
 "Tell users if they have to pay to get in or not. In both cases you'll be "
 "able to provide a page for participants to register or buy tickets."
@@ -433,11 +437,11 @@ msgstr ""
 "será possível indicar uma página para os participantes se registrarem ou "
 "comprarem ingressos."
 
-#: resources/views/event/forms/_checkboxes.blade.php:4
+#: resources/views/event/forms/_checkboxes.blade.php:5
 msgid "This is a closed-doors / invite-only event"
 msgstr "Este é um evento de portas fechadas / somente para convidados"
 
-#: resources/views/event/forms/_checkboxes.blade.php:5
+#: resources/views/event/forms/_checkboxes.blade.php:6
 msgid ""
 "You can inform users they cannot buy entrances to this event. Some examples: "
 "event open to institution students only; employees company meeting; etc. "
@@ -449,11 +453,11 @@ msgstr ""
 "funcionários da empresa; etc. Isso é somente informativo: se este for um "
 "evento privado, você também deve marcar a próxima opção."
 
-#: resources/views/event/forms/_checkboxes.blade.php:7
+#: resources/views/event/forms/_checkboxes.blade.php:9
 msgid "This event should be kept hidden for now"
 msgstr "Este evento deve ficar oculto por enquanto"
 
-#: resources/views/event/forms/_checkboxes.blade.php:8
+#: resources/views/event/forms/_checkboxes.blade.php:10
 msgid ""
 "This can be used if it's private, or you're still planning it and don't want "
 "the general public to see it. It will be hidden from searches and only "
@@ -501,7 +505,7 @@ msgid "Description"
 msgstr "Descrição"
 
 #: resources/views/event/forms/edit_general.blade.php:23
-#: resources/views/auth/signUp.blade.php:67
+#: resources/views/user/edit.blade.php:31
 msgid "Tagline"
 msgstr "Descrição curta"
 
@@ -609,12 +613,52 @@ msgid "General information"
 msgstr "Informações básicas"
 
 #: resources/views/event/forms/edit_common.blade.php:37
+#: resources/views/user/edit.blade.php:50
 msgid "Go back"
 msgstr "Voltar"
 
 #: resources/views/event/forms/edit_common.blade.php:38
+#: resources/views/user/edit.blade.php:51
 msgid "Save"
 msgstr "Salvar"
+
+#: resources/views/user/_common_fields.blade.php:8
+msgid "Name"
+msgstr "Nome"
+
+#: resources/views/user/_common_fields.blade.php:10
+#: resources/views/auth/login.blade.php:19
+msgid "E-mail"
+msgstr "E-mail"
+
+#: resources/views/user/_common_fields.blade.php:12
+#: resources/views/auth/login.blade.php:19
+#: resources/views/auth/finishSignUp.blade.php:42
+msgid "Username"
+msgstr "Usuário"
+
+#: resources/views/user/_common_fields.blade.php:17
+#: resources/views/auth/finishSignUp.blade.php:47
+msgid ""
+"Use a uniquely identifying name for you. This will also help you to be found "
+"in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
+msgstr ""
+"Use um nome único e que lhe identifique. Isso também vai ajudar você a ser "
+"encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
+"a 30 caracteres."
+
+#: resources/views/user/_common_fields.blade.php:21
+msgid "Choose a password"
+msgstr "Escolha uma senha"
+
+#: resources/views/user/_common_fields.blade.php:22
+msgid ""
+"Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
+"points if you include lower-case and upper-case letters, as well as symbols."
+msgstr ""
+"Use pelo menos 6 caracteres aqui. Preferencialmente, com números e letras! "
+"Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
+"também."
 
 #: resources/views/user/profile.blade.php:26
 msgid "speaker profile"
@@ -624,19 +668,19 @@ msgstr "perfil de palestrante"
 msgid "profile"
 msgstr "perfil"
 
-#: resources/views/user/profile.blade.php:103
+#: resources/views/user/profile.blade.php:109
 #, php-format
 msgid "%s still don't have a picture :("
 msgstr "%s ainda não tem uma foto :("
 
-#: resources/views/user/profile.blade.php:104
+#: resources/views/user/profile.blade.php:110
 #: resources/views/user/speakers.blade.php:140
 #: resources/views/components/speakers_list.blade.php:11
 #, php-format
 msgid "%s on Konato"
 msgstr "%s no Konato"
 
-#: resources/views/user/profile.blade.php:122
+#: resources/views/user/profile.blade.php:128
 msgid ""
 "There's nothing to say about this user...<br/> He prefers to keep an air of "
 "mistery about him, I guess."
@@ -644,66 +688,119 @@ msgstr ""
 "Não há nada para dizer sobre esse usuário...<br/> Ele prefere se manter num "
 "ar de mistério, pelo visto."
 
-#: resources/views/user/profile.blade.php:129
+#: resources/views/user/profile.blade.php:135
 #, php-format
 msgid "%s has participated in events as a speaker"
 msgstr "%s já participou de eventos como palestrante"
 
-#: resources/views/user/profile.blade.php:138
+#: resources/views/user/profile.blade.php:144
 msgid "Her elsewhere:"
 msgstr "Ela em outros lugares:"
 
-#: resources/views/user/profile.blade.php:138
+#: resources/views/user/profile.blade.php:144
 msgid "Him elsewhere:"
 msgstr "Ele em outros lugares:"
 
-#: resources/views/user/profile.blade.php:163
+#: resources/views/user/profile.blade.php:169
 msgid "Her in events"
 msgstr "Ela nos eventos"
 
-#: resources/views/user/profile.blade.php:163
+#: resources/views/user/profile.blade.php:169
 msgid "Him in events"
 msgstr "Ele nos eventos"
 
-#: resources/views/user/profile.blade.php:183
+#: resources/views/user/profile.blade.php:189
 msgid "This user have not yet interacted with the events in the platform"
 msgstr "Este usuário ainda não interagiu com nenhum evento da plataforma"
 
-#: resources/views/user/profile.blade.php:202
+#: resources/views/user/profile.blade.php:208
 msgid "Add as a connection"
 msgstr "Adicionar como conexão"
 
-#: resources/views/user/profile.blade.php:204
+#: resources/views/user/profile.blade.php:210
 msgid "See my connections"
 msgstr "Ver minhas conexões"
 
-#: resources/views/user/profile.blade.php:211
+#: resources/views/user/profile.blade.php:217
 msgid "Unfollow her"
 msgstr "Deixar de seguir"
 
-#: resources/views/user/profile.blade.php:211
+#: resources/views/user/profile.blade.php:217
 msgid "Unfollow him"
 msgstr "Deixar de seguir"
 
-#: resources/views/user/profile.blade.php:215
+#: resources/views/user/profile.blade.php:221
 msgid "Follow her"
 msgstr "Seguir"
 
-#: resources/views/user/profile.blade.php:215
+#: resources/views/user/profile.blade.php:221
 msgid "Follow him"
 msgstr "Seguir"
 
-#: resources/views/user/profile.blade.php:228
+#: resources/views/user/profile.blade.php:234
 msgid "Her themes of interest"
 msgstr "Seus temas de interesse"
 
-#: resources/views/user/profile.blade.php:228
+#: resources/views/user/profile.blade.php:234
 msgid "His themes of interest"
 msgstr "Seus temas de interesse"
 
-#: resources/views/user/profile.blade.php:239
+#: resources/views/user/profile.blade.php:241
+#, php-format
+msgid "%s still didn't show interest in any theme..."
+msgstr "%s ainda não mostrou interesse em nenhum tema..."
+
+#: resources/views/user/profile.blade.php:249
 msgid "Most visited places"
 msgstr "Lugares mais visitados"
+
+#: resources/views/user/edit.blade.php:3
+msgid "Edit your profile"
+msgstr "Editar seu perfil"
+
+#: resources/views/user/edit.blade.php:4
+msgid "Editing your profile"
+msgstr "Editando seu perfil"
+
+#: resources/views/user/edit.blade.php:32
+msgid "Example: Analyst at Acme Inc."
+msgstr "Exemplo: Analista na Acme Ltda."
+
+#: resources/views/user/edit.blade.php:33
+msgid "Describe your professional self in a phrase. What you do for a living?"
+msgstr "Descreva seu eu profissional numa frase. O que você faz da vida?"
+
+#: resources/views/user/edit.blade.php:36
+msgid "Short bio"
+msgstr "Biografia curta"
+
+#: resources/views/user/edit.blade.php:38
+msgid "Example: I'm a chemical analyst with experience in catalysis."
+msgstr "Exemplo: Sou analista químico com experiência em catálises."
+
+#: resources/views/user/edit.blade.php:41
+msgid ""
+"Introduce yourself to the community! Write a couple of words to help others "
+"understand who you are."
+msgstr ""
+"Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
+"outros a entender quem você é."
+
+#: resources/views/user/edit.blade.php:45
+msgid "Birthday"
+msgstr "Nascimento"
+
+#: resources/views/user/edit.blade.php:47
+msgid "Gender"
+msgstr "Sexo"
+
+#: resources/views/user/edit.blade.php:47
+msgid "Male"
+msgstr "Masculino"
+
+#: resources/views/user/edit.blade.php:47
+msgid "Female"
+msgstr "Feminino"
 
 #: resources/views/user/speakers.blade.php:8
 #, php-format
@@ -774,61 +871,7 @@ msgstr ""
 msgid "You can also sign up using an account from one of those websites:"
 msgstr "Você também pode se cadastrar usando a conta de um desses sites:"
 
-#: resources/views/auth/signUp.blade.php:48
-msgid "Name"
-msgstr "Nome"
-
-#: resources/views/auth/signUp.blade.php:50
-#: resources/views/auth/login.blade.php:19
-msgid "E-mail"
-msgstr "E-mail"
-
 #: resources/views/auth/signUp.blade.php:52
-#: resources/views/auth/login.blade.php:19
-#: resources/views/auth/finishSignUp.blade.php:42
-msgid "Username"
-msgstr "Usuário"
-
-#: resources/views/auth/signUp.blade.php:57
-#: resources/views/auth/finishSignUp.blade.php:47
-msgid ""
-"Use a uniquely identifying name for you. This will also help you to be found "
-"in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
-msgstr ""
-"Use um nome único e que lhe identifique. Isso também vai ajudar você a ser "
-"encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
-"a 30 caracteres."
-
-#: resources/views/auth/signUp.blade.php:60
-msgid "Choose a password"
-msgstr "Escolha uma senha"
-
-#: resources/views/auth/signUp.blade.php:61
-msgid ""
-"Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
-"points if you include lower-case and upper-case letters, as well as symbols."
-msgstr ""
-"Use pelo menos 6 caracteres aqui. Preferencialmente, com números e letras! "
-"Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
-"também."
-
-#: resources/views/auth/signUp.blade.php:69
-msgid "Describe your professional self in a phrase. What you do for a living?"
-msgstr "Descreva seu eu profissional numa frase. O que você faz da vida?"
-
-#: resources/views/auth/signUp.blade.php:72
-msgid "Short bio"
-msgstr "Biografia curta"
-
-#: resources/views/auth/signUp.blade.php:74
-msgid ""
-"Introduce yourself to the community! Write a couple of words to help others "
-"understand who you are."
-msgstr ""
-"Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
-"outros a entender quem você é."
-
-#: resources/views/auth/signUp.blade.php:80
 #: resources/views/auth/finishSignUp.blade.php:52
 msgid "Go to my profile"
 msgstr "Ir para o meu perfil"
@@ -969,21 +1012,21 @@ msgstr ""
 "Alcance novas audiências e se aproxime do seu público - ou talvez "
 "<em>daquele</em> palestrante, do congresso que você foi há pouco tempo."
 
-#: resources/views/site/index.blade.php:178
+#: resources/views/site/index.blade.php:179
 msgid "Great events"
 msgstr "Grandes eventos"
 
-#: resources/views/site/index.blade.php:178
+#: resources/views/site/index.blade.php:179
 msgid "that we're proud to have been part of"
 msgstr "que temos orgulho de ter participado"
 
-#: resources/views/site/index.blade.php:223
+#: resources/views/site/index.blade.php:225
 msgid "Join a growing platform of events of all types and sizes"
 msgstr ""
 "Venha para a plataforma de eventos de todos os tipos e tamanhos, que só "
 "cresce"
 
-#: resources/views/site/index.blade.php:225
+#: resources/views/site/index.blade.php:227
 msgid ""
 "<b>Konato</b> is the best place to market your event.<br>Here we bring "
 "together all sorts of people, and they can find it by their interests - this "
@@ -995,7 +1038,7 @@ msgstr ""
 "seus interesses - dessa forma, você recebe o público certo, e os usuários "
 "encontram exatamente as atividades que buscam."
 
-#: resources/views/site/index.blade.php:227
+#: resources/views/site/index.blade.php:229
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
