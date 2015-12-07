@@ -4,7 +4,7 @@ if (!defined('APP_ROOT')) {
     define('APP_ROOT', dirname(__DIR__));
 }
 
-return [
+$app = [
 
     /*
     |--------------------------------------------------------------------------
@@ -148,10 +148,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\BootstrapLaravalidServiceProvider::class,
-
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        /**
+         * Dev-only service providers were left at the end of the file
+         */
     ],
 
     /*
@@ -207,3 +208,11 @@ return [
     ],
 
 ];
+
+
+if (!env('prod')) {
+    $app['providers'][] = Barryvdh\Debugbar\ServiceProvider::class;
+    $app['providers'][] = Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class;
+}
+
+return $app;
