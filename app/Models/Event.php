@@ -65,7 +65,7 @@ class Event extends Base {
         'end'            => ['date'],
         'website'        => ['url'],
         'twitter'        => ['min:2'],
-        'hashtag'        => ['min:4'],
+        'hashtag'        => ['min:4', 'unique:events'],
         'facebook'       => ['url'],
         'facebook_event' => ['url'],
         'tickets_url'    => ['url'],
@@ -111,6 +111,10 @@ class Event extends Base {
         $url = strtr($url, ['facebook.com' => 'fb.com']);
         $url = rtrim($url, '/');
         return $url;
+    }
+
+    public function setHashtagAttribute(string $hashtag = null) {
+        $this->attributes['hashtag'] = $hashtag?: null; //needed, or else an empty value will be set in the database and trigger an unique constraint error
     }
 
     public function setFacebookAttribute(string $url = null) {
