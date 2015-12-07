@@ -218,7 +218,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
      */
     public function getAllThemesAttribute() {
         if (!$this->all_themes) {
-            $this->all_themes = $this->following_events()->get()->keyBy('id')->all();
+            $this->all_themes = $this->following_themes()->get()->keyBy('id')->all();
             foreach ($this->getSessionsAttribute() as $session) {
                 $this->all_themes += $session->themes->keyBy('id')->all();
             }
