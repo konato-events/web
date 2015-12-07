@@ -24,7 +24,7 @@ class EventController extends Controller {
             'getEditMaterials', 'postEditMaterials',
             'getEditThemesSpeakers', 'postEditThemesSpeakers',
         ];
-        $this->middleware('auth', ['only' => ['getSubmit', 'postSubmit'] + $edits]);
+        $this->middleware('auth', ['only' => ['getSubmit', 'postSubmit', 'getFollow', 'getUnfollow', 'getParticipate', 'getUnparticipate'] + $edits]);
         $this->middleware('staff', ['only' => $edits]);
     }
 
