@@ -44,6 +44,7 @@ class EventController extends Controller {
         if ($query) { $db_query->where('title', 'ilike', $ilikey($query)); } //FIXME: improve this text search
         if ($paid)  { $db_query->where('free', ($paid == -1)); }
         if ($place) { $db_query->where('location', 'ilike', $ilikey($place)); }
+        if ($types) { $db_query->whereIn('event_type_id', $types); }
         $events = $db_query->get();
 
         if (sizeof($events) == 1 && $query) {
