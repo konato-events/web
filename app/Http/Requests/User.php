@@ -1,4 +1,3 @@
-<?php
-namespace App\Http\Requests;
+<?php namespace App\Http\Requests;
 
 class User extends Model { }

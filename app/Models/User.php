@@ -94,7 +94,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         'tagline'  => ['max:50'],
         'bio'      => ['max:200'],
         //TODO: validate birthday range correctly
-        'birthday' => ['date_format:Y-m-d', /*'after:6 years', 'before:1875-02-21'*/],
+        'birthday' => ['date', /*'after:6 years', 'before:1875-02-21'*/],
         //https://en.wikipedia.org/wiki/Oldest_people#Oldest_people_ever
         'gender'   => ['in:M,F'],
     ];

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10a1cfd14954b57ae0c07e045edff433",
-    "content-hash": "7ea770ce2e392328bfb284d80294cbeb",
+    "hash": "a1594a7cfb1a0e43a9faa220d647f9f1",
+    "content-hash": "98dcaa4bee67535af7c5418699d2806c",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1390,16 +1390,16 @@
         },
         {
             "name": "laravelbook/ardent",
-            "version": "v3.2.0",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-ardent/ardent.git",
-                "reference": "73fba066c87db1e69d05bffc388c8d9dcb28edf7"
+                "reference": "028044d87d5f029868de41a5042554f6dc612afa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-ardent/ardent/zipball/73fba066c87db1e69d05bffc388c8d9dcb28edf7",
-                "reference": "73fba066c87db1e69d05bffc388c8d9dcb28edf7",
+                "url": "https://api.github.com/repos/laravel-ardent/ardent/zipball/028044d87d5f029868de41a5042554f6dc612afa",
+                "reference": "028044d87d5f029868de41a5042554f6dc612afa",
                 "shasum": ""
             },
             "require": {
@@ -1442,7 +1442,7 @@
                 "sql",
                 "validation"
             ],
-            "time": "2015-11-30 20:10:39"
+            "time": "2015-12-07 17:05:14"
         },
         {
             "name": "laravelcollective/html",
