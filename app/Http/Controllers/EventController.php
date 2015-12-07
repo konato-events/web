@@ -38,7 +38,7 @@ class EventController extends Controller {
         /** @var Builder $db_query */
         $db_query = Event::where('hidden', 0);
         if ($query) { $db_query->where('title', 'ilike', $ilikey($query)); } //FIXME: improve this text search
-        if ($paid)  { $db_query->where('paid', ($paid == 1)); }
+        if ($paid)  { $db_query->where('free', ($paid == -1)); }
         if ($place) { $db_query->where('location', 'ilike', $ilikey($place)); }
         $events = $db_query->get();
 
