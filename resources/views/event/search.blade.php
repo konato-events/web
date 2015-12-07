@@ -123,16 +123,16 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
                                 </label>
                             </div>'])
 
-                    @include('components.accordion_panel', ['title' => _('Theme'),
-                        'name'      => 'theme',
-                        'checklist' => [$themes, $selected_themes],
-                        'checklist_buttons' => true])
+                    {{--@include('components.accordion_panel', ['title' => _('Theme'),--}}
+                        {{--'name'      => 'theme',--}}
+                        {{--'checklist' => [$themes, $selected_themes],--}}
+                        {{--'checklist_buttons' => true])--}}
 
-                    @include('components.accordion_panel', ['title' => _('Date'),
-                        'content' => '
-                            <label>'._('Begin').': <input type="date" class="form-control" name="begin"></label>
-                            <label>'._('End').':   <input type="date" class="form-control" name="end">  </label>
-                        '])
+                    {{--@include('components.accordion_panel', ['title' => _('Date'),--}}
+                        {{--'content' => '--}}
+                            {{--<label>'._('Begin').': <input type="date" class="form-control" name="begin"></label>--}}
+                            {{--<label>'._('End').':   <input type="date" class="form-control" name="end">  </label>--}}
+                        {{--'])--}}
                 </div>
             </div>
 
