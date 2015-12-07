@@ -17,7 +17,8 @@ class ThemeController extends Controller {
         $id = unslug($id_slug)[0];
         $paid = $req->input('paid', 0);
         $theme = Theme::with('events')->find($id);
-        return view('theme.events', compact('theme', 'paid'));
+        $types = \App\Models\EventType::toTransList();
+        return view('theme.events', compact('theme', 'paid', 'types'));
     }
 
     public function getSpeakers(string $id_slug) {

@@ -84,7 +84,7 @@ class AppServiceProvider extends ServiceProvider {
         shuffle($events);
         shuffle($speakers);
         $view->share('events', $events);
-        $view->share('types', $types);
+//        $view->share('types', $types);
         $view->share('selected_types', $selected_types);
         $view->share('themes', $themes);
         $view->share('selected_themes', $selected_themes);

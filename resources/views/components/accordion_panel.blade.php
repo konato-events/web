@@ -1,8 +1,9 @@
 <?php
 global $accordion_index;
 $accordion_index = ($accordion_index === null)? 0 : $accordion_index+1;
-$open = isset($open)? $open : false;
+$open = $open ?? false;
 /** @var array $checklist */
+/** @var bool $open */
 /** @var array $field_attr */
 ?>
 
@@ -20,14 +21,14 @@ $open = isset($open)? $open : false;
          role="tabpanel" aria-labelledby="accordionHeading{{$accordion_index}}">
         <div class="panel-body container-fluid">
             @if (isset($checklist))
-                <?php $buttons = (isset($checklist_buttons) && $checklist_buttons); ?>
+                <? $buttons = (isset($checklist_buttons) && $checklist_buttons); ?>
                 <div <?=$buttons? 'class="btn-group" data-toggle="buttons"' : 'class="checkbox"'?>>
                     <?php foreach($checklist[0] as $id => $value):
                         $check = in_array($id, $checklist[1]);?>
                         <label <?php if ($buttons) echo 'class="btn btn-default '.($check? 'active':'').'"' ?>>
                             <input type="checkbox" name="{{$name}}" value="{{$id}}" <?=$check? 'checked':''?>> {{$value}}
                         </label>
-                    <?php endforeach ?>
+                    <? endforeach ?>
                 </div>
             @endif
 

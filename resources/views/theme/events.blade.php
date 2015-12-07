@@ -4,10 +4,7 @@
  * @var int               $paid
  * @var int[]             $selected_types
  */
-
 $title = sprintf(_('Events about %s'), $theme->name);
-
-$types = \App\Models\EventType::toTransList();
 ?>
 @extends('layout-header')
 @section('title', $title)

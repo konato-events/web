@@ -1,5 +1,6 @@
 <?php
 /** @var string $query */
+/** @var array $types */
 
 //FIXME: forcing gettext to find those strings, that are used inside blade code
 _('Search terms'); _('Event types'); _('Free'); _('Both'); _('Paid'); _('Theme'); _('Date'); _('Begin'); _('End');
@@ -70,16 +71,28 @@ $title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not 
     <div class="container">
 
         <aside id="sidebar" class="sidebar col-sm-4 col-md-3">
+        <form method="get" action="<?=act('event@search')?>">
 
             <div class="widget google-map-widget">
                 <div class="google-map1">
                     <div id="map-canvas1"></div>
                     <?php //TODO: get user location through the IP to customize location search. we might ask for JS location to improve further queries ?>
                 </div>
-                <a href="#" class="link"><i class="fa fa-compass"></i> <?=$place?></a>
+                <span class="link form-group">
+                    <span class="input-group">
+                        <label for="place_field" class="input-group-addon"><i class="fa fa-compass"></i></label>
+                        <input type="text" name="place" id="place_field" class="form-control" value="{{$place}}" />
+                    </span>
+                </span>
             </div>
 
-            <form class="widget">
+            <div class="widget">
+
+                <button class="btn btn-theme btn-theme-md">
+                    <i class="fa fa-search"></i>
+                    <?=_('Update search')?>
+                </button>
+
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <?php //TODO: add to free/paid text a behaviour to change the range when clicked (as labels for checkboxes)?>
                     @include('components.accordion_panel', [
@@ -121,14 +134,16 @@ $title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not 
                             <label>'._('End').':   <input type="date" class="form-control" name="end">  </label>
                         '])
                 </div>
-            </form>
+            </div>
 
+        </form>
         </aside>
 
         <hr class="page-divider transparent visible-xs"/>
 
         <section id="content" class="content col-sm-8 col-md-9">
 
+            <!--
             <div class="listing-meta">
 
                 <div class="filters">
@@ -145,6 +160,7 @@ $title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not 
                 </div>
 
             </div>
+            -->
 
             <div class="tab-content">
                 <div id="list-view" class="tab-pane fade active in" role="tabpanel">
@@ -157,7 +173,7 @@ $title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not 
                         @endforeach
                     </div>
 
-                    <!-- Pagination -->
+                    <!-- Pagination
                     <div class="pagination-wrapper">
                         <ul class="pagination">
                             <?php //TODO: improve styling for disabled buttons ?>
@@ -169,7 +185,7 @@ $title = sprintf(_('"%s" events search'), $query); //TODO: fix title, given not 
                             <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
                         </ul>
                     </div>
-                    <!-- /Pagination -->
+                    /Pagination -->
                 </div>
             </div>
         </section>

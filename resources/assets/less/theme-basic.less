@@ -4515,6 +4515,13 @@ div.pp_overlay {
     font-family: 'Roboto', sans-serif;
     vertical-align: middle;
     position: relative;
+
+    input, .input-group-addon {
+        background: lighten(@darkPrimaryColor, 10%);
+        border-color: lighten(@darkPrimaryColor, 40%);
+        transition: border-color 0s;
+        color: #F0F0F0;
+    }
 }
 .google-map-widget .link:before {
     content: '';
@@ -4538,11 +4545,15 @@ div.pp_overlay {
 }
 .google-map-widget .link:hover {
     background-color: @darkestSecondaryColor;
+
+    input, .input-group-addon {
+        background: lighten(@darkestSecondaryColor, 10%);
+        border-color: lighten(@darkestSecondaryColor, 60%);
+    }
 }
 .google-map-widget .link .fa {
     font-size: 24px;
     vertical-align: middle;
-    margin-right: 10px;
 }
 
 /* 5.6 - Parallax

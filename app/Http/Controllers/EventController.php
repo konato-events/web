@@ -5,6 +5,7 @@ use App\Models\Event;
 use App\Models\EventSpeaker;
 use App\Models\EventTheme;
 use App\Models\Theme;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use LaravelArdent\Ardent\InvalidModelException;
@@ -28,9 +29,17 @@ class EventController extends Controller {
         }
         $query = $req->input('q', '');
         $paid  = $req->input('paid', 0);
-        $place = $req->input('place', 'Rio de Janeiro, Brazil');
+        $place = $req->input('place', '');
+        $types = \App\Models\EventType::toTransList();
+        $ilikey = function(string $str) { return strtr(" $str ", ' ', '%'); };
 
-        return view('event.search', compact('query', 'paid', 'place'));
+        /** @var Builder $db_query */
+        $db_query = Event::where('title', 'ilike', $ilikey($query)); //FIXME: improve this text search
+        if ($paid)  { $db_query->where('paid', ($paid == 1)); }
+        if ($place) { $db_query->where('location', 'ilike', $ilikey($place)); }
+        $events = $db_query->get();
+
+        return view('event.search', compact('query', 'paid', 'place', 'types', 'events'));
     }
 
     public function getDetails(string $id_slug) {
