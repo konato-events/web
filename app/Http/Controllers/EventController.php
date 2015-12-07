@@ -61,7 +61,7 @@ class EventController extends Controller {
 
     public function getSubmit() {
         $event = new Event;
-        return view('event.submit', compact('event'));
+        return view('event.forms.submit', compact('event'));
     }
 
     public function postSubmit(EventReq $req) {
