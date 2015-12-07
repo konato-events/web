@@ -43,7 +43,7 @@ class UserController extends Controller {
         return $this->profile(self::TYPE_USER, $id_slug);
     }
 
-    public function getSpeaker(string $id_slug) {
+    public function getSpeaker($id_slug) {
         return $this->profile(self::TYPE_SPEAKER, $id_slug);
     }
 
@@ -54,7 +54,7 @@ class UserController extends Controller {
             /** @var Theme[] $themes */
             $theme = null;
             if (\Auth::check()) {
-                $themes = \Auth::user()->following_themes()->get();
+                $themes = \Auth::user()->all_themes;
             } else {
                 $themes = Theme::mostFrequent();
             }

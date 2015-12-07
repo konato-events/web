@@ -9,7 +9,6 @@
 /* ******************** ROUTE PRESETS ********************* */
 /************************************************************/
 // These would conflict with controller routes, so they need to be set before them
-Route::post('user/sign-up', ['uses' => 'UserController@postSignUp', 'before' => 'csrf']);
 Route::get( 'event/{id_slug}',         'EventController@getDetails');
 
 
@@ -22,13 +21,12 @@ Route::controller('event',        'EventController');
 Route::controller('theme',        'ThemeController');
 Route::controller('autocomplete', 'AutoCompleteController');
 
-
 /************************************************************/
 /* ****************** ADDITIONAL ROUTES ******************* */
 /************************************************************/
 Route::get('user/{id_slug}',    'UserController@getProfile');
-Route::get('event/search',      'EventController@getSearch'); /** @link https://github.com/laravel/framework/issues/10659 */
 Route::get('speaker/{id_slug}', 'UserController@getSpeaker');
+Route::get('event/search',      'EventController@getSearch'); /** @link https://github.com/laravel/framework/issues/10659 */
 
 
 /************************************************************/

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-12-07 15:54-0300\n"
-"PO-Revision-Date: 2015-12-07 15:55-0300\n"
+"POT-Creation-Date: 2015-12-07 16:26-0300\n"
+"PO-Revision-Date: 2015-12-07 16:26-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -553,7 +553,14 @@ msgstr "Palestrantes nos temas mais comuns"
 msgid "Most common themes"
 msgstr "Temas mais comuns"
 
-#: resources/views/user/speakers.blade.php:125
+#: resources/views/user/speakers.blade.php:110
+msgid ""
+"Hmmm... Looking in our archives about you, there still no themes of interest."
+msgstr ""
+"Hum... Olhando nos nossos arquivos sobre você, parece que ainda não há "
+"nenhum tema de interesse."
+
+#: resources/views/user/speakers.blade.php:132
 msgid ""
 "Hmmm... This is awkward, but it seems we still have no speakers on this "
 "theme. Meanwhile, these are our most frequent speakers:"
@@ -567,14 +574,14 @@ msgstr[1] ""
 "Ops. Parece que ainda não temos palestrantes nestes temas. Por enquanto, "
 "estes são os mais comuns:"
 
-#: resources/views/user/speakers.blade.php:140
+#: resources/views/user/speakers.blade.php:147
 #: resources/views/user/profile.blade.php:109
 #: resources/views/components/speakers_list.blade.php:11
 #, php-format
 msgid "%s on Konato"
 msgstr "%s no Konato"
 
-#: resources/views/user/speakers.blade.php:156
+#: resources/views/user/speakers.blade.php:163
 msgid "See full profile"
 msgstr "Ver perfil completo"
 
@@ -915,16 +922,16 @@ msgstr "Relevância"
 msgid "To add a speaker, search for a user in this list:"
 msgstr "Para adicionar um palestrante, selecione um usuário na lista:"
 
-#: resources/views/event/forms/edit_themes_speakers.blade.php:85
+#: resources/views/event/forms/edit_themes_speakers.blade.php:84
 msgid "unsaved"
 msgstr "não salvo"
 
-#: resources/views/event/forms/edit_themes_speakers.blade.php:107
+#: resources/views/event/forms/edit_themes_speakers.blade.php:106
 #: resources/views/event/forms/edit_common.blade.php:25
 msgid "Themes"
 msgstr "Temas"
 
-#: resources/views/event/forms/edit_themes_speakers.blade.php:113
+#: resources/views/event/forms/edit_themes_speakers.blade.php:112
 msgid "Write event themes separated by commas:"
 msgstr "Digite os temas do evento, separados por vírgulas:"
 
@@ -1119,6 +1126,11 @@ msgstr "Palestrantes populares"
 #, php-format
 msgid "See all speakers on %s"
 msgstr "Veja todos os palestrantes em %s"
+
+#~ msgid "Hmmm... There are no interest on themes on our archives about you"
+#~ msgstr ""
+#~ "Hum... Não encontramos interesse em nenhum tema, nos nossos arquivos "
+#~ "sobre você"
 
 #~ msgid "Her themes of interest"
 #~ msgstr "Seus temas de interesse"

@@ -2,6 +2,7 @@
 /** @var App\Models\Theme $theme */
 /** @var bool $themed_speakers */
 /** @var bool $single_theme */
+/** @var App\Models\Theme[] $themes */
 /** @var App\Models\User[] $speakers */
 
 if ($theme) {
@@ -16,7 +17,6 @@ if ($theme) {
         $panel = _('Most common themes');
     }
 }
-
 ?>
 @extends('layout-header')
 @section('title', $title)
@@ -103,7 +103,14 @@ if ($theme) {
                                 <h4 class="panel-title"><?=$panel?></h4>
                             </div>
                             <div class="panel-body">
-                                @include('components.themes_list', [ 'link_speakers' => true ])
+                                <? if (sizeof($themes)): ?>
+                                    @include('components.themes_list', [ 'link_speakers' => true ])
+                                <? else: ?>
+                                    <div class="text-center empty-block">
+                                        <?=_r('Hmmm... Looking in our archives about you, there still no themes of interest.')?>
+                                        <i class="fa fa-folder-open-o"></i>
+                                    </div>
+                                <? endif ?>
                             </div>
                         </div>
                     </div>
@@ -132,7 +139,7 @@ if ($theme) {
 
                             <? $columns = ['lg' => 3, 'md' => 4, 'sm' => 6, 'xs' => 6] ?>
                             <? foreach($speakers as $id => $speaker): ?>
-                            <? $link = act('user@speaker', $speaker->slug) ?>
+                            <? $link = act('user@profile', $speaker->slug) ?> <?//FIXME: user@speaker is not working ?>
                                 <div class="<? foreach ($columns as $sign => $size) echo "col-$sign-$size " ?> isotype-item festival">
                                     <div class="thumbnail no-border no-padding">
                                         <div class="media">
