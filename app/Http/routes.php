@@ -35,7 +35,7 @@ Route::get('speaker/{id_slug}', 'UserController@getSpeaker');
 /* ************** CATCH-ALL / MAIN ROUTES ***************** */
 /************************************************************/
 
-if (!env('prod')) {
+if (getenv('APP_ENV') !== 'prod') {
     //imported from vendor/barryvdh/laravel-debugbar/src/ServiceProvider.php:72
     //TODO: without re-declaring those here, the SiteController catch-all would get precedence
     Route::get('_debugbar/open', ['uses' => 'OpenHandlerController@handle', 'as' => 'debugbar.openhandler']);

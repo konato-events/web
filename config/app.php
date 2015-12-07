@@ -153,6 +153,7 @@ $app = [
         /**
          * Dev-only service providers were left at the end of the file
          */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class, //must be left here as it runs from composer directly
     ],
 
     /*
@@ -210,9 +211,8 @@ $app = [
 ];
 
 
-if (!env('prod')) {
+if (getenv('APP_ENV') !== 'prod') {
     $app['providers'][] = Barryvdh\Debugbar\ServiceProvider::class;
-    $app['providers'][] = Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class;
 }
 
 return $app;
