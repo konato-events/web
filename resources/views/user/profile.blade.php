@@ -29,8 +29,13 @@ switch ($type) {
 }
 $title = "$user->name - $type_str";
 
-        $avatar_height = 512;
-$avatar_height = getimagesize($user->picture)[1];
+try {
+    $avatar_height = getimagesize($user->picture)[1];
+}
+catch (ErrorException $e) {
+    //we are probably without connection, let's use a default value
+    $avatar_height = 512;
+}
 $avatar_height = ($avatar_height > 250? 250 : $avatar_height);
 $date_fmt   = _('m/d/Y');
 ?>
@@ -225,11 +230,17 @@ $date_fmt   = _('m/d/Y');
             <div class="panel-group">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><?=($female)? _('Her themes of interest') : _('His themes of interest')?></h4>
+                        <h4 class="panel-title"><?=_('Themes of interest')?></h4>
                     </div>
                     <div class="panel-body">
-                        <? //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
-                        @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $user->gender, 'themes' => $user->all_themes])
+                        <? if ($user->all_themes): ?>
+                            <? //TODO: display here even themes that there was no talk on it; sort by number of talks given ?>
+                            @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $user->gender, 'themes' => $user->all_themes])
+                        <? else: ?>
+                            <div class="text-center empty-block">
+                                <?=_r('%s still didn\'t show interest in any theme...', ucfirst($pronoun))?>
+                            </div>
+                        <? endif ?>
                     </div>
                 </div>
 
