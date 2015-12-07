@@ -43,7 +43,7 @@ Form::model($event); //TODO: find a better way to share the model through partia
             <div class="widget">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><?=_('Template file')?></h4>
+                        <h4 class="panel-title"><?=_('Schedule file')?></h4>
                     </div>
                     <div class="panel-body">
                         <a class="btn btn-theme" href="<?=act('event@scheduleTemplateFile')?>">

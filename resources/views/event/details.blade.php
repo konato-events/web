@@ -56,7 +56,7 @@ function get_days(Carbon $begin, Carbon $end = null):array {
     }
     return $days;
 }
-$days = get_days($event->begin, $event->end);
+$days = array_keys($event->sessionsByDay);
 $editions = [];
 
 $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
@@ -220,15 +220,17 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 
                 <hr class="page-divider transparent visible-md"/>
             <? endif ?>
-<!--
+
+            <? if (sizeof($event->sessions)): ?>
             <div class="col-md-12 col-lg-7 pull-right">
                 <?=section_title('calendar-check-o', _('Schedule'), $dates_str(true))?>
                 <? if (sizeof($days > 1)): ?>
                     <ul class="nav nav-tabs" role="tablist">
                         <? foreach($days as $i => $day): ?>
+                        <? //foreach($days as $i => $day): ?>
                             <li role="presentation" <? if ($i == 0): ?>class="active"<? endif ?>>
                                 <a data-toggle="tab" role="tab" aria-controls="day-<?=$i?>" href="#day-<?=$i?>">
-                                    <?=date('d/m', $day)?>
+                                    <?=date(_('m/d'), strtotime($day))?>
                                 </a>
                             </li>
                         <? endforeach ?>
@@ -236,10 +238,11 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                 <? endif ?>
 
                 <div class="tab-content">
-                    <? foreach ($days as $d => $day): ?>
+                    <? foreach (array_values($event->sessionsByDay) as $d => $sessions): ?>
                         <? $rooms = ['Grand Hall', 'Room A', 'Room B'] ?>
                         <div role="tabpanel" class="tab-pane fade<? if ($d == 0): ?> in active<? endif ?>" id="day-<?=$d?>">
                             <div class="panel panel-default">
+                                <!--
                                 <ul class="nav nav-pills nav-justified" role="tablist">
                                     <? foreach($rooms as $r => $room): ?>
                                         <li role="presentation" <? if ($r == 0): ?>class="active"<? endif ?>>
@@ -249,13 +252,14 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                                         </li>
                                     <? endforeach ?>
                                 </ul>
+                                -->
 
                                 <div class="tab-content">
-                                    <? foreach($rooms as $r => $room): ?>
-                                        <div role="tabpanel" class="tab-pane fade<? if ($r == 0): ?> in active<? endif ?>" id="room-<?="$d-$r"?>">
+                                    <?// foreach($rooms as $r => $room): ?>
+                                        <!--<div role="tabpanel" class="tab-pane fade<? if ($r == 0): ?> in active<? endif ?>" id="room-<?="$d-$r"?>">-->
                                         <div class="timeline">
 
-                                            <? for($p = 1; $p <= 4; $p++): ?>
+                                            <? foreach($sessions as $session): ?>
                                                 <article class="post-wrap">
                                                 <div class="media">
 
@@ -263,16 +267,22 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                                                         <div class="post-header">
                                                             <div class="post-meta">
                                                                 <span class="post-date">
-                                                                    <i class="fa fa-clock-o"></i> 08:00 - 08:45
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                    <?=$session->begin->format('H:i')?> -
+                                                                    <?=$session->end->format('H:i')?>
                                                                 </span>
                                                             </div>
-                                                            <h2 class="post-title"><a href="#">Speaker Content Header Is Header</a></h2>
+                                                            <h2 class="post-title">
+                                                                {{--<a href="#">Speaker Content Header Is Header</a>--}}
+                                                                {{$session->title}}
+                                                            </h2>
                                                         </div>
                                                         <div class="post-body">
                                                             <div class="post-excerpt">
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae diam metus. Donec cursus magna eget sem convallis facilisis. Vestibulum dictum nibh at ullamcorper tincidunt. Phasellus scelerisque nisl non ullamcorper pellentesque. Nunc sagittis, felis in feugiat mollis, libero eros consectetur elit non cursus lacus nisl at dolor.</p>
+                                                                <p>{{$session->description}}</p>
                                                             </div>
                                                         </div>
+                                                        <!--
                                                         <div class="post-footer">
                                                             <span class="post-readmore">
                                                                 <? $spk = $speakers[array_rand($speakers)] ?>
@@ -282,13 +292,13 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                                                                 </a>
                                                             </span>
                                                         </div>
+                                                        -->
                                                     </div>
                                                 </div>
                                                 </article>
-                                            <? endfor ?>
+                                            <? endforeach ?>
                                         </div>
-                                        </div>
-                                    <? endforeach ?>
+                                    <?// endforeach ?>
                                 </div>
                             </div>
                         </div>
@@ -296,9 +306,8 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                 </div>
             </div>
 
-
             <hr class="page-divider transparent visible-md"/>
--->
+            <? endif ?>
 
             <? if (sizeof($event->speakers)): ?>
                 <div class="col-md-12 col-lg-5 pull-left">

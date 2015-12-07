@@ -179,13 +179,17 @@ class EventController extends Controller {
         return $this->edit('schedule', $id);
     }
 
+
+    //TODO: verify dates before inserting
+    //TODO: verify validation of the session and how it should behave on errors
+    //TODO: verify file format before processing
     public function postEditSchedule(int $id) {
         $file = fopen(request()->file('schedule_file')->getRealPath(), 'r');
 
         $l = 0;
         while($line = fgetcsv($file)) {
             if ($l++ === 0) continue; //skipping headers
-            $session = Session::create([
+            Session::create([
                 'title'       => $line[0],
                 'description' => $line[1],
                 'begin'       => $line[2],

@@ -32,12 +32,14 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  * @todo            https://bitbucket.org/konato/web/issues/130/integrate-with-google-maps-api-for-location-search
  *
  * @future-property Location  location
- * @property EventType  type
- * @property Event[]    issues
- * @property Collection staff
- * @property User[]     speakers
- * @property Material[] materials
- * @property Theme[]    themes
+ * @property EventType             type
+ * @property Collection|Event[]    issues
+ * @property Collection            staff
+ * @property Collection|User[]     speakers
+ * @property Collection|Material[] materials
+ * @property Collection|Theme[]    themes
+ * @property Collection|Session[]  sessions
+ * @property Session[]  sessionsByDay
  *
  * @method BelongsTo        type
  * @method HasManyThrough   issues
@@ -85,8 +87,11 @@ class Event extends Base {
         'themes'      => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'event_theme'],
         'event_staff' => [self::HAS_MANY, EventStaff::class],
         'materials'   => [self::HAS_MANY, Material::class],
+        'sessions'    => [self::HAS_MANY, Session::class],
         //        'location' => [self::BELONGS_TO, Location::class],
     ];
+
+    protected $sessionsByDay = [];
 
     /**
      * Temporary attr until we get upload working
@@ -125,4 +130,17 @@ class Event extends Base {
         }
     }
 
+    public function getSessionsByDayAttribute() {
+        if (!$this->sessionsByDay) {
+            foreach ($this->sessions as $session) {
+                $day = $session->begin->format('Y-m-d');
+                if (!array_key_exists($day, $this->sessionsByDay)) {
+                    $this->sessionsByDay[$day] = [];
+                }
+                $this->sessionsByDay[$day][] = $session;
+            }
+        }
+
+        return $this->sessionsByDay;
+    }
 }

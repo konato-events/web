@@ -25,6 +25,10 @@ class Session extends Base {
 
     protected $speakers = [];
 
+    protected $dates = ['created_at', 'updated_at', 'begin', 'end'];
+
+    protected $dateFormat = 'Y-m-d H:i:sO';
+
     public static $relationsData = [
         'event'          => [self::BELONGS_TO, Event::class],
         'themes'         => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'session_theme'],
