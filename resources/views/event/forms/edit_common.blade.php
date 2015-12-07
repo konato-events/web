@@ -23,11 +23,11 @@ const FORM_ID = 'submit';
             <ul class="nav nav-tabs">
                 <?=activableLink(_('General information'), 'event@edit', [$event->id])?>
                 <?=activableLink(_('Themes').' & '._('Speakers'), 'event@editThemesSpeakers', [$event->id])?>
-                <?=activableLink(_('Materials'), 'event@editMaterials', [$event->id])?>
+                <!--<?=activableLink(_('Materials'), 'event@editMaterials', [$event->id])?>-->
                 <?=activableLink(_('Schedule'), 'event@editSchedule', [$event->id])?>
             </ul>
 
-            <?=Form::model($event, ['id' => FORM_ID])?>
+            <?=Form::model($event, ['id' => FORM_ID, 'files' => true])?>
 
                 <?=Form::hidden('id')?>
 

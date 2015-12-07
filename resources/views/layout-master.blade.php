@@ -238,6 +238,15 @@ $lang_tag = substr(LOCALE, 0, 2);
         .delay(10000)
         .logPosition('top left');
 
+    <? if(session('info')): ?>
+        alertify.log("<?=addslashes(session('info'))?>");
+    <? endif ?>
+    <? if(session('success')): ?>
+        alertify.success("<?=addslashes(session('success'))?>");
+    <? endif ?>
+    <? if(session('warning')): ?>
+        alertify.error("<?=addslashes(session('warning'))?>");
+    <? endif ?>
     <? if(session('error')): ?>
         alertify.error("<?=addslashes(session('error'))?>");
     <? endif ?>

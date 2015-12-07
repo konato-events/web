@@ -5,10 +5,12 @@ use App\Models\Event;
 use App\Models\EventSpeaker;
 use App\Models\EventTheme;
 use App\Models\EventType;
+use App\Models\Session;
 use App\Models\Theme;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use LaravelArdent\Ardent\InvalidModelException;
 
 class EventController extends Controller {
@@ -153,7 +155,51 @@ class EventController extends Controller {
         return $this->edit('materials', $id);
     }
 
+    public function getScheduleTemplateFile() {
+        $template_file = storage_path(_('template').'_'.LOCALE.'.csv');
+        if (!file_exists($template_file)) {
+            $file  = fopen($template_file, 'c');
+            $lines = [
+                [_('Title'), _('Description'), _('Begin'), _('End')],
+                [_('SAMPLE TALK (remove this line): Abnormalities on Catalysis'), _('This talk will walk us through some common abnormalities seen in some catalysis processes.'), _('Format: YYYY-MM-DD HH:mm'), _('Format: YYYY-MM-DD HH:mm')]
+            ];
+            foreach ($lines as $line) {
+                array_walk($line, function(&$v) { $v = Str::ascii($v); });
+                fputcsv($file, $line);
+            }
+            fclose($file);
+        }
+
+        $download = response()->download($template_file);
+        $download->headers->set('Content-Type', 'text/csv');
+        return $download;
+    }
+
     public function getEditSchedule(int $id) {
+        return $this->edit('schedule', $id);
+    }
+
+    public function postEditSchedule(int $id) {
+        $file = fopen(request()->file('schedule_file')->getRealPath(), 'r');
+
+        $l = 0;
+        while($line = fgetcsv($file)) {
+            if ($l++ === 0) continue; //skipping headers
+            $session = Session::create([
+                'title'       => $line[0],
+                'description' => $line[1],
+                'begin'       => $line[2],
+                'end'         => $line[3],
+                'event_id'    => $id
+            ]);
+        }
+        $total = $l - 1; //skipping header
+
+        if ($total > 0) {
+            \Session::flash('success', __('One activity was imported.', 'A total of %d activities were imported.', $total));
+        } else {
+            \Session::flash('warning', _('No activity was found in the file.'));
+        }
         return $this->edit('schedule', $id);
     }
 }

@@ -74,6 +74,7 @@ class Event extends Base {
 
         'speakers' => '',
         'themes_str' => '',
+        'schedule_file' => ['file'],
     ];
 
     public static $relationsData = [
