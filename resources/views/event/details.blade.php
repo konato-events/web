@@ -348,13 +348,25 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                 </a>
             <? endif ?>
 
-            <button class="btn btn-theme btn-wrap btn-sm">
-                <i class="fa fa-hand-o-up"></i> <?=_('I\'m going!')?>
-            </button>
+            <? if (\Auth::check() && \Auth::user()->participated()->where('event_id', $id)->count()): ?>
+                <a href="<?=act('event@unparticipate', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-hand-stop-o"></i> <?=_('I\'m not going anymore')?>
+                </a>
+            <? else: ?>
+                <a href="<?=act('event@participate', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-hand-o-up"></i> <?=_('I\'m going!')?>
+                </a>
+            <? endif ?>
 
-            <button class="btn btn-theme btn-wrap btn-sm">
-                <i class="fa fa-mail-forward"></i> <?=_('Follow this event')?>
-            </button>
+            <? if (\Auth::check() && \Auth::user()->following_events()->where('event_id', $id)->count()): ?>
+                <a href="<?=act('event@unfollow', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-remove"></i> <?=_('Unfollow this event')?>
+                </a>
+            <? else: ?>
+                <a href="<?=act('event@follow', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <i class="fa fa-mail-forward"></i> <?=_('Follow this event')?>
+                </a>
+            <? endif ?>
             <!--
                 <a class="note" href="#"><?=_('See my following preferences')?></a>
             -->

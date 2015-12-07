@@ -13,6 +13,8 @@ use LaravelArdent\Ardent\InvalidModelException;
 
 class EventController extends Controller {
 
+    use Traits\Followable;
+
     public function __construct() {
         $edits = [
             'getEdit', 'postEdit',
@@ -66,6 +68,24 @@ class EventController extends Controller {
         $event->staff()->attach(\Auth::user());
         $id_slug = slugify($event->id, $event->title);
         return redirect()->action('EventController@getDetails', $id_slug);
+    }
+
+
+/*************************************************** FOLLOW ACTIONS ***************************************************/
+
+    protected $followRelation = 'following_events';
+    protected function followRelation() {
+        return $this->followRelation;
+    }
+
+    public function getParticipate(int $id) {
+        $this->followRelation = 'participated';
+        return $this->getFollow($id);
+    }
+
+    public function getUnparticipate(int $id) {
+        $this->followRelation = 'participated';
+        return $this->getUnfollow($id);
     }
 
 /**************************************************** EDIT ACTIONS ***************************************************/
