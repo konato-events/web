@@ -110,7 +110,7 @@ HTML;
 
         return $this->group(
             $this->hidden($name, 0),
-            $this->checkbox($name, 1, (bool)$value, $options['input']),
+            $this->checkbox($name, 1, $value, $options['input']),
             $this->label($name, $label, $options['label']),
             isset($options['help'])? "<p class='help-block'>{$options['help']}</p>" : ''
         );
