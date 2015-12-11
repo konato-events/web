@@ -1,13 +1,4 @@
 <?php
-
-//redirecting to HTTPS through PHP since Nginx is unable to differentiate HTTP from HTTPS due to HTTPS on CloudFlare
-if (getenv('APP_ENV') == 'prod' && !isset($_SERVER['HTTPS'])) {
-    var_dump($_SERVER);die;
-    header($_SERVER['SERVER_PROTOCOL'].' 301 Moved Permanently');
-    header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-    die;
-}
-
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
