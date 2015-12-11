@@ -4,6 +4,7 @@
 /** @var string $controller */
 /** @var string $action_name To be used when we need to manually specify the action name (i.e. when inside missingMethod) */
 $lang_tag = substr(LOCALE, 0, 2);
+//TODO: see if the site even works on ie6-8. If not, simply remove those additional classes from the html tag
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
@@ -25,6 +26,10 @@ $lang_tag = substr(LOCALE, 0, 2);
     <meta content="Konato" name="application-name">
 
     @include('_favicons')
+
+    <meta name="theme-color" content="#0b2975"> {{-- Chrome, Firefox OS and Opera --}}
+    <meta name="msapplication-navbutton-color" content="#0b2975"> {{-- Windows Phone --}}
+    <meta name="apple-mobile-web-app-status-bar-style" content="#0b2975"> {{-- iOS Safari --}}
 
     {{-- FIXME: COMPILE THIS STUFF!!!!!!!1111ONE11! --}}
     <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">

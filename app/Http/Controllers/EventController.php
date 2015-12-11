@@ -211,6 +211,7 @@ class EventController extends Controller {
 
 class EventReq extends ModelReq {
 
+    //TODO: see if we really need to change the rules this way here. maybe we need a version of updateUniqueRules receiving the model ID again
     public function rules() {
         $rules = Event::$rules;
         foreach ($rules as &$constraints) {
