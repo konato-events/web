@@ -94,7 +94,12 @@ ul.user-stats {
     }
 
     @tooltipColor: whitesmoke;
-    .tooltip-arrow { border-top-color: @tooltipColor; }
+    .tooltip {
+        &.right .tooltip-arrow { border-right-color: @tooltipColor; }
+        &.left .tooltip-arrow { border-left-color: @tooltipColor; }
+        &.top .tooltip-arrow { border-top-color: @tooltipColor; }
+        &.bottom .tooltip-arrow { border-bottom-color: @tooltipColor; }
+    }
     .tooltip-inner {
         background-color: @tooltipColor;
         color: black;

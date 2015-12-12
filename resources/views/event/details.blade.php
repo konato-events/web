@@ -137,7 +137,11 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
     <div class="row">
         <div class="details col-md-12">
         {{--<div class="details col-md-7 col-sm-7">--}}
-            <h1><?=$event->title?></h1>
+            <h1>
+                <a href="<?=act('event@details', $event->id)?>" title="<?=_('Permalink')?>" data-toggle="tooltip" data-placement="right" data-trigger="click">
+                    <?=$event->title?>
+                </a>
+            </h1>
             <? if (false): ?>
                 <span class="status" data-toggle="tooltip" title="<?=_('This is a private event - acessible only by a group of selected people')?>"><?=_('Closed')?></span>
             <? endif ?>

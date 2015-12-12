@@ -7,7 +7,12 @@ const FORM_ID = 'submit';
 @extends('layout-header')
 @section('title', $title)
 @section('header-bg', '/img/bg-event.jpg')
-@section('header-title', $event->title)
+@section('header-title')
+    <?//TODO: include a warning "are you sure you want to leave the page" when items were edited ?>
+    <a href="<?=act('event@details', $event->slug)?>" title="<?=_('Go back')?>" data-toggle="tooltip">
+        <?=$event->title?>
+    </a>
+@endsection
 @section('header-subtitle', $subtitle)
 
 @section('js')
