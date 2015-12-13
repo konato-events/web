@@ -31,22 +31,28 @@ $lang_tag = substr(LOCALE, 0, 2);
     <meta name="msapplication-navbutton-color" content="#0b2975"> {{-- Windows Phone --}}
     <meta name="apple-mobile-web-app-status-bar-style" content="#0b2975"> {{-- iOS Safari --}}
 
-    {{-- FIXME: COMPILE THIS STUFF!!!!!!!1111ONE11! --}}
-    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/plugins/bootstrap-select/bootstrap-select.min.css">
+    <?// FIXME: COMPILE THIS STUFF!!!!!!!1111ONE11! ?>
+
+    <? if($prod): ?>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:400,100,700,900|Roboto:400,700|Roboto+Slab">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ elixir('css/styles.css') }}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <? else: ?>
+        <link rel="stylesheet" href="/assets/fonts/fonts.css">
+        <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/assets/plugins/fontawesome/css/font-awesome.min.css">
+    <? endif ?>
+
+    {{--<link rel="stylesheet" href="/assets/plugins/bootstrap-select/bootstrap-select.min.css">--}}
     {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.carousel.min.css">--}}
     {{--<link rel="stylesheet" href="/assets/plugins/owlcarousel2/assets/owl.theme.default.min.css">--}}
     {{--<link rel="stylesheet" href="/assets/plugins/prettyphoto/css/prettyPhoto.css">--}}
-    <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
     {{--<link rel="stylesheet" href="/assets/plugins/countdown/jquery.countdown.css">--}}
-    <? if($prod): ?>
-        <link rel="stylesheet" href="{{ elixir('css/styles.css') }}">
-    <? else: ?>
-        <link rel="stylesheet" href="/css/styles.css">
-    <? endif ?>
 
     <link rel="stylesheet" href="/img/icons/extra-sites/extra-sites.css">
+    <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
 
     <!--[if lt IE 9]>
         <script src="/assets/plugins/iesupport/html5shiv.js"></script>
