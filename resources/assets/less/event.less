@@ -5,6 +5,13 @@
         border: 1px solid #C4C4C4; // those two properties help the year tabs
         margin-bottom: -1px;       // to blend wht the header's bottom
 
+        a {
+            color: inherit;
+            &:hover {
+                color: @darkSecondaryColor;
+            }
+        }
+
         .row {
             position: relative; //for .stats centering
             margin-bottom: -10px; //wtf is that additional 10px appearing there???
@@ -33,11 +40,7 @@
             }
             .links {
                 margin-bottom: 0;
-                a {
-                    color: inherit;
-                    &:not(:last-child) { padding-right: 10px; }
-                    &:hover { color: @secondaryColor; }
-                }
+                a:not(:last-child) { padding-right: 10px; }
             }
         }
 

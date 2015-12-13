@@ -165,7 +165,7 @@
     {{-- TIP: here used to be testimonials. This might be useful later, so see original theme for markup --}}
 
     {{-- TIP: here we had a horizontal list to filter pictures from the list below --}}
-    <!-- FIXME: hidden as we have not enough events and no pictures to be displayed here
+    <!-- FIXME: hidden as we have not enough events and no pictures to be displayed here -->
     <section class="page-section no-padding-top light">
         <div class="container full-width">
 
@@ -209,7 +209,7 @@
             {{-- TIP: here used to be a centered button to open up all photos --}}
         </div>
     </section>
-    -->
+
 
     {{-- TIP: here used to be a caroussel of sponsors. Not sure this would be useful but... the markup is in the theme --}}
 

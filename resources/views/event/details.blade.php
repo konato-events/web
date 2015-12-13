@@ -246,7 +246,6 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                         <? $rooms = ['Grand Hall', 'Room A', 'Room B'] ?>
                         <div role="tabpanel" class="tab-pane fade<? if ($d == 0): ?> in active<? endif ?>" id="day-<?=$d?>">
                             <div class="panel panel-default">
-                                <!--
                                 <ul class="nav nav-pills nav-justified" role="tablist">
                                     <? foreach($rooms as $r => $room): ?>
                                         <li role="presentation" <? if ($r == 0): ?>class="active"<? endif ?>>
@@ -256,7 +255,6 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                                         </li>
                                     <? endforeach ?>
                                 </ul>
-                                -->
 
                                 <div class="tab-content">
                                     <?// foreach($rooms as $r => $room): ?>

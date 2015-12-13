@@ -41,13 +41,14 @@ function activableLink($title, $act, array $params = [], $wrapper = 'li', array 
         unset($attrs['class']);
         if ($el == 'wrap' && ($act) == app()['controller'].'@'.app()['action']) {
             $classes .= ' active';
+            $title .= ' <span class="sr-only">(current)</span>';
         }
         $attrs = ['class' => $classes];
 
         foreach($attrs as $attr => $value) {
-            $attrs[] = "$attr='$value'";
+            $final_attrs[$el][] = "$attr='$value'";
         }
-        $final_attrs[$el] = join(' ', $attrs);
+        $final_attrs[$el] = join(' ', $final_attrs[$el]);
     }
 
     $action = act($act, $params);

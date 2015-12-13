@@ -7,11 +7,14 @@
 }
 
 #paid_select {
+    input[type=range], span {
+        cursor: pointer;
+    }
     label {
         display: block;
-        font-weight: normal;
         span {
-            cursor: pointer;
+            font-weight: normal;
+            transition: font-weight 0.2s;
             &.selected {
                 font-weight: bold;
             }

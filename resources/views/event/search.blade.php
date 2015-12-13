@@ -143,7 +143,6 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
 
         <section id="content" class="content col-sm-8 col-md-9">
 
-            <!--
             <div class="listing-meta">
 
                 <div class="filters">
@@ -160,7 +159,6 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
                 </div>
 
             </div>
-            -->
 
             <div class="tab-content">
                 <div id="list-view" class="tab-pane fade active in" role="tabpanel">

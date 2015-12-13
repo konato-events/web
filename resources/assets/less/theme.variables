@@ -43,3 +43,8 @@
 @borderColor: #F1F2F3;
 
 @font: 'Raleway', sans-serif;
+
+@screen-lg-desktop: 1200px;
+@screen-desktop: 992px;
+@screen-tablet: 768px;
+@screen-phone: 480px;

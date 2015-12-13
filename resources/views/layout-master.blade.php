@@ -92,8 +92,13 @@ $lang_tag = substr(LOCALE, 0, 2);
             </div>
         {{ --}}
 
+        <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="header-wrapper clearfix">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed btn-theme-light" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"><?=_('Toggle navigation')?></span>
+                    <i class="fa fa-bars"></i>
+                </button>
 
                 <div class="logo">
                     <a href="/" class="scroll-to">
@@ -104,79 +109,62 @@ $lang_tag = substr(LOCALE, 0, 2);
                         Konato
                     </a>
                 </div>
+            </div>
 
-                <!-- Navigation -->
-                <div id="mobile-menu"></div>
-                <nav class="navigation closed clearfix">
-                    <a href="#" class="menu-toggle btn"><i class="fa fa-bars"></i></a>
-                    <ul class="sf-menu nav">
-                        <!--<li{{-- class="active"--}}><a href="/"><i class="fa fa-table"></i> <?=_('Dashboard')?></a></li>-->
-                        <!--<li><a href="#"><i class="fa fa-map-marker"></i> <?=_('Places')?></a></li>-->
-                        <li><a href="{{act('user@speakers')}}"><i class="fa fa-comments-o"></i> <?=_('Speakers')?></a></li>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <?//=activableLink(icon('table')._('Dashboard'), 'user@dashboard')?>
+                    <?//=activableLink(icon('map-marker')._('Places'), 'events@places')?>
+                    <?=activableLink(icon('comments-o')._('Speakers'), 'user@speakers')?>
 
-                        <li class="header-search-wrapper">
-                            <form action="#" class="header-search-form">
-                                <input type="text" class="form-control header-search" placeholder="Search" />
-                                <input type="submit" hidden="hidden" />
-                            </form>
+                    <li class="header-search-wrapper">
+                        <form action="#" class="header-search-form">
+                            <input type="text" class="form-control header-search" placeholder="<?=_('Find events')?>" />
+                            <input type="submit" hidden="hidden" />
+                        </form>
+                    </li>
+                    <li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
+
+                    <? if (\Auth::check()): ?>
+                        <? /** @var \App\Models\User $user */ $user = \Auth::getUser() ?>
+
+                        <li class="nav-btn">
+                            <a href="<?=act('event@submit')?>" class="btn btn-theme <? if ($action == 'submit'): ?>btn-theme-dark<? endif ?>">
+                                <i class="fa fa-calendar-plus-o"></i> <?=_('Submit event')?>
+                            </a>
                         </li>
-                        {{--<li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>--}}
 
-                        <? if (\Auth::check()): ?>
-                            <? /** @var \App\Models\User $user */ $user = \Auth::getUser() ?>
+                        <li class="nav-btn user-profile">
+                            <div class="dropdown">
+                                <button class="btn btn-theme btn-theme-light" data-target="#" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false" id="profileButton">
+                                    <img src="<?=$user->avatar?>" alt="<?=$user->name?>" />
+                                    <?=$user->name?>
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
 
-                            <li>
-                                <a href="<?=act('event@submit')?>" class="btn btn-theme <? if ($action == 'submit'): ?>btn-theme-dark<? endif ?>">
-                                    <i class="fa fa-calendar-plus-o"></i> <?=_('Submit event')?>
-                                </a>
-                            </li>
-
-                            <li class="user-profile">
-                                <div class="dropdown">
-                                    <button class="btn btn-theme btn-theme-light" data-target="#" data-toggle="dropdown"
-                                       role="button" aria-haspopup="true" aria-expanded="false" id="profileButton">
-                                        <img src="<?=$user->avatar?>" alt="<?=$user->name?>" />
-                                        <?=$user->name?>
-                                        <i class="fa fa-caret-down"></i>
-                                    </button>
-
-                                    <ul class="dropdown-menu" aria-labelledby="profileButton">
-                                        <li>
-                                            <a href="<?=act('user@profile', slugify($user->id, $user->username))?>">
-                                                <i class="fa fa-user"></i> <?=_('My profile')?>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?=act('user@edit')?>">
-                                                <i class="fa fa-edit"></i> <?=_('Edit my profile')?>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?=act('auth@logout')?>">
-                                                <i class="fa fa-sign-out"></i> <?=_('Logout')?>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        <? else: ?>
-                            <li>
-                                <a href="<?=act('auth@signUp')?>" class="btn btn-theme <? if ($action == 'signUp'): ?>btn-theme-dark<? endif ?>">
-                                    <i class="fa fa-user-plus"></i> <?=_('Sign up')?>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?=act('auth@login')?>" class="btn btn-theme btn-theme-light">
-                                    <i class="fa fa-at"></i> <?=_('Login')?>
-                                </a>
-                            </li>
-                        <? endif ?>
-                    </ul>
-                </nav>
-                <!-- /Navigation -->
-
+                                <ul class="dropdown-menu" aria-labelledby="profileButton">
+                                    <?=activableLink(icon('user')._('My profile'), 'user@profile', [$user->slug])?>
+                                    <?=activableLink(icon('edit')._('Edit my profile'), 'user@edit')?>
+                                    <?=activableLink(icon('sign-out')._('Logout'), 'auth@logout')?>
+                                </ul>
+                            </div>
+                        </li>
+                    <? else: ?>
+                        <?=activableLink(icon('user-plus')._('Sign up'), 'auth@signUp', [], 'li', [
+                            'wrap' => ['class' => 'nav-btn'],
+                            'link' => ['class' => 'btn btn-theme']
+                        ])?>
+                        <?=activableLink(icon('at')._('Login'), 'auth@login', [], 'li', [
+                            'wrap' => ['class' => 'nav-btn'],
+                            'link' => ['class' => 'btn btn-theme btn-theme-light']
+                        ])?>
+                    <? endif ?>
+                </ul>
             </div>
         </div>
+        </nav>
+
     </header>
 
     <div class="content-area">
