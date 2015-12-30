@@ -178,6 +178,11 @@ class AuthController extends Controller {
 
         return $this->loginBasic();
     }
+
+    public function getLogout() {
+        Auth::logout();
+        return redirect()->back();
+    }
 }
 
 /**
