@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
 "POT-Creation-Date: 2015-12-30 17:37-0300\n"
-"PO-Revision-Date: 2015-12-30 17:38-0300\n"
+"PO-Revision-Date: 2015-12-30 20:28-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -127,17 +127,19 @@ msgstr "Fim"
 
 #: app/Http/Controllers/EventController.php:165
 msgid "SAMPLE TALK (remove this line): Abnormalities on Catalysis"
-msgstr ""
+msgstr "PALESTRA EXEMPLO (remova essa linha): Anormalidades na Catálise"
 
 #: app/Http/Controllers/EventController.php:165
 msgid ""
 "This talk will walk us through some common abnormalities seen in some "
 "catalysis processes."
 msgstr ""
+"Esta palestra irá nos levar através de anormalidades comuns, vistas em "
+"alguns processos de catálise."
 
 #: app/Http/Controllers/EventController.php:165
 msgid "Format: YYYY-MM-DD HH:mm"
-msgstr ""
+msgstr "Formato: AAAA-MM-DD HH:mm"
 
 #: app/Http/Controllers/EventController.php:204
 #, php-format
@@ -148,7 +150,7 @@ msgstr[1] "Um total de %d atividades foram importadas."
 
 #: app/Http/Controllers/EventController.php:206
 msgid "No activity was found in the file."
-msgstr ""
+msgstr "Nenhuma atividade foi encontrada."
 
 #: app/Http/Middleware/Staff.php:17
 msgid "Sorry, but it seems you don't have permission to edit this event..."
@@ -208,7 +210,7 @@ msgstr "Descubra eventos"
 
 #: resources/views/layout-master.blade.php:99
 msgid "Toggle navigation"
-msgstr ""
+msgstr "Abrir/fechar navegação"
 
 #: resources/views/layout-master.blade.php:118
 #: resources/views/user/speakers.blade.php:89
@@ -787,7 +789,7 @@ msgstr "%A, %d de %B de %Y"
 
 #: resources/views/event/details.blade.php:141
 msgid "Permalink"
-msgstr ""
+msgstr "Link permanente"
 
 #: resources/views/event/details.blade.php:146
 msgid "This is a private event - acessible only by a group of selected people"
@@ -1028,25 +1030,31 @@ msgid ""
 "To include new activities or edit the current ones in the schedule, you have "
 "to do the following:"
 msgstr ""
+"Para incluir novas atividades ou editar as que estão atualmente na "
+"programação é necessário fazer o seguinte:"
 
 #: resources/views/event/forms/edit_schedule.blade.php:21
 msgid "Download the template file, located just at the right"
-msgstr ""
+msgstr "Baixe o arquivo de exemplo, localizado ali à direita"
 
 #: resources/views/event/forms/edit_schedule.blade.php:22
 msgid ""
 "Open it in your spreadsheet editor (Microsoft Excel, LibreOffice Calc, etc)"
 msgstr ""
+"Abra-o no seu editor de planilhas (Microsoft Excel, LibreOffice Calc, etc)"
 
 #: resources/views/event/forms/edit_schedule.blade.php:23
 msgid "There are some columns, each with a title. Leave the headers there;"
 msgstr ""
+"Há algumas colunas nele, cada uma com um título. Deixe o cabeçalho ali;"
 
 #: resources/views/event/forms/edit_schedule.blade.php:24
 msgid ""
 "The second line contains a sample activity. You should fill the cells "
 "accordingly"
 msgstr ""
+"A segunda linha contém atividades de exemplo. Você deve preencher as células "
+"de acordo"
 
 #: resources/views/event/forms/edit_schedule.blade.php:25
 msgid ""
@@ -1054,14 +1062,17 @@ msgid ""
 "change that selecting all the cells and going to Format > Cells, and "
 "changing the format to \"text\""
 msgstr ""
+"Preste atenção, todas as células devem manter o formato \"texto\"! Se "
+"necessário, você pode corrigir assim: selecione as células, vá em Formatar > "
+"Células, e altere o formato para \"texto\""
 
 #: resources/views/event/forms/edit_schedule.blade.php:26
 msgid "Save the file and select it in the field below"
-msgstr ""
+msgstr "Salve o arquivo e selecione-o no campo abaixo"
 
 #: resources/views/event/forms/edit_schedule.blade.php:27
 msgid "Submit the file and you're done!"
-msgstr ""
+msgstr "Envie o arquivo e está pronto!"
 
 #: resources/views/event/forms/edit_schedule.blade.php:46
 msgid "Schedule file"
