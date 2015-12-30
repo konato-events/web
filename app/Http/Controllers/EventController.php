@@ -74,12 +74,11 @@ class EventController extends Controller {
     }
 
 
-/*************************************************** FOLLOW ACTIONS ***************************************************/
+/* ************************************************* FOLLOW ACTIONS ************************************************* */
 
     protected $followRelation = 'following_events';
-    protected function followRelation() {
-        return $this->followRelation;
-    }
+    protected function followRelation() { return $this->followRelation; }
+    protected function followReturnAction() { return 'EventController@getDetails'; }
 
     public function getParticipate(int $id) {
         $this->followRelation = 'participated';
@@ -91,7 +90,7 @@ class EventController extends Controller {
         return $this->getUnfollow($id);
     }
 
-/**************************************************** EDIT ACTIONS ***************************************************/
+/* *************************************************** EDIT ACTIONS ************************************************* */
 
     public function getEdit(int $id) {
         return $this->edit('general', $id);

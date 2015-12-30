@@ -23,7 +23,7 @@ class Base extends Ardent {
 
     //TODO: replace all slugify calls with this?
     public function getSlugAttribute() {
-        return slugify($this->{$this->primaryKey}, ($this->name ?? $this->title) ?? '');
+        return slugify($this->getKey(), ($this->name ?? $this->title) ?? '');
     }
 
     public static function firstOrCreate(array $attributes) {

@@ -14,6 +14,7 @@ class UserController extends Controller {
     const TYPE_USER     = 2;
 
     protected function followRelation() { return 'follows'; }
+    protected function followReturnAction() { return 'UserController@getProfile'; }
 
     public function __construct() {
         $this->middleware('auth', ['only' => ['getFollow', 'getUnfollow', 'getEdit', 'postEdit']]);

@@ -8,6 +8,7 @@ class ThemeController extends Controller {
     use Traits\Followable;
 
     protected function followRelation() { return 'following_themes'; }
+    protected function followReturnAction() { return 'ThemeController@getEvents'; }
 
     public function __construct() {
         $this->middleware('auth', ['only' => ['getFollow', 'getUnfollow']]);
