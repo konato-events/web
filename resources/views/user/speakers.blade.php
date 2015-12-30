@@ -107,8 +107,10 @@ if ($theme) {
                                     @include('components.themes_list', [ 'link_speakers' => true ])
                                 <? else: ?>
                                     <div class="text-center empty-block">
-                                        <?=_r('Hmmm... Looking in our archives about you, there still no themes of interest.')?>
-                                        <i class="fa fa-folder-open-o"></i>
+                                        <p>
+                                            <?=_r('Hmmm... Looking in our archives about you, there still no themes of interest.')?>
+                                            <i class="fa fa-folder-open-o"></i>
+                                        </p>
                                     </div>
                                 <? endif ?>
                             </div>

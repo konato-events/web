@@ -77,13 +77,18 @@
     }
 }
 
-.empty-block {
+.empty-block p {
     font-size: larger;
     color: @lightFontColor;
+    margin-bottom: 0;
 
     i.fa {
         font-size: 400%;
         display: block;
         padding: 20px;
+    }
+
+    + p, + .btn {
+        margin-top: 20px;
     }
 }

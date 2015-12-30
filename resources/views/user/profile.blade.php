@@ -185,9 +185,10 @@ $date_fmt   = _('m/d/Y');
                                 <? endif ?>
                             @empty
                                 <div class="col-xs-8 col-xs-push-2 text-center empty-block">
-                                    <?=_('This user have not yet interacted with the events in the platform')?>
-                                    <i class="fa fa-calendar-o"></i>
-                                    {{--<i class="fa fa-meh-o"></i>--}}
+                                    <p>
+                                        <?=_('This user have not yet interacted with the events in the platform')?>
+                                        <i class="fa fa-calendar-o"></i>
+                                    </p>
                                 </div>
                             @endforelse <? //TODO: use a forelse instead, this needs an empty clause ?>
                         </div>
@@ -238,7 +239,7 @@ $date_fmt   = _('m/d/Y');
                             @include('components.themes_list', ['speaker' => ($type == Controller::TYPE_SPEAKER), 'gender' => $user->gender, 'themes' => $user->all_themes])
                         <? else: ?>
                             <div class="text-center empty-block">
-                                <?=_r('%s still didn\'t show interest in any theme...', ucfirst($pronoun))?>
+                                <p><?=_r('%s still didn\'t show interest in any theme...', ucfirst($pronoun))?></p>
                             </div>
                         <? endif ?>
                     </div>

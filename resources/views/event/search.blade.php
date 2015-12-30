@@ -145,13 +145,7 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
 
             <div class="listing-meta">
 
-                <div class="filters">
-                    @foreach ($themes as $id => $theme)
-                        @if (in_array($id, $selected_themes))
-                            <a href="#"><?=$theme?> <i class="fa fa-times"></i></a>
-                        @endif
-                    @endforeach
-                </div>
+                <? //TIP: here used to be some tags with an X button ?>
 
                 <div class="options">
                     <a class="byrevelance" href="#"><?=_('Relevance')?></a>
@@ -164,11 +158,22 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
                 <div id="list-view" class="tab-pane fade active in" role="tabpanel">
                     <div class="thumbnails events vertical">
                         <?php $date_fmt = _('m/d/Y') ?>
-                        @foreach($events as $id => $event)
+                        @forelse($events as $id => $event)
                             @include('event._event_block', compact('date_fmt', 'id', 'event'))
                             <hr class="page-divider half"/>
-                            <?php //TODO: use a forelse instead, this needs an empty clause ?>
-                        @endforeach
+                        @empty
+                            <div class="text-center empty-block">
+                                <p>
+                                    <i class="fa fa-calendar-o"></i>
+                                    <?=_('We found no event with the criteria you gave us. Maybe you could try to be a little broader?')?>
+                                </p>
+
+                                <p><?=_('If the event really doesn\'t exist, and you know a few details, you can easily create it:')?></p>
+                                <a href="<?=act('event@submit')?>" class="btn btn-theme">
+                                    <i class="fa fa-calendar-plus-o"></i> <?=_('Submit a new event')?>
+                                </a>
+                            </div>
+                        @endforelse
                     </div>
 
                     <!-- Pagination
