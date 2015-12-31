@@ -1,5 +1,4 @@
 <?php namespace App\Models;
-
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -11,10 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 //tricking gettext to find our four participation types
-_('participant');
-_('speaker');
-_('involved');
-_('staff');
+_('participant'); _('speaker'); _('involved'); _('staff');
 
 /**
  * @property int                       id
@@ -57,7 +53,7 @@ _('staff');
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
-    use Authenticatable, CanResetPassword;
+    use Authenticatable, CanResetPassword, Traits\Gravatar;
 
     protected $hidden                     = ['password', /*'remember_token'*/];
 
@@ -66,11 +62,8 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     public    $autoHashPasswordAttributes = true;
 
     protected $most_visited               = [];
-
     protected $events                     = [];
-
     protected $sessions                   = [];
-
     protected $all_themes                 = [];
 
 //    public $autoHydrateEntityFromInput = true;
@@ -144,17 +137,6 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 //        unset($this->password_confirmation);
         $this->avatar  = $this->avatar  ?? self::generateGravatar($this->email, 100);
         $this->picture = $this->picture ?? self::generateGravatar($this->email, 1920);
-    }
-
-    public static function generateGravatar(string $email, int $size = 80) {
-        $rating = 'g';  //g | pg | r | x
-        $set    = 'identicon'; //mm | identicon | monsterid | wavatar
-
-        return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).'?'.http_build_query([
-            's' => $size,
-            'd' => $set,
-            'r' => $rating
-        ]);
     }
 
     //TODO: cache

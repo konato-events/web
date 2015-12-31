@@ -50,6 +50,8 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  */
 class Event extends Base {
 
+    use Traits\Gravatar;
+
     protected $dates = ['created_at', 'updated_at', 'begin', 'end'];
 
     protected $dateFormat = 'Y-m-d H:i:sO';
@@ -98,7 +100,7 @@ class Event extends Base {
      * @todo https://bitbucket.org/konato/web/issues/129/implement-real-file-upload
      */
     public function getPublicImgAttribute() {
-        $img = User::generateGravatar($this->title, 128);
+        $img = self::generateGravatar($this->title, 128);
         return $img;
     }
 
