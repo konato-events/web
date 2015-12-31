@@ -56,7 +56,7 @@ class EventController extends Controller {
 
     public function getDetails(string $id_slug) {
         list($id, $name_slug) = unslug($id_slug);
-        $event = Event::find($id);
+        $event = Event::findOrFail($id);
         return view('event.details', compact('id', 'name_slug', 'event'));
     }
 
