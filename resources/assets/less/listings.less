@@ -92,3 +92,80 @@
         margin-top: 20px;
     }
 }
+
+
+ul.speakers, ul.users {
+    @size: 58px;
+    li {
+        padding: 10px 0;
+        border-bottom: 1px solid #CCC;
+        &:last-child {
+            border-bottom: none;
+        }
+        img {
+            max-width: @size;
+            max-height: @size;
+            float: left;
+            margin-right: 10px;
+        }
+        a, span {
+            display: block;
+            line-height: 18px;
+        }
+        a {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    }
+
+    &.no-details img + div a {
+        line-height: @size;
+    }
+}
+
+ul.themes {
+    li {
+        display: inline-block;
+        margin: 3px 1px;
+        @radius: 5px;
+
+        a {
+            padding: 1px 6px;
+            background-color: @secondaryColorBg;
+            color: @darkestSecondaryColor;
+            border-radius: @radius;
+            font-weight: normal;
+            display: block;
+            &:hover {
+                color: @main-color-d10;
+                background-color: @primaryColorBg;
+            }
+        }
+        &.composed {
+            a {
+                padding-right: 0;
+                span {
+                    display: inline-block;
+                    padding: 1px 6px 0 3px;
+                    margin: -1px 0;
+                    transition: background-color 0.1s ease-in-out;
+                    background-color: darken(@secondaryColorBg, 20%);
+                    color: white;
+                    border-left: 1px solid white;
+                    border-radius: 0 @radius @radius 0;
+                    &:before {
+                        content: 'x';
+                        font-size: 13px;
+                    }
+                }
+                &:hover span {
+                    background-color: darken(@primaryColorBg, 20%);
+                }
+            }
+        }
+    }
+
+    .caption-category & {
+        display: inline;
+    }
+}

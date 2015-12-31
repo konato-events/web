@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2015-12-30 17:37-0300\n"
-"PO-Revision-Date: 2015-12-30 20:28-0300\n"
+"POT-Creation-Date: 2015-12-31 17:23-0300\n"
+"PO-Revision-Date: 2015-12-31 17:23-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -21,19 +21,19 @@ msgstr ""
 msgid "Personal website"
 msgstr "Site pessoal"
 
-#: app/Models/User.php:14 resources/views/user/profile.blade.php:12
+#: app/Models/User.php:13 resources/views/user/profile.blade.php:12
 msgid "participant"
 msgstr "participante"
 
-#: app/Models/User.php:15 resources/views/user/profile.blade.php:13
+#: app/Models/User.php:13 resources/views/user/profile.blade.php:13
 msgid "speaker"
 msgstr "palestrante"
 
-#: app/Models/User.php:16 resources/views/user/profile.blade.php:14
+#: app/Models/User.php:13 resources/views/user/profile.blade.php:14
 msgid "involved"
 msgstr "envolvido"
 
-#: app/Models/User.php:17 resources/views/user/profile.blade.php:15
+#: app/Models/User.php:13 resources/views/user/profile.blade.php:15
 msgid "staff"
 msgstr "staff"
 
@@ -97,39 +97,39 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: app/Http/Controllers/EventController.php:160
+#: app/Http/Controllers/EventController.php:159
 msgid "template"
 msgstr "modelo"
 
-#: app/Http/Controllers/EventController.php:164
+#: app/Http/Controllers/EventController.php:163
 #: resources/views/event/forms/_basic_fields.blade.php:12
 msgid "Title"
 msgstr "Título"
 
-#: app/Http/Controllers/EventController.php:164
+#: app/Http/Controllers/EventController.php:163
 #: resources/views/event/forms/edit_general.blade.php:21
 msgid "Description"
 msgstr "Descrição"
 
-#: app/Http/Controllers/EventController.php:164
+#: app/Http/Controllers/EventController.php:163
 #: resources/views/event/details.blade.php:407
 #: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:27
 msgid "Begin"
 msgstr "Início"
 
-#: app/Http/Controllers/EventController.php:164
+#: app/Http/Controllers/EventController.php:163
 #: resources/views/event/details.blade.php:408
 #: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:31
 msgid "End"
 msgstr "Fim"
 
-#: app/Http/Controllers/EventController.php:165
+#: app/Http/Controllers/EventController.php:164
 msgid "SAMPLE TALK (remove this line): Abnormalities on Catalysis"
 msgstr "PALESTRA EXEMPLO (remova essa linha): Anormalidades na Catálise"
 
-#: app/Http/Controllers/EventController.php:165
+#: app/Http/Controllers/EventController.php:164
 msgid ""
 "This talk will walk us through some common abnormalities seen in some "
 "catalysis processes."
@@ -137,18 +137,18 @@ msgstr ""
 "Esta palestra irá nos levar através de anormalidades comuns, vistas em "
 "alguns processos de catálise."
 
-#: app/Http/Controllers/EventController.php:165
+#: app/Http/Controllers/EventController.php:164
 msgid "Format: YYYY-MM-DD HH:mm"
 msgstr "Formato: AAAA-MM-DD HH:mm"
 
-#: app/Http/Controllers/EventController.php:204
+#: app/Http/Controllers/EventController.php:203
 #, php-format
 msgid "One activity was imported."
 msgid_plural "A total of %d activities were imported."
 msgstr[0] "Uma atividade foi importada."
 msgstr[1] "Um total de %d atividades foram importadas."
 
-#: app/Http/Controllers/EventController.php:206
+#: app/Http/Controllers/EventController.php:205
 msgid "No activity was found in the file."
 msgstr "Nenhuma atividade foi encontrada."
 
@@ -632,7 +632,7 @@ msgstr[1] ""
 
 #: resources/views/user/speakers.blade.php:149
 #: resources/views/user/profile.blade.php:109
-#: resources/views/components/speakers_list.blade.php:11
+#: resources/views/components/users_list.blade.php:12
 #, php-format
 msgid "%s on Konato"
 msgstr "%s no Konato"
@@ -921,6 +921,10 @@ msgstr "Organização"
 #: resources/views/event/details.blade.php:453
 msgid "Send a message"
 msgstr "Enviar uma mensagem"
+
+#: resources/views/event/details.blade.php:461
+msgid "Staff members"
+msgstr "Membros da organização"
 
 #: resources/views/event/search.blade.php:6
 msgid "Search terms"
@@ -1358,9 +1362,6 @@ msgstr "Veja todos os palestrantes em %s"
 
 #~ msgid "Rio de Janeiro, Sugar Loaf city"
 #~ msgstr "Rio de Janeiro, Cidade do Pão de Açúcar"
-
-#~ msgid "September"
-#~ msgstr "Setembro"
 
 #~ msgid ""
 #~ "Ever though <em>\"hey, I never heard of that event! How could I miss it?"

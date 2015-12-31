@@ -455,6 +455,15 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                     </div>
                 </div>
                 -->
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><?=_('Staff members')?></h4>
+                    </div>
+                    <div class="panel-body">
+                        @include('components.users_list', ['users' => $event->staff])
+                    </div>
+                </div>
             </div>
         </div>
     </aside>
