@@ -11,13 +11,6 @@ var theme = function () {
         );
     }
 
-    // preloader
-    // ---------------------------------------------------------------------------------------
-    $(window).load(function () {
-        $('#status').fadeOut();
-        $('#preloader').delay(200).fadeOut(100);
-    });
-
     // Shrink header on scroll
     // ---------------------------------------------------------------------------------------
     function handleAnimatedHeader() {
