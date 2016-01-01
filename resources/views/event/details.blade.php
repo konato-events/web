@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\UserController as Controller;use Carbon\Carbon;
+use Carbon\Carbon;
 
 /** @var string $name_slug */
 /** @var int    $id */
@@ -27,10 +27,10 @@ function url_main_part(string $url = null, $include_path = false):string {
     return (array_key_exists(2, $parts))? $parts[2] : $url;
 }
 
-function section_title(string $icon, string $title, string $subtitle = null):string {
+function section_title(string $icon, string $title, string $id, string $subtitle = null):string {
     $tagline = $subtitle? "<small> | $subtitle</small>" : '';
     return <<<SECTION
-<h2 class="section-title">
+<h2 class="section-title" id="$id">
     <span class="icon-inner">
         <span class="fa-stack">
             <i class="fa rhex fa-stack-2x"></i>
@@ -74,12 +74,6 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 @section('title', $title)
 
 @section('js')
-    <script src="/assets/plugins/isotope/jquery.isotope.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/custom.js"></script>
-
     <script type="text/javascript">
         "use strict";
 
@@ -88,42 +82,26 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
         jQuery(document).ready(function () {
             theme.init();
         });
-        jQuery(window).load(function () {
-            theme.initAnimation();
-        });
 
         jQuery(window).load(function () {
-            jQuery('body').scrollspy({offset: 100, target: '.navigation'});
-        });
-        jQuery(window).load(function () {
-            jQuery('body').scrollspy('refresh');
-        });
-        jQuery(window).resize(function () {
-            jQuery('body').scrollspy('refresh');
-        });
+            var $body = jQuery('body');
 
-        jQuery(document).ready(function () {
-            theme.onResize();
-        });
-        jQuery(window).load(function () {
-            theme.onResize();
-        });
-        jQuery(window).resize(function () {
-            theme.onResize();
-        });
+            $body.scrollspy({offset: 100, target: '.navigation'});
+            $body.scrollspy('refresh');
 
-        jQuery(window).load(function () {
             if (location.hash != '') {
                 var hash = '#' + window.location.hash.substr(1);
                 if (hash.length) {
                     jQuery('html,body').delay(0).animate({
-                        scrollTop: jQuery(hash).offset().top - 44 + 'px'
-                    }, {
-                        duration: 1200,
-                        easing: "easeInOutExpo"
+                        scrollTop: jQuery(hash).offset().top - 55 + 'px'
                     });
+                    //TODO: why not blink the hash target as well, to show "we have arrived, this is what you wanted"?
                 }
             }
+        });
+
+        jQuery(window).resize(function () {
+            jQuery('body').scrollspy('refresh');
         });
     </script>
 @endsection
@@ -208,7 +186,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
             <? if ($event->description): ?>
                 <div class="col-md-12 col-lg-5 pull-left">
                     <div>
-                        <?=section_title('institution', _('The Event'), $event->tagline)?>
+                        <?=section_title('institution', _('The Event'), 'description', $event->tagline)?>
                         <p class="basic-text">{!! strtr(e($event->description), ["\n" => '</p><p class="basic-text">']) !!}</p>
                     </div>
 
@@ -223,7 +201,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 
             <? if (sizeof($event->sessions)): ?>
             <div class="col-md-12 col-lg-7 pull-right">
-                <?=section_title('calendar-check-o', _('Schedule'), $dates_str(true))?>
+                <?=section_title('calendar-check-o', _('Schedule'), 'schedule', $dates_str(true))?>
                 <? if (sizeof($days > 1)): ?>
                     <ul class="nav nav-tabs" role="tablist">
                         <? foreach($days as $i => $day): ?>
@@ -309,7 +287,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 
             <? if (sizeof($event->speakers)): ?>
                 <div class="col-md-12 col-lg-5 pull-left">
-                    <?=section_title('microphone', _('The speakers'))?>
+                    <?=section_title('microphone', _('The speakers'), 'speakers')?>
                     @include('components.speakers_list', ['speakers' => $event->speakers, 'columns' => true])
                 </div>
 
@@ -318,7 +296,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 
             <? if (sizeof($event->materials)): ?>
                 <div class="col-md-12 col-lg-5 pull-left">
-                    <?=section_title('download', _('Materials'))?>
+                    <?=section_title('download', _('Materials'), 'materials')?>
                     <ul class="materials">
                         <? foreach ($materials as $material): ?>
                             <li class="<?=$material[2]?>">
@@ -333,7 +311,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
             <? endif ?>
 
             <!--<div class="col-md-12 col-lg-5 pull-left">
-                <?=section_title('thumbs-up', _('Event sponsors'))?>
+                <?=section_title('thumbs-up', _('Event sponsors'), 'sponsors')?>
                 <p class="basic-text">ADICIONAR AQUI A LISTA DE PATROCINADORES</p>
             </div>-->
         </div>

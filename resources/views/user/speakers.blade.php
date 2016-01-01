@@ -22,54 +22,30 @@ if ($theme) {
 @section('title', $title)
 
 @section('js')
-    <script src="/assets/plugins/isotope/jquery.isotope.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-
-    <script src="/assets/js/theme.js"></script>
-    <script src="/assets/js/custom.js"></script>
-
     <script type="text/javascript">
         "use strict";
         jQuery(document).ready(function () {
             theme.init();
-            theme.initGoogleMap();
-        });
-        jQuery(window).load(function () {
-            theme.initAnimation();
         });
 
         jQuery(window).load(function () {
-            jQuery('body').scrollspy({offset: 100, target: '.navigation'});
-        });
-        jQuery(window).load(function () {
-            jQuery('body').scrollspy('refresh');
-        });
-        jQuery(window).resize(function () {
-            jQuery('body').scrollspy('refresh');
-        });
+            var $body = jQuery('body');
 
-        jQuery(document).ready(function () {
-            theme.onResize();
-        });
-        jQuery(window).load(function () {
-            theme.onResize();
-        });
-        jQuery(window).resize(function () {
-            theme.onResize();
-        });
+            $body.scrollspy({offset: 100, target: '.navigation'});
+            $body.scrollspy('refresh');
 
-        jQuery(window).load(function () {
             if (location.hash != '') {
                 var hash = '#' + window.location.hash.substr(1);
                 if (hash.length) {
                     jQuery('html,body').delay(0).animate({
-                        scrollTop: jQuery(hash).offset().top - 44 + 'px'
-                    }, {
-                        duration: 1200,
-                        easing  : "easeInOutExpo"
+                        scrollTop: jQuery(hash).offset().top - 55 + 'px'
                     });
                 }
             }
+        });
+
+        jQuery(window).resize(function () {
+            jQuery('body').scrollspy('refresh');
         });
     </script>
 @endsection

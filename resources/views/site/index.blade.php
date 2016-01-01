@@ -5,12 +5,6 @@
 @extends('layout-master')
 
 @section('js')
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-
-    <script src="assets/js/theme-ajax-mail.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script src="assets/js/custom.js"></script>
-
     <script type="text/javascript">
         "use strict";
         jQuery(document).ready(function () {
@@ -23,16 +17,12 @@
 
             $body.scrollspy({offset: 100, target: '.navigation'});
             $body.scrollspy('refresh');
-            theme.onResize();
 
             if (location.hash != '') {
                 var hash = '#' + window.location.hash.substr(1);
                 if (hash.length) {
                     jQuery('html,body').delay(0).animate({
-                        scrollTop: jQuery(hash).offset().top - 44 + 'px'
-                    }, {
-                        duration: 1200,
-                        easing  : "easeInOutExpo"
+                        scrollTop: jQuery(hash).offset().top - 55 + 'px'
                     });
                 }
             }
@@ -40,11 +30,6 @@
 
         jQuery(window).resize(function () {
             jQuery('body').scrollspy('refresh');
-            theme.onResize();
-        });
-
-        jQuery(document).ready(function () {
-            theme.onResize();
         });
     </script>
 @endsection
@@ -78,6 +63,7 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input type="text" name="q" class="form-control text" placeholder="<?=_('Find by theme or keyword')?>" />
+                                                {{-- this select here used the bootstrap-select plugin. the other one we are using currently should fit here just fine --}}
                                                 {{--<select class="selectpicker"><option>LOCATION</option></select>--}}
                                                 <button class="form-control button-search">
                                                     <i class="fa fa-search"></i>

@@ -2,9 +2,7 @@
 /** @var bool $prod */
 /** @var string $action */
 /** @var string $controller */
-/** @var string $action_name To be used when we need to manually specify the action name (i.e. when inside missingMethod) */
 $lang_tag = substr(LOCALE, 0, 2);
-//TODO: see if the site even works on ie6-8. If not, simply remove those additional classes from the html tag
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
@@ -45,10 +43,8 @@ $lang_tag = substr(LOCALE, 0, 2);
         <link rel="stylesheet" href="/assets/plugins/fontawesome/css/font-awesome.min.css">
     <? endif ?>
 
-    {{--<link rel="stylesheet" href="/assets/plugins/bootstrap-select/bootstrap-select.min.css">--}}
-
     <link rel="stylesheet" href="/img/icons/extra-sites/extra-sites.css">
-    <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css">
+    <link rel="stylesheet" href="/assets/plugins/animate/animate.min.css"><?//TODO see if those animations are used anywhere ?>
 
     <!--[if lt IE 9]>
         <script src="/assets/plugins/iesupport/html5shiv.js"></script>
@@ -261,11 +257,9 @@ $lang_tag = substr(LOCALE, 0, 2);
 
 <script src="/assets/plugins/modernizr.custom.js"></script>
 <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-{{--<script src="/assets/plugins/jquery.smoothscroll.min.js"></script>--}}
-{{--<script src="/assets/plugins/jquery.easing.min.js"></script>--}}
-{{--<script src="/assets/plugins/smooth-scrollbar.min.js"></script>--}}
-<?php if ($prod): ?>
+<?php if (!$prod): ?>
+    <script src="/js/app.js"></script>
+<?php else: ?>
     <script src="{{ elixir('js/app.js') }}"></script>
 
     <script>
@@ -281,9 +275,9 @@ $lang_tag = substr(LOCALE, 0, 2);
         <? endif ?>
         ga('send', 'pageview');
     </script>
-<?php else: ?>
-    <script src="/js/app.js"></script>
 <?php endif ?>
+
+<script src="/assets/js/theme.js"></script>
 
 @yield('js')
 
