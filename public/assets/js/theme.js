@@ -64,13 +64,12 @@ var theme = function () {
 $(document).ready(function () {
 
     // Google map
+    // TODO: this could probably be moved into a separate file, as maps are not used in all pages
+    // TODO: inject back this script when Google Maps is implemented: https://maps.googleapis.com/maps/api/js?v=3.exp
     // ---------------------------------------------------------------------------------------
     if (typeof google === 'object' && typeof google.maps === 'object') {
         if ($('#map-canvas1').length) {
-
-            var map;
-            var marker;
-            var infowindow;
+            var map, marker, infowindow;
 
             var image = '/assets/img/icon-google-map.png'; // marker icon
             google.maps.event.addDomListener(window, 'load', function () {
@@ -91,11 +90,11 @@ $(document).ready(function () {
                 //infowindow = new google.maps.InfoWindow({
                 //    content: contentString
                 //    ,maxWidth: 50
-                    //,maxHeight: 500
+                //    ,maxHeight: 500
                 //});
-                google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.open(map,marker);
-                });
+                //google.maps.event.addListener(marker, 'click', function() {
+                //    infowindow.open(map,marker);
+                //});
 
                 // open marker when google map init
                 function initialize() {

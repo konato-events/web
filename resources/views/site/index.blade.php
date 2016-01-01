@@ -9,7 +9,7 @@
         "use strict";
         jQuery(document).ready(function () {
             theme.init();
-            theme.initGoogleMap();
+//            theme.initGoogleMap();
         });
 
         jQuery(window).load(function () {

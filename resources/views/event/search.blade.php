@@ -14,7 +14,7 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
         "use strict";
         jQuery(document).ready(function () {
             theme.init();
-            theme.initGoogleMap();
+//            theme.initGoogleMap();
         });
 
         jQuery(window).load(function () {
@@ -46,6 +46,7 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
         <aside id="sidebar" class="sidebar col-sm-4 col-md-3">
         <form method="get" action="<?=act('event@search')?>">
 
+            <? /*
             <div class="widget google-map-widget">
                 <div class="google-map1">
                     <div id="map-canvas1"></div>
@@ -58,14 +59,9 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
                     </span>
                 </span>
             </div>
+            */?>
 
             <div class="widget">
-
-                <button class="btn btn-theme btn-theme-md">
-                    <i class="fa fa-search"></i>
-                    <?=_('Update search')?>
-                </button>
-
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <?php //TODO: add to free/paid text a behaviour to change the range when clicked (as labels for checkboxes)?>
                     @include('components.accordion_panel', [
@@ -107,6 +103,10 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
                             {{--<label>'._('End').':   <input type="date" class="form-control" name="end">  </label>--}}
                         {{--'])--}}
                 </div>
+
+                <button class="btn btn-theme btn-theme-md">
+                    <i class="fa fa-search"></i> <?=_('Update search')?>
+                </button>
             </div>
 
         </form>
