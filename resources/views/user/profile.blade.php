@@ -209,11 +209,11 @@ $date_fmt   = _('m/d/Y');
 
             <div class="widget widget-sm">
                 <? if (\Auth::check() && \Auth::user()->follows()->where('user_id', $id)->count()): ?>
-                    <a href="<?=act('user@unfollow', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <a href="<?=act('user@unfollow', $user->slug)?>" class="btn btn-theme btn-wrap btn-sm">
                         <i class="fa fa-remove"></i> <?=($female)? _('Unfollow her') : _('Unfollow him')?>
                     </a>
                 <? else: ?>
-                    <a href="<?=act('user@follow', $id)?>" class="btn btn-theme btn-wrap btn-sm">
+                    <a href="<?=act('user@follow', $user->slug)?>" class="btn btn-theme btn-wrap btn-sm">
                         <i class="fa fa-mail-forward"></i> <?=($female)? _('Follow her') : _('Follow him')?>
                     </a>
                 <? endif ?>

@@ -175,11 +175,11 @@ $title = sprintf(_('Events about %s'), $theme->name);
 
         <div class="widget">
             <? if (\Auth::check() && \Auth::user()->following_themes()->where('theme_id', $theme->id)->count()): ?>
-                <a href="<?=act('theme@unfollow', $theme->id)?>" class="btn btn-theme btn-wrap btn-sm">
+                <a href="<?=act('theme@unfollow', $theme->slug)?>" class="btn btn-theme btn-wrap btn-sm">
                     <i class="fa fa-remove"></i> <?=_('Unfollow this theme')?>
                 </a>
             <? else: ?>
-                <a href="<?=act('theme@follow', $theme->id)?>" class="btn btn-theme btn-wrap btn-sm">
+                <a href="<?=act('theme@follow', $theme->slug)?>" class="btn btn-theme btn-wrap btn-sm">
                     <i class="fa fa-mail-forward"></i> <?=_('Follow this theme')?>
                 </a>
             <? endif ?>

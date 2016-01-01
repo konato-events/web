@@ -80,14 +80,14 @@ class EventController extends Controller {
     protected function followRelation() { return $this->followRelation; }
     protected function followReturnAction() { return 'EventController@getDetails'; }
 
-    public function getParticipate(int $id) {
+    public function getParticipate(string $slug) {
         $this->followRelation = 'participated';
-        return $this->getFollow($id);
+        return $this->getFollow($slug);
     }
 
-    public function getUnparticipate(int $id) {
+    public function getUnparticipate(string $slug) {
         $this->followRelation = 'participated';
-        return $this->getUnfollow($id);
+        return $this->getUnfollow($slug);
     }
 
 /* *************************************************** EDIT ACTIONS ************************************************* */

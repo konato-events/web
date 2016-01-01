@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 /**
  * @property int        id
  * @property string     title
+ * @property string     tagline
  * @property string     location   Temporary field until we get the location table right (#130)
  * @property string     address
  * @property string     postal_code

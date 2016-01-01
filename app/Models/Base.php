@@ -1,5 +1,5 @@
-<?php
-namespace App\Models;
+<?php namespace App\Models;
+use Illuminate\Database\Eloquent\Builder;
 use LaravelArdent\Ardent\Ardent;
 
 /**
@@ -21,12 +21,18 @@ class Base extends Ardent {
 
     protected $guarded = ['id', '_token'];
 
+    protected $slug;
+
     //TODO: replace all slugify calls with this?
     public function getSlugAttribute() {
-        return slugify($this->getKey(), ($this->name ?? $this->title) ?? '');
+        if (!$this->slug) {
+            $this->slug = slugify($this->getKey(), ($this->name ?? $this->title) ?? '');
+        }
+        return $this->slug;
     }
 
     public static function firstOrCreate(array $attributes) {
+        /** @var Builder $query */
         $query = (new static)->newQueryWithoutScopes();
         foreach ($attributes as $name => &$value) {
             if (is_array($value)) {
