@@ -5,8 +5,6 @@
 @extends('layout-master')
 
 @section('js')
-    {{--<script src="assets/plugins/waypoints/waypoints.min.js"></script>--}}
-    <script src="assets/plugins/countdown/jquery.plugin.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
     <script src="assets/js/theme-ajax-mail.js"></script>

@@ -10,10 +10,6 @@ $title = sprintf(_('"%s" events search'), $query); //FIXME: fix title, given not
 @section('title' , $title)
 
 @section('js')
-    {{--<script src="assets/plugins/owlcarousel2/owl.carousel.min.js"></script>--}}
-    <script src="/assets/plugins/waypoints/waypoints.min.js"></script>
-    <script src="/assets/plugins/countdown/jquery.plugin.min.js"></script>
-    <script src="/assets/plugins/countdown/jquery.countdown.min.js"></script>
     <script src="/assets/plugins/isotope/jquery.isotope.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
