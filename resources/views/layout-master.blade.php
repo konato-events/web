@@ -203,6 +203,7 @@ $lang_tag = substr(LOCALE, 0, 2);
                         <img src="/img/sugar-loaf-icon.png" title="<?=_('Marvelous City, place of the Sugar Loaf')?>">
                     </span>
                     <ul>
+                        <li><a href="<?=act('site@about')?>"><?=_('About us')?></a></li>
                         <li><a href="#"><?=_('Get in touch')?></a></li>
                         <li><a href="https://bitbucket.org/konato/web"><?=_('We &#9829; open source')?></a></li>
                         <li><a target="_blank" href="http://igorsantos.com.br"><?=_('by igorsantos07')?></a></li>

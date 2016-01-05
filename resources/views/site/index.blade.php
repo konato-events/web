@@ -5,11 +5,12 @@
 @extends('layout-master')
 
 @section('js')
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script type="text/javascript">
         "use strict";
         jQuery(document).ready(function () {
             theme.init();
-//            theme.initGoogleMap();
+            theme.initGoogleMap();
         });
 
         jQuery(window).load(function () {
