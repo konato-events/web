@@ -1,8 +1,8 @@
-<?php
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Models\EventType;
 
+//TODO: use a "missingMethod" to render static views such as Privacy Policy or About
 class SiteController extends Controller {
 
     public function getIndex() {
@@ -12,6 +12,10 @@ class SiteController extends Controller {
 
     public function getPrivacyPolicy() {
         return view('site.privacy');
+    }
+
+    public function getAbout() {
+        return view('site.about');
     }
 
     public function getValidation(string $rule) {
