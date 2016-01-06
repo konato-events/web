@@ -45,7 +45,7 @@
         <h2><?=_('Technologies')?> <small> - <?=_('our stack')?></small></h2>
         <dl>
             <dt><img src="/img/icons/tools/php.png"/> PHP 7</dt>
-            <dd><?=_('Simply put, a clean and reliable language, without uninteligible magic going on but still very easy and powerful. Indeed it has its quirks, but nothing an IDE would not solve - while adding other great benefits, we would not be using a behemoth only do know the argument order of <code>substr()</code>, right? The advantages are much bigger than its issues, and the new additions are making it more and more powerful.')?></dd>
+            <dd><?=_('Simply put, a clean and reliable language, without uninteligible magic going on but still very easy and powerful. Indeed it has its quirks, but nothing an IDE would not solve - while adding other great benefits, we would not be using a behemoth only to know the argument order of <code>substr()</code>, right? The advantages are much bigger than its issues, and the new additions are making it more and more powerful.')?></dd>
 
             <dt><a href="https://laravel.com" target="_blank"><img src="/img/icons/tools/laravel.png"/> Laravel 5</a></dt>
             <dd><?=_r('The "new kid on the block" in terms of PHP frameworks. Powerful, fast-paced and very extensible, it was used in the project as a test but in the end, it\'s here to stay. Besides having a %sBDFL%s %sblocking some great features and enhancements%s, it\'s agility and overall great community are awesome for a long-term project.<br/>We also use a small library on top of it\'s ORM, called %sArdent%s, that brings together models and validations for a more integrated system.',
