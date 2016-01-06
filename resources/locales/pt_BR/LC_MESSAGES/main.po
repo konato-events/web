@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2016-01-05 23:17-0300\n"
-"PO-Revision-Date: 2016-01-05 23:18-0300\n"
+"POT-Creation-Date: 2016-01-05 23:57-0300\n"
+"PO-Revision-Date: 2016-01-05 23:57-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -506,15 +506,15 @@ msgstr ""
 msgid "Submit your event"
 msgstr "Inclua seu evento"
 
-#: resources/views/site/about.blade.php:31
+#: resources/views/site/about.blade.php:37
 msgid "Who's behind this?"
 msgstr "Quem está por trás disso aqui?"
 
-#: resources/views/site/about.blade.php:32
+#: resources/views/site/about.blade.php:38
 #, php-format
 msgid ""
 "Besides being a open-source project, there's a solo developer behind the "
-"project. After seven years of experience with web development and always "
+"project. After eight years of experience with web development and always "
 "experimenting new technologies, %sI (Igor)%s decided to start this platform "
 "after hitting the head on the wall while trying to plan my participation on "
 "some tech conferences. Later, talking with some friends and colleagues about "
@@ -523,7 +523,7 @@ msgid ""
 "lead to create a revolution on event information online."
 msgstr ""
 "Fora ser um projeto open-source, há um desenvolvedor solitário por trás do "
-"projeto. Depois de sete anos de experiência com desenvolvimento web e sempre "
+"projeto. Depois de oito anos de experiência com desenvolvimento web e sempre "
 "experimentando novas tecnologias, %seu%s decidi iniciar essa plataforma "
 "depois de bater a cabeça na parede algumas vezes, tentando planejar minha "
 "participação em algumas conferências de tecnologia. Depois, conversando com "
@@ -532,7 +532,7 @@ msgstr ""
 "congressos, e finalmente decidi liderar e criar uma revolução em matéria de "
 "informações online sobre eventos."
 
-#: resources/views/site/about.blade.php:35
+#: resources/views/site/about.blade.php:41
 #, php-format
 msgid ""
 "This project was partially inspired by %sLanyrd%s, that unfortunately seems "
@@ -543,15 +543,15 @@ msgstr ""
 "parece ter tido uma %sparalização permanente no desenvolvimento%s após ter "
 "sido comprado pela EventBrite."
 
-#: resources/views/site/about.blade.php:39
+#: resources/views/site/about.blade.php:45
 msgid "Technologies"
 msgstr "Tecnologias"
 
-#: resources/views/site/about.blade.php:39
+#: resources/views/site/about.blade.php:45
 msgid "our stack"
 msgstr "nosso stack"
 
-#: resources/views/site/about.blade.php:42
+#: resources/views/site/about.blade.php:48
 msgid ""
 "Simply put, a clean and reliable language, without uninteligible magic going "
 "on but still very easy and powerful. Indeed it has its quirks, but nothing "
@@ -567,7 +567,7 @@ msgstr ""
 "<code>substr()</code>, né? As vantagens são bem maiores que os problemas, e "
 "as novas adições estão tornando o PHP mais e mais poderoso."
 
-#: resources/views/site/about.blade.php:45
+#: resources/views/site/about.blade.php:51
 #, php-format
 msgid ""
 "The \"new kid on the block\" in terms of PHP frameworks. Powerful, fast-"
@@ -586,7 +586,7 @@ msgstr ""
 "framework dele, o %sArdent%s, que junta os modelos e validações para um "
 "sistema mais integrado."
 
-#: resources/views/site/about.blade.php:52
+#: resources/views/site/about.blade.php:58
 msgid ""
 "Great database that offers a real SQL experience, with powerful datatypes "
 "and out of the box support for geo-related queries. And for free. What else "
@@ -596,7 +596,7 @@ msgstr ""
 "tipos poderosos e suporte instantâneo pra queries geo-relacionadas. E "
 "gratuito. O que mais nós poderíamos pedir?"
 
-#: resources/views/site/about.blade.php:55
+#: resources/views/site/about.blade.php:65
 msgid ""
 "The favorite VPS of us all. Cheap but also very reliable place to put our "
 "test servers, running everyting on SSDs that guarantee the smallest build "
@@ -608,7 +608,7 @@ msgstr ""
 "menor tempo de build possível, executando nossos testes e liberando novas "
 "versões do sistema em pouquíssimo tempo."
 
-#: resources/views/site/about.blade.php:58
+#: resources/views/site/about.blade.php:68
 msgid ""
 "That's a great platform we are building our system onto. Infrastructure with "
 "no hassle at all, with top notch technologies available at a click."
@@ -617,11 +617,11 @@ msgstr ""
 "Infraestrutura sem nenhum aborrecimento, com tecnologias topo de linha, "
 "disponíveis a um clique."
 
-#: resources/views/site/about.blade.php:61
+#: resources/views/site/about.blade.php:71
 msgid "Supporting tools"
 msgstr "Ferramentas de suporte"
 
-#: resources/views/site/about.blade.php:65
+#: resources/views/site/about.blade.php:75
 #, php-format
 msgid ""
 "Bitbucket was chosen over GitHub mainly because of its %spowerful issue "
@@ -634,7 +634,7 @@ msgstr ""
 "de um lugar confiável para colocá-lo, e junto com uma boa forma de organizar "
 "tarefas e milestones, esta foi, com certeza, uma ótima ideia."
 
-#: resources/views/site/about.blade.php:71
+#: resources/views/site/about.blade.php:85
 #, php-format
 msgid ""
 "We use BrowserStack to attest our compatibility with some <i>uncommon</i> "
@@ -647,7 +647,7 @@ msgstr ""
 "plataforma fantástica deles para rodar %stestes automatizados de "
 "compatibilidade%s também. Obrigado pelo suporte!"
 
-#: resources/views/site/about.blade.php:76
+#: resources/views/site/about.blade.php:94
 msgid ""
 "Best software ever to manage your time and keep track of your daily "
 "performance. This has been a great ally for me for many years, and helps us "
