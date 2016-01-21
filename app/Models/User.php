@@ -149,6 +149,10 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         return $stats;
     }
 
+    public function setBirthdayAttribute($date) {
+        $this->attributes['birthday'] = $date?: null;
+    }
+
     /**
      * @todo cache
      * @return array Events indexed by ID, with 'event' (Event) and 'participation' (string) keys
