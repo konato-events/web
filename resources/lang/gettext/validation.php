@@ -13,6 +13,7 @@ return [
     'between'   => [
         'string' => _('This field should have between :min and :max characters')
     ],
+    'image'     => _('This field must be a picture file (JPG/JPEG, GIF or PNG)'),
 
     'custom' => [
 //        'password' => ['confirmed' => _('It seems the password fields were not exactly the same')]

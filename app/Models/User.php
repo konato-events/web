@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 //tricking gettext to find our four participation types
 _('participant'); _('speaker'); _('involved'); _('staff');
@@ -151,6 +153,41 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public function setBirthdayAttribute($date) {
         $this->attributes['birthday'] = $date?: null;
+    }
+
+    public function setPictureAttribute($file) {
+        if (is_string($file)) {
+            $path = $file; //TODO: should we copy the picture to our storage instead?
+        } elseif ($file instanceof UploadedFile) {
+            !ddd(\Storage::drive()->getConfig()->get('path'));
+            //no $file->guessExtension() as this would create dups if the user uploads a pic with a different extension
+            $path   = 'users/picture-'.$this->id;
+
+
+
+
+
+
+
+            //TODO: we need a complete path here. as we are unable to set base paths per disk (https://github.com/GrahamCampbell/Laravel-Flysystem/issues/69), we should set a property (using IF PROD) in the filesystem file, get it via config manager, and use it here
+
+
+
+
+
+
+
+
+            $stored = \Storage::put($path, file_get_contents($file->getRealPath()));
+            if (!$stored) {
+                $this->errors()->add('picture', _('Sorry, we were unable to save your picture. Can you try again later?'));
+            }
+        }
+
+        if (isset($path)) {
+            //FIXME: resize the picture to create a smaller avatar (what size?)
+            $this->picture = $this->avatar = $path;
+        }
     }
 
     /**

@@ -135,7 +135,7 @@ HTML;
             $html .= "<div class='input-group-addon'>{$options['prefix']}</div>";
         }
 
-        if (!in_array($type, ['submit', 'reset', 'button', 'checkbox', 'radio'])) {
+        if (!in_array($type, ['submit', 'reset', 'button', 'checkbox', 'radio', 'file'])) {
             $options['class'] = isset($options['class'])? $options['class'].' form-control' : 'form-control';
         }
 
