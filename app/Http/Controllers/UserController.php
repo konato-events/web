@@ -102,7 +102,9 @@ class UserController extends Controller {
 class UserEditReq extends Request {
 
     public function rules() {
-        return \Auth::user()->buildUniqueExclusionRules();
+        $rules = \Auth::user()->buildUniqueExclusionRules();
+//        $rules['picture'] = 'image';
+        return $rules;
     }
 
 }
