@@ -159,29 +159,13 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         if (is_string($file)) {
             $path = $file; //TODO: should we copy the picture to our storage instead?
         } elseif ($file instanceof UploadedFile) {
-            !ddd(\Storage::drive()->getConfig()->get('path'));
             //no $file->guessExtension() as this would create dups if the user uploads a pic with a different extension
-            $path   = 'users/picture-'.$this->id;
-
-
-
-
-
-
-
-            //TODO: we need a complete path here. as we are unable to set base paths per disk (https://github.com/GrahamCampbell/Laravel-Flysystem/issues/69), we should set a property (using IF PROD) in the filesystem file, get it via config manager, and use it here
-
-
-
-
-
-
-
-
-            $stored = \Storage::put($path, file_get_contents($file->getRealPath()));
+            $rel_path = 'users/picture-'.$this->id;
+            $stored   = \Storage::put($rel_path, file_get_contents($file->getRealPath()));
             if (!$stored) {
                 $this->errors()->add('picture', _('Sorry, we were unable to save your picture. Can you try again later?'));
             }
+            $path = \Config::get('filesystems.root_url').$rel_path;
         }
 
         if (isset($path)) {

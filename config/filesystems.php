@@ -15,7 +15,8 @@ return [
     |
     */
 
-    'default' => (getenv('APP_ENV') == 'prod')? 's3' : 'local',
+    'default'  => (getenv('APP_ENV') == 'prod')? 's3' : 'local',
+    'root_url' => (getenv('APP_ENV') == 'prod')? 'http://konato-users.s3-website-us-east-1.amazonaws.com/' : '/app/',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,8 +46,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => public_path('app'),
-            'path'   => 'xyz.com'
+            'root'   => public_path('app')
         ],
 
 //        'ftp' => [
@@ -69,7 +69,7 @@ return [
                     'driver' => 's3',
                     'key'    => getenv('S3_KEY'),
                     'secret' => getenv('S3_SECRET'),
-                    'region' => 'us-standard',
+                    'region' => 'us-east-1',
                     'bucket' => 'konato-users',
                 ];
             })

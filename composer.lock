@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.13.0",
+            "version": "3.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "dff1c76551777fcc5890d2d5324f9f9e5cdd4e3d"
+                "reference": "a50b9a66486ad2f27b90521c2250c4c06ae8abea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/dff1c76551777fcc5890d2d5324f9f9e5cdd4e3d",
-                "reference": "dff1c76551777fcc5890d2d5324f9f9e5cdd4e3d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a50b9a66486ad2f27b90521c2250c4c06ae8abea",
+                "reference": "a50b9a66486ad2f27b90521c2250c4c06ae8abea",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-01-15 02:01:24"
+            "time": "2016-01-22 22:32:38"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1210,7 +1210,7 @@
                     "name": "Jeremy Lindblom",
                     "email": "jeremeamia@gmail.com",
                     "homepage": "https://github.com/jeremeamia",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "Serialize Closure objects, including their context and binding",
@@ -1228,16 +1228,16 @@
         },
         {
             "name": "laravel-ardent/laravalid",
-            "version": "v2.3.2",
+            "version": "v2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-ardent/laravalid.git",
-                "reference": "2c64b5ebdc99d5aa74270c3ab32d1d3caab1560d"
+                "reference": "43bc5398f2f7a9306f0eab9ed4a8414edd838c3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-ardent/laravalid/zipball/2c64b5ebdc99d5aa74270c3ab32d1d3caab1560d",
-                "reference": "2c64b5ebdc99d5aa74270c3ab32d1d3caab1560d",
+                "url": "https://api.github.com/repos/laravel-ardent/laravalid/zipball/43bc5398f2f7a9306f0eab9ed4a8414edd838c3c",
+                "reference": "43bc5398f2f7a9306f0eab9ed4a8414edd838c3c",
                 "shasum": ""
             },
             "require": {
@@ -1282,7 +1282,7 @@
                 "laravel5",
                 "validation"
             ],
-            "time": "2015-11-15 02:36:04"
+            "time": "2016-01-20 17:25:59"
         },
         {
             "name": "laravel/framework",
