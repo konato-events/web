@@ -170,7 +170,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
         if (isset($path)) {
             //FIXME: resize the picture to create a smaller avatar (what size?)
-            $this->picture = $this->avatar = $path;
+            $this->attributes['picture'] = $this->attributes['avatar'] = $path;
         }
     }
 

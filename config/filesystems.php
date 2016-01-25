@@ -16,7 +16,7 @@ return [
     */
 
     'default'  => (getenv('APP_ENV') == 'prod')? 's3' : 'local',
-    'root_url' => (getenv('APP_ENV') == 'prod')? 'http://konato-users.s3-website-us-east-1.amazonaws.com/' : '/app/',
+    'root_url' => (getenv('APP_ENV') == 'prod')? 'http://s3.amazonaws.com/konato-users/' : '/app/',
 
     /*
     |--------------------------------------------------------------------------
