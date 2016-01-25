@@ -20,4 +20,6 @@ class EventType extends Base {
         'events' => [self::HAS_MANY, Event::class]
     ];
 
+    protected static $listableConfig = ['order' => 'name'];
+
 }
