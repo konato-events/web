@@ -5,7 +5,6 @@ if (getenv('APP_ENV') != 'prod') {
 }
 
 echo `./artisan migrate`;
-echo `./artisan route:cache`;
-//FIXME: config can't be cached since build and runtime paths are different
-//echo `./artisan config:cache`;
+//As build and runtime paths are different on Heroku, there's a command on Composer (set-cache) that is run at boot, instead
+//echo `./artisan route:cache && ./artisan config:cache`;
 echo `DISABLE_NOTIFIER=true node_modules/.bin/gulp --production`;

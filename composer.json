@@ -76,6 +76,10 @@
         ],
         "post-create-project-cmd": [
             "./artisan key:generate"
+        ],
+        "set-cache": [
+            "./artisan config:cache",
+            "./artisan route:cache"
         ]
     },
     "config": {
