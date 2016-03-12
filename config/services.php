@@ -6,7 +6,6 @@ if (!defined('ROOT_URL')) {
 }
 
 $auth_provider = function(string $name) {
-
     $caps = strtoupper($name);
     return [$name => [
         'client_id'     => env($caps.'_ID'),
