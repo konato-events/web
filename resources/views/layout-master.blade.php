@@ -15,8 +15,7 @@ $lang_tag = substr(LOCALE, 0, 2);
 <html lang="<?=$lang_tag?>"><!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <!--[if IE]>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@section('title')<?=_('Event Discovery')?>@show [Konato]</title>{{-- https://moz.com/learn/seo/title-tag --}}
@@ -25,9 +24,9 @@ $lang_tag = substr(LOCALE, 0, 2);
 
     @include('_favicons')
 
-    <meta name="theme-color" content="#0b2975"> {{-- Chrome, Firefox OS and Opera --}}
-    <meta name="msapplication-navbutton-color" content="#0b2975"> {{-- Windows Phone --}}
-    <meta name="apple-mobile-web-app-status-bar-style" content="#0b2975"> {{-- iOS Safari --}}
+    <meta name="theme-color" content="#5d78bd"> {{-- Chrome, Firefox OS and Opera --}}
+    <meta name="msapplication-navbutton-color" content="#5d78bd"> {{-- Windows Phone --}}
+    <meta name="apple-mobile-web-app-status-bar-style" content="#5d78bd"> {{-- iOS Safari --}}
 
     <?// FIXME: COMPILE THIS STUFF!!!!!!!1111ONE11! ?>
 
@@ -109,13 +108,13 @@ $lang_tag = substr(LOCALE, 0, 2);
                     <?//=activableLink(icon('map-marker')._('Places'), 'events@places')?>
                     <?=activableLink(icon('comments-o')._('Speakers'), 'user@speakers')?>
 
-                    <li class="header-search-wrapper">
-                        <form action="#" class="header-search-form">
-                            <input type="text" class="form-control header-search" placeholder="<?=_('Find events')?>" />
+                    <li id="header-search-wrapper">
+                        <form action="<?=act('event@search')?>" method="get" class="header-search-form">
+                            <input type="search" name="q" class="form-control header-search" placeholder="<?=_('Find events')?>" />
                             <input type="submit" hidden="hidden" />
                         </form>
                     </li>
-                    <li><a href="#" class="btn-search-toggle"><i class="fa fa-search"></i></a></li>
+                    <li><a href="#" id="btn-search-toggle"><i class="fa fa-search"></i></a></li>
 
                     <? if (\Auth::check()): ?>
                         <? /** @var \App\Models\User $user */ $user = \Auth::getUser() ?>
