@@ -109,7 +109,7 @@ class AppServiceProvider extends ServiceProvider {
     protected function bootLocalization($domain = 'main', $codeset = 'UTF-8') {
         $this->defineLocale($domain);
         putenv('LANG='.LOCALE);
-        if (!setlocale(LC_ALL, LOCALE.".$codeset", LOCALE.strtolower(strtr($codeset, ['-' => ''])))) {
+        if (!setlocale(LC_ALL, LOCALE.".$codeset", LOCALE.'.'.strtolower(strtr($codeset, ['-' => ''])))) {
             Log::critical('Locale not available in the system: '.LOCALE.'.'.$codeset);
         }
         bindtextdomain($domain, self::LOCALES_PATH);
