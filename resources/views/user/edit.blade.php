@@ -31,8 +31,8 @@ const FORM_ID = 'submit';
     <section class="page-section with-sidebar sidebar-right first-section">
         <div class="container">
         <div class="row">
+        <?=Form::model($user, ['id' => FORM_ID, 'files' => true])?>
             <div class="col-md-8">
-                <?=Form::model($user, ['id' => FORM_ID, 'files' => true])?>
 
                 @include('components.form_errors')
 
@@ -82,9 +82,8 @@ const FORM_ID = 'submit';
                     <a href="javascript:history.back()" class="btn btn-theme btn-theme-lg btn-theme-grey-dark"><?=_('Go back')?></a>
                     <?=Form::submit(_('Save'), ['class' => 'btn btn-theme btn-theme-lg'])?>
                 </div>
-
-                <?=Form::close()?>
             </div>
+        <?=Form::close()?>
         </div>
         </div>
     </section>
