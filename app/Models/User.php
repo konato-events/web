@@ -30,6 +30,8 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  * @property int[]                     stats
  * @property array                     events
  * @property array                     most_visited
+ * @property Collection|Session[]      sessions
+ * @property Collection|Theme[]        all_themes
  *
  * @property Collection|SocialLink[]   links
  * @property Location                  location
@@ -50,8 +52,6 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  * @method BelongsToMany             following_themes
  * @property Collection|EventSpeaker[] spoke_pivot
  * @method HasMany spoke_pivot
- * @property Collection|Session[]      sessions
- * @property Collection|Theme[]        all_themes
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 

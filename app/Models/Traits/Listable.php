@@ -13,7 +13,7 @@ trait Listable {
      * @param string|bool $include_empty If true, includes an empty value in the beginning.
      *                                   If string, the passed value will be used as the first value,
      *                                   Both will be set with an empty string as key. Useful for select lists.
-     * @param bool        $indexed_by    By default, indexes by {@link self::$listKey}. If this param is given,
+     * @param string|bool $indexed_by   By default, indexes by {@link self::$listKey}. If this param is given,
      *                                   it's used as index column.
      * @param string|null $field         Specifies the field to be used as array value. By default, uses {@link self::$listValue}.
      * @see array_column()

@@ -5,10 +5,11 @@ use Illuminate\Support\Collection;
 /**
  * @property int                  id
  * @property string               name
- * @property Collection|Session[] session
+ * @property Collection|Session[] sessions
  * @property Collection|Event[]   events
  * @property Theme                parent
  * @property Theme                children
+ * @property User[]               speakers
  */
 class Theme extends Base {
 

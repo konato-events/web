@@ -157,7 +157,7 @@ class AuthController extends Controller {
 
     }
 
-    /* ******************************  COMMON ROUTES ******************************* */
+/*-******************************  COMMON ROUTES *******************************-*/
 
     public function getSignUp() {
         $user = new User;

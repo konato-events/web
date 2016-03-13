@@ -95,10 +95,6 @@ class EventController extends Controller {
 
 /* *************************************************** EDIT ACTIONS ************************************************* */
 
-    public function getEdit(int $id) {
-        return $this->edit('general', $id);
-    }
-
     /**
      * Displays one of the edit forms.
      * @param string    $name  Form name, as in "event.forms.edit_$name"
@@ -110,6 +106,10 @@ class EventController extends Controller {
             $event = Event::find($event);
         }
         return view('event.forms.edit_'.$name, compact('event'));
+    }
+
+    public function getEdit(int $id) {
+        return $this->edit('general', $id);
     }
 
     public function postEdit(EventReq $req) {
@@ -156,6 +156,10 @@ class EventController extends Controller {
 
     public function getEditMaterials(int $id) {
         return $this->edit('materials', $id);
+    }
+
+    public function postEditMaterials(int $id) {
+        //TODO: implement
     }
 
     public function getScheduleTemplateFile() {

@@ -102,7 +102,7 @@ class Event extends Base {
      * Temporary attr until we get upload working
      * @todo https://bitbucket.org/konato/web/issues/129/implement-real-file-upload
      */
-    public function getPublicImgAttribute() {
+    public function getPublicImgAttribute():string {
         $img = self::generateGravatar($this->title, 128);
         return $img;
     }
@@ -111,7 +111,7 @@ class Event extends Base {
         $this->attributes['end'] = $datetime?: null;
     }
 
-    protected function clearFacebookURL(string $url) {
+    protected function clearFacebookURL(string $url):string {
         $url = strtok($url, '?');
         $url = strtr($url, ['facebook.com' => 'fb.com']);
         $url = rtrim($url, '/');
@@ -130,15 +130,6 @@ class Event extends Base {
         $this->attributes['facebook_event'] = $url? $this->clearFacebookURL($url) : null;
     }
 
-    public function isStaff(User $user = null) {
-        if (!Auth::check()) {
-            return false;
-        } else {
-            $user = $user?: Auth::user();
-            return (bool)$this->event_staff()->where('user_id', $user->id)->count();
-        }
-    }
-
     public function getSessionsByDayAttribute() {
         if (!$this->sessionsByDay) {
             foreach ($this->sessions as $session) {
@@ -151,5 +142,14 @@ class Event extends Base {
         }
 
         return $this->sessionsByDay;
+    }
+
+    public function isStaff(User $user = null):bool {
+        if (!Auth::check()) {
+            return false;
+        } else {
+            $user = $user?: Auth::user();
+            return (bool)$this->event_staff()->where('user_id', $user->id)->count();
+        }
     }
 }
