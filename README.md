@@ -1,6 +1,12 @@
 Konato - Event Discovery
 ========================
 
+[![Next issues](https://badge.waffle.io/konato-events/web.svg?label=ready&title=Next%20issues)](http://waffle.io/konato-events/web)
+[![Working on](https://badge.waffle.io/konato-events/web.svg?label=in%20progress&title=Working%20on)](http://waffle.io/konato-events/web)
+
+[![Activity Graph](https://graphs.waffle.io/konato-events/web/throughput.svg)](https://waffle.io/konato-events/web/metrics)
+
+
 How to handle this... thing.
 ----------------------------
 
