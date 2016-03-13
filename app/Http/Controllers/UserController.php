@@ -1,9 +1,7 @@
 <?php namespace App\Http\Controllers;
-use App\Http\Requests\Model;
-use App\Http\Requests\Request;
+use App\Http\Requests\UserEdit;
 use App\Models\Theme;
 use App\Models\User;
-use App\Http\Requests\User as UserReq;
 use LaravelArdent\Ardent\InvalidModelException;
 
 class UserController extends Controller {
@@ -85,7 +83,7 @@ class UserController extends Controller {
         return view('user.edit', compact('user'));
     }
 
-    public function postEdit(UserEditReq $req) {
+    public function postEdit(UserEdit $req) {
         try {
             $user = \Auth::user();
             $user->fill(\Input::except('_token'));
@@ -95,16 +93,6 @@ class UserController extends Controller {
         catch (InvalidModelException $e) {
             return redirect()->back()->withErrors($e->getErrors());
         }
-    }
-
-}
-
-class UserEditReq extends Request {
-
-    public function rules() {
-        $rules = \Auth::user()->buildUniqueExclusionRules();
-//        $rules['picture'] = 'image';
-        return $rules;
     }
 
 }

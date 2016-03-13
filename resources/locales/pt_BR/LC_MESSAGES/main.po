@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2016-01-06 00:46-0300\n"
-"PO-Revision-Date: 2016-01-06 00:46-0300\n"
+"POT-Creation-Date: 2016-03-12 21:26-0300\n"
+"PO-Revision-Date: 2016-03-12 21:26-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -21,21 +21,25 @@ msgstr ""
 msgid "Personal website"
 msgstr "Site pessoal"
 
-#: app/Models/User.php:13 resources/views/user/profile.blade.php:12
+#: app/Models/User.php:15 resources/views/user/profile.blade.php:12
 msgid "participant"
 msgstr "participante"
 
-#: app/Models/User.php:13 resources/views/user/profile.blade.php:13
+#: app/Models/User.php:15 resources/views/user/profile.blade.php:13
 msgid "speaker"
 msgstr "palestrante"
 
-#: app/Models/User.php:13 resources/views/user/profile.blade.php:14
+#: app/Models/User.php:15 resources/views/user/profile.blade.php:14
 msgid "involved"
 msgstr "envolvido"
 
-#: app/Models/User.php:13 resources/views/user/profile.blade.php:15
+#: app/Models/User.php:15 resources/views/user/profile.blade.php:15
 msgid "staff"
 msgstr "staff"
+
+#: app/Models/User.php:166
+msgid "Sorry, we were unable to save your picture. Can you try again later?"
+msgstr "Desculpe, não conseguimos salvar sua foto. Você pode tentar de novo?"
 
 #: app/Models/EventType.php:6
 msgid "Meeting"
@@ -97,39 +101,39 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: app/Http/Controllers/EventController.php:159
+#: app/Http/Controllers/EventController.php:162
 msgid "template"
 msgstr "modelo"
 
-#: app/Http/Controllers/EventController.php:163
+#: app/Http/Controllers/EventController.php:166
 #: resources/views/event/forms/_basic_fields.blade.php:12
 msgid "Title"
 msgstr "Título"
 
-#: app/Http/Controllers/EventController.php:163
+#: app/Http/Controllers/EventController.php:166
 #: resources/views/event/forms/edit_general.blade.php:21
 msgid "Description"
 msgstr "Descrição"
 
-#: app/Http/Controllers/EventController.php:163
+#: app/Http/Controllers/EventController.php:166
 #: resources/views/event/details.blade.php:381
 #: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:27
 msgid "Begin"
 msgstr "Início"
 
-#: app/Http/Controllers/EventController.php:163
+#: app/Http/Controllers/EventController.php:166
 #: resources/views/event/details.blade.php:382
 #: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:31
 msgid "End"
 msgstr "Fim"
 
-#: app/Http/Controllers/EventController.php:164
+#: app/Http/Controllers/EventController.php:167
 msgid "SAMPLE TALK (remove this line): Abnormalities on Catalysis"
 msgstr "PALESTRA EXEMPLO (remova essa linha): Anormalidades na Catálise"
 
-#: app/Http/Controllers/EventController.php:164
+#: app/Http/Controllers/EventController.php:167
 msgid ""
 "This talk will walk us through some common abnormalities seen in some "
 "catalysis processes."
@@ -137,18 +141,18 @@ msgstr ""
 "Esta palestra irá nos levar através de anormalidades comuns, vistas em "
 "alguns processos de catálise."
 
-#: app/Http/Controllers/EventController.php:164
+#: app/Http/Controllers/EventController.php:167
 msgid "Format: YYYY-MM-DD HH:mm"
 msgstr "Formato: AAAA-MM-DD HH:mm"
 
-#: app/Http/Controllers/EventController.php:203
+#: app/Http/Controllers/EventController.php:206
 #, php-format
 msgid "One activity was imported."
 msgid_plural "A total of %d activities were imported."
 msgstr[0] "Uma atividade foi importada."
 msgstr[1] "Um total de %d atividades foram importadas."
 
-#: app/Http/Controllers/EventController.php:205
+#: app/Http/Controllers/EventController.php:208
 msgid "No activity was found in the file."
 msgstr "Nenhuma atividade foi encontrada."
 
@@ -186,7 +190,11 @@ msgstr "Curto demais"
 msgid "This field should have between :min and :max characters"
 msgstr "Este campo deve ter entre :min e :max caracteres"
 
-#: resources/lang/gettext/validation.php:19
+#: resources/lang/gettext/validation.php:16
+msgid "This field must be a picture file (JPG/JPEG, GIF or PNG)"
+msgstr "Este campo deve ser um arquivo de foto (JPG/JPEG, GIF ou PNG)"
+
+#: resources/lang/gettext/validation.php:20
 msgid ""
 "This username is already taken. Try something different! If you already have "
 "an account but don't remember your password, try to use the Recovery link "
@@ -196,7 +204,7 @@ msgstr ""
 "mas não lembra sua senha, tente usar o link de Recuperação, na página de "
 "Login."
 
-#: resources/lang/gettext/validation.php:20
+#: resources/lang/gettext/validation.php:21
 msgid ""
 "This e-mail is already in use. Hmm... Is this you? If you don't remember "
 "your password, try to use the Recovery link from the Login page."
@@ -307,12 +315,12 @@ msgstr ""
 
 #: resources/views/auth/finishSignUp.blade.php:42
 #: resources/views/auth/login.blade.php:19
-#: resources/views/user/_common_fields.blade.php:12
+#: resources/views/user/_common_fields.blade.php:16
 msgid "Username"
 msgstr "Usuário"
 
 #: resources/views/auth/finishSignUp.blade.php:47
-#: resources/views/user/_common_fields.blade.php:17
+#: resources/views/user/_common_fields.blade.php:21
 msgid ""
 "Use a uniquely identifying name for you. This will also help you to be found "
 "in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
@@ -339,7 +347,7 @@ msgid "You can also login using an account from one of those websites:"
 msgstr "Você também pode se logar usando a conta de um desses sites:"
 
 #: resources/views/auth/login.blade.php:19
-#: resources/views/user/_common_fields.blade.php:10
+#: resources/views/user/_common_fields.blade.php:14
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -668,28 +676,32 @@ msgstr "Editar seu perfil"
 msgid "Editing your profile"
 msgstr "Editando seu perfil"
 
-#: resources/views/user/edit.blade.php:30
+#: resources/views/user/edit.blade.php:41
+msgid "Photo"
+msgstr "Foto"
+
+#: resources/views/user/edit.blade.php:47
 #: resources/views/event/forms/edit_general.blade.php:23
 msgid "Tagline"
 msgstr "Descrição curta"
 
-#: resources/views/user/edit.blade.php:31
+#: resources/views/user/edit.blade.php:48
 msgid "Example: Analyst at Acme Inc."
 msgstr "Exemplo: Analista na Acme Ltda."
 
-#: resources/views/user/edit.blade.php:32
+#: resources/views/user/edit.blade.php:49
 msgid "Describe your professional self in a phrase. What you do for a living?"
 msgstr "Descreva seu eu profissional numa frase. O que você faz da vida?"
 
-#: resources/views/user/edit.blade.php:35
+#: resources/views/user/edit.blade.php:55
 msgid "Short bio"
 msgstr "Biografia curta"
 
-#: resources/views/user/edit.blade.php:37
+#: resources/views/user/edit.blade.php:57
 msgid "Example: I'm a chemical analyst with experience in catalysis."
 msgstr "Exemplo: Sou analista químico com experiência em catálises."
 
-#: resources/views/user/edit.blade.php:40
+#: resources/views/user/edit.blade.php:60
 msgid ""
 "Introduce yourself to the community! Write a couple of words to help others "
 "understand who you are."
@@ -697,42 +709,46 @@ msgstr ""
 "Apresente-se para a comunidade! Escreva algumas palavras para ajudar os "
 "outros a entender quem você é."
 
-#: resources/views/user/edit.blade.php:44
-msgid "Birthday"
-msgstr "Nascimento"
-
-#: resources/views/user/edit.blade.php:46
+#: resources/views/user/edit.blade.php:69
 msgid "Gender"
 msgstr "Sexo"
 
-#: resources/views/user/edit.blade.php:46
+#: resources/views/user/edit.blade.php:70
 msgid "Male"
 msgstr "Masculino"
 
-#: resources/views/user/edit.blade.php:46
+#: resources/views/user/edit.blade.php:71
 msgid "Female"
 msgstr "Feminino"
 
-#: resources/views/user/edit.blade.php:49
+#: resources/views/user/edit.blade.php:72
+msgid "Not informed"
+msgstr "Não informado"
+
+#: resources/views/user/edit.blade.php:75
+msgid "Birthday"
+msgstr "Nascimento"
+
+#: resources/views/user/edit.blade.php:82
 #: resources/views/event/forms/edit_common.blade.php:12
 #: resources/views/event/forms/edit_common.blade.php:42
 msgid "Go back"
 msgstr "Voltar"
 
-#: resources/views/user/edit.blade.php:50
+#: resources/views/user/edit.blade.php:83
 #: resources/views/event/forms/edit_common.blade.php:43
 msgid "Save"
 msgstr "Salvar"
 
-#: resources/views/user/_common_fields.blade.php:8
+#: resources/views/user/_common_fields.blade.php:12
 msgid "Name"
 msgstr "Nome"
 
-#: resources/views/user/_common_fields.blade.php:21
+#: resources/views/user/_common_fields.blade.php:25
 msgid "Choose a password"
 msgstr "Escolha uma senha"
 
-#: resources/views/user/_common_fields.blade.php:22
+#: resources/views/user/_common_fields.blade.php:26
 msgid ""
 "Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
 "points if you include lower-case and upper-case letters, as well as symbols."
@@ -740,6 +756,16 @@ msgstr ""
 "Use pelo menos 6 caracteres aqui. Preferencialmente, com números e letras! "
 "Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
 "também."
+
+#: resources/views/user/_common_fields.blade.php:29
+msgid "Confirm the password"
+msgstr "Confirme a senha"
+
+#: resources/views/user/_common_fields.blade.php:29
+msgid "Just to be sure there's no typo, could you please repeat that password?"
+msgstr ""
+"Só pra ter certeza que você não digitou nada por engano, pode repetir a "
+"senha por favor?"
 
 #: resources/views/user/speakers.blade.php:9
 #, php-format
@@ -1457,15 +1483,6 @@ msgstr "Veja todos os palestrantes em %s"
 #~ msgstr ""
 #~ "Por enquanto só é possível logar com uma das redes sociais abaixo... Logo "
 #~ "logo será possível usar usuário e senha!"
-
-#~ msgid "Confirm the password"
-#~ msgstr "Confirme a senha"
-
-#~ msgid ""
-#~ "Just to be sure there's no typo, could you please repeat that password?"
-#~ msgstr ""
-#~ "Só pra ter certeza que você não digitou nada por engano, pode repetir a "
-#~ "senha por favor?"
 
 #~ msgid ""
 #~ "Sorting out some private key issues before publishing code. Check back "

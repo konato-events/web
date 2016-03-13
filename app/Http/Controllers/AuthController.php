@@ -1,13 +1,12 @@
-<?php
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 use App\Http\Controllers\Traits\SocialiteHelpers;
-use App\Http\Requests\Request;
+use App\Http\Requests\SignUpFinish;
 use App\Models\SocialLink;
 use App\Models\SocialNetwork;
 use App\Models\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\Requests\User as UserReq;
+use Illuminate\Http\Request as BaseRequest;
 use LaravelArdent\Ardent\InvalidModelException;
 use Auth;
 use Session;
@@ -46,10 +45,10 @@ class AuthController extends Controller {
 
     /**
      * Get the needed authorization credentials from the request.
-     * @param  \Illuminate\Http\Request $req
+     * @param  BaseRequest $req
      * @return array
      */
-    protected function getCredentials(\Illuminate\Http\Request $req) {
+    protected function getCredentials(BaseRequest $req) {
         return [
             'password' => $req->password,
             (str_contains($req->email, '@')? 'email' : 'username') => $req->email
@@ -103,7 +102,7 @@ class AuthController extends Controller {
         }
     }
 
-    public function postFinishSignUp(FinishSignUpReq $req) {
+    public function postFinishSignUp(SignUpFinish $req) {
         /** @var User $user */
         $user = unserialize(session('signup.user'));
 
@@ -162,10 +161,11 @@ class AuthController extends Controller {
 
     public function getSignUp() {
         $user = new User;
+        User::changeRules(User::SC_SIGNUP);
         return view('auth.signUp', compact('user'));
     }
 
-    public function postSignUp(UserReq $req) {
+    public function postSignUp(SignUp $req) {
         $user = new User(\Input::except('_token'));
         $user->save();
         return $this->loginAfterSignUp($user);
@@ -182,19 +182,5 @@ class AuthController extends Controller {
     public function getLogout() {
         Auth::logout();
         return redirect()->back();
-    }
-}
-
-/**
- * @property string username
- * @property string provider
- * @property string provider_id
- */
-class FinishSignUpReq extends Request {
-    function rules() {
-        return [
-            'username' => User::$rules['username'],
-            'provider' => 'required'
-        ];
     }
 }

@@ -80,6 +80,8 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         'organized'    => self::STAFF,
     ];
 
+    const SC_SIGNUP = 'signup';
+
     public static $rules = [
         'name'     => ['required', 'min:4'],
         'email'    => ['required', 'email', 'unique:users'],
@@ -124,6 +126,18 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         'following_themes' => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'following_theme', 'timestamps' => true],
         //'links'          => [self::HAS_MANY, SocialLink::class], //defined by method as we need ordering here
     ];
+
+    public static function changeRules($scenario) {
+        switch ($scenario) {
+            case self::SC_SIGNUP:
+                static::$rules['password'][] = 'required';
+                static::$rules['password'][] = 'confirmed';
+                static::$rules['password_confirmation'] = ['required'];
+            break;
+        }
+
+        return static::$rules;
+    }
 
     public static function findSpeakers() {
         $ids = \DB::table('event_speaker')->select('user_id')->distinct()->get();
