@@ -45,7 +45,7 @@ class EventController extends Controller {
         if ($paid)  { $db_query->where('free', ($paid == -1)); }
         if ($place) { $db_query->where('location', 'ilike', $ilikey($place)); }
         if ($types) { $db_query->whereIn('event_type_id', $types); }
-        $events = $db_query->get();
+        $events = $db_query->orderBy('begin', 'desc')->get();
 
         if (sizeof($events) == 1 && $query) {
             return redirect()->to(act('event@details', $events[0]->slug));
