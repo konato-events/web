@@ -1,5 +1,4 @@
 <?php namespace App\Models;
-
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
@@ -29,7 +28,6 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  * @property Carbon     begin
  * @property Carbon     end
  * @property int        status
- * @property string     publicImg  Temporary field until we get upload working
  * @todo            https://bitbucket.org/konato/web/issues/130/integrate-with-google-maps-api-for-location-search
  *
  * @future-property Location  location
@@ -51,11 +49,13 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  */
 class Event extends Base {
 
-    use Traits\Gravatar;
+    use Traits\Avatarized;
 
     protected $dates = ['created_at', 'updated_at', 'begin', 'end'];
 
     protected $dateFormat = 'Y-m-d H:i:sO';
+
+    protected static $avatarGenerationField = 'title';
 
     public static $rules = [
         'title'          => ['required', 'min:4', 'max:100', 'unique:events'],
@@ -85,8 +85,8 @@ class Event extends Base {
     public static $relationsData = [
         'type'        => [self::BELONGS_TO, EventType::class],
         'issues'      => [self::HAS_MANY_THROUGH, self::class, 'through' => EventIssue::class, 'firstKey' => 'id'],
-        'speakers'    => [self::BELONGS_TO_MANY, User::class, 'table' => 'event_speaker'],
-        'staff'       => [self::BELONGS_TO_MANY, User::class, 'table' => 'event_staff'],
+        'speakers'    => [self::BELONGS_TO_MANY, User::class,  'table' => 'event_speaker'],
+        'staff'       => [self::BELONGS_TO_MANY, User::class,  'table' => 'event_staff'],
         'themes'      => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'event_theme'],
         'event_staff' => [self::HAS_MANY, EventStaff::class],
         'materials'   => [self::HAS_MANY, Material::class],
@@ -95,15 +95,6 @@ class Event extends Base {
     ];
 
     protected $sessionsByDay = [];
-
-    /**
-     * Temporary attr until we get upload working
-     * @todo https://bitbucket.org/konato/web/issues/129/implement-real-file-upload
-     */
-    public function getPublicImgAttribute() {
-        $img = self::generateGravatar($this->title, 128);
-        return $img;
-    }
 
     public function setEndAttribute(string $datetime = null) {
         $this->attributes['end'] = $datetime?: null;

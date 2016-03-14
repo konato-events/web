@@ -1,4 +1,5 @@
 <?php namespace App\Models;
+use App\Models\Traits\Avatarized;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -55,7 +56,9 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
-    use Authenticatable, CanResetPassword, Traits\Gravatar;
+    use Authenticatable, CanResetPassword, Traits\Avatarized {
+        Avatarized::beforeSave as beforeSaveAvatars;
+    }
 
     protected $hidden                     = ['password', /*'remember_token'*/];
 
@@ -137,8 +140,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public function beforeSave() {
 //        unset($this->password_confirmation);
-        $this->avatar  = $this->avatar  ?? self::generateGravatar($this->email, 100);
-        $this->picture = $this->picture ?? self::generateGravatar($this->email, 1920);
+        $this->beforeSaveAvatars();
     }
 
     //TODO: cache
@@ -153,25 +155,6 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public function setBirthdayAttribute($date) {
         $this->attributes['birthday'] = $date?: null;
-    }
-
-    public function setPictureAttribute($file) {
-        if (is_string($file)) {
-            $path = $file; //TODO: should we copy the picture to our storage instead?
-        } elseif ($file instanceof UploadedFile) {
-            //no $file->guessExtension() as this would create dups if the user uploads a pic with a different extension
-            $rel_path = 'users/picture-'.$this->id;
-            $stored   = \Storage::put($rel_path, file_get_contents($file->getRealPath()));
-            if (!$stored) {
-                $this->errors()->add('picture', _('Sorry, we were unable to save your picture. Can you try again later?'));
-            }
-            $path = \Config::get('filesystems.root_url').$rel_path;
-        }
-
-        if (isset($path)) {
-            //FIXME: resize the picture to create a smaller avatar (what size?)
-            $this->attributes['picture'] = $this->attributes['avatar'] = $path;
-        }
     }
 
     /**

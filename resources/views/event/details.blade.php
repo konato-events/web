@@ -12,7 +12,7 @@ use Carbon\Carbon;
 $title   = _r('%s - event', $event->title);
 $tagline = 'A tagline do evento vai aqui';
 
-$img_height = getimagesize($event->publicImg)[1];
+$img_height = getimagesize($event->avatar)[1];
 $img_height = ($img_height > 250? 250 : $img_height);
 $date_fmt   = _('m/d/Y');
 $time_fmt   = _('h:i A');
