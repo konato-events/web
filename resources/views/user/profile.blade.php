@@ -77,13 +77,13 @@ $date_fmt   = _('m/d/Y');
 @section('header-bg', '/img/bg-speaker.jpeg')
 @section('header-content')
 <div class="row">
-    <div class="photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
+    <div class="profile-photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
         <? $pic_help = str_contains($user->picture, 'gravatar')? _r('%s still don\'t have a picture :(', ucfirst($pronoun)) : '' ?>
         <img src="<?=$user->picture?>" alt="<?=_r('%s on Konato', $user->name)?>"
              <? if ($pic_help): ?>data-toggle="tooltip" title="<?=$pic_help?>"<? endif ?> />
     </div>
 
-    <?//TODO: this height should be defined though JS, so we can save network trips inside the server ?>
+    <?//TODO: this height should be defined though JS, so we can save network trips inside the server. The height cannot be removed as it's needed so the links row can stay at the bottom ?>
     <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$avatar_height?>px">
 
         <h1><?=$user->name?></h1>
