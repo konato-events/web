@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  * @property bool       published
  * @property Carbon     begin
  * @property Carbon     end
+ * @property Carbon     created_at
+ * @property Carbon     updated_at
  * @property int        status
  * @todo            https://bitbucket.org/konato/web/issues/130/integrate-with-google-maps-api-for-location-search
  *

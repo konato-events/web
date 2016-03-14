@@ -68,7 +68,10 @@ class EventController extends Controller {
     public function postSubmit(EventReq $req) {
         $event = new Event;
         $event->save();
-        $event->staff()->attach(\Auth::user());
+        $event->staff()->attach(\Auth::user(), [
+            'created_at' => $event->created_at,
+            'updated_at' => $event->updated_at,
+        ]);
         $id_slug = slugify($event->id, $event->title);
         return redirect()->action('EventController@getDetails', $id_slug);
     }
