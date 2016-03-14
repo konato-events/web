@@ -26,12 +26,25 @@ Form::model($event); //TODO: find a better way to share the model through partia
 
         <div class="panel panel-default">
             <div class="panel-heading">
+                <h4 class="panel-title"><?=_('Images')?></h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-4">
+                    <?=Form::label(_('Photo'))?><br/>
+                    <img src="<?=$event->avatar?>" alt="avatar" class="picture" />
+                    <?=Form::input('file', 'picture', '')?>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <h4 class="panel-title"><?=_('External pages')?></h4>
             </div>
             <div class="panel-body">
-                <?=Form::labelInput('website', icon('globe')._('Event website'), 'url')?>
+                <?=Form::labelInput('website', icon('globe')._('Event website'), 'url', null, ['input' => ['placeholder' => 'http://...']])?>
 
-                <?=Form::labelInput('tickets_url', icon('ticket')._('Tickets page'), 'url')?>
+                <?=Form::labelInput('tickets_url', icon('ticket')._('Tickets page'), 'url', null, ['input' => ['placeholder' => 'http://...']])?>
 
                 <?=Form::labelInput('twitter', icon('twitter')._('Twitter handle'), 'text', null, ['input' => ['prefix' => '@']])?>
                 <?=Form::labelInput('hashtag', icon('quote-left')._('Event hashtag'), 'text', null, [
@@ -40,11 +53,13 @@ Form::model($event); //TODO: find a better way to share the model through partia
                 ])?>
 
                 <?=Form::labelInput('facebook', icon('facebook')._('Facebook page'), 'url', null, [
+                    'input' => ['placeholder' => 'https://www.facebook.com/...'],
                     //TODO: enable this help when we create organization profiles (#64 / #89)
         //            'help' => _('This is the event\'s Facebook page, not the organization one!')
                 ])?>
                 <?=Form::labelInput('facebook_event', icon('facebook')._('Facebook Event'), 'url', null, [
-                    'help' => _('This can help your users spread the word through Facebook, and it\'s another channel to get in touch with the public.')
+                    'input' => ['placeholder' => 'https://www.facebook.com/events/...'],
+                    'help' => _('This can help your users spread the word through Facebook, and it\'s another channel to get in touch with the public.'),
                 ])?>
             </div>
         </div>

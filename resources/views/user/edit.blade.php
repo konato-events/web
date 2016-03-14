@@ -12,11 +12,8 @@ const FORM_ID = 'submit';
 
 @section('css')
     <style type="text/css">
-        img.picture {
-            width: 100%;
-        }
         input[name=picture] {
-            margin: 10px 0;
+            margin: 0 0 20px 0;
         }
     </style>
 @endsection
