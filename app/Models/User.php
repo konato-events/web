@@ -63,6 +63,8 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public    $autoHashPasswordAttributes = true;
 
+    protected static $slugText = 'username';
+
     protected $most_visited               = [];
     protected $events                     = [];
     protected $sessions                   = [];

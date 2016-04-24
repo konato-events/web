@@ -23,10 +23,19 @@ class Base extends Ardent {
 
     protected $slug;
 
+    /** Field to be used as text part in the slug
+     * @var string */ 
+    protected static $slugText;
+
     //TODO: replace all slugify calls with this?
     public function getSlugAttribute() {
         if (!$this->slug) {
-            $this->slug = slugify($this->getKey(), ($this->name ?? $this->title) ?? '');
+            $this->slug = slugify(
+                $this->getKey(),
+                isset(static::$slugText)?
+                    $this->{static::$slugText} :
+                    ($this->name ?? $this->title ?? '')
+            );
         }
         return $this->slug;
     }
