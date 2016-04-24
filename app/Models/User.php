@@ -157,6 +157,9 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         $this->picture = $this->picture ?? self::generateGravatar($this->email, 1920);
     }
 
+    public function setUsernameAttribute($username) { $this->attributes['username'] = strtolower($username); }
+    public function setEmailAttribute($email) { $this->attributes['email'] = strtolower($email); }
+
     //TODO: cache
     public function getStatsAttribute() {
         $stats = [];
