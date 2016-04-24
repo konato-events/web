@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2016-03-12 21:26-0300\n"
-"PO-Revision-Date: 2016-03-12 21:26-0300\n"
+"POT-Creation-Date: 2016-04-24 17:59-0300\n"
+"PO-Revision-Date: 2016-04-24 18:03-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -21,23 +21,23 @@ msgstr ""
 msgid "Personal website"
 msgstr "Site pessoal"
 
-#: app/Models/User.php:15 resources/views/user/profile.blade.php:12
+#: app/Models/User.php:17 resources/views/user/profile.blade.php:12
 msgid "participant"
 msgstr "participante"
 
-#: app/Models/User.php:15 resources/views/user/profile.blade.php:13
+#: app/Models/User.php:17 resources/views/user/profile.blade.php:13
 msgid "speaker"
 msgstr "palestrante"
 
-#: app/Models/User.php:15 resources/views/user/profile.blade.php:14
+#: app/Models/User.php:17 resources/views/user/profile.blade.php:14
 msgid "involved"
 msgstr "envolvido"
 
-#: app/Models/User.php:15 resources/views/user/profile.blade.php:15
+#: app/Models/User.php:17 resources/views/user/profile.blade.php:15
 msgid "staff"
 msgstr "staff"
 
-#: app/Models/User.php:166
+#: app/Models/User.php:212
 msgid "Sorry, we were unable to save your picture. Can you try again later?"
 msgstr "Desculpe, não conseguimos salvar sua foto. Você pode tentar de novo?"
 
@@ -101,39 +101,39 @@ msgstr "Encontros universitários"
 msgid "Cultural"
 msgstr "Culturais"
 
-#: app/Http/Controllers/EventController.php:162
+#: app/Http/Controllers/EventController.php:166
 msgid "template"
 msgstr "modelo"
 
-#: app/Http/Controllers/EventController.php:166
+#: app/Http/Controllers/EventController.php:170
 #: resources/views/event/forms/_basic_fields.blade.php:12
 msgid "Title"
 msgstr "Título"
 
-#: app/Http/Controllers/EventController.php:166
+#: app/Http/Controllers/EventController.php:170
 #: resources/views/event/forms/edit_general.blade.php:21
 msgid "Description"
 msgstr "Descrição"
 
-#: app/Http/Controllers/EventController.php:166
+#: app/Http/Controllers/EventController.php:170
 #: resources/views/event/details.blade.php:381
 #: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:27
 msgid "Begin"
 msgstr "Início"
 
-#: app/Http/Controllers/EventController.php:166
+#: app/Http/Controllers/EventController.php:170
 #: resources/views/event/details.blade.php:382
 #: resources/views/event/search.blade.php:6
 #: resources/views/event/forms/_basic_fields.blade.php:31
 msgid "End"
 msgstr "Fim"
 
-#: app/Http/Controllers/EventController.php:167
+#: app/Http/Controllers/EventController.php:171
 msgid "SAMPLE TALK (remove this line): Abnormalities on Catalysis"
 msgstr "PALESTRA EXEMPLO (remova essa linha): Anormalidades na Catálise"
 
-#: app/Http/Controllers/EventController.php:167
+#: app/Http/Controllers/EventController.php:171
 msgid ""
 "This talk will walk us through some common abnormalities seen in some "
 "catalysis processes."
@@ -141,18 +141,18 @@ msgstr ""
 "Esta palestra irá nos levar através de anormalidades comuns, vistas em "
 "alguns processos de catálise."
 
-#: app/Http/Controllers/EventController.php:167
+#: app/Http/Controllers/EventController.php:171
 msgid "Format: YYYY-MM-DD HH:mm"
 msgstr "Formato: AAAA-MM-DD HH:mm"
 
-#: app/Http/Controllers/EventController.php:206
+#: app/Http/Controllers/EventController.php:210
 #, php-format
 msgid "One activity was imported."
 msgid_plural "A total of %d activities were imported."
 msgstr[0] "Uma atividade foi importada."
 msgstr[1] "Um total de %d atividades foram importadas."
 
-#: app/Http/Controllers/EventController.php:208
+#: app/Http/Controllers/EventController.php:212
 msgid "No activity was found in the file."
 msgstr "Nenhuma atividade foi encontrada."
 
@@ -313,14 +313,20 @@ msgstr ""
 "Ops! Encontramos alguns erros. Você pode corrigi-los antes de seguir em "
 "frente?"
 
-#: resources/views/auth/finishSignUp.blade.php:42
+#: resources/views/auth/finishSignUp.blade.php:43
 #: resources/views/auth/login.blade.php:19
-#: resources/views/user/_common_fields.blade.php:16
+#: resources/views/user/_common_fields.blade.php:10
+msgid "E-mail"
+msgstr "E-mail"
+
+#: resources/views/auth/finishSignUp.blade.php:46
+#: resources/views/auth/login.blade.php:19
+#: resources/views/user/_common_fields.blade.php:12
 msgid "Username"
 msgstr "Usuário"
 
-#: resources/views/auth/finishSignUp.blade.php:47
-#: resources/views/user/_common_fields.blade.php:21
+#: resources/views/auth/finishSignUp.blade.php:51
+#: resources/views/user/_common_fields.blade.php:17
 msgid ""
 "Use a uniquely identifying name for you. This will also help you to be found "
 "in the search. Use only letters, numbers and underlines, from 4 to 30 chars."
@@ -329,7 +335,7 @@ msgstr ""
 "encontrado na pesquisa. Use somente letras, número e underlines \"_\", de 4 "
 "a 30 caracteres."
 
-#: resources/views/auth/finishSignUp.blade.php:52
+#: resources/views/auth/finishSignUp.blade.php:56
 #: resources/views/auth/signUp.blade.php:52
 msgid "Go to my profile"
 msgstr "Ir para o meu perfil"
@@ -345,11 +351,6 @@ msgstr "Identifique-se para ter acesso à plataforma"
 #: resources/views/auth/login.blade.php:14
 msgid "You can also login using an account from one of those websites:"
 msgstr "Você também pode se logar usando a conta de um desses sites:"
-
-#: resources/views/auth/login.blade.php:19
-#: resources/views/user/_common_fields.blade.php:14
-msgid "E-mail"
-msgstr "E-mail"
 
 #: resources/views/auth/login.blade.php:20
 msgid "Here you can use either your username or your e-mail: both works!"
@@ -740,15 +741,15 @@ msgstr "Voltar"
 msgid "Save"
 msgstr "Salvar"
 
-#: resources/views/user/_common_fields.blade.php:12
+#: resources/views/user/_common_fields.blade.php:8
 msgid "Name"
 msgstr "Nome"
 
-#: resources/views/user/_common_fields.blade.php:25
+#: resources/views/user/_common_fields.blade.php:21
 msgid "Choose a password"
 msgstr "Escolha uma senha"
 
-#: resources/views/user/_common_fields.blade.php:26
+#: resources/views/user/_common_fields.blade.php:22
 msgid ""
 "Use at least 6 chars here. Preferably, with numbers and letters! Bonus "
 "points if you include lower-case and upper-case letters, as well as symbols."
@@ -757,11 +758,11 @@ msgstr ""
 "Pontos bônus se você incluir letras maiúsculas E minúsculas, e símbolos "
 "também."
 
-#: resources/views/user/_common_fields.blade.php:29
+#: resources/views/user/_common_fields.blade.php:25
 msgid "Confirm the password"
 msgstr "Confirme a senha"
 
-#: resources/views/user/_common_fields.blade.php:29
+#: resources/views/user/_common_fields.blade.php:25
 msgid "Just to be sure there's no typo, could you please repeat that password?"
 msgstr ""
 "Só pra ter certeza que você não digitou nada por engano, pode repetir a "
@@ -782,7 +783,7 @@ msgid "Speakers on your themes of interest"
 msgstr "Palestrantes nos seus temas de interesse"
 
 #: resources/views/user/speakers.blade.php:14
-#: resources/views/user/profile.blade.php:207
+#: resources/views/user/profile.blade.php:205
 msgid "Themes of interest"
 msgstr "Temas de interesse"
 
@@ -816,7 +817,7 @@ msgstr[1] ""
 "estes são os mais comuns:"
 
 #: resources/views/user/speakers.blade.php:121
-#: resources/views/user/profile.blade.php:82
+#: resources/views/user/profile.blade.php:81
 #: resources/views/components/users_list.blade.php:12
 #, php-format
 msgid "%s on Konato"
@@ -853,80 +854,76 @@ msgstr "perfil"
 msgid "m/d/Y"
 msgstr "d/m/Y"
 
-#: resources/views/user/profile.blade.php:81
+#: resources/views/user/profile.blade.php:98
 #, php-format
-msgid "%s still don't have a picture :("
-msgstr "%s ainda não tem uma foto :("
-
-#: resources/views/user/profile.blade.php:100
 msgid ""
-"There's nothing to say about this user...<br/> He prefers to keep an air of "
-"mistery about him, I guess."
+"There's nothing to say about this user...<br/> %s prefers to stay in an air "
+"of mistery, I guess."
 msgstr ""
-"Não há nada para dizer sobre esse usuário...<br/> Ele prefere se manter num "
+"Não há nada para dizer sobre esse usuário...<br/> %s prefere se manter num "
 "ar de mistério, pelo visto."
 
-#: resources/views/user/profile.blade.php:107
+#: resources/views/user/profile.blade.php:105
 #, php-format
 msgid "%s has participated in events as a speaker"
 msgstr "%s já participou de eventos como palestrante"
 
-#: resources/views/user/profile.blade.php:116
+#: resources/views/user/profile.blade.php:114
 msgid "Her elsewhere:"
 msgstr "Ela em outros lugares:"
 
-#: resources/views/user/profile.blade.php:116
+#: resources/views/user/profile.blade.php:114
 msgid "Him elsewhere:"
 msgstr "Ele em outros lugares:"
 
-#: resources/views/user/profile.blade.php:141
+#: resources/views/user/profile.blade.php:139
 msgid "Her in events"
 msgstr "Ela nos eventos"
 
-#: resources/views/user/profile.blade.php:141
+#: resources/views/user/profile.blade.php:139
 msgid "Him in events"
 msgstr "Ele nos eventos"
 
-#: resources/views/user/profile.blade.php:162
+#: resources/views/user/profile.blade.php:160
 msgid "This user have not yet interacted with the events in the platform"
 msgstr "Este usuário ainda não interagiu com nenhum evento da plataforma"
 
-#: resources/views/user/profile.blade.php:181
+#: resources/views/user/profile.blade.php:179
 msgid "Add as a connection"
 msgstr "Adicionar como conexão"
 
-#: resources/views/user/profile.blade.php:183
+#: resources/views/user/profile.blade.php:181
 msgid "See my connections"
 msgstr "Ver minhas conexões"
 
-#: resources/views/user/profile.blade.php:190
+#: resources/views/user/profile.blade.php:188
 msgid "Unfollow her"
 msgstr "Deixar de seguir"
 
-#: resources/views/user/profile.blade.php:190
+#: resources/views/user/profile.blade.php:188
 msgid "Unfollow him"
 msgstr "Deixar de seguir"
 
-#: resources/views/user/profile.blade.php:194
+#: resources/views/user/profile.blade.php:192
 msgid "Follow her"
 msgstr "Seguir"
 
-#: resources/views/user/profile.blade.php:194
+#: resources/views/user/profile.blade.php:192
 msgid "Follow him"
 msgstr "Seguir"
 
-#: resources/views/user/profile.blade.php:198
+#: resources/views/user/profile.blade.php:196
 #: resources/views/event/details.blade.php:356
 #: resources/views/theme/events.blade.php:162
 msgid "See my following preferences"
 msgstr "Configurar o que acompanho"
 
-#: resources/views/user/profile.blade.php:215
+#: resources/views/user/profile.blade.php:213
 #, php-format
 msgid "%s still didn't show interest in any theme..."
 msgstr "%s ainda não mostrou interesse em nenhum tema..."
 
-#: resources/views/user/profile.blade.php:224
+#: resources/views/user/profile.blade.php:222
 msgid "Most visited places"
 msgstr "Lugares mais visitados"
 
@@ -1437,6 +1434,9 @@ msgstr "Palestrantes populares"
 #, php-format
 msgid "See all speakers on %s"
 msgstr "Veja todos os palestrantes em %s"
+
+#~ msgid "%s still don't have a picture :("
+#~ msgstr "%s ainda não tem uma foto :("
 
 #~ msgid "Dashboard"
 #~ msgstr "Dashboard"

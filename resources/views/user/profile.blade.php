@@ -78,12 +78,10 @@ $date_fmt   = _('m/d/Y');
 @section('header-content')
 <div class="row">
     <div class="photo col-md-4 col-sm-4 col-sm-offset-0 col-xs-4 col-xs-offset-4">
-        <? $pic_help = str_contains($user->picture, 'gravatar')? _r('%s still don\'t have a picture :(', ucfirst($pronoun)) : '' ?>
-        <img src="<?=$user->picture?>" alt="<?=_r('%s on Konato', $user->name)?>"
-             <? if ($pic_help): ?>data-toggle="tooltip" title="<?=$pic_help?>"<? endif ?> />
+        <img src="<?=$user->picture?>" alt="<?=_r('%s on Konato', $user->name)?>"/>
     </div>
 
-    <?//TODO: this height should be defined though JS, so we can save network trips inside the server ?>
+    <?//TODO: this height should be defined through JS, so we can save network trips inside the server ?>
     <div class="details col-md-8 col-sm-8 col-xs-12" style="height: <?=$avatar_height?>px">
 
         <h1><?=$user->name?></h1>
@@ -97,7 +95,7 @@ $date_fmt   = _('m/d/Y');
         <? if (!$user->tagline && !$user->bio): ?>
             <p class="mistery">
                 <i class="fa fa-user-secret"></i>
-                <span><?=_('There\'s nothing to say about this user...<br/> He prefers to keep an air of mistery about him, I guess.')?></span>
+                <span><?=_r('There\'s nothing to say about this user...<br/> %s prefers to stay in an air of mistery, I guess.', ucfirst($pronoun))?></span>
             </p>
         <? endif ?>
 
