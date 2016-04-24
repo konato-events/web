@@ -8,12 +8,12 @@
                 <i class="fa fa-facebook-square"></i> Facebook
             </a>
         </li>
-        <!--
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'twitter'])?>">
                 <span class="fa fa-twitter-square"></span> Twitter
             </a>
         </li>
+        <!--
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'linkedin'])?>">
                 <i class="fa fa-linkedin-square"></i> LinkedIn

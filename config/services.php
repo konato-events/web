@@ -16,7 +16,7 @@ $auth_provider = function(string $name) {
 
 return array_merge(
     $auth_provider('facebook'),
-//    $auth_provider('facebook'),
+    $auth_provider('twitter'),
 //    $auth_provider('facebook'),
 //    $auth_provider('facebook'),
     [

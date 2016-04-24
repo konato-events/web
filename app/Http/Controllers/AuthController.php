@@ -60,7 +60,7 @@ class AuthController extends Controller {
         return $this->handleUserWasAuthenticated(request(), $this->isUsingThrottlesLoginsTrait());
     }
 
-    /* *****************************  SOCIALITE ROUTES ***************************** */
+/* *****************************  SOCIALITE ROUTES ***************************** */
 
     public function getProvider(string $provider) {
         return $this->driver($provider, isset($_GET['popup']))->redirect();
@@ -70,35 +70,58 @@ class AuthController extends Controller {
         try {
             $data = $this->driver($provider)->user();
 
-            //if there's already a user with this social account, let's log him in!
+            //if there's already an user with this social account, let's log him in!
             /** @var SocialLink $link */
-            $link = SocialNetwork::find($provider)->links()
-                ->where('username', $data->getId())
-                ->with('user')
-                ->first();
-
-            if ($link) {
+            if ($link = SocialNetwork::find($provider)->links()
+                    ->where('username', $data->getId())
+                    ->with('user')
+                    ->first()) {
                 return $this->loginAfterSignUp($link->user);
             }
 
-            $user = new User();
-            $user->name     = $data->getName();
-            $user->email    = $data->getEmail();
-            $user->avatar   = $data->getAvatar();
-            $user->username = strtok($user->email, '@');
-            if (isset($data->user)) {
+            //if there's already an user with this social email, let's merge accounts
+            /** @var User $user */
+            if ($data->getEmail() && $user = User::where('email', $data->getEmail())->first()) {
                 $this->fillUser($user, $data->user, $data, $provider);
+                if (\DB::transaction(function() use ($user) {
+                    //tries to save the user data from fillUser + the main network. If it fails, throw up
+                    $user->throwOnValidation = true;
+                    $user->save();
+                    $this->saveLinks($user, true);
+                    return true;
+                })) {
+                    //if it works, let's go ahead, save other links (that might fail in case they're dups) and finish
+                    $this->saveLinks($user);
+                    return $this->loginAfterSignUp($user);
+                }
+            }
+
+            $user = new User();
+            $this->fillUser($user, $data->user, $data, $provider);
+            if (!$user->username) {
+                $user->username = $data->getNickname()?? strtok($user->email, '@');
             }
 
             //for some odd reason, Laravel is unable to automatically serialize the user object(?), so we do it by hand
             session()->set('signup.user', serialize($user));
             return view('auth.finishSignUp', compact('user', 'provider'));
-        } catch (\Exception $e) {
-            \Log::error(class_basename($e).' during social auth ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
-            return redirect()
+        }
+        catch (InvalidModelException $e) {
+            return redirect()->action('AuthController@getSignUp')
+                             ->with('social_error', true)
+                             ->with('provider', $provider)
+                             ->withErrors($e->getErrors());
+        }
+        catch (\Exception $e) {
+            \Log::error(class_basename($e).' during social callback ('.printr($_GET).'): ['.$e->getCode().'] '.$e->getMessage());
+            $redirect = redirect()
                 ->action('AuthController@getSignUp')
                 ->with('social_error', true)
                 ->with('provider', $provider);
+            if ($errors = request()->getSession()->get('errors')) {
+                $redirect->withErrors($errors->getBag('default'));
+            }
+            return $redirect;
         }
     }
 
@@ -108,28 +131,14 @@ class AuthController extends Controller {
 
         try {
             \DB::transaction(function() use ($req, $user) {
+                if ($req->email) {
+                    $user->email = $req->email;
+                }
                 $user->username = $req->username;
                 $user->throwOnValidation = true; //todo: https://github.com/laravel-ardent/ardent/issues/279
                 $user->save();
-
-                $relations = session('signup.relations');
-                foreach ($relations as $relation => $data) {
-                    switch ($relation) {
-                        case 'links':
-                            foreach ($data as $provider => $username) {
-                                $link = new SocialLink();
-                                $link->network()->associate(SocialNetwork::find($provider));
-                                $link->user()->associate($user);
-                                $link->username = $username;
-                                $link->throwOnValidation = true;
-                                $link->save();
-                            }
-                            break;
-
-                        default:
-                            \Log::emergency("Not yet implemented Sign Up relation called $relation: ".printr($data));
-                    }
-                }
+                $this->saveLinks($user, true);
+                $this->saveLinks($user);
 
                 //those fields should not be "pulled" as an error might rise and their values can be reused in a 2nd try
                 session()->remove('signup.user');

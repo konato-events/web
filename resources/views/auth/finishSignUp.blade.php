@@ -39,6 +39,10 @@ const FORM_ID = 'signup';
         </div>
     <? endif ?>
 
+    <? if ($provider == 'twitter'): ?>
+        <?=Form::labelInput('email', _('E-mail'), 'email')?>
+    <? endif ?>
+
     <?=Form::labelInput('username', _('Username'), 'text', null, [
         'input' => [
             'data-unset' => 'true',

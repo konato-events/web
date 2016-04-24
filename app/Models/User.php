@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\QueryException;
+use LaravelArdent\Ardent\InvalidModelException;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -153,8 +155,33 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public function beforeSave() {
 //        unset($this->password_confirmation);
-        $this->avatar  = $this->avatar  ?? self::generateGravatar($this->email, 100);
-        $this->picture = $this->picture ?? self::generateGravatar($this->email, 1920);
+        $this->avatar   = $this->avatar  ?? self::generateGravatar($this->email, 100);
+        $this->picture  = $this->picture ?? self::generateGravatar($this->email, 1920);
+    }
+
+    /**
+     * Creates a {@link SocialLink} for the current user
+     * @param string|int $username The username data to be stored
+     * @param string     $provider One recognizable provider name (from {@link SocialNetwork}
+     * @return SocialLink
+     * @throws InvalidModelException in case there's an issue with SocialLink validation
+     */
+    public function addLink($username, string $provider) {
+        $link = new SocialLink();
+        try {
+            $link->network()->associate(SocialNetwork::find($provider));
+            $link->user()->associate($this);
+            $link->username          = $username;
+            $link->throwOnValidation = true;
+            $link->save();
+        }
+        catch (QueryException $e) {
+            //integrity constraint violation: duplicate key && duplicate page == can be ignored
+            if (!($e->getCode() == 23505 && stripos($e->getMessage(), 'unique_social_user'))) {
+                throw $e; //not an "expected" error, so let's throw it up
+            }
+        }
+        return $link;
     }
 
     public function setUsernameAttribute($username) { $this->attributes['username'] = strtolower($username); }
