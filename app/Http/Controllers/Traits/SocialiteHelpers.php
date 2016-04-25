@@ -10,8 +10,7 @@ trait SocialiteHelpers {
         $driver = \Socialite::driver($provider);
 
         switch ($provider) {
-            case 'facebook':
-                /** @var \Laravel\Socialite\Two\FacebookProvider $driver */
+            case 'facebook': /** @var \Laravel\Socialite\Two\FacebookProvider $driver */
                 $driver
                     ->scopes([
                         'public_profile',
@@ -46,6 +45,10 @@ trait SocialiteHelpers {
             case 'twitter': /** @var \Laravel\Socialite\One\TwitterProvider $driver */
                 // nothing to do with Twitter's client
             break;
+
+            case 'github':  /** @var \Laravel\Socialite\Two\GithubProvider $driver */
+                $driver->scopes(['user','user:email']);
+            break;
         }
 
         return $driver;
@@ -57,7 +60,7 @@ trait SocialiteHelpers {
             'email'         => 'email',
             'avatar'        => 'avatar',
             'picture'       => 'avatar_original',
-            'bio'           => ['bio', 'description'],
+            'bio'           => ['bio', 'description'], //Github's bio apparently is a null, non-editable field
             'birthday'      => 'birthday',
             'gender'        => 'gender',
             'rel:location'  => 'location.name',
@@ -65,9 +68,11 @@ trait SocialiteHelpers {
             'rel:locale'    => 'locale',
             'rel:website'   => 'website',
             "rel:$provider" => 'link',
-            'tagline'       => 'work',
+            'tagline'       => ['work','company'],
         ];
         $relations_data = ['links' => []];
+
+//        !ddd($data);
 
         $getValue = function($key) use ($user_data, $data) {
             if (strpos($key, '.') === false) {
@@ -100,12 +105,20 @@ trait SocialiteHelpers {
                 switch ($field) {
                     case 'birthday':
                         $value = \DateTime::createFromFormat('m/d/Y', $value)->format('Y-m-d');
-                        break;
+                    break;
 
                     case 'tagline':
-                        $last_job = current($value);
-                        $value    = "{$last_job['position']['name']} @ {$last_job['employer']['name']}";
-                        break;
+                        switch ($provider) {
+                            case 'github':
+                                $value = 'Developer'.($value? ' @ '.$value : '');
+                            break;
+
+                            case 'facebook':
+                                $last_job = current($value);
+                                $value    = $last_job['position']['name'].' @ '.$last_job['employer']['name'];
+                            break;
+                        }
+                    break;
 
                     case 'gender':  $value = strtoupper($value[0]); break;
                 }
@@ -117,18 +130,22 @@ trait SocialiteHelpers {
                     case 'website':
                         switch ($provider) {
                             case 'twitter': $url = static::unshortenUrl($user_data['url']); break;
+                            case 'github':  $url = $user_data['blog'];    break; //seriously github? blog? hahah
                             default:        $url = $user_data['website']; break;
                         }
-                        if (!preg_match('|^https?://|', $url)) {
-                            $url = 'http://'.$url;
+                        if ($url) {
+                            if (!preg_match('|^https?://|', $url)) {
+                                $url = 'http://'.$url;
+                            }
+                            $url = substr($url, 4); //personal website prefix length
+                            $relations_data['links']['personal website'] = $url;
                         }
-                        $url = substr($url, 4); //personal website prefix length
-                        $relations_data['links']['personal website'] = $url;
                     break;
 
                     case $provider: //provider's profile
                         switch ($provider) {
-                            case 'twitter': $username = $data->getNickname(); break;
+                            case 'twitter':
+                            case 'github':  $username = $data->getNickname(); break;
                             default:        $username = $data->getId();
                         }
                         session()->set('signup.main_provider_link', compact('provider', 'username'));
@@ -136,25 +153,28 @@ trait SocialiteHelpers {
 
                     case 'location':
                         //facebook: location.name
-                        //twitter: location
+                        //twitter, github: location
                         //TODO: add a location relationship here; don't forget to test with a testuser with no location!
                     break;
 
                     case 'locale':
                         //facebook: locale
                         //twitter: lang (en)
+                        //github: none?
                         //TODO: add a language relationship here; don't forget to test with a testuser with no locale!
                     break;
 
                     case 'timezone':
                         //facebook: timezone //TODO DAFUK timezone comes as -2 USELESS HALP
                         //twitter: utc_offset (-10800) / timezone (Brasilia)
+                        //github: none?
                         //TODO: add a timezone relationship here; don't forget to test with a testuser with no timezone!
                     break;
                 }
             }
         }
 
+//        !ddd($user->getAttributes());
         session()->set('signup.relations', $relations_data);
     }
 

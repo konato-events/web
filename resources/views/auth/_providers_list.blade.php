@@ -24,11 +24,13 @@
                 <i class="fa fa-google-plus-square"></i> Google / Google+
             </a>
         </li>
+        -->
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'github'])?>">
                 <i class="fa fa-github-square"></i> GitHub
             </a>
         </li>
+        <!--
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'bitbucket'])?>">
                 <i class="fa fa-bitbucket-square"></i> Bitbucket
