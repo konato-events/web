@@ -8,6 +8,7 @@ Homestead.json
 .env
 
 # PHPStorm stuff: https://devnet.jetbrains.com/docs/DOC-1186
+_ide_helper.php
 .idea/workspace.xml
 .idea/tasks.xml
 
