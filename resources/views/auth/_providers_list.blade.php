@@ -13,12 +13,12 @@
                 <span class="fa fa-twitter-square"></span> Twitter
             </a>
         </li>
-        <!--
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'linkedin'])?>">
                 <i class="fa fa-linkedin-square"></i> LinkedIn
             </a>
         </li>
+        <!--
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'google'])?>">
                 <i class="fa fa-google-plus-square"></i> Google / Google+

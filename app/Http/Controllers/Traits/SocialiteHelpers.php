@@ -4,6 +4,19 @@ use GuzzleHttp\Client as Http;
 use Laravel\Socialite\Contracts\Provider;
 use Laravel\Socialite\Contracts\User as UserContract;
 
+/**
+ * This trait adds some useful methods to parse data coming from Socialite.
+ *
+ * How-to - Add a new API
+ * 1. get ID/Key and Secret for their services (Google it?)
+ * 2. add them to .env and .env.example, as SERVICEXX_ID and SERVICEXX_SECRET
+ * 3. add them to Heroku by using `heroku config:add SERVICEXX_ID=xxx SERVICEXX_SECRET=xxx`
+ * 4. add that service to the providers array on config/services.php
+ * 5. configure any additional scope/arguments by adding a new case to {@link driver()}
+ * 6. uncomment the debug by the end of {@link fillUser()} and play around with the results and code until you see fit
+ *
+ * @package App\Http\Controllers\Traits
+ */
 trait SocialiteHelpers {
 
     protected function driver(string $provider, bool $popup = false):Provider {
@@ -46,6 +59,10 @@ trait SocialiteHelpers {
                 $driver->scopes(['user','user:email']);
             break;
 
+            case 'linkedin':  /** @var \Laravel\Socialite\Two\LinkedInProvider $driver */
+                $driver->scopes(['r_basicprofile','r_emailaddress']); //those are actually consumer's hard settings
+            break;
+
             case 'twitter': /** @var \Laravel\Socialite\One\TwitterProvider $driver */
             case 'bitbucket': /** @var \Laravel\Socialite\One\BitbucketProvider $driver */
                 // there's nothing to be done with OAuth 1.0 clients
@@ -70,7 +87,7 @@ trait SocialiteHelpers {
             'rel:locale'    => 'locale',
             'rel:website'   => 'website',
             "rel:$provider" => 'link',
-            'tagline'       => ['work','company'],
+            'tagline'       => ['work','company','headline'],
         ];
         $relations_data = ['links' => []];
 
@@ -146,8 +163,15 @@ trait SocialiteHelpers {
                         switch ($provider) {
                             case 'twitter':
                             case 'github':
-                            case 'bitbucket': $username = $data->getNickname(); break;
-                            default:          $username = $data->getId();
+                            case 'bitbucket':
+                                $username = $data->getNickname();
+                            break;
+                            case 'linkedin':
+                                $profile  = $data->user['publicProfileUrl'];
+                                $username = substr($profile, strpos($profile, '/in/')+4);
+                            break;
+                            default:
+                                $username = $data->getId();
                         }
                         session()->set('signup.main_provider_link', compact('provider', 'username'));
                     break;
@@ -155,6 +179,7 @@ trait SocialiteHelpers {
                     case 'location':
                         //facebook: location.name
                         //twitter, github, bitbucket (empty?): location
+                        //linkedin: location.name (Rio de Janeiro Area, Brazil) + location.country.code (br)
                         //TODO: add a location relationship here; don't forget to test with a testuser with no location!
                     break;
 
@@ -175,7 +200,7 @@ trait SocialiteHelpers {
             }
         }
 
-//        !ddd($user->getAttributes(), $data, $relations_data);
+//        !ddd($user->getAttributes(), $username, $data, $relations_data);
         session()->set('signup.relations', $relations_data);
     }
 
