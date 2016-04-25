@@ -18,6 +18,13 @@
         "source": "https://bitbucket.org/konato/web"
     },
 
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/igorsantos07/oauth1-client"
+        }
+    ],
+
     "require": {
         "php": "~7.0@beta",
         "ext-gettext": "*",
@@ -30,6 +37,7 @@
 
         "barryvdh/laravel-ide-helper": "^2.1",
         "laravel/socialite": "^2.0",
+        "league/oauth1-client": "dev-master",
         "predis/predis": "^1.0",
         "doctrine/dbal": "^2.5",
         "barryvdh/laravel-debugbar": "^2.0",

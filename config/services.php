@@ -5,21 +5,15 @@ if (!defined('ROOT_URL')) {
     define('ROOT_URL', $root_url);
 }
 
-$auth_provider = function(string $name) {
-    $caps = strtoupper($name);
-    return [$name => [
-        'client_id'     => env($caps.'_ID'),
-        'client_secret' => env($caps.'_SECRET'),
-        'redirect'      => ROOT_URL.'/auth/callback/'.$name
-    ]];
-};
-
+$providers = ['facebook','twitter','github','bitbucket'];
 return array_merge(
-    $auth_provider('facebook'),
-    $auth_provider('twitter'),
-    $auth_provider('github'),
-//    $auth_provider('facebook'),
-    [
-
-    ]
+    array_map(function($name) {
+        $caps = strtoupper($name);
+        return [
+            'client_id'     => env($caps.'_ID'),
+            'client_secret' => env($caps.'_SECRET'),
+            'redirect'      => ROOT_URL.'/auth/callback/'.$name
+        ];
+    }, array_combine($providers, $providers)),
+    [/* other things? */]
 );

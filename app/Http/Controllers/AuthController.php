@@ -98,9 +98,8 @@ class AuthController extends Controller {
 
             $user = new User();
             $this->fillUser($user, $data->user, $data, $provider);
-            if (!$user->username) {
-                $user->username = $data->getNickname()?? strtok($user->email, '@');
-            }
+            $user->username = $user->username?? $data->getNickname()?? strtok($user->email, '@');
+            $user->picture  = $user->picture?? $user->avatar;
 
             //for some odd reason, Laravel is unable to automatically serialize the user object(?), so we do it by hand
             session()->set('signup.user', serialize($user));

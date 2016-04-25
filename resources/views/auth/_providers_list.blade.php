@@ -30,12 +30,10 @@
                 <i class="fa fa-github-square"></i> GitHub
             </a>
         </li>
-        <!--
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'bitbucket'])?>">
                 <i class="fa fa-bitbucket-square"></i> Bitbucket
             </a>
         </li>
-        -->
     </ul>
 </div>
