@@ -11,7 +11,7 @@ $subheader = _('Identify yourself to get access to the platform');
 @section('header-subtitle', $subheader)
 
 @section('form')
-@include('auth._providers_list', ['intro' => _('You can also use an account from...')])
+@include('auth._providers_list')
 
 <?=Form::model(new \App\Models\User, ['action' => 'AuthController@postLogin', 'novalidate' => true])?>
     @include('components.form_errors')
@@ -20,10 +20,9 @@ $subheader = _('Identify yourself to get access to the platform');
     ])?>
     <?=Form::labelInput('password', _('Password'), 'password')?>
 
-    <div class="row">
-        <div class="col-xs-8">
-            <?=Form::submit(_('Let me in'), ['class' => 'btn btn-theme btn-theme-lg'])?>
-        </div>
+    <div id="buttons-row">
+        <a href="<?=act('auth@signUp')?>" class="pull-left">I don't have an account</a>
+        <?=Form::submit(_('Let me in'), ['class' => 'btn btn-theme btn-theme-lg pull-right'])?>
     </div>
 
 <?=Form::close()?>

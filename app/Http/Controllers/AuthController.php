@@ -55,7 +55,12 @@ class AuthController extends Controller {
         ];
     }
 
-    protected function loginAfterSignUp(User $user) {
+    protected function loginAfterSignUp(User $user, string $provider = '') {
+        if ($provider) {
+            $path = act('auth@login');
+            $path = substr($path, 0, strrpos($path, '/'));
+            setcookie('last_login_provider', $provider, null, $path);
+        }
         Auth::login($user);
         return $this->handleUserWasAuthenticated(request(), $this->isUsingThrottlesLoginsTrait());
     }
@@ -76,7 +81,7 @@ class AuthController extends Controller {
                     ->where('username', $data->getId())
                     ->with('user')
                     ->first()) {
-                return $this->loginAfterSignUp($link->user);
+                return $this->loginAfterSignUp($link->user, $provider);
             }
 
             //if there's already an user with this social email, let's merge accounts
@@ -92,7 +97,7 @@ class AuthController extends Controller {
                 })) {
                     //if it works, let's go ahead, save other links (that might fail in case they're dups) and finish
                     $this->saveLinks($user);
-                    return $this->loginAfterSignUp($user);
+                    return $this->loginAfterSignUp($user, $provider);
                 }
             }
 
@@ -157,7 +162,7 @@ class AuthController extends Controller {
                              ->with('provider', $req->provider);
         }
 
-        return $this->loginAfterSignUp($user);
+        return $this->loginAfterSignUp($user, $req->provider);
     }
 
     /** @todo going to receive a ping whenever a user deauthorizes in the provider - test with Facebook! */
