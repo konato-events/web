@@ -18,13 +18,11 @@
                 <i class="fa fa-linkedin-square"></i> LinkedIn
             </a>
         </li>
-        <!--
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'google'])?>">
                 <i class="fa fa-google-plus-square"></i> Google / Google+
             </a>
         </li>
-        -->
         <li>
             <a href="<?=act('auth@provider', ['provider' => 'github'])?>">
                 <i class="fa fa-github-square"></i> GitHub

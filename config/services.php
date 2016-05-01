@@ -5,7 +5,7 @@ if (!defined('ROOT_URL')) {
     define('ROOT_URL', $root_url);
 }
 
-$providers = ['facebook','twitter','github','bitbucket','linkedin'];
+$providers = ['facebook','twitter','linkedin','google','github','bitbucket'];
 return array_merge(
     array_map(function($name) {
         $caps = strtoupper($name);

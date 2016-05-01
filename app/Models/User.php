@@ -150,6 +150,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public function links() {
         return $this->hasMany(SocialLink::class)->join('social_networks AS n', 'n.id', '=', 'social_network_id')
+                    ->whereRaw('n.position IS NOT NULL')
                     ->orderBy('n.position');
     }
 

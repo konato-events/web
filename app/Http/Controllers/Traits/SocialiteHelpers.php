@@ -13,7 +13,8 @@ use Laravel\Socialite\Contracts\User as UserContract;
  * 3. add them to Heroku by using `heroku config:add SERVICEXX_ID=xxx SERVICEXX_SECRET=xxx`
  * 4. add that service to the providers array on config/services.php
  * 5. configure any additional scope/arguments by adding a new case to {@link driver()}
- * 6. uncomment the debug by the end of {@link fillUser()} and play around with the results and code until you see fit
+ * 6. add the provider link somewhere in the app (probably /auth/provider/SERVICE, in views.auth._providers_list)
+ * 7. uncomment the debug by the end of {@link fillUser()} and play around with the results and code until you see fit
  *
  * @package App\Http\Controllers\Traits
  */
@@ -55,12 +56,16 @@ trait SocialiteHelpers {
                 }
             break;
 
-            case 'github':  /** @var \Laravel\Socialite\Two\GithubProvider $driver */
+            case 'github': /** @var \Laravel\Socialite\Two\GithubProvider $driver */
                 $driver->scopes(['user','user:email']);
             break;
 
-            case 'linkedin':  /** @var \Laravel\Socialite\Two\LinkedInProvider $driver */
+            case 'linkedin': /** @var \Laravel\Socialite\Two\LinkedInProvider $driver */
                 $driver->scopes(['r_basicprofile','r_emailaddress']); //those are actually consumer's hard settings
+            break;
+
+            case 'google': /** @var \Laravel\Socialite\Two\GoogleProvider $driver */
+                // nothing to do here
             break;
 
             case 'twitter': /** @var \Laravel\Socialite\One\TwitterProvider $driver */
@@ -87,7 +92,7 @@ trait SocialiteHelpers {
             'rel:locale'    => 'locale',
             'rel:website'   => 'website',
             "rel:$provider" => 'link',
-            'tagline'       => ['work','company','headline'],
+            'tagline'       => ['work','company','headline','occupation'],
         ];
         $relations_data = ['links' => []];
 
@@ -120,6 +125,18 @@ trait SocialiteHelpers {
                 }
 
                 switch ($field) {
+                    case 'name':
+                        if ($provider == 'google') {
+                            $value = trim($value['givenName'].' '.$value['familyName']);
+                            if (!$value) { //yeah, hosted accounts may not even have a NAME (!!!)
+                                $email = $data->getEmail();
+                                $value = substr($email, 0, strpos($email, '@'));      //takes the email username...
+                                $value = strtr($value, ['.'=>' ','_'=>' ','-'=>' ']); //..replaces common placeholders..
+                                $value = ucwords($value);                             //...and call it a "name"
+                            }
+                        }
+                    break;
+
                     case 'birthday':
                         $value = \DateTime::createFromFormat('m/d/Y', $value)->format('Y-m-d');
                     break;
@@ -166,12 +183,39 @@ trait SocialiteHelpers {
                             case 'bitbucket':
                                 $username = $data->getNickname();
                             break;
+
                             case 'linkedin':
-                                $profile  = $data->user['publicProfileUrl'];
+                                $profile  = $user_data['publicProfileUrl'];
                                 $username = substr($profile, strpos($profile, '/in/')+4);
                             break;
-                            default:
+
+                            case 'google':
                                 $username = $data->getId();
+
+                                if ($user_data['isPlusUser']) {
+                                    $relations_data['links']['google+'] = $data->getId();
+                                }
+
+                                if (isset($user_data['urls']) && is_array($user_data['urls'])) {
+                                    //TODO: should we use our entries from SocialNetwork instead? how? maybe spliting the URL field into verification_url (regex) and profile_url?
+                                    $valid_networks = ['facebook', 'linkedin', 'twitter', 'youtube'];
+
+                                    foreach ($user_data['urls'] as $entry) {
+                                        $label  = strtolower($entry['label']);
+                                        $handle = substr($entry['value'], (strrpos($entry['value'], '/')?: -1) + 1);
+                                        if (in_array($label, $valid_networks)) {
+                                            $relations_data['links'][$label] = $handle;
+                                        } else {
+                                            foreach ($valid_networks as $network)
+                                            if (strpos($entry['value'], $network.'.com')) {
+                                                $relations_data['links'][$network] = $handle;
+                                            }
+                                        }
+                                    }
+                                }
+                            break;
+
+                            default: $username = $data->getId();
                         }
                         session()->set('signup.main_provider_link', compact('provider', 'username'));
                     break;
@@ -180,6 +224,7 @@ trait SocialiteHelpers {
                         //facebook: location.name
                         //twitter, github, bitbucket (empty?): location
                         //linkedin: location.name (Rio de Janeiro Area, Brazil) + location.country.code (br)
+                        //google: placesLived[].primary=true ~ value
                         //TODO: add a location relationship here; don't forget to test with a testuser with no location!
                     break;
 
@@ -187,13 +232,14 @@ trait SocialiteHelpers {
                         //facebook: locale
                         //twitter: lang (en)
                         //github, bitbucket: none?
+                        //google: language
                         //TODO: add a language relationship here; don't forget to test with a testuser with no locale!
                     break;
 
                     case 'timezone':
                         //facebook: timezone //TODO DAFUK timezone comes as -2 USELESS HALP
                         //twitter: utc_offset (-10800) / timezone (Brasilia)
-                        //github, bitbucket: none?
+                        //github, bitbucket, google: none?
                         //TODO: add a timezone relationship here; don't forget to test with a testuser with no timezone!
                     break;
                 }
