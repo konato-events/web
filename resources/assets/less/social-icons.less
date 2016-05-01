@@ -1,0 +1,17 @@
+@facebook : #3B5998;
+@twitter  : #55ACEE;
+@linkedin : #0077B5;
+@google   : #DB4437;
+@github   : #171515;
+@bitbucket: #205081;
+
+@networks: facebook, twitter, linkedin, google, github, bitbucket;
+
+//Loop to build <network>-color classes - see http://stackoverflow.com/a/21441220/102960
+.-(@i: length(@networks)) when (@i > 0) {
+    @name: extract(@networks, @i);
+    .@{name}-color {
+        color: @@name !important;
+    }
+    .-((@i - 1));
+} .-;
