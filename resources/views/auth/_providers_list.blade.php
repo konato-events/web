@@ -6,6 +6,7 @@ $providers = [
     'twitter'   => ['twitter-square', 'Twitter'],
     'linkedin'  => ['linkedin-square', 'LinkedIn'],
     'google'    => ['google-plus-square', 'Google'],
+    'live'      => ['windows', 'Microsoft Live'],
     'github'    => ['github-square', 'Github'],
     'bitbucket' => ['bitbucket-square', 'Bitbucket'],
 ];

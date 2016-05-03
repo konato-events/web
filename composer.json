@@ -41,7 +41,8 @@
         "predis/predis": "^1.0",
         "doctrine/dbal": "^2.5",
         "barryvdh/laravel-debugbar": "^2.0",
-        "league/flysystem-aws-s3-v3": "~1.0"
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "socialiteproviders/microsoft-live": "^2.0"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*",

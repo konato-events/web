@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ed9a91c386d07b8ac35105cc0b3bbf27",
-    "content-hash": "5d7a20ceadd19adf91fcb3449982e7cd",
+    "hash": "6ab8fb29b5e98ea8e00ee32b1b27675a",
+    "content-hash": "41f64ebb19893a7dda41a70b55a1dfb8",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1714,7 +1714,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/igorsantos07/oauth1-client/zipball/9eb0134ba2f7bbe912ba4176f569fcb2db26d628",
+                "url": "https://api.github.com/repos/igorsantos07/oauth1-client/zipball/9e4be58c0a6b2c458fc4a95cd7cc8acb73bb81f6",
                 "reference": "9eb0134ba2f7bbe912ba4176f569fcb2db26d628",
                 "shasum": ""
             },
@@ -2398,6 +2398,85 @@
                 "shell"
             ],
             "time": "2015-11-12 16:18:56"
+        },
+        {
+            "name": "socialiteproviders/manager",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Manager.git",
+                "reference": "3c2253b75b4a3056ae8369f532d045ab213ce063"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/3c2253b75b4a3056ae8369f532d045ab213ce063",
+                "reference": "3c2253b75b4a3056ae8369f532d045ab213ce063",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/socialite": "~2.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Manager\\": "src/",
+                    "SocialiteProviders\\Manager\\Test\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Wendt",
+                    "email": "andy@awendt.com"
+                }
+            ],
+            "description": "Easily add new or override built-in providers in Laravel Socialite.",
+            "time": "2016-04-21 15:44:54"
+        },
+        {
+            "name": "socialiteproviders/microsoft-live",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Microsoft-Live.git",
+                "reference": "6305672c2c5e2b824794848678b23024ba901482"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Microsoft-Live/zipball/6305672c2c5e2b824794848678b23024ba901482",
+                "reference": "6305672c2c5e2b824794848678b23024ba901482",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Live\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "DraperStudio",
+                    "email": "hello@draperstud.io"
+                }
+            ],
+            "description": "Microsoft Live OAuth2 Provider for Laravel Socialite",
+            "time": "2016-03-30 07:16:06"
         },
         {
             "name": "swiftmailer/swiftmailer",

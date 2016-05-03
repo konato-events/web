@@ -68,6 +68,17 @@ trait SocialiteHelpers {
                 // nothing to do here
             break;
 
+            case 'live': /** @var \SocialiteProviders\Live\Provider $driver */
+                $driver->scopes([
+                    'wl.basic',
+                    'wl.emails',
+                    'wl.birthday',
+                    'wl.calendars_update',
+                    'wl.events_create',
+                    'wl.work_profile'
+                ]);
+            break;
+
             case 'twitter': /** @var \Laravel\Socialite\One\TwitterProvider $driver */
             case 'bitbucket': /** @var \Laravel\Socialite\One\BitbucketProvider $driver */
                 // there's nothing to be done with OAuth 1.0 clients
@@ -82,10 +93,10 @@ trait SocialiteHelpers {
         $mappings = [
             'name'          => 'name',
             'email'         => 'email',
-            'avatar'        => 'avatar',
+            'avatar'        => ['avatar', 'id'], //Microsoft avatar depends on the ID only
             'picture'       => 'avatar_original',
             'bio'           => ['bio', 'description'], //Github's bio apparently is a null, non-editable field
-            'birthday'      => 'birthday',
+            'birthday'      => ['birthday', 'birth_year'], //Microsoft birthday depends on the year field
             'gender'        => 'gender',
             'rel:location'  => 'location.name',
             'rel:timezone'  => 'timezone',
@@ -138,7 +149,17 @@ trait SocialiteHelpers {
                     break;
 
                     case 'birthday':
-                        $value = \DateTime::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+                        switch ($provider) {
+                            case 'live':
+                                //TODO: user might have month + day without year. We should split the birthday field to accomodate this
+                                if ($user_data['birth_month'] && $user_data['birth_day'] && $user_data['birth_year']) {
+                                    $value = date('Y-m-d', mktime(0,0,0,$user_data['birth_month'], $user_data['birth_day'], $user_data['birth_year']));
+                                }
+                            break;
+
+                            default:
+                                $value = \DateTime::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+                        }
                     break;
 
                     case 'tagline':
@@ -150,6 +171,18 @@ trait SocialiteHelpers {
                             case 'facebook':
                                 $last_job = current($value);
                                 $value    = $last_job['position']['name'].' @ '.$last_job['employer']['name'];
+                            break;
+
+                            case 'live':
+                                $value = isset($value[0]['employer']['name'])? ($value[0]['position']['name'] ?? 'works').' @ '.$value[0]['employer']['name'] : '';
+                            break;
+                        }
+                    break;
+
+                    case 'avatar':
+                        switch ($provider) {
+                            case 'live':
+                                $value = "https://apis.live.net/v5.0/{$data->getId()}/picture";
                             break;
                         }
                     break;
@@ -225,21 +258,22 @@ trait SocialiteHelpers {
                         //twitter, github, bitbucket (empty?): location
                         //linkedin: location.name (Rio de Janeiro Area, Brazil) + location.country.code (br)
                         //google: placesLived[].primary=true ~ value
+                        //live: requires complete address permission :/
                         //TODO: add a location relationship here; don't forget to test with a testuser with no location!
                     break;
 
                     case 'locale':
-                        //facebook: locale
+                        //facebook, live: locale
                         //twitter: lang (en)
-                        //github, bitbucket: none?
                         //google: language
+                        //github, bitbucket: none?
                         //TODO: add a language relationship here; don't forget to test with a testuser with no locale!
                     break;
 
                     case 'timezone':
                         //facebook: timezone //TODO DAFUK timezone comes as -2 USELESS HALP
                         //twitter: utc_offset (-10800) / timezone (Brasilia)
-                        //github, bitbucket, google: none?
+                        //github, bitbucket, google, live: none?
                         //TODO: add a timezone relationship here; don't forget to test with a testuser with no timezone!
                     break;
                 }

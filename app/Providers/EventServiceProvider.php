@@ -14,8 +14,11 @@ class EventServiceProvider extends ServiceProvider {
      */
     protected $listen = [
         'router.matched' => [
-            'App\Listeners\Route',
+            \App\Listeners\Route::class,
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            \SocialiteProviders\Live\LiveExtendSocialite::class.'@handle',
+        ]
     ];
 
     /**
