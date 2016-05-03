@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Konato\n"
-"POT-Creation-Date: 2016-04-24 17:59-0300\n"
-"PO-Revision-Date: 2016-04-24 18:03-0300\n"
+"POT-Creation-Date: 2016-05-03 04:32-0300\n"
+"PO-Revision-Date: 2016-05-03 04:34-0300\n"
 "Last-Translator: Igor Santos <igorsantos07@gmail.com>\n"
 "Language-Team: Igor Santos <igorsantos07+konato@gmail.com>\n"
 "Language: pt_BR\n"
@@ -37,7 +37,7 @@ msgstr "envolvido"
 msgid "staff"
 msgstr "staff"
 
-#: app/Models/User.php:212
+#: app/Models/User.php:213
 msgid "Sorry, we were unable to save your picture. Can you try again later?"
 msgstr "Desculpe, não conseguimos salvar sua foto. Você pode tentar de novo?"
 
@@ -81,25 +81,33 @@ msgstr "Encontro universitário"
 msgid "Entertainment"
 msgstr "Entretenimento"
 
-#: app/Providers/AppServiceProvider.php:51
+#: app/Providers/AppServiceProvider.php:45
 msgid "Congresses"
 msgstr "Congressos"
 
-#: app/Providers/AppServiceProvider.php:52
+#: app/Providers/AppServiceProvider.php:46
 msgid "Meetings"
 msgstr "Encontros"
 
-#: app/Providers/AppServiceProvider.php:53
+#: app/Providers/AppServiceProvider.php:47
 msgid "Talks & discussions"
 msgstr "Palestras & debates"
 
-#: app/Providers/AppServiceProvider.php:54
+#: app/Providers/AppServiceProvider.php:48
 msgid "University meetings"
 msgstr "Encontros universitários"
 
-#: app/Providers/AppServiceProvider.php:55
+#: app/Providers/AppServiceProvider.php:49
 msgid "Cultural"
 msgstr "Culturais"
+
+#: app/Providers/L10nServiceProvider.php:20
+msgid "English"
+msgstr "Inglês"
+
+#: app/Providers/L10nServiceProvider.php:21
+msgid "Portuguese"
+msgstr "Português"
 
 #: app/Http/Controllers/EventController.php:166
 msgid "template"
@@ -212,15 +220,15 @@ msgstr ""
 "Este e-mail já está em uso. Hum... É você? Se não lembra sua senha, tente "
 "usar o link de Recuperação, na página de Login."
 
-#: resources/views/layout-master.blade.php:22
+#: resources/views/layout-master.blade.php:24
 msgid "Event Discovery"
 msgstr "Descubra eventos"
 
-#: resources/views/layout-master.blade.php:91
+#: resources/views/layout-master.blade.php:93
 msgid "Toggle navigation"
 msgstr "Abrir/fechar navegação"
 
-#: resources/views/layout-master.blade.php:110
+#: resources/views/layout-master.blade.php:112
 #: resources/views/user/speakers.blade.php:61
 #: resources/views/event/forms/edit_themes_speakers.blade.php:75
 #: resources/views/event/forms/edit_themes_speakers.blade.php:84
@@ -228,70 +236,70 @@ msgstr "Abrir/fechar navegação"
 msgid "Speakers"
 msgstr "Palestrantes"
 
-#: resources/views/layout-master.blade.php:114
+#: resources/views/layout-master.blade.php:116
 msgid "Find events"
 msgstr "Encontrar eventos"
 
-#: resources/views/layout-master.blade.php:125
+#: resources/views/layout-master.blade.php:127
 msgid "Submit event"
 msgstr "Criar evento"
 
-#: resources/views/layout-master.blade.php:139
+#: resources/views/layout-master.blade.php:141
 msgid "My profile"
 msgstr "Meu perfil"
 
-#: resources/views/layout-master.blade.php:140
+#: resources/views/layout-master.blade.php:142
 msgid "Edit my profile"
 msgstr "Editar meu perfil"
 
-#: resources/views/layout-master.blade.php:141
+#: resources/views/layout-master.blade.php:143
 msgid "Logout"
 msgstr "Sair"
 
-#: resources/views/layout-master.blade.php:146
+#: resources/views/layout-master.blade.php:148
 msgid "Sign up"
 msgstr "Cadastrar"
 
-#: resources/views/layout-master.blade.php:150
+#: resources/views/layout-master.blade.php:152
 #: resources/views/auth/login.blade.php:4
 msgid "Login"
 msgstr "Login"
 
-#: resources/views/layout-master.blade.php:199
+#: resources/views/layout-master.blade.php:197
 msgid "Discover amazing events on Konato"
 msgstr "Descubra eventos fantásticos no Konato"
 
-#: resources/views/layout-master.blade.php:201
+#: resources/views/layout-master.blade.php:199
 #, php-format
 msgid "%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro"
 msgstr ""
 "%sBastante trampo (e poutine!)%s tornou isso realidade, na&nbsp;Cidade&nbsp;"
 "Maravilhosa"
 
-#: resources/views/layout-master.blade.php:203
+#: resources/views/layout-master.blade.php:201
 msgid "Marvelous City, place of the Sugar Loaf"
 msgstr "Rio de Janeiro, cidade do Pão de Açúcar"
 
-#: resources/views/layout-master.blade.php:206
+#: resources/views/layout-master.blade.php:204
 #: resources/views/site/about.blade.php:1
 msgid "About us"
 msgstr "Sobre nós"
 
-#: resources/views/layout-master.blade.php:207
+#: resources/views/layout-master.blade.php:205
 msgid "Get in touch"
 msgstr "Fale com a gente"
 
-#: resources/views/layout-master.blade.php:208
+#: resources/views/layout-master.blade.php:206
 msgid "We &#9829; open source"
 msgstr "Nós &#9829; open source"
 
-#: resources/views/layout-master.blade.php:209
+#: resources/views/layout-master.blade.php:207
 msgid "by igorsantos07"
 msgstr "by igorsantos07"
 
-#: resources/views/layout-master.blade.php:217
-msgid "Go to top"
-msgstr "Subir"
+#: resources/views/layout-master.blade.php:212
+msgid "Language"
+msgstr "Idioma"
 
 #: resources/views/auth/finishSignUp.blade.php:6
 msgid "Social Sign Up"
@@ -314,13 +322,13 @@ msgstr ""
 "frente?"
 
 #: resources/views/auth/finishSignUp.blade.php:43
-#: resources/views/auth/login.blade.php:19
+#: resources/views/auth/login.blade.php:18
 #: resources/views/user/_common_fields.blade.php:10
 msgid "E-mail"
 msgstr "E-mail"
 
 #: resources/views/auth/finishSignUp.blade.php:46
-#: resources/views/auth/login.blade.php:19
+#: resources/views/auth/login.blade.php:18
 #: resources/views/user/_common_fields.blade.php:12
 msgid "Username"
 msgstr "Usuário"
@@ -348,22 +356,26 @@ msgstr "Quem fala?"
 msgid "Identify yourself to get access to the platform"
 msgstr "Identifique-se para ter acesso à plataforma"
 
-#: resources/views/auth/login.blade.php:14
-msgid "You can also login using an account from one of those websites:"
-msgstr "Você também pode se logar usando a conta de um desses sites:"
-
-#: resources/views/auth/login.blade.php:20
+#: resources/views/auth/login.blade.php:19
 msgid "Here you can use either your username or your e-mail: both works!"
 msgstr ""
 "Aqui você pode usar tanto seu usuário ou seu e-mail: os dois funcionam!"
 
-#: resources/views/auth/login.blade.php:22
+#: resources/views/auth/login.blade.php:21
 msgid "Password"
 msgstr "Senha"
 
-#: resources/views/auth/login.blade.php:26
+#: resources/views/auth/login.blade.php:25
 msgid "Let me in"
 msgstr "Logar"
+
+#: resources/views/auth/_providers_list.blade.php:17
+msgid "You can also use an account from:"
+msgstr "Você também pode usar uma conta do:"
+
+#: resources/views/auth/_providers_list.blade.php:28
+msgid "Open login networks list"
+msgstr "Abrir lista de redes para login"
 
 #: resources/views/auth/signUp.blade.php:4
 msgid "Sign Up"
@@ -811,10 +823,10 @@ msgid_plural ""
 "themes. Meanwhile, these are our most frequent speakers:"
 msgstr[0] ""
 "Ops. Parece que ainda não temos palestrantes neste tema. Por enquanto, estes "
-"são os mais comuns:"
+"são os mais frequentes:"
 msgstr[1] ""
 "Ops. Parece que ainda não temos palestrantes nestes temas. Por enquanto, "
-"estes são os mais comuns:"
+"estes são os mais frequentes:"
 
 #: resources/views/user/speakers.blade.php:121
 #: resources/views/user/profile.blade.php:81
@@ -1434,6 +1446,9 @@ msgstr "Palestrantes populares"
 #, php-format
 msgid "See all speakers on %s"
 msgstr "Veja todos os palestrantes em %s"
+
+#~ msgid "Go to top"
+#~ msgstr "Subir"
 
 #~ msgid "%s still don't have a picture :("
 #~ msgstr "%s ainda não tem uma foto :("

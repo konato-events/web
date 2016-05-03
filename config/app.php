@@ -145,6 +145,7 @@ $app = [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        App\Providers\L10nServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\BootstrapLaravalidServiceProvider::class,

@@ -1,21 +1,15 @@
 <?php namespace App\Providers;
-use Log;
 use Illuminate\Support\ServiceProvider;
 use \Illuminate\View\Factory as View;
 
 class AppServiceProvider extends ServiceProvider {
 
-    const LOCALES_PATH   = '../resources/locales';
-    const DEFAULT_LOCALE = 'en_CA';
-
     /**
      * Bootstrap any application services.
-     *
      * @return void
      */
     public function boot() {
         require_once base_path('/resources/views/helpers.php');
-        $this->bootLocalization();
 
         /** @var View $view */
         $app  = app();
@@ -100,78 +94,4 @@ class AppServiceProvider extends ServiceProvider {
         //
     }
 
-    /**
-     * Starts up Gettext with all its settings.
-     * @param string $domain
-     * @param string $codeset
-     * @see https://lingohub.com/blogs/2013/07/php-internationalization-with-gettext-tutorial/
-     */
-    protected function bootLocalization($domain = 'main', $codeset = 'UTF-8') {
-        $this->defineLocale($domain);
-        putenv('LANG='.LOCALE);
-        if (!setlocale(LC_ALL, LOCALE.".$codeset", LOCALE.'.'.strtolower(strtr($codeset, ['-' => ''])))) {
-            Log::critical('Locale not available in the system: '.LOCALE.'.'.$codeset);
-        }
-        bindtextdomain($domain, self::LOCALES_PATH);
-        bind_textdomain_codeset($domain, $codeset);
-        textdomain($domain);
-    }
-
-    protected function defineLocale($domain) {
-        if (defined('LOCALE')) {
-            return;
-        }
-
-        $valid_locale = function ($locale) use ($domain) {
-            if (!$locale) return false;
-            if ($locale == self::DEFAULT_LOCALE) {
-                Log::info("Using default locale: ".self::DEFAULT_LOCALE);
-                return true;
-            }
-
-            $file_path = self::LOCALES_PATH."/$locale/LC_MESSAGES/$domain.mo";
-            if (!file_exists($file_path)) {
-                Log::warning("Locale does not exist: $file_path");
-                return false;
-            } elseif (!is_readable($file_path)) {
-                Log::warning("Locale is not readable: $file_path");
-                return false;
-            } else {
-//                Log::debug("Locale found: $file_path");
-                return true;
-            }
-        };
-
-        if (isset($_GET['locale']) && $valid_locale($_GET['locale'])) {
-            define('LOCALE', $_GET['locale']);
-            setcookie('locale', LOCALE);
-        } elseif (isset($_COOKIE['locale']) && $valid_locale($_COOKIE['locale'])) {
-            define('LOCALE', $_COOKIE['locale']);
-        } else {
-            if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && $_SERVER['HTTP_ACCEPT_LANGUAGE']) {
-                $languages = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-                array_walk($languages, function (&$lang) { $lang = strtr(strtok($lang, ';'), ['-' => '_']); });
-                foreach ($languages as $language) {
-                    if ($valid_locale($language)) {
-                        define('LOCALE', $language);
-                        break;
-                    }
-                }
-            }
-
-            if (!defined('LOCALE')) { //could not find any useful language. fallback!
-                define('LOCALE', self::DEFAULT_LOCALE);
-            }
-        }
-
-        // as we are returning arrays from the lang files, we can use gettext there as well :)
-        \App::setLocale('gettext');
-    }
-
-    /**
-     * @todo cache this!!
-     */
-    public static function getAvailableLocales() {
-        return [self::DEFAULT_LOCALE] + array_diff(scandir(self::LOCALES_PATH), ['.', '..', 'README.md']);
-    }
 }

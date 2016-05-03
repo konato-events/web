@@ -1,8 +1,10 @@
 <?php
+use App\Providers\L10nServiceProvider as l10n;
 /** @var bool $prod */
 /** @var string $action */
 /** @var string $controller */
 $lang_tag = substr(LOCALE, 0, 2);
+$available_locales = l10n::getAvailableLocales();
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]>
@@ -58,7 +60,7 @@ $lang_tag = substr(LOCALE, 0, 2);
         $host  = (isset($_SERVER['HTTPS'])? 'https://' : 'http://').$_SERVER['HTTP_HOST'];
         $path  = $host.$_SERVER['REQUEST_URI'];
         $query = $_SERVER['QUERY_STRING']? '&'.$_SERVER['QUERY_STRING'] : '';
-        foreach (\App\Providers\AppServiceProvider::getAvailableLocales() as $locale) {
+        foreach ($available_locales as $locale) {
             echo "<link rel='alternate' hreflang='$locale' href='{$path}?locale={$locale}{$query}' />";
         }
     ?>
@@ -163,66 +165,73 @@ $lang_tag = substr(LOCALE, 0, 2);
         @yield('header')
         @yield('content')
     </div>
-    <!-- /Content area -->
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-meta">
-            <div class="container text-center">
-                {{-- TIP: cool block with several social icons. Certainly useful later! --}}
-                {{--<div class="clearfix">--}}
-                    {{--<ul class="social-line list-inline">--}}
-                        {{--<li>--}}
-                            {{--<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="#" class="google"><i class="fa fa-google-plus"></i></a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="#" class="instagram"><i class="fa fa-instagram"></i></a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>--}}
-                        {{--</li>--}}
-                        {{--<li>--}}
-                            {{--<a href="#" class="skype"><i class="fa fa-skype"></i></a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-                <span class="copyright">
-                    <?=_('Discover amazing events on Konato')?>&nbsp;&copy;&nbsp;<?=date('Y')?>
-                    <span>
-                        <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro'),
-                            '<a href="https://about.me/igorsantos07" target="_blank">', '</a>') ?>
-                        <img src="/img/sugar-loaf-icon.png" title="<?=_('Marvelous City, place of the Sugar Loaf')?>">
-                    </span>
-                    <ul>
-                        <li><a href="<?=act('site@about')?>"><?=_('About us')?></a></li>
-                        <li><a href="#"><?=_('Get in touch')?></a></li>
-                        <li><a href="https://bitbucket.org/konato/web"><?=_('We &#9829; open source')?></a></li>
-                        <li><a target="_blank" href="http://igorsantos.com.br"><?=_('by igorsantos07')?></a></li>
-                    </ul>
-                </span>
-            </div>
-        </div>
-    </footer>
-    <!-- /FOOTER -->
+    <div class="footer-container">
+        <footer class="text-center">
+            {{--TIP: cool block with several social icons. Certainly useful later!--}}
+            <!--{{--<div class="clearfix">--}}
+                {{--<ul class="social-line list-inline">--}}
+                    {{--<li>--}}
+                        {{--<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#" class="google"><i class="fa fa-google-plus"></i></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#" class="instagram"><i class="fa fa-instagram"></i></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>--}}
+                    {{--</li>--}}
+                    {{--<li>--}}
+                        {{--<a href="#" class="skype"><i class="fa fa-skype"></i></a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}-->
+            <span><?=_('Discover amazing events on Konato')?>&nbsp;&copy;&nbsp;<?=date('Y')?></span>
+            <small>
+                <?=sprintf(_('%sHard work (and poutine!)%s made this real @ Rio&nbsp;de&nbsp;Janeiro'),
+                    '<a href="https://about.me/igorsantos07" target="_blank">', '</a>') ?>
+                <img src="/img/sugar-loaf-icon.png" title="<?=_('Marvelous City, place of the Sugar Loaf')?>">
+            </small>
+            <ul>
+                <li><a href="<?=act('site@about')?>"><?=_('About us')?></a></li>
+                <li><a href="#"><?=_('Get in touch')?></a></li>
+                <li><a href="https://bitbucket.org/konato/web"><?=_('We &#9829; open source')?></a></li>
+                <li><a target="_blank" href="http://igorsantos.com.br"><?=_('by igorsantos07')?></a></li>
 
-    <!--<div class="to-top"><?=_('Go to top')?> <i class="fa fa-angle-up"></i></div>-->
+                <li>
+                    <div class="btn-group dropup">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-language"></i> <?=_('Language')?> <i class="fa fa-caret-up"></i>
+                        </a>
+                        <ul class="dropdown-menu language-menu">
+                            <? foreach ($available_locales as $code): ?>
+                                <li>
+                                    <a href="?locale=<?=$code?>">
+                                        <?=l10n::localeNames()[$code][0]?>
+                                        <small> - <?=_(l10n::localeNames()[$code][1])?></small>
+                                    </a>
+                                </li>
+                            <? endforeach ?>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </footer>
+    </div>
 
 @yield('popups')
 
 </div>
-<!-- /Wrap all content -->
 
-<!-- JS Global -->
-
+{{-- JS Global --}}
 <script type="text/javascript" src="/js/alertify.js"></script>
 <script type="text/javascript">
     alertify
@@ -230,18 +239,11 @@ $lang_tag = substr(LOCALE, 0, 2);
         .delay(10000)
         .logPosition('top left');
 
-    <? if(session('info')): ?>
-        alertify.log("<?=addslashes(session('info'))?>");
-    <? endif ?>
-    <? if(session('success')): ?>
-        alertify.success("<?=addslashes(session('success'))?>");
-    <? endif ?>
-    <? if(session('warning')): ?>
-        alertify.error("<?=addslashes(session('warning'))?>");
-    <? endif ?>
-    <? if(session('error')): ?>
-        alertify.error("<?=addslashes(session('error'))?>");
-    <? endif ?>
+    <? foreach (['info', 'success', 'warning', 'error'] as $msg_name): ?>
+        <? if(session($msg_name)): ?>
+            alertify.log("<?=addslashes(session($msg_name))?>");
+        <? endif ?>
+    <? endforeach ?>
 </script>
 
 <?php

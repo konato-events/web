@@ -101,6 +101,9 @@ RUN ./configure \
 RUN make
 RUN make install
 
+# Installs the project locales on the system
+RUN locale-gen pt_BR.UTF-8 en_CA.UTF-8
+
 # Configures PHP-FPM
 COPY usr_local_php7_etc_php-fpm.conf /usr/local/php7/etc/php-fpm.conf
 COPY php.ini-development /usr/local/php7/etc/
