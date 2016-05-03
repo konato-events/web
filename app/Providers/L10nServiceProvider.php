@@ -73,7 +73,7 @@ class L10nServiceProvider extends ServiceProvider {
 
         if (isset($_GET['locale']) && $valid_locale($_GET['locale'])) {
             define('LOCALE', $_GET['locale']);
-            setcookie('locale', LOCALE);
+            setcookie('locale', LOCALE, mktime(0,0,0,12,31,date('Y')+3), '/');
         } elseif (isset($_COOKIE['locale']) && $valid_locale($_COOKIE['locale'])) {
             define('LOCALE', $_COOKIE['locale']);
         } else {
