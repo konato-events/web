@@ -21,7 +21,7 @@ $subheader = _('Identify yourself to get access to the platform');
     <?=Form::labelInput('password', _('Password'), 'password')?>
 
     <div id="buttons-row">
-        <a href="<?=act('auth@signUp')?>" class="pull-left">I don't have an account</a>
+        <a href="<?=act('auth@signUp')?>" class="pull-left"><?=_('I don\'t have an account')?></a>
         <?=Form::submit(_('Let me in'), ['class' => 'btn btn-theme btn-theme-lg pull-right'])?>
     </div>
 
