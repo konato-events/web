@@ -80,6 +80,7 @@ class UserController extends Controller {
 
     public function getEdit() {
         $user = \Auth::user();
+        \Session::set('url.intended', act('user@getEdit')); //used in case the user tries to associate to a network
         return view('user.edit', compact('user'));
     }
 

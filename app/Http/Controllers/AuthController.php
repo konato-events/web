@@ -4,6 +4,7 @@ use App\Http\Requests\SignUpFinish;
 use App\Models\SocialLink;
 use App\Models\SocialNetwork;
 use App\Models\User;
+use Illuminate\Auth\Guard;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request as BaseRequest;
@@ -25,7 +26,7 @@ class AuthController extends Controller {
     protected $loginPath = '/auth/login';
 
     public function __construct() {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('auth', ['only' => 'getLogout']);
     }
 
     /**
@@ -33,14 +34,11 @@ class AuthController extends Controller {
      * @return string
      */
     public function redirectPath() {
-        $intended = Session::get('url.intended');
+        $intended = Session::remove('url.intended');
         $useless  = [null, '', ROOT_URL.'/', act('auth@login'), act('auth@signUp')];
-        if (in_array($intended, $useless)) {
-            Session::remove('url.intended');
-            return act('user@profile', slugify(Auth::user()->id, Auth::user()->username));
-        } else {
-            return property_exists($this, 'redirectTo')? $this->redirectTo : '/home';
-        }
+        return in_array($intended, $useless)?
+            act('user@profile', slugify(Auth::user()->id, Auth::user()->username)) :
+            $intended?? $this->redirectTo?? '/home';
     }
 
     /**
@@ -86,7 +84,9 @@ class AuthController extends Controller {
 
             //if there's already an user with this social email, let's merge accounts
             /** @var User $user */
-            if ($data->getEmail() && $user = User::where('email', $data->getEmail())->first()) {
+            if (($user = \Auth::user()) ||
+                ($data->getEmail() && $user = User::where('email', $data->getEmail())->first())
+            ) {
                 $this->fillUser($user, $data->user, $data, $provider);
                 if (\DB::transaction(function() use ($user) {
                     //tries to save the user data from fillUser + the main network. If it fails, throw up

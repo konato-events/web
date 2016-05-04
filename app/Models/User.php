@@ -148,10 +148,18 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         return self::whereIn('id', array_column($ids, 'user_id'))->get();
     }
 
-    public function links() {
-        return $this->hasMany(SocialLink::class)->join('social_networks AS n', 'n.id', '=', 'social_network_id')
-                    ->whereRaw('n.position IS NOT NULL')
-                    ->orderBy('n.position');
+    /**
+     * @param bool $all If it should return even "hidden" networks (those without a position number)
+     * @return HasMany
+     */
+    public function links($all = false) {
+        $select = $this->hasMany(SocialLink::class)
+                       ->join('social_networks AS n', 'n.id', '=', 'social_network_id')
+                       ->orderBy('n.position');
+        if (!$all) {
+            $select->whereRaw('n.position IS NOT NULL');
+        }
+        return $select;
     }
 
     public function beforeSave() {
