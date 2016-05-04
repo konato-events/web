@@ -38,7 +38,7 @@ const FORM_ID = 'signup';
 </div>
 <? endif ?>
 
-<? $intro = _('You can also sign up using an account from one of those websites:') ?>
+<? $intro = _('You can sign up using an account from:') //it's a var because of gettext ?>
 @include('auth._providers_list', ['intro' => $intro])
 
 <?=Form::model($user, ['action' => 'AuthController@postSignUp', 'id' => FORM_ID])?>
