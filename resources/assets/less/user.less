@@ -82,15 +82,33 @@
     }
 
     form {
+        img.picture {
+            width: 100%;
+        }
+        input[name=picture] {
+            margin: 10px 0;
+        }
+
         #social-networks {
-            a.social-link-block {
-                display: block;
+            .social-link-block {
+                position: relative;
+                min-height: 110px;
                 background-color: #EEE;
                 border-radius: 5px;
                 text-align: center;
                 padding: 10px;
                 margin-bottom: 15px;
                 overflow-wrap: break-word;
+
+                i.fa {
+                    display: block;
+                }
+
+                a.social-link-remove {
+                    position: absolute;
+                    top: 5px;
+                    right: 8px;
+                }
             }
 
             label {

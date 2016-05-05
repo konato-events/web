@@ -112,7 +112,7 @@ $date_fmt   = _('m/d/Y');
         <? if (sizeof($user->links)): ?>
             <div class="social-profiles float-bottom">
                 <h2><?=($female)? _('Her elsewhere:') : _('Him elsewhere:')?></h2>
-                <? foreach($user->links as $link): ?>
+                <? foreach($user->socialLinks()->get() as $link): ?>
                     <a class="<?=$link->network->icon?>" target="_blank" href="<?=$link->url?>" title="<?=_($link->network->name)?>"
                        data-toggle="tooltip" data-trigger="hover focus click" data-placement="top"></a>
                 <? endforeach ?>

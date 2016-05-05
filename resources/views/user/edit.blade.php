@@ -1,8 +1,10 @@
 <?php
 /** @var \App\Models\User $user */
-$title  = _('Edit your profile');
+$title    = _('Edit your profile');
 $subtitle = _('Editing your profile');
 const FORM_ID = 'submit';
+
+$links = $user->socialLinks(true)->get();
 ?>
 @extends('layout-header')
 @section('title', $title)
@@ -10,19 +12,9 @@ const FORM_ID = 'submit';
 @section('header-title', $user->name)
 @section('header-subtitle', $subtitle)
 
-@section('css')
-  <style type="text/css">
-    img.picture {
-      width: 100%;
-    }
-    input[name=picture] {
-      margin: 10px 0;
-    }
-  </style>
-@endsection
-
 @section('js')
   <script type="text/javascript" src="/js/jquery.validate-1.14.0.js"></script>
+  <script type="text/javascript" src="/js/method-links.js"></script>
   <?=Form::validationScript(FORM_ID)?>
   @yield('form-js')
 @endsection
@@ -39,7 +31,7 @@ const FORM_ID = 'submit';
           <div class="row">
             <div class="col-xs-3 col-sm-2">
               <?=Form::label(_('Photo'))?><br/>
-              <img src="<?=$user->picture?>" alt="avatar" class="picture" />
+              <img src="{{$user->picture}}" alt="avatar" class="picture" />
               <?=Form::input('file', 'picture', '')?>
             </div>
 
@@ -60,7 +52,7 @@ const FORM_ID = 'submit';
             <div class="panel-heading">
               <h4 class="panel-title">
                 <?=_('Social networks and external links')?>
-                <span class="badge"><?=sizeof($user->links)?:''?></span>
+                <span class="badge"><?=sizeof($links)?:''?></span>
               </h4>
             </div>
 
@@ -69,15 +61,21 @@ const FORM_ID = 'submit';
 
               <div class="row">
                 <? $used_providers = []; ?>
-                <? foreach ($user->links(true)->getResults() as $link): ?>
+                <? foreach ($links as $link): ?>
                   <? $used_providers[] = strtolower($link->name) //FIXME: not enough for Live ?>
                   <div class="col-md-3 col-xs-4">
-                    <a href="{{$link->url.$link->username}}" class="social-link-block">
+                    <div class="social-link-block">
                       <?//FIXME: "-square" should not be stored in the db; stacking should be used when needed ?>
-                      <i class="<?=strtr($link->icon, ['-square' => ''])?> fa-3x"></i><br/>
-                      <span class="sr-only">{{$link->name}}</span>
-                      {{ltrim($link->username,'://')}}
-                    </a>
+                      <a href="{{$link->url.$link->username}}">
+                        <i class="<?=strtr($link->icon, ['-square' => ''])?> fa-3x"></i>
+                        <span title="<?=_('network')?>" class="sr-only">{{$link->name}}</span>
+                        <span title="<?=_('username')?>">{{ltrim($link->username,'://')}}</span>
+                      </a>
+                      <a href="<?=act('user@deleteLink', [$link->id])?>" class="text-muted social-link-remove"
+                         data-method="delete" data-token="{{csrf_token()}}">
+                          <i class="fa fa-times"></i> <span class="sr-only"><?=_('Remove this network')?></span>
+                      </a>
+                    </div>
                   </div>
                 <? endforeach ?>
               </div>

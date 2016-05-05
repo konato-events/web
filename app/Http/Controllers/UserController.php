@@ -96,4 +96,14 @@ class UserController extends Controller {
         }
     }
 
+    public function deleteLink(int $id) {
+        $user = \Auth::user();
+        if ($user->links()->where('id', $id)->delete()) {
+            return redirect(act('user@edit', $user->id));
+        } else {
+            //TODO: log error and warn someone
+            return redirect()->back()->with('error', _('We were unable to delete this link... Would you try again, or contact us?'));
+        }
+    }
+
 }

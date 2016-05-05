@@ -36,6 +36,7 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  * @property Collection|Theme[]        all_themes
  *
  * @property Collection|SocialLink[]   links
+ * @method HasMany                     links
  * @property Location                  location
  * @method BelongsTo                 location
  * @property Collection|User[]         follows
@@ -128,7 +129,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
         'participated'     => [self::BELONGS_TO_MANY, Event::class, 'table' => 'participating_event'],
         'following_events' => [self::BELONGS_TO_MANY, Event::class, 'table' => 'following_event', 'timestamps' => true],
         'following_themes' => [self::BELONGS_TO_MANY, Theme::class, 'table' => 'following_theme', 'timestamps' => true],
-        //'links'          => [self::HAS_MANY, SocialLink::class], //defined by method as we need ordering here
+        'links'            => [self::HAS_MANY, SocialLink::class],
     ];
 
     public static function changeRules($scenario) {
@@ -149,13 +150,15 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     }
 
     /**
+     * Advanced SocialLink relationship that provides ordering, eager SocialNetwork loading and filter of hidden links.
      * @param bool $all If it should return even "hidden" networks (those without a position number)
      * @return HasMany
      */
-    public function links($all = false) {
+    public function socialLinks($all = false) {
         $select = $this->hasMany(SocialLink::class)
                        ->join('social_networks AS n', 'n.id', '=', 'social_network_id')
-                       ->orderBy('n.position');
+                       ->select('*', 'social_links.id as id')
+                       ->orderBy('position');
         if (!$all) {
             $select->whereRaw('n.position IS NOT NULL');
         }
