@@ -96,6 +96,10 @@ class UserController extends Controller {
         }
     }
 
+    public function getLink(int $id) {
+        return redirect(\Auth::user()->links()->where('id', $id)->firstOrFail()->url);
+    }
+
     public function deleteLink(int $id) {
         $user = \Auth::user();
         if ($user->links()->where('id', $id)->delete()) {

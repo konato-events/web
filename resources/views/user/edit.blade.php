@@ -66,7 +66,7 @@ $links = $user->socialLinks(true)->get();
                   <div class="col-md-3 col-xs-4">
                     <div class="social-link-block">
                       <?//FIXME: "-square" should not be stored in the db; stacking should be used when needed ?>
-                      <a href="{{$link->url.$link->username}}">
+                      <a href="{{$link->url}}">
                         <i class="<?=strtr($link->icon, ['-square' => ''])?> fa-3x"></i>
                         <span title="<?=_('network')?>" class="sr-only">{{$link->name}}</span>
                         <span title="<?=_('username')?>">{{ltrim($link->username,'://')}}</span>
