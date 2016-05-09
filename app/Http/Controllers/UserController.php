@@ -79,9 +79,7 @@ class UserController extends Controller {
     }
 
     public function getEdit() {
-        $user = \Auth::user();
-        \Session::set('url.intended', act('user@getEdit')); //used in case the user tries to associate to a network
-        return view('user.edit', compact('user'));
+        return view('user.edit', ['user' => \Auth::user()]);
     }
 
     public function postEdit(UserEdit $req) {
@@ -94,6 +92,11 @@ class UserController extends Controller {
         catch (InvalidModelException $e) {
             return redirect()->back()->withErrors($e->getErrors());
         }
+    }
+
+    public function getEditLinks() {
+        \Session::set('url.intended', act('user@getEdit')); //used in case the user tries to associate to a network
+        return view('user.edit_links', ['user' => \Auth::user()]);
     }
 
     public function getLink(int $id) {

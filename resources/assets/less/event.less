@@ -5,13 +5,6 @@
         border: 1px solid #C4C4C4; // those two properties help the year tabs
         margin-bottom: -1px;       // to blend wht the header's bottom
 
-        a {
-            color: inherit;
-            &:hover {
-                color: @darkSecondaryColor;
-            }
-        }
-
         .row {
             position: relative; //for .stats centering
             margin-bottom: -10px; //wtf is that additional 10px appearing there???
@@ -99,15 +92,6 @@
         li.slide:before { content: "\f26c"; }
         li.audio:before { content: "\f1c7"; }
         li.video:before { content: "\f1c8"; }
-    }
-}
-
-body[class*=event-edit] {
-    .nav-tabs + form {
-        padding: 10px 5px 20px 5px;
-        box-shadow: 0 1px 10px;
-        border: 1px solid #C4C4C4;
-        border-top-width: 0;
     }
 }
 

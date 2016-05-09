@@ -5,7 +5,14 @@
         <div class="container">
             @yield('header-content')
 
-            <h1>@yield('header-title')</h1>
+            <h1>
+                {{-- this @if clause is hackish way to work around @yield usage inside another directive --}}
+                @if ($__env->yieldContent('header-link'))
+                    <a href="@yield('header-link')">@yield('header-title')</a>
+                @else
+                    @yield('header-title')
+                @endif
+            </h1>
             <h2>@yield('header-subtitle')</h2>
             @yield('header-breadcrumbs')
 

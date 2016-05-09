@@ -70,3 +70,22 @@ form {
 select.tags-input + .select2 .select2-selection {
     min-height: 62px;
 }
+
+body[class*=edit] {
+    .nav-tabs + form {
+        padding: 10px 5px 20px 5px;
+        box-shadow: 0 1px 10px;
+        border: 1px solid #C4C4C4;
+        border-top-width: 0;
+    }
+
+    #page-header {
+        a {
+            color: inherit;
+            &:hover {
+                color: @darkSecondaryColor;
+            }
+        }
+    }
+
+}

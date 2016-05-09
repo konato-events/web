@@ -1,121 +1,85 @@
 <?php
 /** @var \App\Models\User $user */
-$title    = _('Edit your profile');
-$subtitle = _('Editing your profile');
-const FORM_ID = 'submit';
-
-$links = $user->socialLinks(true)->get();
+const FORM_ID = 'general';
 ?>
-@extends('layout-header')
-@section('title', $title)
-@section('header-bg', '/img/bg-event.jpg')
-@section('header-title', $user->name)
-@section('header-subtitle', $subtitle)
+@extends('user.edit_common')
 
 @section('js')
-  <script type="text/javascript" src="/js/jquery.validate-1.14.0.js"></script>
-  <script type="text/javascript" src="/js/method-links.js"></script>
-  <?=Form::validationScript(FORM_ID)?>
-  @yield('form-js')
+    <script type="text/javascript" src="/js/jquery.validate-1.14.0.js"></script>
+    <?=Form::validationScript(FORM_ID)?>
+    @yield('form-js')
 @endsection
 
-@section('content')
-  <section class="page-section with-sidebar sidebar-right first-section">
-    <div class="container">
-    <div class="row">
-    <?=Form::model($user, ['id' => FORM_ID, 'files' => true])?>
-      <div class="col-md-8">
+@section('form_content')
+<?=Form::model($user, ['id' => FORM_ID, 'files' => true])?>
+<div class="row">
+    <div class="col-md-8">
 
         @include('components.form_errors')
 
-          <div class="row">
-            <div class="col-xs-3 col-sm-2">
-              <?=Form::label(_('Photo'))?><br/>
-              <img src="{{$user->picture}}" alt="avatar" class="picture" />
-              <?=Form::input('file', 'picture', '')?>
-            </div>
-
-            <div class="col-xs-9 col-sm-10">
-              <?=Form::labelInput('tagline', _('Tagline'), 'text', null, [
-                'input' => ['placeholder' => _('Example: Analyst at Acme Inc.')],
-                'help'  => _('Describe your professional self in a phrase. What you do for a living?')
-              ])?>
-            </div>
-          </div>
-
-        <?=Form::labelInput('bio', _('Short bio'), 'textarea', null, [
-          'help' => _('Introduce yourself to the community! Write a couple of words to help others understand who you are.'),
-          'input' => ['rows' => 3, 'placeholder' => _('Example: I\'m a chemical analyst with experience in catalysis.')]
-        ])?>
-
-          <div class="panel panel-default" id="social-networks">
+        <div class="panel panel-default">
             <div class="panel-heading">
-              <h4 class="panel-title">
-                <?=_('Social networks and external links')?>
-                <span class="badge"><?=sizeof($links)?:''?></span>
-              </h4>
+                <h4 class="panel-title"><?=_('Describe yourself')?></h4>
             </div>
 
             <div class="panel-body">
-              <p class="help-block"><?=_('Here you can include links to who you are and your work in the outer world.')?></p>
-
-              <div class="row">
-                <? $used_providers = []; ?>
-                <? foreach ($links as $link): ?>
-                  <? $used_providers[] = strtolower($link->name) //FIXME: not enough for Live ?>
-                  <div class="col-md-3 col-xs-4">
-                    <div class="social-link-block">
-                      <?//FIXME: "-square" should not be stored in the db; stacking should be used when needed ?>
-                      <a href="{{$link->url}}">
-                        <i class="<?=strtr($link->icon, ['-square' => ''])?> fa-3x"></i>
-                        <span title="<?=_('network')?>" class="sr-only">{{$link->name}}</span>
-                        <span title="<?=_('username')?>">{{ltrim($link->username,'://')}}</span>
-                      </a>
-                      <a href="<?=act('user@deleteLink', [$link->id])?>" class="text-muted social-link-remove"
-                         data-method="delete" data-token="{{csrf_token()}}">
-                          <i class="fa fa-times"></i> <span class="sr-only"><?=_('Remove this network')?></span>
-                      </a>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-2">
+                        <?=Form::label(_('Photo'))?><br />
+                        <img src="{{$user->picture}}" alt="avatar" class="picture" />
+                        <?=Form::input('file', 'picture', '')?>
                     </div>
-                  </div>
-                <? endforeach ?>
-              </div>
 
-              <?//=Form::labelInput('link', _('You can include a new URL here:'), 'url')?>
-
-              <p class="help-block">
-                <?=_('You can also associate your account to a network. Not all of them will appear in your profile, but they all can be used to login the next time you come back:')?>
-              </p>
-                <div class="form-group text-center">
-                    @include('auth._providers_button', ['default' => false, 'size' => 'lg', 'except' => $used_providers])
+                    <div class="col-xs-9 col-sm-10">
+                        <?=Form::labelInput('tagline', _('Tagline'), 'text', null, [
+                            'input' => ['placeholder' => _('Example: Analyst at Acme Inc.')],
+                            'help'  => _('Describe your professional self in a phrase. What you do for a living?')
+                        ])?>
+                    </div>
                 </div>
+
+                <?=Form::labelInput('bio', _('Short bio'), 'textarea', null, [
+                    'help'  => _('Introduce yourself to the community! Write a couple of words to help others understand who you are.'),
+                    'input' => [
+                        'rows'        => 3,
+                        'placeholder' => _('Example: I\'m a chemical analyst with experience in catalysis.')
+                    ]
+                ])?>
             </div>
-          </div>
-      </div>
+        </div>
+    </div>
 
-      <div class="col-md-4">
+    <hr class="page-divider transparent visible-xs" />
+
+    <div class="col-md-4">
         <div class="panel panel-default">
-          <div class="panel-body">
-            @include('user._common_fields')
+            <div class="panel-heading">
+                <h4 class="panel-title"><?=_('Personal data')?></h4>
+            </div>
 
-            <?=Form::labelSelect('gender', _('Gender'), [
-              'M' => _('Male'),
-              'F' => _('Female'),
-              ''  => _('Not informed')
-            ]) ?>
+            <div class="panel-body">
+                @include('user._common_fields')
 
-            <?=Form::labelInput('birthday', _('Birthday'), 'date', $user->birthday? $user->birthday->format('Y-m-d') : null)?>
-          </div>
+                <?=Form::labelSelect('gender', _('Gender'), [
+                    'M' => _('Male'),
+                    'F' => _('Female'),
+                    ''  => _('Not informed')
+                ]) ?>
+
+                <?=Form::labelInput('birthday', _('Birthday'), 'date',
+                    $user->birthday? $user->birthday->format('Y-m-d') : null)?>
+            </div>
         </div>
-      </div>
+    </div>
 
-      <div class="col-md-12">
+    <div class="col-md-12">
         <div class="row buttons-row text-center">
-          <a href="javascript:history.back()" class="btn btn-theme btn-theme-lg btn-theme-grey-dark"><?=_('Go back')?></a>
-          <?=Form::submit(_('Save'), ['class' => 'btn btn-theme btn-theme-lg'])?>
+            <a href="javascript:history.back()" class="btn btn-theme btn-theme-lg btn-theme-grey-dark">
+                <?=_('Go back')?>
+            </a>
+            <?=Form::submit(_('Save'), ['class' => 'btn btn-theme btn-theme-lg'])?>
         </div>
-      </div>
-    <?=Form::close()?>
     </div>
-    </div>
-  </section>
-@endsection
+</div>
+<?=Form::close()?>
+@endsection('form_content')
