@@ -22,9 +22,12 @@ Exemplo:
 
     docker run -d \ # roda o container em background (detach/daemonize)
         -v <<raiz local do projeto>>:/var/www \ # bind nas pastas (use `pwd`, não um path relativo!)
-        -p <<porta local>>:80 \ # server roda na porta 80 por default
+        -v <<raiz>>/storage/database:/var/lib/postgresql \ # bind de uma pasta do projeto ao banco de dados interno
+        -p 81:80 \ # HTTP do container vai rodar na 81 local
+        -p 444:443 \ # HTTPS do container vai rodar na 444
+        -p 5433:5432 \ # Postgre vai ficar na 5433
         -t konato/project:dev # nome da imagem
-    
+
 
 #### Usar o container novamente
 1. localizá-lo em `docker ps -a`
@@ -50,18 +53,20 @@ Além da imagem pura com o PHP7 + Nginx (`konato/php7-beta`), há também uma im
 Atualmente, para ter a versão mais atualizada do projeto dentro da imagem, é necessário fazer o re-build.
 
     docker build --tag=konato/project:latest --file=project.dockerfile .
-    
+
 ### Executar
 Com o comando seguinte o projeto estará disponível na porta `81` da máquina local:
 
     docker run -d -p 81:80 konato/project
 
+### Imagem para desenvolvimento
+A imagem do `project.dockerfile` é focada no ambiente de produção, copiando o source-code diretamente do GitHub para o container. Para desenvolvimento é recomendável usar o `project-dev.dockerfile` e fazer o bind das pastas do banco de dados e de código, conforme demonstrado no exemplo longo do `docker run`.
 
 
 *TO-DO*
 =======
 - adicionar um script no projeto que crie o container de dev do Docker (o `docker run` ali em cima) (com artisan?)
-- adicionar script (bash/php?) para atualizar o source do projeto dentro da imagem de produção, sem precisar fazer re-build da imagem
+- adicionar script (bash/php?) para atualizar o source do projeto dentro da imagem de produção, sem precisar fazer re-build da imagem (necessário?)
 
 
 [docker]: http://www.docker.com

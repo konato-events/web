@@ -1,8 +1,7 @@
-FROM konato/php7-beta:latest
+FROM konato/project:base
 MAINTAINER Igor Santos <konato@igorsantos.com.br>
 
 # Installs and configures the project
-RUN apt-get install wget
 RUN wget https://bitbucket.org/konato/web/get/master.tar.gz
 RUN tar -xaf master.tar.gz
 RUN mv konato-web-* /var/www
@@ -21,9 +20,5 @@ RUN cp config/nginx/konato-dev.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/konato-dev.conf /etc/nginx/sites-enabled/
 RUN rm /etc/nginx/sites-enabled/default
 # no need to reload settings since nginx is not yet running
-
-# Configures all available locales
-RUN locale-gen pt_BR.UTF-8
-RUN locale-gen en_CA.UTF-8
 
 CMD /usr/bin/supervisord

@@ -10,14 +10,14 @@ RUN apt-get update && \
 	apt-get install  -y --force-yes \
 		curl \
 		vim \
-		wget \
+		wget
 
 # Installs HTTP, DB and process manager
 RUN apt-get install -y --force-yes \
 	nginx \
 	redis-server \
     postgresql-9.3 \
-    postgresql-9.3-client \
+    postgresql-client-9.3 \
 	supervisor
 
 # Installs PHP7 compile dependencies
@@ -51,55 +51,51 @@ RUN apt-get install -y --force-yes  \
     systemtap-sdt-dev
 
 # Compiling PHP7
-#times: configure = 40s,
-RUN wget https://downloads.php.net/~ab/php-7.0.0RC6.tar.xz
-RUN tar -xaf php-7.0.0RC6.tar.xz
-RUN cd php-7.0.0RC6
-RUN ./configure \
-    --prefix=/usr/local/php7 \
-    --disable-rpath \
-    --enable-bcmath \
-    --enable-calendar \
-    --enable-exif \
-    --enable-fpm \
-    --enable-ftp \
-    --enable-gd-native-ttf \
-    --enable-inline-optimization \
-    --enable-mbregex \
-    --enable-mbstring \
-    --enable-opcache \
-    --enable-pcntl \
-    --enable-soap \
-    --enable-sockets \
-    --enable-sysvsem \
-    --enable-sysvshm \
-    --enable-zip \
-    --with-bz2 \
-    --with-curl \
-    --with-fpm-group=www-data \
-    --with-fpm-user=www-data \
-    --with-freetype-dir \
-    --with-gd \
-    --with-gettext \
-    --with-jpeg-dir=/usr \
-    --with-kerberos \
-    --with-libdir=/lib/x86_64-linux-gnu \
-    --with-libxml-dir=/usr \
-    --with-mcrypt \
-    --with-mhash \
-    --with-openssl \
-    --with-pcre-regex \
-    --with-pdo-pgsql \
-    --with-pgsql \
-    --with-png-dir=/usr \
-    --with-xmlrpc \
-    --with-xsl \
-    --with-zlib \
-    --with-zlib-dir
-#    --with-imap \
-#    --with-imap-ssl \
-RUN make
-RUN make install
+RUN wget http://br1.php.net/get/php-7.0.6.tar.xz/from/this/mirror -O - | tar -xJf - \
+    && cd php-7.0.6/ \
+    && ./configure \
+        --prefix=/usr/local/php7 \
+        --disable-rpath \
+        --enable-bcmath \
+        --enable-calendar \
+        --enable-exif \
+        --enable-fpm \
+        --enable-ftp \
+        --enable-gd-native-ttf \
+        --enable-inline-optimization \
+        --enable-mbregex \
+        --enable-mbstring \
+        --enable-opcache \
+        --enable-pcntl \
+        --enable-soap \
+        --enable-sockets \
+        --enable-sysvsem \
+        --enable-sysvshm \
+        --enable-zip \
+        --with-bz2 \
+        --with-curl \
+        --with-fpm-group=www-data \
+        --with-fpm-user=www-data \
+        --with-freetype-dir \
+        --with-gd \
+        --with-gettext \
+        --with-jpeg-dir=/usr \
+        --with-kerberos \
+        --with-libdir=/lib/x86_64-linux-gnu \
+        --with-libxml-dir=/usr \
+        --with-mcrypt \
+        --with-mhash \
+        --with-openssl \
+        --with-pcre-regex \
+        --with-pdo-pgsql \
+        --with-pgsql \
+        --with-png-dir=/usr \
+        --with-xmlrpc \
+        --with-xsl \
+        --with-zlib \
+        --with-zlib-dir \
+    && make -j"$(nproc)" \
+    && make install
 
 # Installs the project locales on the system
 RUN locale-gen pt_BR.UTF-8 en_CA.UTF-8
@@ -108,15 +104,20 @@ RUN locale-gen pt_BR.UTF-8 en_CA.UTF-8
 COPY usr_local_php7_etc_php-fpm.conf /usr/local/php7/etc/php-fpm.conf
 COPY php.ini-development /usr/local/php7/etc/
 COPY php.ini-production  /usr/local/php7/etc/
+VOLUME /var/www
 
 # Configures supervisord
 COPY etc_supervisor_conf.d_supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Configures the database
-RUN /usr/bin/supervisord & sleep 10
-RUN su postgres -c "createuser -DRS konato"
-RUN su postgres -c "createdb -O konato konato"
-RUN su postgres -c "psql -c \"ALTER USER konato WITH PASSWORD 'konato'\""
+USER postgres
+RUN /etc/init.d/postgresql start &&\
+    createuser -DRS konato &&\
+    createdb -O konato konato &&\
+    psql -c "ALTER USER konato WITH PASSWORD 'konato'"
+# Back again to root
+USER root
+VOLUME /var/lib/postgresql
 
 # Sets Composer variables and the correct PATH
 ENV COMPOSER_BINARY /usr/local/bin/composer
@@ -127,7 +128,7 @@ ENV PATH $PATH:$COMPOSER_HOME:/usr/local/php7/bin
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar $COMPOSER_BINARY && \
     chmod +x $COMPOSER_BINARY
-RUN mkdir $COMPOSER_HOME && chmod a+rw $COMPOSER_HOME
+RUN mkdir -p $COMPOSER_HOME && chmod a+rw $COMPOSER_HOME
 
 # Exposes ports that can be used
 EXPOSE 80 8080 443 5432

@@ -1,6 +1,6 @@
 # build should be run from the project root, to be able to copy the Nginx file
 
-FROM konato/php7-beta:latest
+FROM konato/project:base
 MAINTAINER Igor Santos <konato@igorsantos.com.br>
 
 WORKDIR /var/www
