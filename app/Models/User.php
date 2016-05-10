@@ -174,7 +174,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
     /**
      * Creates a {@link SocialLink} for the current user
      * @param string|int $username The username data to be stored
-     * @param string     $provider One recognizable provider name (from {@link SocialNetwork}
+     * @param string     $provider One recognizable provider name (from {@link SocialNetwork})
      * @return SocialLink
      * @throws InvalidModelException in case there's an issue with SocialLink validation
      */

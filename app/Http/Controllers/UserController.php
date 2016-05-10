@@ -2,6 +2,7 @@
 use App\Http\Requests\UserEdit;
 use App\Models\Theme;
 use App\Models\User;
+use Illuminate\Http\Request;
 use LaravelArdent\Ardent\InvalidModelException;
 
 class UserController extends Controller {
@@ -15,7 +16,7 @@ class UserController extends Controller {
     protected function followReturnAction() { return 'UserController@getProfile'; }
 
     public function __construct() {
-        $this->middleware('auth', ['only' => ['getFollow', 'getUnfollow', 'getEdit', 'postEdit']]);
+        $this->middleware('auth', ['only' => ['getFollow', 'getUnfollow', 'getEdit', 'postEdit', 'getEditLinks','postEditLinks', 'deleteLink']]);
     }
 
     //FIXME: Yet another Laravel router "bug". If we define the user/{id_slug} route before the controller route, we get wrong paths, but if we define later, the paths work fine but the actual route, don't. Fixing paths is harder, so we implemented this missingMethod to override the not found route issue.
@@ -99,6 +100,11 @@ class UserController extends Controller {
         return view('user.edit_links', ['user' => \Auth::user()]);
     }
 
+    public function postEditLinks(Request $req) {
+        \Auth::user()->addLink($req->get('link'), 'personal website');
+        return redirect(act('user@editLinks'));
+    }
+
     public function getLink(int $id) {
         return redirect(\Auth::user()->links()->where('id', $id)->firstOrFail()->url);
     }
@@ -106,7 +112,7 @@ class UserController extends Controller {
     public function deleteLink(int $id) {
         $user = \Auth::user();
         if ($user->links()->where('id', $id)->delete()) {
-            return redirect(act('user@edit', $user->id));
+            return redirect(act('user@editLinks'));
         } else {
             //TODO: log error and warn someone
             return redirect()->back()->with('error', _('We were unable to delete this link... Would you try again, or contact us?'));

@@ -14,7 +14,7 @@ $links = $user->socialLinks(true)->get();
 @endsection
 
 @section('form_content')
-<?=Form::open()?>
+<?=Form::open([], ['link' => ['required', 'url']])?>
 <div class="row">
 <div class="col-md-8">
 
