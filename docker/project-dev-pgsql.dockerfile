@@ -1,5 +1,5 @@
 # Uses the latest Ubuntu base image
-FROM ubuntu:latest
+FROM ubuntu:trusty
 MAINTAINER Igor Santos <konato@igorsantos.com.br>
 
 # Silences debconf's endless prattle
@@ -118,6 +118,13 @@ RUN /etc/init.d/postgresql start &&\
 # Back again to root
 USER root
 VOLUME /var/lib/postgresql
+# fixes a bug(?) in AUFS - https://github.com/nimiq/docker-postgresql93/issues/2#issuecomment-218165914
+RUN mkdir /etc/ssl/private-copy; \
+    mv /etc/ssl/private/* /etc/ssl/private-copy/; \
+    rm -r /etc/ssl/private; \
+    mv /etc/ssl/private-copy /etc/ssl/private; \
+    chmod -R 0700 /etc/ssl/private; \
+    chown -R postgres /etc/ssl/private
 
 # Sets Composer variables and the correct PATH
 ENV COMPOSER_BINARY /usr/local/bin/composer

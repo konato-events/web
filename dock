@@ -1,12 +1,8 @@
 #!/usr/bin/env php
 <?php
 // This file must be PHP5 friendly!!
-$container = getenv('CONTAINER');
-if (!$container) {
-    $command = 'help';
-} else {
-    $command = isset($argv[1])? $argv[1] : 'start';
-}
+$container = getenv('CONTAINER')?: 'konato';
+$command   = isset($argv[1])? $argv[1] : 'start';
 
 //echo "Container set: $container\n";
 
@@ -19,7 +15,7 @@ switch ($command) {
 
 First of all:
     You need a $CONTAINER environment variable set so we know the container's name :)
-    You can create it by issuing "export CONTAINER=trusting_einstein"
+    You can create it by issuing "export CONTAINER=konato"
 
 List of available commands:
     help        this thing you're seeing right now

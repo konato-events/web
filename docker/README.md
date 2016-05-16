@@ -22,11 +22,11 @@ Exemplo:
 
     docker run -d \ # roda o container em background (detach/daemonize)
         -v <<raiz local do projeto>>:/var/www \ # bind nas pastas (use `pwd`, não um path relativo!)
-        -v <<raiz>>/storage/database:/var/lib/postgresql \ # bind de uma pasta do projeto ao banco de dados interno
         -p 81:80 \ # HTTP do container vai rodar na 81 local
         -p 444:443 \ # HTTPS do container vai rodar na 444
         -p 5433:5432 \ # Postgre vai ficar na 5433
-        -t konato/project:dev # nome da imagem
+	    --name konato # nome do container a ser criado
+        konato/project:dev # nome da imagem
 
 
 #### Usar o container novamente
