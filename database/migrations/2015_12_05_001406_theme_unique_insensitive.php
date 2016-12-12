@@ -11,8 +11,8 @@ class ThemeUniqueInsensitive extends Migration {
      * @return void
      */
     public function up() {
-        DB::connection()->getPdo()->exec('ALTER TABLE themes DROP CONSTRAINT themes_name_key;');
-        DB::connection()->getPdo()->exec('DROP INDEX themes_name_key;');
+        DB::connection()->getPdo()->exec('ALTER TABLE themes DROP CONSTRAINT IF EXISTS themes_name_key;');
+        DB::connection()->getPdo()->exec('DROP INDEX IF EXISTS themes_name_key;');
         DB::connection()->getPdo()->exec('CREATE UNIQUE INDEX themes_name_key ON themes (lower(name))');
     }
 
@@ -22,7 +22,7 @@ class ThemeUniqueInsensitive extends Migration {
      * @return void
      */
     public function down() {
-        DB::connection()->getPdo()->exec('DROP INDEX themes_name_key;');
+        DB::connection()->getPdo()->exec('DROP INDEX IF EXISTS themes_name_key;');
         DB::connection()->getPdo()->exec('CREATE UNIQUE INDEX themes_name_key ON themes (name)');
     }
 }
