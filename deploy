@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 if (getenv('APP_ENV') != 'prod') {
-    die("I'm not going to run any deployment procedure as we're not in production.\n");
+    die("Skipping post-deploy procedures as we're not in production.\n");
 }
 
 echo `./artisan migrate`;

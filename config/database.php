@@ -103,7 +103,7 @@ return [
     'redis' => call_user_func(function() {
         $redis = [
             'cluster' => false,
-            'local'   => ['host' => '127.0.0.1', 'port' => 6379, 'database' => 0]
+            'local'   => ['host' => 'redis', 'port' => 6379, 'database' => 0]
         ];
         if (getenv('APP_ENV') == 'prod') {
             foreach(['REDIS' => 'heroku', 'REDISCLOUD' => 'redis_cloud'] as $provider => $key) {

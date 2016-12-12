@@ -26,9 +26,10 @@
     ],
 
     "require": {
-        "php": "~7.0@beta",
+        "php": "~7.1",
         "ext-gettext": "*",
         "ext-mcrypt": "*",
+        "ext-pgsql": "*",
 
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
