@@ -1,4 +1,5 @@
 <?php namespace App\Models;
+use App\Models\Traits\Avatarized;
 use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -55,10 +56,14 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  * @method BelongsToMany             following_themes
  * @property Collection|EventSpeaker[] spoke_pivot
  * @method HasMany spoke_pivot
+ * @property Collection|Session[]      sessions
+ * @property Collection|Theme[]        all_themes
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
-    use Authenticatable, CanResetPassword, Traits\Gravatar;
+    use Authenticatable, CanResetPassword, Traits\Avatarized {
+        Avatarized::beforeSave as beforeSaveAvatars;
+    }
 
     protected $hidden                     = ['password', /*'remember_token'*/];
 
@@ -167,8 +172,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     public function beforeSave() {
 //        unset($this->password_confirmation);
-        $this->avatar   = $this->avatar  ?? self::generateGravatar($this->email, 100);
-        $this->picture  = $this->picture ?? self::generateGravatar($this->email, 1920);
+        $this->beforeSaveAvatars();
     }
 
     /**

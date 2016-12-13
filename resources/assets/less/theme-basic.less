@@ -1005,14 +1005,6 @@ nav .btn:hover {
 //        padding: 9px 20px !important;
 //    }
 //}
-.btn-search-toggle {margin-right: 10px !important; z-index: 11;}
-.shrink .btn-search-toggle {}
-@media (max-width: 991px) {
-    .btn-search-toggle,
-    .shrink .btn-search-toggle {
-        display: none !important;
-    }
-}
 
 /* 2.3 - Menu
 /* ========================================================================== */
@@ -1214,51 +1206,65 @@ header {
     }
 }
 
-.multipage .header-search-wrapper {
-    display: none;
-    position: absolute;
-    //top: 30px;
-    right: 230px;
-    z-index: 11;
+#btn-search-toggle {margin-right: 10px !important; z-index: 11;}
+@media (max-width: @screen-tablet) {
+    #btn-search-toggle {
+        display: none !important;
+    }
 }
-.multipage .shrink .header-search-wrapper {
+
+.multipage #header-search-wrapper {
+    display: inline-block;
+    opacity: 0;
+    width: 0;
+    z-index: 11;
+    transition: width 0.3s ease-in-out,
+                opacity 0.25s ease-in-out;
+    &.display {
+        opacity: 1;
+        transition: width 0.3s ease-in-out,
+                    opacity 0.1s ease-in-out;
+        width: 220px;
+        @media (max-width: 991px) {
+            width: 95px;
+        }
+    }
+}
+.multipage .shrink #header-search-wrapper {
     top: 8px;
     right: 190px;
 }
 @media (max-width: @screen-tablet) {
-    .multipage .header-search-wrapper,
-    .multipage .shrink .header-search-wrapper {
+    .multipage #header-search-wrapper,
+    .multipage .shrink #header-search-wrapper {
         top: auto;
         right: auto;
         position: relative;
         display: block !important;
+        opacity: 1;
+        width: auto;
         margin: 10px 15px;
     }
     //.form-control {
     //    font-size: 12px;
     //}
 }
-.multipage .header-search-wrapper .header-search {
+.multipage #header-search-wrapper .header-search {
     height: 45px;
     line-height: 45px;
     border-radius: 6px;
     padding: 0 8px;
 }
-.multipage .shrink .header-search-wrapper .header-search {
+.multipage .shrink #header-search-wrapper .header-search {
     height: 31px;
     line-height: 31px;
 }
 @media (max-width: @screen-phone) {
-    .multipage .header-search-wrapper .header-search,
-    .multipage .shrink .header-search-wrapper .header-search {
+    .multipage #header-search-wrapper .header-search,
+    .multipage .shrink #header-search-wrapper .header-search {
         height: 31px;
         line-height: 31px;
     }
-}
-.multipage .header-search-wrapper,
-.multipage .header-search-wrapper .header-search {
-    -webkit-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
 }
 
 /* --------------------------------------------------------------------------

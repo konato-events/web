@@ -114,28 +114,22 @@ a {
 	color: #141f23;
 }
 
-.page-header {
-	color: #515151;
-}
-
-.page-header h1 {
-	color: #515151;
-}
-
-.page-header h1 small {
-	color: #6f6f6f;
+#page-header {
+    h1, h2 {
+        &:empty { //workaround for when one of those is not defined for layout-header.blade.php
+            display: none;
+        }
+    }
 }
 
 hr.page-divider {
 	border-color: #eeeeee;
-}
-
-hr.page-divider:after {
-	border-bottom: solid 1px #eeeeee;
-}
-
-hr.page-divider.single {
-	border-color: #646464;
+    &:after {
+        border-bottom: solid 1px #eeeeee;
+    }
+    &.single {
+        border-color: #646464;
+    }
 }
 
 .form-control {

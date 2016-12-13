@@ -44,7 +44,7 @@ if ($participation) {
         <div class="col-md-3 col-sm-3 col-xs-4">
             <div class="media">
                 <?php //TODO: adding a link to this image wont work ?>
-                <img src="<?=$event->publicImg?>" alt="<?=$event->title?>">
+                <img src="<?=$event->avatar?>" alt="<?=$event->title?>">
 
                 {{--<a href="#" class="like"><i class="fa fa-heart"></i></a>--}}
                 {{--<a href="#" class="like"><i class="fa fa-heart-o"></i></a>--}}

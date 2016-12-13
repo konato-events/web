@@ -7,6 +7,7 @@ return [
     'email'     => _('This does not seem like an email'),
     'confirmed' => _('The :attribute confirmation doesn\'t match'),
     'unique'    => _('This :attribute is already in use'),
+    'url'       => _('Valid URLs should begin with http:// or https://'),
     'min'       => [
         'string' => _('Too short')
     ],

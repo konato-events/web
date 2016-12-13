@@ -12,7 +12,12 @@ use Carbon\Carbon;
 $title   = _r('%s - event', $event->title);
 $tagline = 'A tagline do evento vai aqui';
 
-$img_height = getimagesize($event->publicImg)[1];
+try {
+    $img_height = getimagesize($event->avatar)[1];
+}
+catch (ErrorException $e) {
+    $img_height = 512; //default value?
+}
 $img_height = ($img_height > 250? 250 : $img_height);
 $date_fmt   = _('m/d/Y');
 $time_fmt   = _('h:i A');
@@ -109,14 +114,21 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
 @section('header-bg', '/img/bg-event.jpg')
 @section('header-content')
     <div class="row">
+    <? if ($event->avatar && !strpos($event->avatar, 'gravatar')): ?>
+        <div class="profile-photo col-md-2">
+            <img src="<?=$event->avatar?>" alt="<?=$event->title?>" width="100%" />
+        </div>
+        <div class="details col-md-10">
+    <? else: ?>
         <div class="details col-md-12">
+    <? endif ?>
         {{--<div class="details col-md-7 col-sm-7">--}}
             <h1>
                 <a href="<?=act('event@details', $event->id)?>" title="<?=_('Permalink')?>" data-toggle="tooltip" data-placement="right" data-trigger="click">
                     <?=$event->title?>
                 </a>
             </h1>
-            <? if (false): ?>
+            <? if ($event->closed): ?>
                 <span class="status" data-toggle="tooltip" title="<?=_('This is a private event - acessible only by a group of selected people')?>"><?=_('Closed')?></span>
             <? endif ?>
             <p class="date"><?=$dates_str()?></p>
@@ -139,7 +151,7 @@ $dates_str = function(bool $compact = false) use ($event, $date_fmt):string {
                     </a>
                 <? endif ?>
 
-                    <? if ($event->facebook): ?>
+                <? if ($event->facebook): ?>
                     <a href="<?=$event->facebook?>">
                         <i class="fa fa-facebook"></i> <?=url_main_part($event->facebook, true)?>
                     </a>
