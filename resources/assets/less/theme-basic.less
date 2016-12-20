@@ -433,10 +433,6 @@ h4 .glyphicon, h5 .glyphicon, h6 .glyphicon {
 }
 .rehex .rehex-deg .rehex-deg {
     transform: skewX(-30deg) rotate(60deg) skewX(30deg);
-    background: orange;
-    /*-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, #000000 100%);*/
-    /*-webkit-mask-image: none;*/
-    /*-webkit-transform: translateZ(0);*/
 }
 .rehex .rehex-inner {
     transform: skewX(-30deg) rotate(-90deg) skewX(0deg);
@@ -635,8 +631,8 @@ hr.page-divider.large {
     color: white;
 }
 .btn-theme-light {
-    background-color: @lightSecondaryColor;
-    border-color: @lightSecondaryColor;
+    background-color: @darkSecondaryColor;
+    border-color: @darkSecondaryColor;
     color: white;
 }
 .btn-theme-light:hover,
@@ -1057,7 +1053,7 @@ header {
     > nav.navbar-default {
         padding: 20px 0;
         border-bottom-width: 0;
-        background-color: @darkestSecondaryColor;
+        background-color: @darkestPrimaryColor;
 
         .navbar-toggle {
             border-width: 0;
@@ -1282,14 +1278,14 @@ header {
 
 
 #hero-block {
-    background-color: @lightPrimaryColor;
+    background-color: @primaryColor;
     text-align: center;
     height: 450px;
 
     a:not(.btn) {
-        color: @darkPrimaryColor;
+        color: @lightPrimaryColor;
         &:hover {
-            color: @darkestPrimaryColor;
+            color: @secondaryColor;
         }
         .btn {
             color: white;
@@ -2587,8 +2583,8 @@ header {
     padding: 10px 12px;
     border-radius: 6px;
     font-size: 13px;
-    border-color: #96a0aa;
-    color: #96a0aa;
+    border-color: @lightTextColor;
+    color: @lightTextColor;
 }
 .thumbnails.info-thumbs .caption-more .btn-theme:hover {
     background-color: @darkPrimaryColor;

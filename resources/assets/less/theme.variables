@@ -1,44 +1,31 @@
-@textColor:         #6d7a83;
-@lightTextColor:    #96a0aa;
-@fontColor:         @textColor;
-@lightFontColor:    @lightTextColor;
+@darkestPrimaryColor: #014553;
+@darkPrimaryColor:    #015668;
+@primaryColor:        #0F81C7;
+@lightPrimaryColor:   #C7EEFF;
+@primaryColorBg:      @lightPrimaryColor;
 
-@darkestOrange:     #AE5000;
-@darkOrange:        #E06C08;
-@orange:            #FB953E;
-@lightOrange:       #FFB16E;
-@orangeBg:  lighten(#FFD4AF, 10%);
-@darkestYellow:     #AE7500;
-@darkYellow:        #E09908;
-@yellow:            #FBBD3E;
-@lightYellow:       #FFD06E;
-@yellowBg:  lighten(#FFE5AF, 10%);
-@darkestBlue:       #0B2975;
-@darkBlue:          #153A96;
-@blue:              #3758A9;
-@lightBlue:         #5D78BD;
-@blueBg:    lighten(#9DAFDB, 10%);
+@darkestSecondaryColor: #06648C;
+@darkSecondaryColor:    #0A9FA4;
+@secondaryColor:        #0CCCD3;
+@lightSecondaryColor:   @secondaryColor;
+@secondaryColorBg:      #FAFAFA;
+
+@textColor:         @darkestPrimaryColor;
+@lightTextColor:    #7EBBC8;
+@fontColor:         @textColor;      //FIXME could be removed
+@lightFontColor:    @lightTextColor; //FIXME could be removed
+
+//used around the legacy theme code
+@main-color-d10: darken(@primaryColor, 10%);
+@main-color-d15: darken(@primaryColor, 15%);
+@main-color-d20: darken(@primaryColor, 20%);
+
+//used in buttons
 @darkestTeal:       #016469;
 @darkTeal:          #068287;
 @teal:              #269398;
 @lightTeal:         #4CABAF;
 @tealBg:    lighten(#91D0D3, 20%);
-
-@darkestPrimaryColor: @darkestOrange;
-@darkPrimaryColor:    @darkOrange;
-@primaryColor:        @orange;
-@lightPrimaryColor:   @lightOrange;
-@primaryColorBg:      @orangeBg;
-
-@darkestSecondaryColor: @darkestBlue;
-@darkSecondaryColor:    @darkBlue;
-@secondaryColor:        @blue;
-@lightSecondaryColor:   @lightBlue;
-@secondaryColorBg:      @blueBg;
-
-@main-color-d10: darken(@primaryColor, 10%);
-@main-color-d15: darken(@primaryColor, 15%);
-@main-color-d20: darken(@primaryColor, 20%);
 
 @borderColor: #F1F2F3;
 
