@@ -19,17 +19,17 @@ How to handle this... thing.
 0. Insert cool keys into it, for cool cryptographic operations: `docker-compose exec php ./artisan key:generate`
 0. Install all dependencies (If you don't have NPM, see the next section):
     - `docker-compose exec php composer install`
-    - `npm install --global gulp` (not mandatory, but will help you with some commands)
-    - `npm install`
+    - `yarn global add gulp` (not mandatory, but will help you with some commands)
+    - `yarn`
 
 #### Package managers
-Seriously? You don't have those nice Composer/NPM guys there? Ok, keep reading:
+Seriously? You don't have those nice Composer/Yarn guys there? Ok, keep reading:
 
 ##### Composer
 This guy is now bundled onto the Docker image so we are good to go.
 
-##### Node + NPM
-As NPM is quite a heavy guy and you, as a developer, probably already have that somewhere in your machine. So you can just keep using your local version - instead of stuffing our cool Alpine image with Node.  
+##### Node & Yarn
+As NPM is quite a heavy guy and you, as a developer, probably already have that somewhere in your machine, we didn't add that into the containers. So you can just keep using your local version - instead of stuffing our cool Alpine image with Node.  
 To make matters easier, you should preferably use the Node Version Manager (if you prefer not, go to [node.js] and do whatever is suggested there):
 
 > _First, you should check the [latest NVM release][nvm-release] to use the version number in the first command._
@@ -38,9 +38,12 @@ To make matters easier, you should preferably use the Node Version Manager (if y
       | sudo NVM_DIR=/usr/local/nvm bash
     $ nvm install lts-boron # Installs the latest stable LTS release. You can use `nvm ls-remote` to see specific versions
     $ nvm use node # enables io.js right away, without having to restart the shell
+    
+To get Yarn, a superset of NPM for package management, take a look at their [install page][yarn].
 
-[node.js]:https://nodejs.org
+[node.js]: https://nodejs.org
 [nvm-release]: https://github.com/creationix/nvm/releases/latest
+[yarn]: https://yarnpkg.com/en/docs/install
 
 ### Assets management
 Laravel comes pre-packed with [Elixir], an easier way to run Gulp tasks. _No, it's not the [Brazilian, easier version of Erlang][elixir-erlang]._

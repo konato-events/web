@@ -53,7 +53,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  */
 class Event extends Base {
 
-    use Traits\Gravatar;
+    use Traits\Avatarized;
 
     protected $dates = ['created_at', 'updated_at', 'begin', 'end'];
 
