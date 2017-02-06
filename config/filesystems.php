@@ -15,8 +15,10 @@ return [
     |
     */
 
-    'default'  => (getenv('APP_ENV') == 'prod')? 's3' : 'local',
-    'root_url' => (getenv('APP_ENV') == 'prod')? 'http://s3.amazonaws.com/konato-users/' : '/app/',
+    'default'  => (getenv('APP_ENV') == 'prod')? 'ftp' : 'local',
+    'root_url' => (getenv('APP_ENV') == 'prod')? 'http://igorsantos.com.br/konato/' : '/app/',
+    //    'default'  => (getenv('APP_ENV') == 'prod')? 's3' : 'local',
+    //    'root_url' => (getenv('APP_ENV') == 'prod')? 'http://s3.amazonaws.com/konato-users/' : '/app/',
 
     /*
     |--------------------------------------------------------------------------
@@ -72,8 +74,15 @@ return [
                     'region' => 'us-east-1',
                     'bucket' => 'konato-users',
                 ];
-            })
+            }),
 
+        'sftp' => [
+            'driver'   => 'sftp',
+            'host'     => 'direct.igorsantos.com.br',
+            'username' => 'konato',
+            'password' => getenv('FTP_PASSWD'),
+            'root'     => '/var/www/konato'
+        ]
     ],
 
 ];

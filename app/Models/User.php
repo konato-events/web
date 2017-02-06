@@ -56,8 +56,6 @@ _('participant'); _('speaker'); _('involved'); _('staff');
  * @method BelongsToMany             following_themes
  * @property Collection|EventSpeaker[] spoke_pivot
  * @method HasMany spoke_pivot
- * @property Collection|Session[]      sessions
- * @property Collection|Theme[]        all_themes
  */
 class User extends Base implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -75,7 +73,9 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
 
     protected $most_visited               = [];
     protected $events                     = [];
+    /** @var Collection|Session[] */
     protected $sessions                   = [];
+    /** @var Collection|Theme[] */
     protected $all_themes                 = [];
 
 //    public $autoHydrateEntityFromInput = true;
@@ -225,7 +225,7 @@ class User extends Base implements AuthenticatableContract, CanResetPasswordCont
             $rel_path = 'users/picture-'.$this->id;
             $stored   = \Storage::put($rel_path, file_get_contents($file->getRealPath()));
             if (!$stored) {
-                $this->errors()->add('picture', _('Sorry, we were unable to save your picture. Can you try again later?'));
+                $this->errors()->add('picture', _('Sorry, we couldn\'t to save your photo. Can you try again later?'));
             }
             $path = \Config::get('filesystems.root_url').$rel_path;
         }

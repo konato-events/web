@@ -148,6 +148,7 @@ $app = [
         App\Providers\L10nServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SftpServiceProvider::class,
         App\Providers\BootstrapLaravalidServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class,
 
