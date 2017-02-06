@@ -55,6 +55,8 @@ class Event extends Base {
 
     use Traits\Avatarized;
 
+    protected static $avatarGenerationField = 'title';
+
     protected $dates = ['created_at', 'updated_at', 'begin', 'end'];
 
     protected $dateFormat = 'Y-m-d H:i:sO';

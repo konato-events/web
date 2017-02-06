@@ -1,8 +1,6 @@
 <?php namespace App\Models;
 use Carbon\Carbon;
 
-use Carbon\Carbon;
-
 /**
  * @property int    event_id
  * @property int    user_id
