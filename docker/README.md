@@ -9,10 +9,6 @@ Configurando o ambiente de dev
 1. [Instale o Docker][install]: `wget -qO- https://get.docker.com/ | sh`
 2. Baixe a imagem: `docker pull konato/php7-beta`
 
-### Helper script
-Foi criado, na raiz do projeto, um script que facilita o uso rotineiro do Docker. O script cobre ações como: iniciar o container, executar comandos arbitrários, abrir o `psql` ou o `bash`, e executar comandos do `Artisan`. Antes de usar, no entanto, é necessário definir uma variável de ambiente `CONTAINER` com o nome dele, usando por exemplo `export CONTAINER=trusting\_einstein`. Para mais detalhes, verifique `./dock --help`.
-
-
 ### Uso comum
 
 #### Criar um container a partir da imagem
